@@ -173,7 +173,7 @@
     </style>
 
     <style name="Theme.SelectedItem" parent="android:Widget.Holo.DropDownItem.Spinner">
-        <item name="android:listSelector">@drawable/list_item_spinner</item>
+        <item name="android:listSelector">@drawable/selector_spinner_item_list</item>
     </style>
 
     <style name="Theme.HighLight" parent="Theme.ElektraPagos">
