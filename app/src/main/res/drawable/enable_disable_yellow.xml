@@ -3,5 +3,5 @@
     <item android:drawable="@drawable/rounded_rectangle_yellow" android:state_enabled="true" />
     <item android:drawable="@drawable/rounded_rectangle_gray" android:state_enabled="false"/>
 
-    <item android:drawable="@drawable/rounded_rectangle_gray"
+    <item android:drawable="@drawable/rounded_rectangle_gray"/>
 </selector>
