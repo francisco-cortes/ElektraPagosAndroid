@@ -9,6 +9,7 @@
     <string name="optional_field_hint">Campo Opcional</string>
     <string name="option_selection_hint">Selecciona una opción*</string>
     <string name="continue_button">CONTINUAR</string>
+    <string name="invalid_data">*Dato no válido</string>
 
     <!-- Fragment login face strings-->
     <string name="login_welcome">¡Bienvenido!</string>
