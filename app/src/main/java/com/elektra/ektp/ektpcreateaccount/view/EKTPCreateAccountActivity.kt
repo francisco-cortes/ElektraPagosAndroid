@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.ActivityCreateAccountBinding
 
-class CreateAccountActivity : AppCompatActivity() {
+class EKTPCreateAccountActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCreateAccountBinding
 

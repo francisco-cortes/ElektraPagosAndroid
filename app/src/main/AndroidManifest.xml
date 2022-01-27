@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ElektraPagos">
         <activity
-            android:name=".ektpcreateaccount.view.CreateAccountActivity"
+            android:name=".ektpcreateaccount.view.EKTPCreateAccountActivity"
             android:exported="false" />
         <activity
             android:name=".ektplogin.view.EKTPLoginActivity"
