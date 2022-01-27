@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ElektraPagos">
         <activity
+            android:name=".ektplogin.view.LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".ektpsplashactivity.view.SplashActivity"
             android:exported="true">
             <intent-filter>
