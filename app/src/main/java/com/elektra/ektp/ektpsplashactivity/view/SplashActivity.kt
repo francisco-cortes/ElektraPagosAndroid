@@ -9,6 +9,7 @@ import android.view.WindowManager
 import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.ActivitySplashBinding
+import com.elektra.ektp.ektplogin.view.EKTPLoginActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -36,9 +37,9 @@ class SplashActivity : AppCompatActivity() {
         hacer algo con tiempo demorado*/
 
         Handler().postDelayed({
-            /*val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, EKTPLoginActivity::class.java)
             startActivity(intent)
-            finish()*/
+            finish()
         }, 3000) // 3000 es el tiempo de la demora en milisegundos.
 
     }
