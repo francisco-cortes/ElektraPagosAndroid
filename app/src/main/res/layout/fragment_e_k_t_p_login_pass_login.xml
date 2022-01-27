@@ -197,15 +197,15 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/faceSignInButton"
+                    android:id="@+id/biometricSignInButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_43sdp"
                     android:layout_marginEnd="@dimen/_43sdp"
                     android:layout_marginTop="@dimen/_30sdp"
                     android:layout_marginBottom="@dimen/_20sdp"
-                    android:drawableLeft="@drawable/ic_on_button_password_icon"
-                    android:text="@string/login_face_button"
+                    android:drawableLeft="@drawable/ic_on_button_finger"
+                    android:text="@string/login_finger_button"
                     android:theme="@style/bottom_button"
                     android:background="@drawable/enable_disable_red"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -223,7 +223,7 @@
                     android:theme="@style/text_button_1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/faceSignInButton"/>
+                    app:layout_constraintTop_toBottomOf="@+id/biometricSignInButton"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

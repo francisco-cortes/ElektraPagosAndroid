@@ -19,6 +19,23 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate<FragmentEKTPLoginBiometricLoginBinding>(inflater,R.layout.fragment_e_k_t_p_login_biometric_login, container, false)
+
+        binding.passSignInButton.setOnClickListener{view: View ->
+            requireActivity()
+                .supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.loginNavHostFragment, EKTPLoginPassLoginFragment())
+                .commitNow()
+            /*if(fragment != null){
+                requireActivity()
+                    .supportFragmentManager
+                    .beginTransaction()
+                    .remove(fragment)
+                    .commit();
+            }*/
+
+        }
+
         return binding.root
     }
 
