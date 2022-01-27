@@ -35,11 +35,11 @@ class SplashActivity : AppCompatActivity() {
         /* Usamos el metodo postdelayed para
         hacer algo con tiempo demorado*/
 
-        /*Handler().postDelayed({
-            val intent = Intent(this, LoginActivity::class.java)
+        Handler().postDelayed({
+            /*val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
-            finish()
-        }, 3000) // 3000 es el tiempo de la demora en milisegundos.*/
+            finish()*/
+        }, 3000) // 3000 es el tiempo de la demora en milisegundos.
 
     }
 }
