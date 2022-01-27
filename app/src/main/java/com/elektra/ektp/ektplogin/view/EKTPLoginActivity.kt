@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.ActivityLoginBinding
 
-class LoginActivity : AppCompatActivity() {
+class EKTPLoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
 
