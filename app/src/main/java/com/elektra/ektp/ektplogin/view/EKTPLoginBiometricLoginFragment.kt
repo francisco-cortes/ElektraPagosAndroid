@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEKTPLoginBiometricLoginBinding
+import com.elektra.ektp.ektpbiometricutil.EKTPBiometricUtil
 
 class EKTPLoginBiometricLoginFragment : Fragment() {
 
@@ -19,6 +21,12 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate<FragmentEKTPLoginBiometricLoginBinding>(inflater,R.layout.fragment_e_k_t_p_login_biometric_login, container, false)
+        val bioUsed = EKTPBiometricUtil().determineBio(requireContext())
+
+        if (bioUsed == 1){
+            binding.biometricLoginImageButton.setBackgroundDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_face_button))
+            binding.biometricInfoTextView.text = "Entrar con FaceID"
+        }
 
         binding.passSignInButton.setOnClickListener{view: View ->
             requireActivity()
