@@ -20,7 +20,7 @@ class EKTPCreateAccountContractsFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate<FragmentEktpCreateAccountContractsBinding>(inflater,
             R.layout.fragment_ektp_create_account_contracts, container, false)
-        
+
         return binding.root
     }
 
