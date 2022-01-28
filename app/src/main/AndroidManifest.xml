@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ElektraPagos">
         <activity
+            android:name=".ektphome.view.EKTPHomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".ektplogin.view.EKTPLoginActivity"
             android:exported="false" />
         <activity
