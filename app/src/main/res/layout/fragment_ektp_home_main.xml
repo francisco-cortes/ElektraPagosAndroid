@@ -51,8 +51,8 @@
                 <TextView
                     android:id="@+id/hiUserNameTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/_42sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_25sdp"
                     android:layout_marginStart="@dimen/_52sdp"
                     android:text="¡Buen día"
                     android:theme="@style/title_4"
@@ -65,6 +65,7 @@
                     android:id="@+id/userNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:maxWidth="@dimen/_150sdp"
                     android:text="ana karen!"
                     android:fontFamily="@font/azo_sans_bold"
                     android:textColor="@color/black"
@@ -79,13 +80,13 @@
                     android:layout_width="@dimen/_91sdp"
                     android:layout_height="@dimen/_90sdp"
                     android:layout_marginEnd="@dimen/_34sdp"
-                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_25sdp"
                     android:layout_marginStart="@dimen/_97sdp"
                     android:background="@drawable/ic_balance_movements_button"
                     app:layout_constraintEnd_toStartOf="@+id/receiveMoneyImageButton"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/hiUserNameTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/userNameTextView"
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <TextView
@@ -106,14 +107,14 @@
                     android:id="@+id/receiveMoneyImageButton"
                     android:layout_width="@dimen/_91sdp"
                     android:layout_height="@dimen/_91sdp"
-                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_25sdp"
                     android:layout_marginStart="@dimen/_34sdp"
                     android:layout_marginEnd="@dimen/_97sdp"
                     android:background="@drawable/ic_receive_money_button"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/balanceMovementsImageButton"
-                    app:layout_constraintTop_toBottomOf="@+id/hiUserNameTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/userNameTextView"
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <TextView
