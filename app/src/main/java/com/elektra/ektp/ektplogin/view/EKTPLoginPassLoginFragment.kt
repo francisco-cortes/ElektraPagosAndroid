@@ -1,5 +1,6 @@
 package com.elektra.ektp.ektplogin.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEKTPLoginPassLoginBinding
 import com.elektra.ektp.ektpbiometricutil.EKTPBiometricUtil
+import com.elektra.ektp.ektphome.view.EKTPHomeActivity
 
 class EKTPLoginPassLoginFragment : Fragment() {
 
@@ -32,6 +34,12 @@ class EKTPLoginPassLoginFragment : Fragment() {
         if (bioUsed==1){
             binding.biometricSignInButton.text = "Entrar con FaceID"
             binding.biometricSignInButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_on_button_face_icon, 0, 0, 0)
+        }
+
+        binding.loginPassButton.setOnClickListener { view : View ->
+            val intent = Intent(activity, EKTPHomeActivity::class.java)
+            val context = view?.context
+            context?.startActivity(intent)
         }
 
 
