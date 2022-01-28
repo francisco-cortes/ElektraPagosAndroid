@@ -66,12 +66,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxWidth="@dimen/_150sdp"
-                    android:text="ana karen!"
+                    android:text="francisco javier"
                     android:fontFamily="@font/azo_sans_bold"
                     android:textColor="@color/black"
                     android:textAlignment="center"
                     android:textSize="@dimen/_25sdp"
                     android:layout_marginStart="@dimen/_5sdp"
+                    app:layout_constraintTop_toTopOf="@id/hiUserNameTextView"
                     app:layout_constraintBottom_toBottomOf="@+id/hiUserNameTextView"
                     app:layout_constraintStart_toEndOf="@+id/hiUserNameTextView"/>
                 <!---->
