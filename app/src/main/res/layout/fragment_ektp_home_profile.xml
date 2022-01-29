@@ -23,10 +23,10 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/appLogoImage"
+                    android:id="@+id/appLogoImageView"
                     android:layout_width="@dimen/_127sdp"
                     android:layout_height="@dimen/_49sdp"
-                    android:background="@drawable/ic_appbar_ekp_icon"
+                    android:background="@drawable/ic_appbar_logo"
                     android:layout_marginTop="@dimen/_35sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -49,11 +49,11 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/userImage"
+                    android:id="@+id/userProfileImageView"
                     android:layout_width="@dimen/_110sdp"
                     android:layout_height="@dimen/_110sdp"
                     android:layout_marginTop="@dimen/_27sdp"
-                    android:background="@drawable/ic_profile_icon"
+                    android:background="@drawable/ic_profile_image"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -62,13 +62,13 @@
                     android:id="@+id/nameLabelTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_35sdp"
                     android:text="@string/profile_name"
                     android:theme="@style/label_edit_text"
                     android:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/userImage" />
+                    app:layout_constraintTop_toBottomOf="@+id/userProfileImageView" />
 
                 <TextView
                     android:id="@+id/nameTextView"
@@ -87,7 +87,7 @@
                     android:id="@+id/accountLabelTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
                     android:text="@string/profile_account"
                     android:theme="@style/label_edit_text"
                     android:gravity="center"
@@ -112,7 +112,7 @@
                     android:id="@+id/dateLabelTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
                     android:text="@string/profile_open_date"
                     android:gravity="center"
                     android:theme="@style/label_edit_text"
@@ -137,7 +137,7 @@
                     android:id="@+id/phoneLabelTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
                     android:gravity="center"
                     android:text="@string/profile_phone"
                     android:theme="@style/label_edit_text"
@@ -162,7 +162,7 @@
                     android:id="@+id/emailLabelTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
                     android:gravity="center"
                     android:text="@string/profile_email"
                     android:theme="@style/label_edit_text"
@@ -187,10 +187,11 @@
                     android:id="@+id/contractLegalTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_32sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
                     android:gravity="center"
                     android:text="@string/profile_contract"
                     android:theme="@style/text_button_1"
+                    android:padding="@dimen/_8sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
@@ -199,7 +200,7 @@
                     android:id="@+id/bankNoteTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_37sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
                     android:layout_marginBottom="@dimen/_20sdp"
                     android:gravity="center"
                     android:text="@string/home_bankBottomNote"
