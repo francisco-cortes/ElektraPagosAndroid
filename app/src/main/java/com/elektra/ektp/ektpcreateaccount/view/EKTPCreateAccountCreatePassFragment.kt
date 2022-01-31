@@ -3,6 +3,8 @@ package com.elektra.ektp.ektpcreateaccount.view
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -143,6 +145,18 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
 
             }
         })
+
+        binding.showPassButton1.setOnClickListener {
+
+            if (!showPassVar) {
+                binding.insertPass.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                showPassVar = true
+            }
+            else {
+                binding.insertPass.transformationMethod = PasswordTransformationMethod.getInstance()
+                showPassVar = false
+            }
+        }
 
         return binding.root
     }
