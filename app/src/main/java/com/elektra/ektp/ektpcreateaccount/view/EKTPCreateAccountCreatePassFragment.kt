@@ -158,6 +158,18 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
             }
         }
 
+        binding.showPassButton2.setOnClickListener {
+
+            if (!showPassVar2) {
+                binding.insertConfirmPass.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                showPassVar2 = true
+            }
+            else {
+                binding.insertConfirmPass.transformationMethod = PasswordTransformationMethod.getInstance()
+                showPassVar2 = false
+            }
+        }
+
         return binding.root
     }
 
