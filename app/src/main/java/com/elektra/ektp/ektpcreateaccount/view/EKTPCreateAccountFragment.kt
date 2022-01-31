@@ -374,7 +374,7 @@ class EKTPCreateAccountFragment : Fragment() {
             createAccountViewModel.saveRegisterData(
                 name, paternalLast, maternalLast, birthDate, birthState, phone, eMailText, gender
             )
-            //view.findNavController().navigate(R.id.action_createAccountFragment_to_verificationSMSFragment)
+            view.findNavController().navigate(R.id.action_EKTPCreateAccountFragment_to_EKTPCreateAccountSMSVerificationFragment)
         }
 
         binding.backAppbarButton.setOnClickListener { view: View ->
