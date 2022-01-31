@@ -19,32 +19,32 @@ class EKTPHomeActivity : AppCompatActivity() {
 
         openFragment(EKTPHomeMainFragment())
 
-        /*binding.navbar.setOnNavigationItemSelectedListener { menuItem ->
+        binding.navbar.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId){
                 R.id.startButton->{
-                    openFragment(HomeMainFragment())
+                    openFragment(EKTPHomeMainFragment())
                     isHome = true
                     true
                 }
                 R.id.profileButton->{
-                    openFragment(HomeProfileFragment())
+                    openFragment(EKTPHomeProfileFragment())
                     isHome = false
                     true
                 }
                 R.id.noticeButton->{
-                    openFragment(HomeNoticeFragment())
+                    openFragment(EKTPHomeNoticeFragment())
                     isHome = false
                     true
                 }
                 R.id.settingsButton->{
-                    openFragment(HomeSettingFragment())
+                    openFragment(EKTPHomeSettingsFragment())
                     isHome = false
                     true
                 }
                 else -> false
 
             }
-        }*/
+        }
     }
 
     private fun openFragment(fragment: Fragment){
