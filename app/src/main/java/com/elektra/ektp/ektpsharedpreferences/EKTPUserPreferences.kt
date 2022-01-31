@@ -56,6 +56,14 @@ class EKTPUserPreferences(val context: Context) {
         enSharedPreferences.edit().putString(SHARED_GENDER_USER, genderUser).apply()
     }
 
+    fun savePhoneUser(phoneUser: String){
+        enSharedPreferences.edit().putString(SHARED_PHONE_USER, phoneUser).apply()
+    }
+
+    fun saveEmailUser(eMailUser: String){
+        enSharedPreferences.edit().putString(SHARED_EMAIL_USER, eMailUser).apply()
+    }
+
     fun getNameUser(): String{
         return enSharedPreferences.getString(SHARED_NAME_USER, "")!!
     }

@@ -12,9 +12,11 @@ import android.widget.AdapterView
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentCreateAccountBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountViewModel
+import com.elektra.ektp.ektpsharedpreferences.EKPTUserApplication.Companion.preferences
 import java.util.*
 
 class EKTPCreateAccountFragment : Fragment() {
@@ -364,6 +366,13 @@ class EKTPCreateAccountFragment : Fragment() {
                 phone, eMailText, emailConfirmationText, gender
             )
             binding.womanGenderRadioButton.isChecked = false
+        }
+
+        binding.button.setOnClickListener { view: View ->
+            createAccountViewModel.saveRegisterData(
+                name, paternalLast, maternalLast, birthDate, birthState, phone, eMailText, gender
+            )
+            //view.findNavController().navigate(R.id.action_createAccountFragment_to_verificationSMSFragment)
         }
 
         return binding.root
