@@ -566,6 +566,55 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
                 }
             }
 
+        binding.townHallSpinner?.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    if (town != "Selecciona una opción*" && town.isNotEmpty()) {
+                        progressValue -= 10
+                        completed -= 1
+                        binding.button5.isEnabled =
+                            validations.checkFieldsProgressBar(
+                                zipCode,
+                                colonyUser,
+                                streetUser,
+                                exteriorNumber,
+                                country,
+                                state,
+                                town,
+                                completed
+                            )
+                    }
+                    town = binding.townHallSpinner.selectedItem.toString()
+                    if (town != "Selecciona una opción*") {
+                        progressValue += 10
+                        completed += 1
+                        binding.button5.isEnabled =
+                            validations.checkFieldsProgressBar(
+                                zipCode,
+                                colonyUser,
+                                streetUser,
+                                exteriorNumber,
+                                country,
+                                state,
+                                town,
+                                completed
+                            )
+                    }
+                    else{
+                        binding.button5.isEnabled = false
+                    }
+                    progressInForm(progressValue, completed)
+                }
+            }
+
 
         return binding.root
     }
