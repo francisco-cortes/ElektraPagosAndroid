@@ -122,6 +122,37 @@ class EKTPCreateAccountFragment : Fragment() {
 
         })
 
+        binding.maternalLastName.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                maternalLast = s.toString()
+                if (createAccountViewModel.checkValidInput(maternalLast) || maternalLast.isEmpty()){
+                    binding.maternalLastName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    binding.invalidMaternalText.isVisible = false
+                }
+                else{
+                    binding.maternalLastName.setBackgroundResource(R.drawable.validation_edit_text)
+                    binding.invalidMaternalText.isVisible = true
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                maternalLast = s.toString()
+                if (createAccountViewModel.checkValidInput(maternalLast) || maternalLast.isEmpty()){
+                    binding.maternalLastName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    binding.invalidMaternalText.isVisible = false
+                }
+                else{
+                    binding.maternalLastName.setBackgroundResource(R.drawable.validation_edit_text)
+                    binding.invalidMaternalText.isVisible = true
+                }
+            }
+
+        })
+
         return binding.root
     }
 
