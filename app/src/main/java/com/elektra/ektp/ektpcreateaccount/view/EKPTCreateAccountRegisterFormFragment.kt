@@ -160,6 +160,74 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
             }
         }
 
+        binding.insertColony.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(
+                s: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                colonyUser = s.toString()
+                if (validations.checkValidInput(colonyUser)) {
+                    binding.insertColony.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    binding.button5.isEnabled =
+                        validations.checkFieldsProgressBar(
+                            zipCode,
+                            colonyUser,
+                            streetUser,
+                            exteriorNumber,
+                            country,
+                            state,
+                            town,
+                            completed
+                        )
+                    binding.invalidColonyText.isVisible = false
+                } else {
+                    binding.insertColony.setBackgroundResource(R.drawable.validation_edit_text)
+                    binding.button5.isEnabled = false
+                    binding.invalidColonyText.isVisible = true
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                colonyUser = s.toString()
+                if (validations.checkValidInput(colonyUser)) {
+                    binding.insertColony.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    binding.button5.isEnabled =
+                        validations.checkFieldsProgressBar(
+                            zipCode,
+                            colonyUser,
+                            streetUser,
+                            exteriorNumber,
+                            country,
+                            state,
+                            town,
+                            completed
+                        )
+                    binding.invalidColonyText.isVisible = false
+                } else {
+                    binding.insertColony.setBackgroundResource(R.drawable.validation_edit_text)
+                    binding.button5.isEnabled =
+                        validations.checkFieldsProgressBar(
+                            zipCode,
+                            colonyUser,
+                            streetUser,
+                            exteriorNumber,
+                            country,
+                            state,
+                            town,
+                            completed
+                        )
+                    binding.invalidColonyText.isVisible = true
+                }
+            }
+
+        })
+
 
         return binding.root
     }
