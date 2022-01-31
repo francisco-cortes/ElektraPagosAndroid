@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountSmsVerificationBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountSMSVerificationViewModel
@@ -205,6 +206,10 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
             }
 
         })
+
+        binding.smsContinueButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_EKTPCreateAccountSMSVerificationFragment_to_EKPTCreateAccountRegisterFormFragment)
+        }
 
         return  binding.root
     }
