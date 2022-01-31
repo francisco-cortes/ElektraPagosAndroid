@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountCreatePassBinding
 import com.elektra.ektp.ektpsharedpreferences.EKPTUserApplication.Companion.preferences
@@ -168,6 +169,10 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
                 binding.insertConfirmPass.transformationMethod = PasswordTransformationMethod.getInstance()
                 showPassVar2 = false
             }
+        }
+
+        binding.backAppbarButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountContractsFragment)
         }
 
         return binding.root
