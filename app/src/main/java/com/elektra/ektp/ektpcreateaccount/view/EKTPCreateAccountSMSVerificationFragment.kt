@@ -13,10 +13,15 @@ import androidx.navigation.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountSmsVerificationBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountSMSVerificationViewModel
+import com.elektra.ektp.uservalidations.UserValidations
 
 class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
     private val verificationCodeViewModel: EKTPCreateAccountSMSVerificationViewModel by viewModels()
+    companion object{
+        lateinit var validations: UserValidations
+    }
+
     private lateinit var codeSMS: String
     private var codechar1 = ""
     private var codechar2 = ""
@@ -41,11 +46,11 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 codechar1 = s.toString()
-                codeSMS = verificationCodeViewModel.concatenaterCode(
+                codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
                 if (!codechar1.isNullOrBlank() && codechar1.length == 1) {
-                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                    binding.smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                     binding.verificationNumber2.requestFocus()
                 }
                 else{
@@ -55,15 +60,15 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 codechar1 = s.toString()
-                codeSMS = verificationCodeViewModel.concatenaterCode(
+                codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
                 if (!codechar1.isNullOrBlank() && codechar1.length == 1) {
-                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                    binding.smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                     binding.verificationNumber2.requestFocus()
                 }
                 else{
-                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                    binding.smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                 }
             }
 
@@ -76,11 +81,11 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 codechar2 = s.toString()
-                codeSMS = verificationCodeViewModel.concatenaterCode(
+                codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
                 if (!codechar2.isNullOrBlank() && codechar2.length == 1) {
-                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                    binding.smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                     binding.verificationNumber3.requestFocus()
                 }
                 else{
@@ -90,15 +95,15 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 codechar2 = s.toString()
-                codeSMS = verificationCodeViewModel.concatenaterCode(
+                codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
                 if (!codechar2.isNullOrBlank() && codechar2.length == 1) {
-                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                    binding.smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                     binding.verificationNumber3.requestFocus()
                 }
                 else{
-                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                    binding.smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                 }
             }
 
@@ -111,11 +116,11 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 codechar3 = s.toString()
-                codeSMS = verificationCodeViewModel.concatenaterCode(
+                codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
                 if (!codechar3.isNullOrBlank() && codechar3.length == 1) {
-                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                    binding.smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                     binding.verificationNumber4.requestFocus()
                 }
                 else{
@@ -125,15 +130,15 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 codechar3 = s.toString()
-                codeSMS = verificationCodeViewModel.concatenaterCode(
+                codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
                 if (!codechar3.isNullOrBlank() && codechar3.length == 1) {
-                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                    binding.smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                     binding.verificationNumber4.requestFocus()
                 }
                 else{
-                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                    binding.smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                 }
             }
 
@@ -146,11 +151,11 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 codechar4 = s.toString()
-                codeSMS = verificationCodeViewModel.concatenaterCode(
+                codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
                 if (!codechar4.isNullOrBlank() && codechar4.length == 1) {
-                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                    binding.smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                     binding.verificationNumber5.requestFocus()
                 }
                 else{
@@ -160,15 +165,15 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 codechar4 = s.toString()
-                codeSMS = verificationCodeViewModel.concatenaterCode(
+                codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
                 if (!codechar4.isNullOrBlank() && codechar4.length == 1) {
-                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                    binding.smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                     binding.verificationNumber5.requestFocus()
                 }
                 else{
-                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                    binding.smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                 }
             }
 
@@ -181,11 +186,11 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 codechar5 = s.toString()
-                codeSMS = verificationCodeViewModel.concatenaterCode(
+                codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
                 if (!codechar5.isNullOrBlank() && codechar5.length == 1) {
-                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                    binding.smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                 }
                 else{
                     binding.smsContinueButton.isEnabled = false
@@ -194,14 +199,14 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 codechar5 = s.toString()
-                codeSMS = verificationCodeViewModel.concatenaterCode(
+                codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
                 if (!codechar5.isNullOrBlank() && codechar5.length == 1) {
-                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                    binding.smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                 }
                 else{
-                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                    binding.smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                 }
             }
 
