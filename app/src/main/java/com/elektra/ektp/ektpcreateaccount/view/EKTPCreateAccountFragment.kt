@@ -25,6 +25,10 @@ class EKTPCreateAccountFragment : Fragment() {
     private lateinit var binding: FragmentCreateAccountBinding
     private val createAccountViewModel: EKTPCreateAccountViewModel by viewModels()
 
+    companion object{
+        lateinit var validations: UserValidations
+    }
+
     private var name: String = ""
     private var paternalLast: String = ""
     private var maternalLast: String = ""
@@ -56,7 +60,7 @@ class EKTPCreateAccountFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 name = s.toString()
-                if (createAccountViewModel.checkValidInput(name)){
+                if (validations.checkValidInput(name)){
                     binding.insertName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                     binding.invalidNameText.isVisible = false
                 }
@@ -69,9 +73,9 @@ class EKTPCreateAccountFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 name = s.toString()
-                if (createAccountViewModel.checkValidInput(name)){
+                if (validations.checkValidInput(name)){
                     binding.insertName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                    binding.button.isEnabled = validations.checkFilledFields(
                         name, paternalLast, birthDate, birthState,
                         phone, eMailText, emailConfirmationText, gender
                     )
@@ -79,7 +83,7 @@ class EKTPCreateAccountFragment : Fragment() {
                 }
                 else{
                     binding.insertName.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                    binding.button.isEnabled = validations.checkFilledFields(
                         name, paternalLast, birthDate, birthState,
                         phone, eMailText, emailConfirmationText, gender
                     )
@@ -96,7 +100,7 @@ class EKTPCreateAccountFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 paternalLast = s.toString()
-                if (createAccountViewModel.checkValidInput(paternalLast)){
+                if (validations.checkValidInput(paternalLast)){
                     binding.paternalLastName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                     binding.invalidPaternalText.isVisible = false
                 }
@@ -109,9 +113,9 @@ class EKTPCreateAccountFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 paternalLast = s.toString()
-                if (createAccountViewModel.checkValidInput(paternalLast)){
+                if (validations.checkValidInput(paternalLast)){
                     binding.paternalLastName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                    binding.button.isEnabled = validations.checkFilledFields(
                         name, paternalLast, birthDate, birthState,
                         phone, eMailText, emailConfirmationText, gender
                     )
@@ -119,7 +123,7 @@ class EKTPCreateAccountFragment : Fragment() {
                 }
                 else{
                     binding.paternalLastName.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                    binding.button.isEnabled = validations.checkFilledFields(
                         name, paternalLast, birthDate, birthState,
                         phone, eMailText, emailConfirmationText, gender
                     )
@@ -136,7 +140,7 @@ class EKTPCreateAccountFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 maternalLast = s.toString()
-                if (createAccountViewModel.checkValidInput(maternalLast) || maternalLast.isEmpty()){
+                if (validations.checkValidInput(maternalLast) || maternalLast.isEmpty()){
                     binding.maternalLastName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                     binding.invalidMaternalText.isVisible = false
                 }
@@ -148,7 +152,7 @@ class EKTPCreateAccountFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 maternalLast = s.toString()
-                if (createAccountViewModel.checkValidInput(maternalLast) || maternalLast.isEmpty()){
+                if (validations.checkValidInput(maternalLast) || maternalLast.isEmpty()){
                     binding.maternalLastName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                     binding.invalidMaternalText.isVisible = false
                 }
@@ -167,7 +171,7 @@ class EKTPCreateAccountFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 birthDate = s.toString()
-                if (createAccountViewModel.checkValidDate(birthDate)){
+                if (validations.checkValidDate(birthDate)){
                     binding.dateBirth.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                     binding.invalidDateText.isVisible = false
                 }
@@ -180,9 +184,9 @@ class EKTPCreateAccountFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 birthDate = s.toString()
-                if (createAccountViewModel.checkValidDate(birthDate)){
+                if (validations.checkValidDate(birthDate)){
                     binding.dateBirth.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                    binding.button.isEnabled = validations.checkFilledFields(
                         name, paternalLast, birthDate, birthState,
                         phone, eMailText, emailConfirmationText, gender
                     )
@@ -190,7 +194,7 @@ class EKTPCreateAccountFragment : Fragment() {
                 }
                 else{
                     binding.dateBirth.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                    binding.button.isEnabled = validations.checkFilledFields(
                         name, paternalLast, birthDate, birthState,
                         phone, eMailText, emailConfirmationText, gender
                     )
@@ -207,7 +211,7 @@ class EKTPCreateAccountFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 phone = s.toString()
-                if(createAccountViewModel.checkPhoneNumber(phone)) {
+                if(validations.checkPhoneNumber(phone)) {
                     binding.phoneNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                     binding.invalidPhoneText.isVisible = false
                 }
@@ -219,9 +223,9 @@ class EKTPCreateAccountFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 phone = s.toString()
-                if(createAccountViewModel.checkPhoneNumber(phone)) {
+                if(validations.checkPhoneNumber(phone)) {
                     binding.phoneNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                    binding.button.isEnabled = validations.checkFilledFields(
                         name, paternalLast, birthDate, birthState,
                         phone, eMailText, emailConfirmationText, gender
                     )
@@ -229,7 +233,7 @@ class EKTPCreateAccountFragment : Fragment() {
                 }
                 else{
                     binding.phoneNumber.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                    binding.button.isEnabled = validations.checkFilledFields(
                         name, paternalLast, birthDate, birthState,
                         phone, eMailText, emailConfirmationText, gender
                     )
@@ -258,7 +262,7 @@ class EKTPCreateAccountFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 eMailText = s.toString()
-                if (createAccountViewModel.checkEmail(eMailText)){
+                if (validations.checkEmail(eMailText)){
                     binding.eMail.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                     binding.invalidEmailText.isVisible = false
                 }
@@ -271,9 +275,9 @@ class EKTPCreateAccountFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 eMailText = s.toString()
-                if (!createAccountViewModel.checkEmail(eMailText)){
+                if (!validations.checkEmail(eMailText)){
                     binding.eMail.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                    binding.button.isEnabled = validations.checkFilledFields(
                         name, paternalLast, birthDate, birthState,
                         phone, eMailText, emailConfirmationText, gender
                     )
@@ -281,7 +285,7 @@ class EKTPCreateAccountFragment : Fragment() {
                 }
                 else{
                     binding.eMail.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                    binding.button.isEnabled = validations.checkFilledFields(
                         name, paternalLast, birthDate, birthState,
                         phone, eMailText, emailConfirmationText, gender
                     )
@@ -295,7 +299,7 @@ class EKTPCreateAccountFragment : Fragment() {
                 emailConfirmationText = s.toString()
                 if (eMailText != emailConfirmationText){
                     binding.emailConfirmation.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                    binding.button.isEnabled = validations.checkFilledFields(
                         name, paternalLast, birthDate, birthState,
                         phone, eMailText, emailConfirmationText, gender
                     )
@@ -303,7 +307,7 @@ class EKTPCreateAccountFragment : Fragment() {
                 }
                 else{
                     binding.emailConfirmation.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                    binding.button.isEnabled = validations.checkFilledFields(
                         name, paternalLast, birthDate, birthState,
                         phone, eMailText, emailConfirmationText, gender
                     )
@@ -320,7 +324,7 @@ class EKTPCreateAccountFragment : Fragment() {
                 }
                 else{
                     binding.emailConfirmation.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                    binding.button.isEnabled = validations.checkFilledFields(
                         name, paternalLast, birthDate, birthState,
                         phone, eMailText, emailConfirmationText, gender
                     )
@@ -346,7 +350,7 @@ class EKTPCreateAccountFragment : Fragment() {
                     id: Long
                 ) {
                     birthState = binding.birthSiteSpinner.selectedItem.toString()
-                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                    binding.button.isEnabled = validations.checkFilledFields(
                         name, paternalLast, birthDate, birthState,
                         phone, eMailText, emailConfirmationText, gender
                     )
@@ -355,7 +359,7 @@ class EKTPCreateAccountFragment : Fragment() {
 
         binding.womanGenderRadioButton.setOnClickListener {
             gender = "Mujer"
-            binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+            binding.button.isEnabled = validations.checkFilledFields(
                 name, paternalLast, birthDate, birthState,
                 phone, eMailText, emailConfirmationText, gender
             )
@@ -364,7 +368,7 @@ class EKTPCreateAccountFragment : Fragment() {
 
         binding.manGenderRadioButton.setOnClickListener {
             gender = "Hombre"
-            binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+            binding.button.isEnabled = validations.checkFilledFields(
                 name, paternalLast, birthDate, birthState,
                 phone, eMailText, emailConfirmationText, gender
             )
