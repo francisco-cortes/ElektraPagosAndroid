@@ -47,6 +47,19 @@ class EKTPHomeActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        if (isHome)
+        {
+            super.onBackPressed()
+        }
+        else
+        {
+            openFragment(EKTPHomeMainFragment())
+            binding.navbar.menu.findItem(R.id.startButton).setChecked(true)
+            isHome = true
+        }
+    }
+
     private fun openFragment(fragment: Fragment){
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.homeNavHostFragment, fragment)
