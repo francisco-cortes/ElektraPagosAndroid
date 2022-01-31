@@ -193,6 +193,44 @@ class EKTPCreateAccountFragment : Fragment() {
 
         })
 
+        binding.phoneNumber.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                phone = s.toString()
+                if(createAccountViewModel.checkPhoneNumber(phone)) {
+                    binding.phoneNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    binding.invalidPhoneText.isVisible = false
+                }
+                else{
+                    binding.phoneNumber.setBackgroundResource(R.drawable.validation_edit_text)
+                    binding.invalidPhoneText.isVisible = true
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                phone = s.toString()
+                if(createAccountViewModel.checkPhoneNumber(phone)) {
+                    binding.phoneNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                        name, paternalLast, birthDate, birthState,
+                        phone, eMailText, emailConfirmationText, gender
+                    )
+                    binding.invalidPhoneText.isVisible = false
+                }
+                else{
+                    binding.phoneNumber.setBackgroundResource(R.drawable.validation_edit_text)
+                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                        name, paternalLast, birthDate, birthState,
+                        phone, eMailText, emailConfirmationText, gender
+                    )
+                    binding.invalidPhoneText.isVisible = true
+                }
+            }
+        })
+
         return binding.root
     }
 
