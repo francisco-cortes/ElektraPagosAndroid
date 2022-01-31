@@ -153,6 +153,46 @@ class EKTPCreateAccountFragment : Fragment() {
 
         })
 
+        binding.dateBirth.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                birthDate = s.toString()
+                if (createAccountViewModel.checkValidDate(birthDate)){
+                    binding.dateBirth.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    binding.invalidDateText.isVisible = false
+                }
+                else{
+                    binding.dateBirth.setBackgroundResource(R.drawable.validation_edit_text)
+                    binding.button.isEnabled = false
+                    binding.invalidDateText.isVisible = true
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                birthDate = s.toString()
+                if (createAccountViewModel.checkValidDate(birthDate)){
+                    binding.dateBirth.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                        name, paternalLast, birthDate, birthState,
+                        phone, eMailText, emailConfirmationText, gender
+                    )
+                    binding.invalidDateText.isVisible = false
+                }
+                else{
+                    binding.dateBirth.setBackgroundResource(R.drawable.validation_edit_text)
+                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                        name, paternalLast, birthDate, birthState,
+                        phone, eMailText, emailConfirmationText, gender
+                    )
+                    binding.invalidDateText.isVisible = true
+                }
+            }
+
+        })
+
         return binding.root
     }
 
