@@ -245,6 +245,45 @@ class EKTPCreateAccountFragment : Fragment() {
             dpp.show()
         }
 
+        binding.eMail.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                eMailText = s.toString()
+                if (createAccountViewModel.checkEmail(eMailText)){
+                    binding.eMail.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    binding.invalidEmailText.isVisible = false
+                }
+                else{
+                    binding.eMail.setBackgroundResource(R.drawable.validation_edit_text)
+                    binding.button.isEnabled = false
+                    binding.invalidEmailText.isVisible = true
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                eMailText = s.toString()
+                if (!createAccountViewModel.checkEmail(eMailText)){
+                    binding.eMail.setBackgroundResource(R.drawable.validation_edit_text)
+                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                        name, paternalLast, birthDate, birthState,
+                        phone, eMailText, emailConfirmationText, gender
+                    )
+                    binding.invalidEmailText.isVisible = true
+                }
+                else{
+                    binding.eMail.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                        name, paternalLast, birthDate, birthState,
+                        phone, eMailText, emailConfirmationText, gender
+                    )
+                    binding.invalidEmailText.isVisible = false
+                }
+            }
+        })
+
         return binding.root
     }
 
