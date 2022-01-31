@@ -215,7 +215,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
         }
 
         binding.backAppbarButton.setOnClickListener { view : View ->
-            view.findNavController().navigate(R.id.action_EKTPCreateAccountSMSVerificationFragment_to_EKTPCreateAccountFragment2)
+            view.findNavController().navigate(R.id.action_EKTPCreateAccountSMSVerificationFragment_to_EKTPCreateAccountFragment)
         }
 
         return  binding.root

@@ -17,11 +17,11 @@
         android:name="com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountSMSVerificationFragment"
         android:label="EKTPCreateAccountSMSVerificationFragment" >
         <action
+            android:id="@+id/action_EKTPCreateAccountSMSVerificationFragment_to_EKTPCreateAccountFragment"
+            app:destination="@id/EKTPCreateAccountFragment" />
+        <action
             android:id="@+id/action_EKTPCreateAccountSMSVerificationFragment_to_EKPTCreateAccountRegisterFormFragment"
             app:destination="@id/EKPTCreateAccountRegisterFormFragment" />
-        <action
-            android:id="@+id/action_EKTPCreateAccountSMSVerificationFragment_to_EKTPCreateAccountFragment2"
-            app:destination="@id/EKTPCreateAccountFragment" />
     </fragment>
     <fragment
         android:id="@+id/EKPTCreateAccountRegisterFormFragment"
@@ -30,11 +30,17 @@
         <action
             android:id="@+id/action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountFragment"
             app:destination="@id/EKTPCreateAccountFragment" />
+        <action
+            android:id="@+id/action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountContractsFragment"
+            app:destination="@id/EKTPCreateAccountContractsFragment" />
     </fragment>
     <fragment
         android:id="@+id/EKTPCreateAccountContractsFragment"
         android:name="com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountContractsFragment"
         android:label="EKTPCreateAccountContractsFragment" >
+        <action
+            android:id="@+id/action_EKTPCreateAccountContractsFragment_to_EKPTCreateAccountRegisterFormFragment"
+            app:destination="@id/EKPTCreateAccountRegisterFormFragment" />
         <action
             android:id="@+id/action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountCreatePassFragment"
             app:destination="@id/EKTPCreateAccountCreatePassFragment" />
@@ -44,18 +50,29 @@
         android:name="com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountCreatePassFragment"
         android:label="EKTPCreateAccountCreatePassFragment" >
         <action
-            android:id="@+id/action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountBiometricsActivationFragment"
-            app:destination="@id/EKTPCreateAccountBiometricsActivationFragment" />
-        <action
             android:id="@+id/action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountContractsFragment"
             app:destination="@id/EKTPCreateAccountContractsFragment" />
+        <action
+            android:id="@+id/action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountBiometricsActivationFragment"
+            app:destination="@id/EKTPCreateAccountBiometricsActivationFragment" />
     </fragment>
     <fragment
         android:id="@+id/EKTPCreateAccountBiometricsActivationFragment"
         android:name="com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountBiometricsActivationFragment"
-        android:label="EKTPCreateAccountBiometricsActivationFragment" />
+        android:label="EKTPCreateAccountBiometricsActivationFragment" >
+        <action
+            android:id="@+id/action_EKTPCreateAccountBiometricsActivationFragment_to_EKTPCreateAccountCreatePassFragment"
+            app:destination="@id/EKTPCreateAccountCreatePassFragment" />
+        <action
+            android:id="@+id/action_EKTPCreateAccountBiometricsActivationFragment_to_EKTPCreateAccountSuccessfulFragment"
+            app:destination="@id/EKTPCreateAccountSuccessfulFragment" />
+    </fragment>
     <fragment
         android:id="@+id/EKTPCreateAccountSuccessfulFragment"
         android:name="com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountSuccessfulFragment"
-        android:label="EKTPCreateAccountSuccessfulFragment" />
+        android:label="EKTPCreateAccountSuccessfulFragment" >
+        <action
+            android:id="@+id/action_EKTPCreateAccountSuccessfulFragment_to_EKTPCreateAccountFragment"
+            app:destination="@id/EKTPCreateAccountFragment" />
+    </fragment>
 </navigation>

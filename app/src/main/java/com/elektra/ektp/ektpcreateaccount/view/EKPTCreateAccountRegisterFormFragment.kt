@@ -11,6 +11,7 @@ import android.widget.AdapterView
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEkptCreateAccountRegisterFormBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountRegisterFormViewModel
@@ -614,6 +615,11 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
                     progressInForm(progressValue, completed)
                 }
             }
+
+        binding.button5.setOnClickListener { view: View ->
+            view.findNavController()
+                .navigate(R.id.action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountContractsFragment)
+        }
 
 
         return binding.root
