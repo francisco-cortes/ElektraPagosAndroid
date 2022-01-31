@@ -24,12 +24,6 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
     private lateinit var userData: ArrayList<String>
     private var progressValue = 0
     private var completed = 0
-    private lateinit var insertName: String
-    private lateinit var paternalLastName: String
-    private lateinit var maternalLastName: String
-    private lateinit var birthDate: String
-    private lateinit var birthState: String
-    private lateinit var gender: String
     private var zipCode: String = ""
     private var colonyUser: String = ""
     private var streetUser: String = ""
