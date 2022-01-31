@@ -7,13 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.get
 import androidx.navigation.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountContractsViewBinding
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountContractsViewModel
 
 class EKTPCreateAccountContractsViewFragment : Fragment() {
 
     private lateinit var binding: FragmentEktpCreateAccountContractsViewBinding
+    private val contractsViewModel = ViewModelProvider(this)[EKTPCreateAccountContractsViewModel::class.java]
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -23,7 +23,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
     //Access variables
     private lateinit var binding: FragmentEkptCreateAccountRegisterFormBinding
     private val registerFormViewModel: EKTPCreateAccountRegisterFormViewModel by viewModels()
-    val validations = UserValidations()
+    private val validations = UserValidations()
 
     //Data variables
     private lateinit var userData: ArrayList<String>
