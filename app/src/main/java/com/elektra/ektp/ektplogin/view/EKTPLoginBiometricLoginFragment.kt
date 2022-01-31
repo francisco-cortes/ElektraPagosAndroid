@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEKTPLoginBiometricLoginBinding
+import com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountActivity
 import com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountFragment
 
 class EKTPLoginBiometricLoginFragment : Fragment() {
@@ -39,7 +40,7 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
         }
 
         binding.createAccountTextView.setOnClickListener{view: View ->
-            val intent = Intent(activity, EKTPCreateAccountFragment::class.java)
+            val intent = Intent(activity, EKTPCreateAccountActivity::class.java)
             val context =view.context
             context.startActivity(intent)
         }
