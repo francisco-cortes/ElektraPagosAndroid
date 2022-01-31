@@ -1,5 +1,6 @@
 package com.elektra.ektp.ektpcreateaccount.view
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -230,6 +231,19 @@ class EKTPCreateAccountFragment : Fragment() {
                 }
             }
         })
+
+        binding.setDateButton.setOnClickListener {
+            val dpp = DatePickerDialog(
+                requireContext(),
+                DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
+                    binding.dateBirth.setText("" + mDay + "/" + "${mMonth + 1}" + "/" + mYear)
+                },
+                year,
+                month,
+                day
+            )
+            dpp.show()
+        }
 
         return binding.root
     }
