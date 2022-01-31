@@ -39,6 +39,10 @@ class UserValidations {
         return codeString.length == 5
     }
 
+    private fun checkZipCode(zipCodeUser: String): Boolean {
+        return zipCodeUser.matches("^(?!00)([0-9]{2})([\\d]{3})".toRegex())
+    }
+
     private fun checkFieldsProgressBar(
         zipCodeUser: String,
         colonyUser: String,
@@ -46,7 +50,8 @@ class UserValidations {
         exteriorUser: String,
         countryUser: String,
         stateUser: String,
-        townUser: String
+        townUser: String,
+        completed: Int
     ): Boolean {
         return checkZipCode(zipCodeUser) && checkValidInput(colonyUser) && checkValidInput(streetUser)
                 && checkValidInput(exteriorUser)
