@@ -50,9 +50,16 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_ekpt_create_account_register_form, container, false)
-        
+
 
         return binding.root
+    }
+
+    private fun progressInForm(proValBar: Int, proTexVal: Int) {
+        binding.progressBar.progress = proValBar
+        if (proTexVal <= 7) {
+            binding.barCounter.text = "$proTexVal/7"
+        }
     }
 
 }
