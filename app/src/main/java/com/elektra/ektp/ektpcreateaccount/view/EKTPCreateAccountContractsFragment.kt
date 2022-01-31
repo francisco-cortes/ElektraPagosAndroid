@@ -74,6 +74,10 @@ class EKTPCreateAccountContractsFragment : Fragment() {
             }
         }
 
+        binding.termsContinueButton.setOnClickListener {view: View ->
+            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountCreatePassFragment)
+        }
+
         return binding.root
     }
 
