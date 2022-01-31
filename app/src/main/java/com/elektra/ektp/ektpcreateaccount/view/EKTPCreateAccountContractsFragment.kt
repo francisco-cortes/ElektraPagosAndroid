@@ -54,7 +54,11 @@ class EKTPCreateAccountContractsFragment : Fragment() {
         }
 
         binding.term8TextView.setOnClickListener { view: View ->
-            
+
+        }
+
+        binding.backAppbarButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKPTCreateAccountRegisterFormFragment)
         }
 
         return binding.root
