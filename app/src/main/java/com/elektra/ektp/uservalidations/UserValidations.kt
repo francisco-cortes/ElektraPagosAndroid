@@ -38,4 +38,19 @@ class UserValidations {
     fun codeLenghtChecker(codeString: String): Boolean {
         return codeString.length == 5
     }
+
+    private fun checkFieldsProgressBar(
+        zipCodeUser: String,
+        colonyUser: String,
+        streetUser: String,
+        exteriorUser: String,
+        countryUser: String,
+        stateUser: String,
+        townUser: String
+    ): Boolean {
+        return checkZipCode(zipCodeUser) && checkValidInput(colonyUser) && checkValidInput(streetUser)
+                && checkValidInput(exteriorUser)
+                && countryUser != "Selecciona una opción*" && stateUser != "Selecciona una opción*" && townUser != "Selecciona una opción*"
+                && completed == 7
+    }
 }
