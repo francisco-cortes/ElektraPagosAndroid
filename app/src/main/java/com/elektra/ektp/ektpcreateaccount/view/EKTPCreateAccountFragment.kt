@@ -17,6 +17,7 @@ import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentCreateAccountBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountViewModel
 import com.elektra.ektp.ektpsharedpreferences.EKPTUserApplication.Companion.preferences
+import com.elektra.ektp.uservalidations.UserValidations
 import java.util.*
 
 class EKTPCreateAccountFragment : Fragment() {
