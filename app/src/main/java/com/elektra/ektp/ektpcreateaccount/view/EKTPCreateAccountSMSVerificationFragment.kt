@@ -40,8 +40,11 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 codechar1 = s.toString()
+                codeSMS = verificationCodeViewModel.concatenaterCode(
+                    codechar1, codechar2, codechar3, codechar4, codechar5
+                )
                 if (!codechar1.isNullOrBlank() && codechar1.length == 1) {
-                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codechar1)
+                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
                     binding.verificationNumber2.requestFocus()
                 }
                 else{
@@ -51,12 +54,50 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 codechar1 = s.toString()
+                codeSMS = verificationCodeViewModel.concatenaterCode(
+                    codechar1, codechar2, codechar3, codechar4, codechar5
+                )
                 if (!codechar1.isNullOrBlank() && codechar1.length == 1) {
-                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codechar1)
+                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
                     binding.verificationNumber2.requestFocus()
                 }
                 else{
-                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codechar1)
+                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                }
+            }
+
+        })
+
+        binding.verificationNumber2.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                codechar2 = s.toString()
+                codeSMS = verificationCodeViewModel.concatenaterCode(
+                    codechar1, codechar2, codechar3, codechar4, codechar5
+                )
+                if (!codechar2.isNullOrBlank() && codechar2.length == 1) {
+                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                    binding.verificationNumber3.requestFocus()
+                }
+                else{
+                    binding.smsContinueButton.isEnabled = false
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                codechar2 = s.toString()
+                codeSMS = verificationCodeViewModel.concatenaterCode(
+                    codechar1, codechar2, codechar3, codechar4, codechar5
+                )
+                if (!codechar2.isNullOrBlank() && codechar2.length == 1) {
+                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                    binding.verificationNumber3.requestFocus()
+                }
+                else{
+                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
                 }
             }
 
