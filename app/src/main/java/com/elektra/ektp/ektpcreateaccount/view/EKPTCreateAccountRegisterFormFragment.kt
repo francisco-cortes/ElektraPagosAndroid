@@ -132,6 +132,34 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
 
         })
 
+        binding.postalCode.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) {
+                if (validations.checkZipCode(zipCode) && zipCodeFlag == 0) {
+                    zipCodeFlag = 1
+                    progressValue += 10
+                    completed += 1
+                    binding.button5.isEnabled =
+                        validations.checkFieldsProgressBar(
+                            zipCode,
+                            colonyUser,
+                            streetUser,
+                            exteriorNumber,
+                            country,
+                            state,
+                            town,
+                            completed
+                        )
+                } else {
+                    if (!validations.checkZipCode(zipCode) && zipCodeFlag == 1) {
+                        zipCodeFlag = 0
+                        progressValue -= 10
+                        completed -= 1
+                    }
+                }
+                progressInForm(progressValue, completed)
+            }
+        }
+
 
         return binding.root
     }
