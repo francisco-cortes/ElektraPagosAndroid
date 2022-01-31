@@ -348,6 +348,24 @@ class EKTPCreateAccountFragment : Fragment() {
                 }
             }
 
+        binding.womanGenderRadioButton.setOnClickListener {
+            gender = "Mujer"
+            binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                name, paternalLast, birthDate, birthState,
+                phone, eMailText, emailConfirmationText, gender
+            )
+            binding.manGenderRadioButton.isChecked = false
+        }
+
+        binding.manGenderRadioButton.setOnClickListener {
+            gender = "Hombre"
+            binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                name, paternalLast, birthDate, birthState,
+                phone, eMailText, emailConfirmationText, gender
+            )
+            binding.womanGenderRadioButton.isChecked = false
+        }
+
         return binding.root
     }
 
