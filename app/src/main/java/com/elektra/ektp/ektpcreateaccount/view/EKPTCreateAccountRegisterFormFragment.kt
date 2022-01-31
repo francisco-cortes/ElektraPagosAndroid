@@ -415,6 +415,35 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
 
         })
 
+        binding.exteriorNumber.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) {
+                if (validations.checkValidInput(exteriorNumber) && exteriorFlag == 0){
+                    exteriorFlag = 1
+                    progressValue += 10
+                    completed += 1
+                    binding.button5.isEnabled =
+                        validations.checkFieldsProgressBar(
+                            zipCode,
+                            colonyUser,
+                            streetUser,
+                            exteriorNumber,
+                            country,
+                            state,
+                            town,
+                            completed
+                        )
+                }
+                else{
+                    if (!validations.checkValidInput(exteriorNumber) && exteriorFlag ==1){
+                        exteriorFlag = 0
+                        progressValue -= 10
+                        completed -= 1
+                    }
+                }
+                progressInForm(progressValue, completed)
+            }
+        }
+
 
         return binding.root
     }
