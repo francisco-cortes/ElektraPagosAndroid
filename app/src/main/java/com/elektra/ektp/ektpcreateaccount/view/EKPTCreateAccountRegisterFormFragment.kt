@@ -1,10 +1,13 @@
 package com.elektra.ektp.ektpcreateaccount.view
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.elektra.ektp.R
@@ -23,7 +26,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
     //Data variables
     private lateinit var userData: ArrayList<String>
     private var progressValue = 0
-    private var completed = 0
+    private var completed: Int = 0
     private var zipCode: String = ""
     private var colonyUser: String = ""
     private var streetUser: String = ""
@@ -65,6 +68,69 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
                 binding.womanGenderRadioButton.isChecked = true
             }
         }
+
+        binding.postalCode.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                zipCode = s.toString()
+                if (validations.checkZipCode(zipCode)) {
+                    binding.postalCode.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    binding.button5.isEnabled =
+                        validations.checkFieldsProgressBar(
+                            zipCode,
+                            colonyUser,
+                            streetUser,
+                            exteriorNumber,
+                            country,
+                            state,
+                            town,
+                            completed
+                        )
+                    binding.invalidZipCodeText.isVisible = false
+                } else {
+                    binding.postalCode.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    binding.button5.isEnabled = false
+                    binding.invalidZipCodeText.isVisible = true
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                zipCode = s.toString()
+                if (validations.checkZipCode(zipCode)) {
+                    binding.postalCode.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    binding.button5.isEnabled =
+                        validations.checkFieldsProgressBar(
+                            zipCode,
+                            colonyUser,
+                            streetUser,
+                            exteriorNumber,
+                            country,
+                            state,
+                            town,
+                            completed
+                        )
+                    binding.invalidZipCodeText.isVisible = false
+                } else {
+                    binding.postalCode.setBackgroundResource(R.drawable.validation_edit_text)
+                    binding.button5.isEnabled =
+                        validations.checkFieldsProgressBar(
+                            zipCode,
+                            colonyUser,
+                            streetUser,
+                            exteriorNumber,
+                            country,
+                            state,
+                            town,
+                            completed
+                        )
+                    binding.invalidZipCodeText.isVisible = true
+                }
+            }
+
+        })
 
 
         return binding.root

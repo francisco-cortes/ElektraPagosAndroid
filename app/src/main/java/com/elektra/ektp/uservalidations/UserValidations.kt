@@ -39,11 +39,11 @@ class UserValidations {
         return codeString.length == 5
     }
 
-    private fun checkZipCode(zipCodeUser: String): Boolean {
+    fun checkZipCode(zipCodeUser: String): Boolean {
         return zipCodeUser.matches("^(?!00)([0-9]{2})([\\d]{3})".toRegex())
     }
 
-    private fun checkFieldsProgressBar(
+    fun checkFieldsProgressBar(
         zipCodeUser: String,
         colonyUser: String,
         streetUser: String,
