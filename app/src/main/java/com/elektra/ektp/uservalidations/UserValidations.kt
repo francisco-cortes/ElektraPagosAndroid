@@ -62,4 +62,17 @@ class UserValidations {
                 && countryUser != "Selecciona una opción*" && stateUser != "Selecciona una opción*" && townUser != "Selecciona una opción*"
                 && completed == 7
     }
+
+    fun checkRepeatedChars(passString: String): Boolean{
+        return !passString.matches(".*(\\w)\\1.*".toRegex())
+    }
+
+    fun checkBankString(passString: String): Boolean{
+        return !passString.matches(".*\\w*((?i)BancoAzteca|Banco|Azteca|elektra(?-i))\\w*".toRegex())
+    }
+
+    fun checkConsecutiveString(passString: String): Boolean{
+        return !passString.matches(".*\\w*((?i)abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz|012|123|234|345|456|567|678|789(?-i))\\w*".toRegex())
+    }
+
 }
