@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.elektra.ektp.R
@@ -59,6 +60,18 @@ class EKTPCreateAccountContractsFragment : Fragment() {
 
         binding.backAppbarButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKPTCreateAccountRegisterFormFragment)
+        }
+
+        binding.acceptanceCheckbox.setOnClickListener { view: View ->
+            if (view is CheckBox) {
+                val checked: Boolean = view.isChecked
+
+                when (view.id) {
+                    R.id.acceptanceCheckbox -> {
+                        binding.termsContinueButton.isEnabled = checked
+                    }
+                }
+            }
         }
 
         return binding.root
