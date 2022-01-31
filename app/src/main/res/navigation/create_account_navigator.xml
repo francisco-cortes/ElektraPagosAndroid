@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountCreatePassFragment"
             app:destination="@id/EKTPCreateAccountCreatePassFragment" />
+        <action
+            android:id="@+id/action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment"
+            app:destination="@id/EKTPCreateAccountContractsViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/EKTPCreateAccountCreatePassFragment"
@@ -74,5 +77,13 @@
         <action
             android:id="@+id/action_EKTPCreateAccountSuccessfulFragment_to_EKTPCreateAccountFragment"
             app:destination="@id/EKTPCreateAccountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/EKTPCreateAccountContractsViewFragment"
+        android:name="com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountContractsViewFragment"
+        android:label="EKTPCreateAccountContractsViewFragment" >
+        <action
+            android:id="@+id/action_EKTPCreateAccountContractsViewFragment_to_EKTPCreateAccountContractsFragment"
+            app:destination="@id/EKTPCreateAccountContractsFragment" />
     </fragment>
 </navigation>
