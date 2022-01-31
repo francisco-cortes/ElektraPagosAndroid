@@ -27,35 +27,35 @@ class EKTPCreateAccountContractsFragment : Fragment() {
         binding.termsContinueButton.isEnabled = false
 
         binding.term1TextView.setOnClickListener { view: View ->
-
+            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
         }
 
         binding.term2TextView.setOnClickListener { view: View ->
-
+            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
         }
 
         binding.term3TextView.setOnClickListener { view: View ->
-
+            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
         }
 
         binding.term4TextView.setOnClickListener { view: View ->
-
+            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
         }
 
         binding.term5TextView.setOnClickListener { view: View ->
-
+            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
         }
 
         binding.term6TextView.setOnClickListener { view: View ->
-
+            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
         }
 
         binding.term7TextView.setOnClickListener { view: View ->
-
+            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
         }
 
         binding.term8TextView.setOnClickListener { view: View ->
-
+            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
         }
 
         binding.backAppbarButton.setOnClickListener { view: View ->
