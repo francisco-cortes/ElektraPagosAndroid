@@ -228,6 +228,34 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
 
         })
 
+        binding.insertColony.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) {
+                if (validations.checkValidInput(colonyUser) && colonyFlag == 0) {
+                    colonyFlag = 1
+                    progressValue += 10
+                    completed += 1
+                    binding.button5.isEnabled =
+                        validations.checkFieldsProgressBar(
+                            zipCode,
+                            colonyUser,
+                            streetUser,
+                            exteriorNumber,
+                            country,
+                            state,
+                            town,
+                            completed
+                        )
+                } else {
+                    if (!validations.checkValidInput(colonyUser) && colonyFlag == 1) {
+                        colonyFlag = 0
+                        progressValue -= 10
+                        completed -= 1
+                    }
+                }
+                progressInForm(progressValue, completed)
+            }
+        }
+
 
         return binding.root
     }
