@@ -46,6 +46,8 @@ class EKTPCreateAccountFragment : Fragment() {
         binding = DataBindingUtil.inflate<FragmentCreateAccountBinding>(inflater,
             R.layout.fragment_create_account, container, false)
 
+        binding.button.isEnabled = false
+
         binding.insertName.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
