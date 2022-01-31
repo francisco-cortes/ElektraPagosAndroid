@@ -175,6 +175,16 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
             view.findNavController().navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountContractsFragment)
         }
 
+        binding.button7.setOnClickListener { view: View ->
+            if (checkBiometricStatus ==1 ){
+                view.findNavController().navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountBiometricsActivationFragment)
+            }
+            else{
+                view.findNavController().navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountSuccessfulFragment)
+            }
+
+        }
+
         return binding.root
     }
 

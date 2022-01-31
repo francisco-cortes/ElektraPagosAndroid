@@ -58,6 +58,9 @@
         <action
             android:id="@+id/action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountBiometricsActivationFragment"
             app:destination="@id/EKTPCreateAccountBiometricsActivationFragment" />
+        <action
+            android:id="@+id/action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountSuccessfulFragment"
+            app:destination="@id/EKTPCreateAccountSuccessfulFragment" />
     </fragment>
     <fragment
         android:id="@+id/EKTPCreateAccountBiometricsActivationFragment"
