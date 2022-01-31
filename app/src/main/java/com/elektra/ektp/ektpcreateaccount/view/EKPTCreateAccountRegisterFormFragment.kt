@@ -621,6 +621,9 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
                 .navigate(R.id.action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountContractsFragment)
         }
 
+        binding.backAppbarButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountFragment)
+        }
 
         return binding.root
     }
