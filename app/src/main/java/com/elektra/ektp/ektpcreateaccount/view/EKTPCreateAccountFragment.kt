@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
@@ -326,6 +327,26 @@ class EKTPCreateAccountFragment : Fragment() {
 
             }
         })
+
+        binding.birthSiteSpinner?.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                }
+
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    birthState = binding.birthSiteSpinner.selectedItem.toString()
+                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                        name, paternalLast, birthDate, birthState,
+                        phone, eMailText, emailConfirmationText, gender
+                    )
+                }
+            }
 
         return binding.root
     }
