@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
@@ -466,6 +467,55 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
             }
 
         })
+
+        binding.countrySpinner?.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    if (country != "Selecciona una opción*" && country.isNotEmpty()) {
+                        progressValue -= 10
+                        completed -= 1
+                        binding.button5.isEnabled =
+                            validations.checkFieldsProgressBar(
+                                zipCode,
+                                colonyUser,
+                                streetUser,
+                                exteriorNumber,
+                                country,
+                                state,
+                                town,
+                                completed
+                            )
+                    }
+                    country = binding.countrySpinner.selectedItem.toString()
+                    if (country != "Selecciona una opción*") {
+                        progressValue += 10
+                        completed += 1
+                        binding.button5.isEnabled =
+                            validations.checkFieldsProgressBar(
+                                zipCode,
+                                colonyUser,
+                                streetUser,
+                                exteriorNumber,
+                                country,
+                                state,
+                                town,
+                                completed
+                            )
+                    }
+                    else{
+                        binding.button5.isEnabled = false
+                    }
+                    progressInForm(progressValue, completed)
+                }
+            }
 
 
         return binding.root
