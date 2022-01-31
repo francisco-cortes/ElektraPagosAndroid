@@ -40,6 +40,7 @@
                     android:textColor="@color/white"
                     android:gravity="center"
                     android:theme="@style/appbar_title"
+                    android:layout_marginStart="@dimen/_25sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/backAppbarButton"
                     app:layout_constraintEnd_toStartOf="@id/logoAppBar"
