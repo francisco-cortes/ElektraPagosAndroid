@@ -103,6 +103,41 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
         })
 
+        binding.verificationNumber3.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                codechar3 = s.toString()
+                codeSMS = verificationCodeViewModel.concatenaterCode(
+                    codechar1, codechar2, codechar3, codechar4, codechar5
+                )
+                if (!codechar3.isNullOrBlank() && codechar3.length == 1) {
+                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                    binding.verificationNumber4.requestFocus()
+                }
+                else{
+                    binding.smsContinueButton.isEnabled = false
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                codechar3 = s.toString()
+                codeSMS = verificationCodeViewModel.concatenaterCode(
+                    codechar1, codechar2, codechar3, codechar4, codechar5
+                )
+                if (!codechar3.isNullOrBlank() && codechar3.length == 1) {
+                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                    binding.verificationNumber4.requestFocus()
+                }
+                else{
+                    binding.smsContinueButton.isEnabled = verificationCodeViewModel.codeLenghtChecker(codeSMS)
+                }
+            }
+
+        })
+
         return  binding.root
     }
 
