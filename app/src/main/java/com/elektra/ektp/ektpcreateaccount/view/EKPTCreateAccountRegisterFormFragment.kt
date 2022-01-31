@@ -50,6 +50,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_ekpt_create_account_register_form, container, false)
+        progressInForm(progressValue, completed)
 
 
         return binding.root
