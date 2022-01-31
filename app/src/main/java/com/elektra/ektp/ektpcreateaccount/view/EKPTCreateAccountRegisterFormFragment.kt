@@ -21,6 +21,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
     val validations = UserValidations()
 
     //Data variables
+    private lateinit var userData: ArrayList<String>
     private var progressValue = 0
     private var completed = 0
     private lateinit var insertName: String
@@ -51,6 +52,25 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_ekpt_create_account_register_form, container, false)
         progressInForm(progressValue, completed)
+
+        userData = registerFormViewModel.getSavedRegisterData()
+
+
+        binding.insertName.setText(userData[0])
+        binding.paternalLastName.setText(userData[1])
+        binding.maternalLastName.setText(userData[2])
+        binding.dateBirth.setText(userData[3])
+        binding.birthSiteSpinner.setText(userData[4])
+        when (userData[5]) {
+            "Hombre" -> {
+                binding.manGenderRadioButton.isChecked = true
+                binding.womanGenderRadioButton.isChecked = false
+            }
+            "Mujer" -> {
+                binding.manGenderRadioButton.isChecked = false
+                binding.womanGenderRadioButton.isChecked = true
+            }
+        }
 
 
         return binding.root

@@ -6,15 +6,15 @@ import com.elektra.ektp.ektpsharedpreferences.EKTPUserPreferences
 
 class EKTPCreateAccountRegisterFormViewModel: ViewModel() {
 
-    fun getSavedRegisterData(): Array<String>
+    fun getSavedRegisterData(): ArrayList<String>
     {
-        val userData: Array<String> = emptyArray<String>()
-        userData[0] = preferences.getNameUser()
-        userData[1] = preferences.getPaternalUser()
-        userData[2] = preferences.getMaternalUser()
-        userData[3] = preferences.getBirthDateUser()
-        userData[4] = preferences.getBirthSiteUser()
-        userData[5] = preferences.getGenderUser()
+        val userData = arrayListOf<String>()
+        userData.add(preferences.getNameUser())
+        userData.add(preferences.getPaternalUser())
+        userData.add(preferences.getMaternalUser())
+        userData.add(preferences.getBirthDateUser())
+        userData.add(preferences.getBirthSiteUser())
+        userData.add(preferences.getGenderUser())
         return userData
     }
 }
