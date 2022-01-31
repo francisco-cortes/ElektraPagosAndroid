@@ -1,14 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ektphome.view.EKTPHomeNoticeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_116sdp"
+            android:background="@color/elektra_red"
+            android:minHeight="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/appLogoImageView"
+                    android:layout_width="@dimen/_127sdp"
+                    android:layout_height="@dimen/_49sdp"
+                    android:background="@drawable/ic_home_appbar_elektra_logo"
+                    android:layout_marginTop="@dimen/_35sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <ImageView
+            android:id="@+id/noticeImageView"
+            android:layout_width="@dimen/_110sdp"
+            android:layout_height="@dimen/_110sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:background="@drawable/ic_notifications_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appbar" />
+        <!--aqui se debe agregar un recyclerview o scroll para las notificaciones     que se iran desplegando-->
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:layout_constraintTop_toBottomOf="@+id/noticeImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/bankNoteTextView">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/notifi1Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Se ha restablecido tu contraseña"
+                    android:theme="@style/appbar_title"
+                    android:textColor="@color/elektra_gray"
+                    android:drawableEnd="@drawable/ic_forward_arrow"
+                    android:drawablePadding="@dimen/_6sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/notifi1Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:text="Ahora puedes accesar con tu nueva contraseña"
+                    android:theme="@style/hint_edit_text"
+                    app:layout_constraintStart_toStartOf="@+id/notifi1Title"
+                    app:layout_constraintTop_toBottomOf="@+id/notifi1Title" />
+
+                <TextView
+                    android:id="@+id/notifi1Date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="lunes 11 de nov 2021"
+                    android:theme="@style/note_2"
+                    app:layout_constraintStart_toStartOf="@+id/notifi1Body"
+                    app:layout_constraintTop_toBottomOf="@+id/notifi1Body" />
+
+                <View
+                    android:id="@+id/separator1"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="@dimen/_39sdp"
+                    android:layout_marginEnd="@dimen/_39sdp"
+                    android:background="@color/elektra_white_gray"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/notifi1Date"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/recibeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="Recibiste un envio de dinero"
+                    android:theme="@style/appbar_title"
+                    android:textColor="@color/elektra_gray"
+                    android:drawableEnd="@drawable/ic_forward_arrow"
+                    android:drawablePadding="@dimen/_6sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/separator1" />
+
+                <TextView
+                    android:id="@+id/recibeNoticeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:text="Depositalo en tu cuenta o cobralo en \n ventanilla de BAZ"
+                    android:theme="@style/hint_edit_text"
+                    app:layout_constraintStart_toStartOf="@id/recibeTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/recibeTextView" />
+
+                <TextView
+                    android:id="@+id/recibeNoticeDateTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:text="Miercoles 24 de octubre, 2021"
+                    android:theme="@style/note_2"
+                    app:layout_constraintStart_toStartOf="@id/recibeNoticeTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/recibeNoticeTextView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/bankNoteTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="@string/home_bankBottomNote"
+            android:theme="@style/note_1"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
