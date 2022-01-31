@@ -174,7 +174,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 colonyUser = s.toString()
-                if (validations.checkValidInput(colonyUser)) {
+                if (validations.checkAddress(colonyUser)) {
                     binding.insertColony.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                     binding.button5.isEnabled =
                         validations.checkFieldsProgressBar(
@@ -197,7 +197,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 colonyUser = s.toString()
-                if (validations.checkValidInput(colonyUser)) {
+                if (validations.checkAddress(colonyUser)) {
                     binding.insertColony.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                     binding.button5.isEnabled =
                         validations.checkFieldsProgressBar(
@@ -232,7 +232,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
 
         binding.insertColony.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
-                if (validations.checkValidInput(colonyUser) && colonyFlag == 0) {
+                if (validations.checkAddress(colonyUser) && colonyFlag == 0) {
                     colonyFlag = 1
                     progressValue += 10
                     completed += 1
@@ -248,7 +248,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
                             completed
                         )
                 } else {
-                    if (!validations.checkValidInput(colonyUser) && colonyFlag == 1) {
+                    if (!validations.checkAddress(colonyUser) && colonyFlag == 1) {
                         colonyFlag = 0
                         progressValue -= 10
                         completed -= 1
@@ -265,7 +265,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 streetUser = s.toString()
-                if (validations.checkValidInput(streetUser)){
+                if (validations.checkAddress(streetUser)){
                     binding.insertStreet.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                     binding.button5.isEnabled =
                         validations.checkFieldsProgressBar(
@@ -289,7 +289,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 streetUser = s.toString()
-                if (validations.checkValidInput(streetUser)){
+                if (validations.checkAddress(streetUser)){
                     binding.insertStreet.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                     binding.button5.isEnabled =
                         validations.checkFieldsProgressBar(
@@ -325,7 +325,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
 
         binding.insertStreet.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
-                if (validations.checkValidInput(streetUser) && streetFlag == 0){
+                if (validations.checkAddress(streetUser) && streetFlag == 0){
                     streetFlag = 1
                     progressValue += 10
                     completed += 1
@@ -342,7 +342,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
                         )
                 }
                 else{
-                    if (!validations.checkValidInput(streetUser) && streetFlag ==1){
+                    if (!validations.checkAddress(streetUser) && streetFlag ==1){
                         streetFlag = 0
                         progressValue -= 10
                         completed -= 1
@@ -359,7 +359,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 exteriorNumber = s.toString()
-                if (validations.checkValidInput(exteriorNumber)){
+                if (validations.checkAddress(exteriorNumber)){
                     binding.exteriorNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                     binding.button5.isEnabled =
                         validations.checkFieldsProgressBar(
@@ -383,7 +383,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 exteriorNumber = s.toString()
-                if (validations.checkValidInput(exteriorNumber)){
+                if (validations.checkAddress(exteriorNumber)){
                     binding.exteriorNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                     binding.button5.isEnabled =
                         validations.checkFieldsProgressBar(
@@ -419,7 +419,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
 
         binding.exteriorNumber.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
-                if (validations.checkValidInput(exteriorNumber) && exteriorFlag == 0){
+                if (validations.checkAddress(exteriorNumber) && exteriorFlag == 0){
                     exteriorFlag = 1
                     progressValue += 10
                     completed += 1
@@ -436,7 +436,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
                         )
                 }
                 else{
-                    if (!validations.checkValidInput(exteriorNumber) && exteriorFlag ==1){
+                    if (!validations.checkAddress(exteriorNumber) && exteriorFlag ==1){
                         exteriorFlag = 0
                         progressValue -= 10
                         completed -= 1
@@ -453,7 +453,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 interiorNumber = s.toString()
-                if (validations.checkValidInput(interiorNumber) || interiorNumber.isEmpty()){
+                if (validations.checkAddress(interiorNumber) || interiorNumber.isEmpty()){
                     binding.interiorNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                     binding.invalidInteriorText.isVisible = false
                 }

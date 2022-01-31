@@ -43,6 +43,10 @@ class UserValidations {
         return zipCodeUser.matches("^(?!00)([0-9]{2})([\\d]{3})".toRegex())
     }
 
+    fun checkAddress(wordToCheck: String): Boolean {
+        return wordToCheck.matches("^[A-Za-z0-9Á-ý. ]*[A-Za-z0-9Á-ý.][A-Za-z0-9Á-ý. ]*$".toRegex())
+    }
+
     fun checkFieldsProgressBar(
         zipCodeUser: String,
         colonyUser: String,
