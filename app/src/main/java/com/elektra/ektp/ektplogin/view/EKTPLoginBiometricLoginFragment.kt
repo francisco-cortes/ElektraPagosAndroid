@@ -1,5 +1,6 @@
 package com.elektra.ektp.ektplogin.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEKTPLoginBiometricLoginBinding
+import com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountFragment
 
 class EKTPLoginBiometricLoginFragment : Fragment() {
 
@@ -34,6 +36,12 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
                     .commit();
             }*/
 
+        }
+
+        binding.createAccountTextView.setOnClickListener{view: View ->
+            val intent = Intent(activity, EKTPCreateAccountFragment::class.java)
+            val context =view.context
+            context.startActivity(intent)
         }
 
         return binding.root
