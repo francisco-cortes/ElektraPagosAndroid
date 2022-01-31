@@ -57,8 +57,8 @@ class UserValidations {
         townUser: String,
         completed: Int
     ): Boolean {
-        return checkZipCode(zipCodeUser) && checkValidInput(colonyUser) && checkValidInput(streetUser)
-                && checkValidInput(exteriorUser)
+        return checkZipCode(zipCodeUser) && checkAddress(colonyUser) && checkAddress(streetUser)
+                && checkAddress(exteriorUser)
                 && countryUser != "Selecciona una opción*" && stateUser != "Selecciona una opción*" && townUser != "Selecciona una opción*"
                 && completed == 7
     }
