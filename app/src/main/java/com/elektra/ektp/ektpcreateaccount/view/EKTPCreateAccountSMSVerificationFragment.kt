@@ -17,11 +17,11 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
     private val verificationCodeViewModel: EKTPCreateAccountSMSVerificationViewModel by viewModels()
     private lateinit var codeSMS: String
-    private lateinit var codechar1: String
-    private lateinit var codechar2: String
-    private lateinit var codechar3: String
-    private lateinit var codechar4: String
-    private lateinit var codechar5: String
+    private var codechar1 = ""
+    private var codechar2 = ""
+    private var codechar3 = ""
+    private var codechar4 = ""
+    private var codechar5 = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
