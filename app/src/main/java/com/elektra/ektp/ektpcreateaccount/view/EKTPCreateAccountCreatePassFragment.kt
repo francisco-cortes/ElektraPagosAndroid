@@ -106,6 +106,44 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
             }
         })
 
+        binding.insertConfirmPass.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                passTextVar2 = s.toString()
+                if (passTextVar.length in 8..14){
+                    if (passTextVar != passTextVar2){
+                        binding.notMatchesIcon.isVisible = true
+                        binding.matchPass.isVisible = true
+                        binding.button7.isEnabled = false
+                    }
+                    else{
+                        binding.notMatchesIcon.isVisible = false
+                        binding.matchPass.isVisible = false
+                        binding.button7.isEnabled = true
+                    }
+                }
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                passTextVar2 = s.toString()
+                if (passTextVar.length in 8..14){
+                    if (passTextVar != passTextVar2){
+                        binding.notMatchesIcon.isVisible = true
+                        binding.matchPass.isVisible = true
+                        binding.button7.isEnabled = false
+                    }
+                    else{
+                        binding.notMatchesIcon.isVisible = false
+                        binding.matchPass.isVisible = false
+                        binding.button7.isEnabled = true
+                    }
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+        })
+
         return binding.root
     }
 
