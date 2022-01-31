@@ -1,6 +1,6 @@
 package com.elektra.ektp.uservalidations
 
-class UserValidations() {
+class UserValidations {
     fun checkValidInput(wordToCheck: String): Boolean{
         return wordToCheck.matches("^[a-zA-ZÀ-ÿ\\u00f1\\u00d1.]+(\\s*[a-zA-ZÀ-ÿ\\u00f1\\u00d1.])*[a-zA-ZÀ-ÿ\\u00f1\\u00d1.]+(\\s|$)".toRegex())
                 && wordToCheck != ""

@@ -18,9 +18,7 @@ import com.elektra.ektp.uservalidations.UserValidations
 class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
     private val verificationCodeViewModel: EKTPCreateAccountSMSVerificationViewModel by viewModels()
-    companion object{
-        lateinit var validations: UserValidations
-    }
+    val validations = UserValidations()
 
     private lateinit var codeSMS: String
     private var codechar1 = ""

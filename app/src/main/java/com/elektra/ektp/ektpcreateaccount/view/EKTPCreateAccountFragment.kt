@@ -16,7 +16,6 @@ import androidx.navigation.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentCreateAccountBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountViewModel
-import com.elektra.ektp.ektpsharedpreferences.EKPTUserApplication.Companion.preferences
 import com.elektra.ektp.uservalidations.UserValidations
 import java.util.*
 
@@ -25,9 +24,7 @@ class EKTPCreateAccountFragment : Fragment() {
     private lateinit var binding: FragmentCreateAccountBinding
     private val createAccountViewModel: EKTPCreateAccountViewModel by viewModels()
 
-    companion object{
-        lateinit var validations: UserValidations
-    }
+    val validations = UserValidations()
 
     private var name: String = ""
     private var paternalLast: String = ""
