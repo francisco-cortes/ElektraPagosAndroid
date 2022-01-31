@@ -12,6 +12,8 @@ import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEKTPLoginBiometricLoginBinding
 import com.elektra.ektp.ektpbiometricutil.EKTPBiometricUtil
+import com.elektra.ektp.ektphome.view.EKTPHomeActivity
+import com.elektra.ektp.ektptoaster.EKTPToaster
 import java.util.concurrent.Executor
 
 class EKTPLoginBiometricLoginFragment : Fragment() {
@@ -39,10 +41,10 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
 
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                 super.onAuthenticationSucceeded(result)
-                /*messageOnToast("Autorizacion con exito")
-                val intent = Intent(activity, HomeActivity::class.java)
+                EKTPToaster().makeAToast(requireContext(),"autorizacion con exito")
+                val intent = Intent(activity, EKTPHomeActivity::class.java)
                 val context = view?.context
-                context?.startActivity(intent)*/
+                context?.startActivity(intent)
             }
 
             override fun onAuthenticationFailed() {

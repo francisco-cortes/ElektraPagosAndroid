@@ -134,7 +134,7 @@
     <string name="forgotten_successful_back_button">IR AL INICIO</string>
 
     <!-- Home strings-->
-    <string name="home_hello">¡Buen día %1$s!</string>
+    <string name="home_hello">¡Hola</string>
     <string name="home_balances">Saldos y\nmovimientos</string>
     <string name="home_recieve">Recibir envío\nde dinero</string>
     <string name="home_account_label">Cuenta</string>
