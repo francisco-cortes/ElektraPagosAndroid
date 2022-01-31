@@ -13,11 +13,26 @@ import androidx.fragment.app.viewModels
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentCreateAccountBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountViewModel
+import java.util.*
 
 class EKTPCreateAccountFragment : Fragment() {
 
     private lateinit var binding: FragmentCreateAccountBinding
     private val createAccountViewModel: EKTPCreateAccountViewModel by viewModels()
+
+    private var name: String = ""
+    private var paternalLast: String = ""
+    private var maternalLast: String = ""
+    private var birthDate: String = ""
+    private var birthState: String = ""
+    private var gender: String = ""
+    private var phone: String = "Selecciona una opción*"
+    private var eMailText: String = ""
+    private var emailConfirmationText: String = ""
+    val c = Calendar.getInstance()
+    val year = c.get(Calendar.YEAR)
+    val month = c.get(Calendar.MONTH)
+    val day = c.get(Calendar.DAY_OF_MONTH)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +48,8 @@ class EKTPCreateAccountFragment : Fragment() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (createAccountViewModel.checkValidInput(s.toString())){
+                name = s.toString()
+                if (createAccountViewModel.checkValidInput(name)){
                     binding.insertName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                     binding.invalidNameText.isVisible = false
                 }
@@ -45,15 +61,62 @@ class EKTPCreateAccountFragment : Fragment() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                if (createAccountViewModel.checkValidInput(s.toString())){
+                name = s.toString()
+                if (createAccountViewModel.checkValidInput(name)){
                     binding.insertName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button.isEnabled = createAccountViewModel.checkFilledFields()
+                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                        name, paternalLast, birthDate, birthState,
+                        phone, eMailText, emailConfirmationText, gender
+                    )
                     binding.invalidNameText.isVisible = false
                 }
                 else{
                     binding.insertName.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button.isEnabled = createAccountViewModel.checkFilledFields()
+                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                        name, paternalLast, birthDate, birthState,
+                        phone, eMailText, emailConfirmationText, gender
+                    )
                     binding.invalidNameText.isVisible = true
+                }
+            }
+
+        })
+
+        binding.paternalLastName.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                paternalLast = s.toString()
+                if (createAccountViewModel.checkValidInput(paternalLast)){
+                    binding.paternalLastName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    binding.invalidPaternalText.isVisible = false
+                }
+                else{
+                    binding.paternalLastName.setBackgroundResource(R.drawable.validation_edit_text)
+                    binding.button.isEnabled = false
+                    binding.invalidPaternalText.isVisible = true
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                paternalLast = s.toString()
+                if (createAccountViewModel.checkValidInput(paternalLast)){
+                    binding.paternalLastName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                        name, paternalLast, birthDate, birthState,
+                        phone, eMailText, emailConfirmationText, gender
+                    )
+                    binding.invalidPaternalText.isVisible = false
+                }
+                else{
+                    binding.paternalLastName.setBackgroundResource(R.drawable.validation_edit_text)
+                    binding.button.isEnabled = createAccountViewModel.checkFilledFields(
+                        name, paternalLast, birthDate, birthState,
+                        phone, eMailText, emailConfirmationText, gender
+                    )
+                    binding.invalidPaternalText.isVisible = true
                 }
             }
 
