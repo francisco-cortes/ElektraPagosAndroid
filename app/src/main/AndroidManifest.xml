@@ -11,12 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ElektraPagos">
         <activity
+            android:theme="@style/Theme.HighLight"
+            android:screenOrientation="portrait"
             android:name=".ektpcreateaccount.view.EKTPCreateAccountActivity"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ektplogin.view.EKTPLoginActivity"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ektpsplashactivity.view.SplashActivity"
             android:exported="true">
             <intent-filter>
