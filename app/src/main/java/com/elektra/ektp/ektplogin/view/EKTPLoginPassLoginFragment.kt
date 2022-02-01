@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEKTPLoginPassLoginBinding
 import com.elektra.ektp.ektpbiometricutil.EKTPBiometricUtil
+import com.elektra.ektp.ektpforgottenpass.view.EKTPForgottenPassActivity
 import com.elektra.ektp.ektphome.view.EKTPHomeActivity
 
 class EKTPLoginPassLoginFragment : Fragment() {
@@ -54,6 +56,14 @@ class EKTPLoginPassLoginFragment : Fragment() {
                 .replace(R.id.loginNavHostFragment, EKTPLoginBiometricLoginFragment())
                 .commitNow()
         }
+
+        binding.frgPassClickTextView.setOnClickListener{
+            view: View ->
+            val intent = Intent(activity, EKTPForgottenPassActivity::class.java)
+            val context = view?.context
+            context?.startActivity(intent)
+        }
+
         return binding.root
     }
 
