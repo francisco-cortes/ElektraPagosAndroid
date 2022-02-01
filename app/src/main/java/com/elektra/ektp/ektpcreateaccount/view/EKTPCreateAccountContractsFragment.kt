@@ -18,7 +18,7 @@ import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountContractsVi
 class EKTPCreateAccountContractsFragment : Fragment() {
 
     private lateinit var binding: FragmentEktpCreateAccountContractsBinding
-    private val contractsViewModel: EKTPCreateAccountContractsViewModel by viewModels()
+    //private val contractsViewModel: EKTPCreateAccountContractsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
