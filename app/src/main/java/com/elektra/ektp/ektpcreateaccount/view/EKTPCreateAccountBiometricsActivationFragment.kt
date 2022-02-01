@@ -66,6 +66,12 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
             }
         })
 
+        promptInfo = BiometricPrompt.PromptInfo.Builder()
+            .setTitle("Autenticacion Biométrica")
+            .setSubtitle("Usa el biométrico de tu teléfono")
+            .setNegativeButtonText("Cancelar")
+            .build()
+
         return binding.root
     }
 
