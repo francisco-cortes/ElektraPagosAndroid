@@ -16,6 +16,7 @@ class EKTPForgottenPassPhoneNumberFragment : Fragment() {
 
     private lateinit var binding: FragmentEktpForgottenPassPhoneNumberBinding
     private val phoneNumberViewModel: EKTPForgottenPassPhoneNumberViewModel by viewModels()
+    private lateinit var phoneNumber: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,6 +25,8 @@ class EKTPForgottenPassPhoneNumberFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,
         R.layout.fragment_ektp_forgotten_pass_phone_number, container, false)
+
+        binding.buttonForgottenPas.isEnabled = false
 
         return binding.root
     }
