@@ -113,6 +113,65 @@ class EKTPForgottenPassNewPassFragment : Fragment() {
             }
         })
 
+        binding.insertConfirmPass.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                passTextVar2 = s.toString()
+                if (passTextVar.length in 8..14){
+                    if (passTextVar != passTextVar2){
+                        binding.insertConfirmPass.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.notMatchesIcon.isVisible = true
+                        binding.matchPass.isVisible = true
+                        binding.buttonNewPass.isEnabled = false
+                    }
+                    else{
+                        binding.insertConfirmPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        binding.notMatchesIcon.isVisible = false
+                        binding.matchPass.isVisible = false
+                        binding.buttonNewPass.isEnabled = (passTextVar.length in 8..14 && validations.checkRepeatedChars(passTextVar) && validations.checkBankString(passTextVar)
+                                && validations.checkConsecutiveString(passTextVar))
+                    }
+                }
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                passTextVar2 = s.toString()
+                if (passTextVar.length in 8..14){
+                    if (passTextVar != passTextVar2){
+                        binding.insertConfirmPass.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.notMatchesIcon.isVisible = true
+                        binding.matchPass.isVisible = true
+                        binding.buttonNewPass.isEnabled = false
+                    }
+                    else{
+                        binding.insertConfirmPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        binding.notMatchesIcon.isVisible = false
+                        binding.matchPass.isVisible = false
+                        binding.buttonNewPass.isEnabled = (passTextVar.length in 8..14 && validations.checkRepeatedChars(passTextVar) && validations.checkBankString(passTextVar)
+                                && validations.checkConsecutiveString(passTextVar))
+                    }
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                passTextVar2 = s.toString()
+                if (passTextVar.length in 8..14){
+                    if (passTextVar != passTextVar2){
+                        binding.insertConfirmPass.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.notMatchesIcon.isVisible = true
+                        binding.matchPass.isVisible = true
+                        binding.buttonNewPass.isEnabled = false
+                    }
+                    else{
+                        binding.insertConfirmPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        binding.notMatchesIcon.isVisible = false
+                        binding.matchPass.isVisible = false
+                        binding.buttonNewPass.isEnabled = (passTextVar.length in 8..14 && validations.checkRepeatedChars(passTextVar) && validations.checkBankString(passTextVar)
+                                && validations.checkConsecutiveString(passTextVar))
+                    }
+                }
+            }
+        })
+
         return binding.root
     }
 
