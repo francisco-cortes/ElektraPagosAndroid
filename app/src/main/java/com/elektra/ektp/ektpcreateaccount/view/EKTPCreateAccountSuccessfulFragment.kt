@@ -21,6 +21,10 @@ class EKTPCreateAccountSuccessfulFragment : Fragment() {
         binding = DataBindingUtil.inflate<FragmentEktpCreateAccountSuccessfulBinding>(inflater,
             R.layout.fragment_ektp_create_account_successful, container, false)
 
+        binding.buttonSuccessful.setOnClickListener {view: View ->
+            activity?.finish()
+        }
+
         return binding.root
     }
 

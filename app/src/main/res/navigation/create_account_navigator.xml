@@ -76,11 +76,7 @@
     <fragment
         android:id="@+id/EKTPCreateAccountSuccessfulFragment"
         android:name="com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountSuccessfulFragment"
-        android:label="EKTPCreateAccountSuccessfulFragment" >
-        <action
-            android:id="@+id/action_EKTPCreateAccountSuccessfulFragment_to_EKTPCreateAccountFragment"
-            app:destination="@id/EKTPCreateAccountFragment" />
-    </fragment>
+        android:label="EKTPCreateAccountSuccessfulFragment" />
     <fragment
         android:id="@+id/EKTPCreateAccountContractsViewFragment"
         android:name="com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountContractsViewFragment"
