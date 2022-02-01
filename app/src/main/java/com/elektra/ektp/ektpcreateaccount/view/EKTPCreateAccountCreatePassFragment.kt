@@ -32,7 +32,7 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate<FragmentEktpCreateAccountCreatePassBinding>(inflater,
+        binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_ektp_create_account_create_pass, container, false)
 
         binding.button7.isEnabled = false
@@ -46,58 +46,56 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 passTextVar = s.toString()
                 if(passTextVar.length < 8 ){
-                    binding.insertPass.setBackgroundResource(R.drawable.validation_edit_text)
                     binding.notMinIcon.isVisible = true
                     binding.okMinIcon.isVisible = false
                     binding.button7.isEnabled = false
                 }
                 else{
-                    binding.insertPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                     binding.okMinIcon.isVisible = true
                     binding.notMinIcon.isVisible = false
                 }
-                if(passTextVar.length in 8..14 ){
-                    binding.insertPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.okMaxIcon.isVisible = true
-                    binding.notMaxIcon.isVisible = false
-                }
-                else{
-                    binding.insertPass.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.okMaxIcon.isVisible = false
-                    binding.notMaxIcon.isVisible = true
-                    binding.button7.isEnabled = false
-                }
                 if (validations.checkRepeatedChars(passTextVar)){
-                    binding.insertPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                     binding.okRepeatedIcon.isVisible = true
                     binding.notRepeatedIcon.isVisible = false
                 }
                 else{
-                    binding.insertPass.setBackgroundResource(R.drawable.validation_edit_text)
                     binding.okRepeatedIcon.isVisible = false
                     binding.notRepeatedIcon.isVisible = true
                     binding.button7.isEnabled = false
                 }
                 if (validations.checkBankString(passTextVar)){
-                    binding.insertPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                     binding.okNameIcon.isVisible = true
                     binding.notNameIcon.isVisible = false
                 }
                 else{
-                    binding.insertPass.setBackgroundResource(R.drawable.validation_edit_text)
                     binding.okNameIcon.isVisible = false
                     binding.notNameIcon.isVisible = true
                     binding.button7.isEnabled = false
                 }
                 if (validations.checkConsecutiveString(passTextVar)){
-                    binding.insertPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                     binding.okMConsecutiveIcon.isVisible = true
                     binding.notConsecutiveIcon.isVisible = false
                 }
                 else{
-                    binding.insertPass.setBackgroundResource(R.drawable.validation_edit_text)
                     binding.okMConsecutiveIcon.isVisible = false
                     binding.notConsecutiveIcon.isVisible = true
+                    binding.button7.isEnabled = false
+                }
+                if(passTextVar.length in 8..14 ){
+                    binding.okMaxIcon.isVisible = true
+                    binding.notMaxIcon.isVisible = false
+                }
+                else{
+                    binding.okMaxIcon.isVisible = false
+                    binding.notMaxIcon.isVisible = true
+                    binding.button7.isEnabled = false
+                }
+                if (passTextVar.length in 8..14 && validations.checkRepeatedChars(passTextVar) && validations.checkBankString(passTextVar)
+                    && validations.checkConsecutiveString(passTextVar)){
+                    binding.insertPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                }
+                else{
+                    binding.insertPass.setBackgroundResource(R.drawable.validation_edit_text)
                     binding.button7.isEnabled = false
                 }
             }
@@ -106,16 +104,15 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
                 passTextVar = s.toString()
                 if (passTextVar.length in 8..14){
                     if (passTextVar != passTextVar2){
-                        binding.insertPass.setBackgroundResource(R.drawable.validation_edit_text)
-                        binding.notMatchesIcon.isVisible = true
                         binding.matchPass.isVisible = true
+                        binding.notMatchesIcon.isVisible = true
                         binding.button7.isEnabled = false
                     }
                     else{
-                        binding.insertPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                         binding.notMatchesIcon.isVisible = false
                         binding.matchPass.isVisible = false
-                        binding.button7.isEnabled = true
+                        binding.button7.isEnabled = (passTextVar.length in 8..14 && validations.checkRepeatedChars(passTextVar) && validations.checkBankString(passTextVar)
+                                && validations.checkConsecutiveString(passTextVar))
                     }
                 }
             }
@@ -126,16 +123,17 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
                 passTextVar2 = s.toString()
                 if (passTextVar.length in 8..14){
                     if (passTextVar != passTextVar2){
-                        binding.insertPass.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.insertConfirmPass.setBackgroundResource(R.drawable.validation_edit_text)
                         binding.notMatchesIcon.isVisible = true
                         binding.matchPass.isVisible = true
                         binding.button7.isEnabled = false
                     }
                     else{
-                        binding.insertPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        binding.insertConfirmPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                         binding.notMatchesIcon.isVisible = false
                         binding.matchPass.isVisible = false
-                        binding.button7.isEnabled = true
+                        binding.button7.isEnabled = (passTextVar.length in 8..14 && validations.checkRepeatedChars(passTextVar) && validations.checkBankString(passTextVar)
+                                && validations.checkConsecutiveString(passTextVar))
                     }
                 }
             }
@@ -144,22 +142,38 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
                 passTextVar2 = s.toString()
                 if (passTextVar.length in 8..14){
                     if (passTextVar != passTextVar2){
-                        binding.insertPass.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.insertConfirmPass.setBackgroundResource(R.drawable.validation_edit_text)
                         binding.notMatchesIcon.isVisible = true
                         binding.matchPass.isVisible = true
                         binding.button7.isEnabled = false
                     }
                     else{
-                        binding.insertPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        binding.insertConfirmPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                         binding.notMatchesIcon.isVisible = false
                         binding.matchPass.isVisible = false
-                        binding.button7.isEnabled = true
+                        binding.button7.isEnabled = (passTextVar.length in 8..14 && validations.checkRepeatedChars(passTextVar) && validations.checkBankString(passTextVar)
+                                && validations.checkConsecutiveString(passTextVar))
                     }
                 }
             }
 
             override fun afterTextChanged(s: Editable?) {
-
+                passTextVar2 = s.toString()
+                if (passTextVar.length in 8..14){
+                    if (passTextVar != passTextVar2){
+                        binding.insertConfirmPass.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.notMatchesIcon.isVisible = true
+                        binding.matchPass.isVisible = true
+                        binding.button7.isEnabled = false
+                    }
+                    else{
+                        binding.insertConfirmPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        binding.notMatchesIcon.isVisible = false
+                        binding.matchPass.isVisible = false
+                        binding.button7.isEnabled = (passTextVar.length in 8..14 && validations.checkRepeatedChars(passTextVar) && validations.checkBankString(passTextVar)
+                                && validations.checkConsecutiveString(passTextVar))
+                    }
+                }
             }
         })
 
