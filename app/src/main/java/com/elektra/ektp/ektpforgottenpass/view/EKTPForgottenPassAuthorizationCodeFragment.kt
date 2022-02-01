@@ -73,6 +73,41 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment() {
 
         })
 
+        binding.verificationNumber2.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                codechar2 = s.toString()
+                codeSMS = validations.concatenaterCode(
+                    codechar1, codechar2, codechar3, codechar4, codechar5
+                )
+                if (!codechar2.isNullOrBlank() && codechar2.length == 1) {
+                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                    binding.verificationNumber3.requestFocus()
+                }
+                else{
+                    binding.buttonAuth.isEnabled = false
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                codechar2 = s.toString()
+                codeSMS = validations.concatenaterCode(
+                    codechar1, codechar2, codechar3, codechar4, codechar5
+                )
+                if (!codechar2.isNullOrBlank() && codechar2.length == 1) {
+                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                    binding.verificationNumber3.requestFocus()
+                }
+                else{
+                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                }
+            }
+
+        })
+
         return binding.root
     }
 }
