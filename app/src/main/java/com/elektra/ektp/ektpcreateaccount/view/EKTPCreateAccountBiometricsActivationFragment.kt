@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -35,6 +36,10 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
         executor = ContextCompat.getMainExecutor(requireContext())
 
         return binding.root
+    }
+
+    fun messageOnToast(message: String){
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 
 }
