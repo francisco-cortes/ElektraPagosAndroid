@@ -3,6 +3,8 @@ package com.elektra.ektp.ektpforgottenpass.view
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -171,6 +173,18 @@ class EKTPForgottenPassNewPassFragment : Fragment() {
                 }
             }
         })
+
+        binding.showPassButton1.setOnClickListener {
+
+            if (!showPassVar) {
+                binding.insertNewPass.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                showPassVar = true
+            }
+            else {
+                binding.insertNewPass.transformationMethod = PasswordTransformationMethod.getInstance()
+                showPassVar = false
+            }
+        }
 
         return binding.root
     }
