@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/forgotten_pass_navigator">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/forgotten_pass_navigator"
+    app:startDestination="@id/EKTPForgottenPassPhoneNumberFragment">
 
+    <fragment
+        android:id="@+id/EKTPForgottenPassPhoneNumberFragment"
+        android:name="com.elektra.ektp.ektpforgottenpass.view.EKTPForgottenPassPhoneNumberFragment"
+        android:label="fragment_ektp_forgotten_pass_phone_number"
+        tools:layout="@layout/fragment_ektp_forgotten_pass_phone_number" >
+        <action
+            android:id="@+id/action_EKTPForgottenPassPhoneNumberFragment_to_EKTPForgottenPassAuthorizationCodeFragment"
+            app:destination="@id/EKTPForgottenPassAuthorizationCodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/EKTPForgottenPassAuthorizationCodeFragment"
+        android:name="com.elektra.ektp.ektpforgottenpass.view.EKTPForgottenPassAuthorizationCodeFragment"
+        android:label="fragment_ektp_forgotten_pass_authorization_code"
+        tools:layout="@layout/fragment_ektp_forgotten_pass_authorization_code" >
+        <action
+            android:id="@+id/action_EKTPForgottenPassAuthorizationCodeFragment_to_EKTPForgottenPassPhoneNumberFragment"
+            app:destination="@id/EKTPForgottenPassPhoneNumberFragment" />
+        <action
+            android:id="@+id/action_EKTPForgottenPassAuthorizationCodeFragment_to_EKTPForgottenPassNewPassFragment"
+            app:destination="@id/EKTPForgottenPassNewPassFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/EKTPForgottenPassNewPassFragment"
+        android:name="com.elektra.ektp.ektpforgottenpass.view.EKTPForgottenPassNewPassFragment"
+        android:label="fragment_ektp_forgotten_pass_new_pass"
+        tools:layout="@layout/fragment_ektp_forgotten_pass_new_pass" >
+        <action
+            android:id="@+id/action_EKTPForgottenPassNewPassFragment_to_EKTPForgottenPassPhoneNumberFragment"
+            app:destination="@id/EKTPForgottenPassPhoneNumberFragment" />
+    </fragment>
 </navigation>

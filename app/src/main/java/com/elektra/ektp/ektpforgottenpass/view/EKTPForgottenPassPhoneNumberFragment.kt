@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpForgottenPassNewPassBinding
 import com.elektra.ektp.databinding.FragmentEktpForgottenPassPhoneNumberBinding
@@ -56,6 +57,14 @@ class EKTPForgottenPassPhoneNumberFragment : Fragment() {
 
             }
         })
+
+        binding.buttonForgottenPas.setOnClickListener {view: View ->
+            view.findNavController().navigate(R.id.action_EKTPForgottenPassPhoneNumberFragment_to_EKTPForgottenPassAuthorizationCodeFragment)
+        }
+
+        binding.backAppbarButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_EKTPForgottenPassAuthorizationCodeFragment_to_EKTPForgottenPassPhoneNumberFragment)
+        }
 
         return binding.root
     }
