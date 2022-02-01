@@ -1,6 +1,8 @@
 package com.elektra.ektp.ektpforgottenpass.view
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -35,6 +37,41 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment() {
         R.layout.fragment_ektp_forgotten_pass_authorization_code, container, false)
 
         binding.buttonAuth.isEnabled = false
+
+        binding.verificationNumber1.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                codechar1 = s.toString()
+                codeSMS = validations.concatenaterCode(
+                    codechar1, codechar2, codechar3, codechar4, codechar5
+                )
+                if (!codechar1.isNullOrBlank() && codechar1.length == 1) {
+                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                    binding.verificationNumber2.requestFocus()
+                }
+                else{
+                    binding.buttonAuth.isEnabled = false
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                codechar1 = s.toString()
+                codeSMS = validations.concatenaterCode(
+                    codechar1, codechar2, codechar3, codechar4, codechar5
+                )
+                if (!codechar1.isNullOrBlank() && codechar1.length == 1) {
+                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                    binding.verificationNumber2.requestFocus()
+                }
+                else{
+                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                }
+            }
+
+        })
 
         return binding.root
     }
