@@ -17,6 +17,12 @@
             android:exported="false" />
         <activity
             android:screenOrientation="portrait"
+            android:name=".ektphome.view.EKTPHomeSettingsHelpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ektphome.view.EKTPHomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".ektplogin.view.EKTPLoginActivity"
             android:exported="false" />
         <activity
