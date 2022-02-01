@@ -7,11 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
-import com.elektra.ektp.databinding.FragmentEktpForgottenPassBinding
+import com.elektra.ektp.databinding.FragmentEktpForgottenPassNewPassBinding
 
-class EKTPForgottenPassFragment : Fragment() {
+class EKTPForgottenPassNewPassFragment : Fragment() {
 
-    private lateinit var binding: FragmentEktpForgottenPassBinding
+    private lateinit var binding: FragmentEktpForgottenPassNewPassBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -19,7 +19,7 @@ class EKTPForgottenPassFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,
-            R.layout.fragment_ektp_forgotten_pass, container, false)
+            R.layout.fragment_ektp_forgotten_pass_new_pass, container, false)
 
         return binding.root
     }

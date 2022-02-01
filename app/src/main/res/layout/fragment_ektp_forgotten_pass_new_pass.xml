@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ektpforgottenpass.view.EKTPForgottenPassNewPassFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/elektra_red"
+            android:minHeight="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?attr/actionBarSize">
+
+                <ImageView
+                    android:id="@+id/logoAppBar"
+                    android:layout_width="@dimen/_71sdp"
+                    android:layout_height="@dimen/_26sdp"
+                    android:layout_marginEnd="@dimen/_35sdp"
+                    android:background="@drawable/ic_appbar_logo"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/sectionTitleAppbarTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_82sdp"
+                    android:layout_marginEnd="@dimen/_23sdp"
+                    android:gravity="center"
+                    android:text="@string/forgotten_insert_new_pass_header_label"
+                    android:theme="@style/appbar_title"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/logoAppBar"
+                    app:layout_constraintStart_toEndOf="@+id/backAppbarButton"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/backAppbarButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:background="@drawable/ic_appbar_back_button"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <ScrollView
+            android:id="@+id/scrollId"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/appbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/newPassLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginStart="@dimen/_43sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:theme="@style/title_1"
+                    android:text="@string/forggoten_insert_new_label"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                    android:id="@+id/insertNewLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_36sdp"
+                    android:layout_marginStart="@dimen/_43sdp"
+                    android:theme="@style/label_edit_text"
+                    android:text="@string/fragment_create_password_password"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/newPassLabel" />
+
+                <EditText
+                    android:id="@+id/insertNewPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginStart="@dimen/_43sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:background="@drawable/rounded_rectangle_gray"
+                    android:hint="@string/required_field_hint"
+                    android:inputType="textPassword"
+                    android:padding="10sp"
+                    android:theme="@style/hint_edit_text"
+                    android:imeOptions="actionNext"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/insertNewLabel" />
+
+                <ImageButton
+                    android:id="@+id/showPassButton1"
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_26sdp"
+                    android:padding="@dimen/_20sdp"
+                    android:background="@drawable/ic_eye_pass_icon"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    app:layout_constraintBottom_toBottomOf="@+id/insertNewPass"
+                    app:layout_constraintTop_toTopOf="@+id/insertNewPass"
+                    app:layout_constraintEnd_toEndOf="@+id/insertNewPass"/>
+
+                <TextView
+                    android:id="@+id/confirmPassLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_18sdp"
+                    android:layout_marginStart="@dimen/_43sdp"
+                    android:layout_marginEnd="43dp"
+                    android:theme="@style/label_edit_text"
+                    android:text="@string/fragment_create_password_password_confirmation"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/insertNewPass" />
+
+                <EditText
+                    android:id="@+id/insertConfirmPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginStart="@dimen/_43sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:background="@drawable/rounded_rectangle_gray"
+                    android:hint="@string/required_field_hint"
+                    android:inputType="textPassword"
+                    android:padding="10sp"
+                    android:theme="@style/hint_edit_text"
+                    android:imeOptions="actionDone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/confirmPassLabel" />
+
+                <ImageButton
+                    android:id="@+id/showPassButton2"
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_26sdp"
+                    android:padding="@dimen/_20sdp"
+                    android:background="@drawable/ic_eye_pass_icon"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    app:layout_constraintTop_toTopOf="@+id/insertConfirmPass"
+                    app:layout_constraintBottom_toBottomOf="@+id/insertConfirmPass"
+                    app:layout_constraintEnd_toEndOf="@+id/insertConfirmPass"/>
+
+                <TextView
+                    android:id="@+id/validationPoints"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginStart="@dimen/_43sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:theme="@style/subtitle_3"
+                    android:fontFamily="@font/azo_sans_bold"
+                    android:text="@string/fragment_create_password_requeriments"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/insertConfirmPass" />
+
+                <TextView
+                    android:id="@+id/minLenghtPas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginStart="@dimen/_43sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:theme="@style/body_1"
+                    android:text="@string/fragment_create_password_minimum"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/validationPoints" />
+
+                <ImageView
+                    android:id="@+id/okMinIcon"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:background="@drawable/ic_ok_tick"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/minLenghtPas"
+                    app:layout_constraintBottom_toBottomOf="@id/minLenghtPas"
+                    android:visibility="invisible"
+                    />
+
+                <ImageView
+                    android:id="@+id/notMinIcon"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:background="@drawable/ic_cross_bad"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/minLenghtPas"
+                    app:layout_constraintBottom_toBottomOf="@id/minLenghtPas"
+                    android:visibility="invisible"
+                    />
+
+                <TextView
+                    android:id="@+id/maxLenghtPas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginStart="@dimen/_43sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:theme="@style/body_1"
+                    android:text="@string/fragment_create_password_maximum"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/minLenghtPas" />
+
+                <ImageView
+                    android:id="@+id/okMaxIcon"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:background="@drawable/ic_ok_tick"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/maxLenghtPas"
+                    app:layout_constraintBottom_toBottomOf="@id/maxLenghtPas"
+                    android:visibility="invisible"
+                    />
+
+                <ImageView
+                    android:id="@+id/notMaxIcon"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:background="@drawable/ic_cross_bad"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/maxLenghtPas"
+                    app:layout_constraintBottom_toBottomOf="@id/maxLenghtPas"
+                    android:visibility="invisible"
+                    />
+
+                <TextView
+                    android:id="@+id/consecutiveChars"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginStart="@dimen/_43sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:theme="@style/body_1"
+                    android:text="@string/fragment_create_password_consecutives"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/maxLenghtPas" />
+
+                <ImageView
+                    android:id="@+id/okMConsecutiveIcon"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:background="@drawable/ic_ok_tick"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/consecutiveChars"
+                    app:layout_constraintBottom_toBottomOf="@id/consecutiveChars"
+                    android:visibility="invisible"
+                    />
+
+                <ImageView
+                    android:id="@+id/notConsecutiveIcon"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:background="@drawable/ic_cross_bad"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/consecutiveChars"
+                    app:layout_constraintBottom_toBottomOf="@id/consecutiveChars"
+                    android:visibility="invisible"
+                    />
+
+                <TextView
+                    android:id="@+id/repeatedChars"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginStart="@dimen/_43sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:theme="@style/body_1"
+                    android:text="@string/fragment_create_password_repeated"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/consecutiveChars" />
+
+                <ImageView
+                    android:id="@+id/okRepeatedIcon"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:background="@drawable/ic_ok_tick"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/repeatedChars"
+                    app:layout_constraintBottom_toBottomOf="@id/repeatedChars"
+                    android:visibility="invisible"
+                    />
+
+                <ImageView
+                    android:id="@+id/notRepeatedIcon"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:background="@drawable/ic_cross_bad"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/repeatedChars"
+                    app:layout_constraintBottom_toBottomOf="@id/repeatedChars"
+                    android:visibility="invisible"
+                    />
+
+                <TextView
+                    android:id="@+id/noBankName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginStart="@dimen/_43sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:theme="@style/body_1"
+                    android:text="@string/fragment_create_password_bank_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/repeatedChars" />
+
+                <ImageView
+                    android:id="@+id/okNameIcon"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:background="@drawable/ic_ok_tick"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/noBankName"
+                    app:layout_constraintBottom_toBottomOf="@id/noBankName"
+                    android:visibility="invisible"
+                    />
+
+                <ImageView
+                    android:id="@+id/notNameIcon"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:background="@drawable/ic_cross_bad"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/noBankName"
+                    app:layout_constraintBottom_toBottomOf="@id/noBankName"
+                    android:visibility="invisible"
+                    />
+
+                <TextView
+                    android:id="@+id/matchPass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginStart="@dimen/_43sdp"
+                    android:theme="@style/body_1"
+                    android:text="@string/fragment_Create_password_no_match"
+                    android:textColor="@color/elektra_red"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/noBankName" />
+
+                <ImageView
+                    android:id="@+id/notMatchesIcon"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:background="@drawable/ic_cross_bad"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/matchPass"
+                    app:layout_constraintBottom_toBottomOf="@id/matchPass"
+                    android:visibility="invisible"
+                    />
+
+                <Button
+                    android:id="@+id/buttonNewPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_100sdp"
+                    android:layout_marginBottom="@dimen/_54sdp"
+                    android:layout_marginStart="@dimen/_43sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:theme="@style/bottom_button"
+                    android:text="@string/continue_button"
+                    android:background="@drawable/enable_disable_red"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/matchPass" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
