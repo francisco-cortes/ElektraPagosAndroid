@@ -17,7 +17,7 @@
             android:layout_marginStart="@dimen/_44sdp"
             android:layout_marginTop="@dimen/_44sdp"
             android:layout_marginEnd="@dimen/_44sdp"
-            android:background="@drawable/ic_finger_unrecognizable_alert"
+            android:background="@drawable/ic_face_unrecognizable_alert"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8sdp"
-            android:text="Huella No Reconocida"
+            android:text="Rostro No Reconocido"
             android:theme="@style/title_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
