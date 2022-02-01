@@ -25,8 +25,9 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
 
-    private lateinit var fingerRetryButton: Button
-    private lateinit var fingerCancelButton: Button
+    private lateinit var retryButton: Button
+    private lateinit var cancelButton: Button
+    private lateinit var bioAlertLayout: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,16 +35,22 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate<FragmentEKTPLoginBiometricLoginBinding>(inflater,R.layout.fragment_e_k_t_p_login_biometric_login, container, false)
+
         val bioUsed = EKTPBiometricUtil().determineBio(requireContext())
         var dialog: AlertDialog? = null
         val builder = AlertDialog.Builder(requireContext())
-// set the custom layout
-        val view2 = layoutInflater.inflate(R.layout.unrecognized_finger_alert_layout, null)
-        builder.setView(view2)
-        fingerRetryButton = view2.findViewById(R.id.fingerRetryButton)
-        fingerCancelButton = view2.findViewById(R.id.fingerCancelButton)
+        // usar un layout personalizado
+        if (bioUsed == 1) {
+            bioAlertLayout = layoutInflater.inflate(R.layout.unrecognized_face_alert_layout, null)
+        }
+        else {
+            bioAlertLayout = layoutInflater.inflate(R.layout.unrecognized_finger_alert_layout,null)
+        }
 
-// create and show the alert dialog
+        builder.setView(bioAlertLayout)
+        retryButton = bioAlertLayout.findViewById(R.id.biometricRetryButton)
+        cancelButton = bioAlertLayout.findViewById(R.id.biometricCancelButton)
+        // se crea el dialogo con el layout nesesario
         dialog = builder.create()
 
         executor = ContextCompat.getMainExecutor(requireContext())
@@ -83,11 +90,11 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
             binding.biometricInfoTextView.text = "Entrar con FaceID"
         }
 
-        fingerCancelButton.setOnClickListener {
+        cancelButton.setOnClickListener {
             dialog.dismiss()
         }
 
-        fingerRetryButton.setOnClickListener {
+        retryButton.setOnClickListener {
             biometricPrompt.authenticate(promptInfo)
         }
 
