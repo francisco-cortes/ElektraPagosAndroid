@@ -12,6 +12,7 @@ import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEKTPLoginPassLoginBinding
 import com.elektra.ektp.ektpbiometricutil.EKTPBiometricUtil
 import com.elektra.ektp.ektphome.view.EKTPHomeActivity
+import com.elektra.ektp.ektplogin.viewmodel.EKTPLoginPassLoginViewModel
 
 class EKTPLoginPassLoginFragment : Fragment() {
 
@@ -24,8 +25,8 @@ class EKTPLoginPassLoginFragment : Fragment() {
         // Inflate the layout for this fragment
         binding =  DataBindingUtil.inflate<FragmentEKTPLoginPassLoginBinding>(inflater,R.layout.fragment_e_k_t_p_login_pass_login, container, false)
 
-        val checkBioStatus = EKTPBiometricUtil().checkBioStatus(requireContext())
-        val bioUsed = EKTPBiometricUtil().determineBio(requireContext())
+        val checkBioStatus = EKTPLoginPassLoginViewModel().getSavedDataLogin()[0].toInt()
+        val bioUsed = EKTPLoginPassLoginViewModel().getSavedDataLogin()[1].toInt()
 
         if (checkBioStatus!=1){
             binding.biometricSignInButton.isGone = true
@@ -41,8 +42,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
             val context = view?.context
             context?.startActivity(intent)
         }
-
-
+        
         binding.backAppbarButton.setOnClickListener { view: View ->
             activity?.onBackPressed()
         }
