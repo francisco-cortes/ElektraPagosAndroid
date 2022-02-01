@@ -88,6 +88,10 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
             view.findNavController().navigate(R.id.action_EKTPCreateAccountBiometricsActivationFragment_to_EKTPCreateAccountSuccessfulFragment)
         }
 
+        binding.imageButtonBio.setOnClickListener { view: View ->
+            biometricPrompt.authenticate(promptInfo)
+        }
+
         return binding.root
     }
 
