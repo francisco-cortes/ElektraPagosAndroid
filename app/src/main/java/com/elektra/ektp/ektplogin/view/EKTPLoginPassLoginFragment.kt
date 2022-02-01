@@ -42,7 +42,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
             val context = view?.context
             context?.startActivity(intent)
         }
-        
+
         binding.backAppbarButton.setOnClickListener { view: View ->
             activity?.onBackPressed()
         }
