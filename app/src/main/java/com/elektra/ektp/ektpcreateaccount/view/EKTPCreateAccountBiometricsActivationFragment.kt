@@ -72,6 +72,14 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
             .setNegativeButtonText("Cancelar")
             .build()
 
+        if (bioUsed == 1){
+            binding.sectionTitleAppbarTextView.text = "Activar Face ID"
+            binding.textViewBio.text = "¿Te gustaría activar tu Face ID"
+            binding.textViewBio2.text = "Tu Rostro será tu clave de seguridad y contraseña"
+            binding.imageButtonBio.setBackgroundResource(R.drawable.ic_active_face_button)
+            binding.textViewBio3.text = "Toca el ícono para activar tu Face ID"
+        }
+
         return binding.root
     }
 
