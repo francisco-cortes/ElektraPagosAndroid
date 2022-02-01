@@ -84,6 +84,10 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
             view.findNavController().navigate(R.id.action_EKTPCreateAccountBiometricsActivationFragment_to_EKTPCreateAccountCreatePassFragment)
         }
 
+        binding.textViewBio4.setOnClickListener{view: View ->
+            view.findNavController().navigate(R.id.action_EKTPCreateAccountBiometricsActivationFragment_to_EKTPCreateAccountSuccessfulFragment)
+        }
+
         return binding.root
     }
 
