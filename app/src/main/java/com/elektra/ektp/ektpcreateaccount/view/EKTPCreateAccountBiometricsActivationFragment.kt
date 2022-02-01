@@ -80,6 +80,10 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
             binding.textViewBio3.text = "Toca el ícono para activar tu Face ID"
         }
 
+        binding.backAppbarButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_EKTPCreateAccountBiometricsActivationFragment_to_EKTPCreateAccountCreatePassFragment)
+        }
+
         return binding.root
     }
 
