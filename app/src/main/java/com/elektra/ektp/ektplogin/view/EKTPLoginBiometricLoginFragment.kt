@@ -11,6 +11,8 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEKTPLoginBiometricLoginBinding
+import com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountActivity
+import com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountFragment
 import com.elektra.ektp.ektpbiometricutil.EKTPBiometricUtil
 import com.elektra.ektp.ektphome.view.EKTPHomeActivity
 import com.elektra.ektp.ektptoaster.EKTPToaster
@@ -82,6 +84,12 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
                     .commit();
             }*/
 
+        }
+
+        binding.createAccountTextView.setOnClickListener{view: View ->
+            val intent = Intent(activity, EKTPCreateAccountActivity::class.java)
+            val context =view.context
+            context.startActivity(intent)
         }
 
         return binding.root
