@@ -6,13 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpForgottenPassNewPassBinding
 import com.elektra.ektp.databinding.FragmentEktpForgottenPassPhoneNumberBinding
+import com.elektra.ektp.ektpforgottenpass.view.viewmodel.EKTPForgottenPassPhoneNumberViewModel
 
 class EKTPForgottenPassPhoneNumberFragment : Fragment() {
 
     private lateinit var binding: FragmentEktpForgottenPassPhoneNumberBinding
+    private val phoneNumberViewModel: EKTPForgottenPassPhoneNumberViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
