@@ -1,11 +1,13 @@
 package com.elektra.ektp.ektplogin.view
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -25,13 +27,33 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
 
+    private lateinit var retryButton: Button
+    private lateinit var cancelButton: Button
+    private lateinit var bioAlertLayout: View
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate<FragmentEKTPLoginBiometricLoginBinding>(inflater,R.layout.fragment_e_k_t_p_login_biometric_login, container, false)
+
         val bioUsed = EKTPBiometricUtil().determineBio(requireContext())
+        var dialog: AlertDialog? = null
+        val builder = AlertDialog.Builder(requireContext())
+        // usar un layout personalizado
+        if (bioUsed == 1) {
+            bioAlertLayout = layoutInflater.inflate(R.layout.unrecognized_face_alert_layout, null)
+        }
+        else {
+            bioAlertLayout = layoutInflater.inflate(R.layout.unrecognized_finger_alert_layout,null)
+        }
+
+        builder.setView(bioAlertLayout)
+        retryButton = bioAlertLayout.findViewById(R.id.biometricRetryButton)
+        cancelButton = bioAlertLayout.findViewById(R.id.biometricCancelButton)
+        // se crea el dialogo con el layout nesesario
+        dialog = builder.create()
 
         executor = ContextCompat.getMainExecutor(requireContext())
 
@@ -39,6 +61,7 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
             override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                 super.onAuthenticationError(errorCode, errString)
                 //messageOnToast("$errString")
+
             }
 
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
@@ -52,6 +75,9 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
             override fun onAuthenticationFailed() {
                 super.onAuthenticationFailed()
                 //messageOnToast("algo fallo")
+               dialog.show()
+                biometricPrompt.cancelAuthentication()
+
             }
         })
 
@@ -64,6 +90,14 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
         if (bioUsed == 1){
             binding.biometricLoginImageButton.setBackgroundDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_face_button))
             binding.biometricInfoTextView.text = "Entrar con FaceID"
+        }
+
+        cancelButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        retryButton.setOnClickListener {
+            biometricPrompt.authenticate(promptInfo)
         }
 
         binding.biometricLoginImageButton.setOnClickListener {
