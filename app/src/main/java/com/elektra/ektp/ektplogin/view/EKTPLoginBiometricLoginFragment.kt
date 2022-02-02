@@ -17,6 +17,7 @@ import com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountActivity
 import com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountFragment
 import com.elektra.ektp.ektpbiometricutil.EKTPBiometricUtil
 import com.elektra.ektp.ektphome.view.EKTPHomeActivity
+import com.elektra.ektp.ektplogin.viewmodel.EKTPLoginBiometricLoginViewModel
 import com.elektra.ektp.ektptoaster.EKTPToaster
 import java.util.concurrent.Executor
 
@@ -26,6 +27,7 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
     private lateinit var executor: Executor
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
+    private lateinit var loginData: ArrayList<String>
 
     private lateinit var retryButton: Button
     private lateinit var cancelButton: Button
@@ -35,15 +37,21 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        // Inflar el layout para este fragmento
         binding = DataBindingUtil.inflate<FragmentEKTPLoginBiometricLoginBinding>(inflater,R.layout.fragment_e_k_t_p_login_biometric_login, container, false)
 
-        val bioUsed = EKTPBiometricUtil().determineBio(requireContext())
+        loginData = EKTPLoginBiometricLoginViewModel().getSavedDataLogin()
+
+        val bioUsed = loginData[1].toInt()
         var dialog: AlertDialog? = null
         val builder = AlertDialog.Builder(requireContext())
-        // usar un layout personalizado
+
+
+        // usar un layout personalizado para el alertdialog
         if (bioUsed == 1) {
             bioAlertLayout = layoutInflater.inflate(R.layout.unrecognized_face_alert_layout, null)
+            binding.biometricLoginImageButton.setBackgroundDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_face_button))
+            binding.biometricInfoTextView.text = "Entrar con FaceID"
         }
         else {
             bioAlertLayout = layoutInflater.inflate(R.layout.unrecognized_finger_alert_layout,null)
@@ -66,7 +74,6 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
 
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                 super.onAuthenticationSucceeded(result)
-                EKTPToaster().makeAToast(requireContext(),"autorizacion con exito")
                 val intent = Intent(activity, EKTPHomeActivity::class.java)
                 val context = view?.context
                 context?.startActivity(intent)
@@ -75,7 +82,7 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
             override fun onAuthenticationFailed() {
                 super.onAuthenticationFailed()
                 //messageOnToast("algo fallo")
-               dialog.show()
+                dialog.show()
                 biometricPrompt.cancelAuthentication()
 
             }
@@ -87,11 +94,7 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
             .setNegativeButtonText("cancelar")
             .build()
 
-        if (bioUsed == 1){
-            binding.biometricLoginImageButton.setBackgroundDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_face_button))
-            binding.biometricInfoTextView.text = "Entrar con FaceID"
-        }
-
+        //botones del alert dialog
         cancelButton.setOnClickListener {
             dialog.dismiss()
         }
@@ -99,6 +102,7 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
         retryButton.setOnClickListener {
             biometricPrompt.authenticate(promptInfo)
         }
+        //botones de alert dialog
 
         binding.biometricLoginImageButton.setOnClickListener {
             biometricPrompt.authenticate(promptInfo)
@@ -122,7 +126,7 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
 
         binding.createAccountTextView.setOnClickListener{view: View ->
             val intent = Intent(activity, EKTPCreateAccountActivity::class.java)
-            val context =view.context
+            val context = view.context
             context.startActivity(intent)
         }
 

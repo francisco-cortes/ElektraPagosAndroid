@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpHomeMainBinding
+import com.elektra.ektp.ektphome.viewmodel.EKTPHomeMainViewModel
 
 class EKTPHomeMainFragment : Fragment() {
 
@@ -19,6 +20,9 @@ class EKTPHomeMainFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate<FragmentEktpHomeMainBinding>(inflater,R.layout.fragment_ektp_home_main,container,false)
+
+        binding.userNameTextView.text = EKTPHomeMainViewModel().getUserHomeMain() + "!"
+
         return binding.root
     }
 }

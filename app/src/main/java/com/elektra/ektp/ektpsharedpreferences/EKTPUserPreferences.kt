@@ -112,4 +112,12 @@ class EKTPUserPreferences(val context: Context) {
         return enSharedPreferences.getInt(SHARED_BIO_STATUS,0)!!
     }
 
+    fun getPhoneUser():String{
+        return enSharedPreferences.getString(SHARED_PHONE_USER,"")!!
+    }
+
+    fun getEmailUser():String{
+        return enSharedPreferences.getString(SHARED_EMAIL_USER,"")!!
+    }
+
 }
