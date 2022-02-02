@@ -31,7 +31,9 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
 
     private lateinit var retryButton: Button
     private lateinit var cancelButton: Button
+    private lateinit var acceptButton: Button
     private lateinit var bioAlertLayout: View
+    private lateinit var noUserAlertLayout: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,12 +41,15 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
     ): View? {
         // Inflar el layout para este fragmento
         binding = DataBindingUtil.inflate<FragmentEKTPLoginBiometricLoginBinding>(inflater,R.layout.fragment_e_k_t_p_login_biometric_login, container, false)
-
         loginData = EKTPLoginBiometricLoginViewModel().getSavedDataLogin()
+        noUserAlertLayout = layoutInflater.inflate(R.layout.no_user_alert_layout,null)
 
-        val bioUsed = loginData[1].toInt()
-        var dialog: AlertDialog? = null
-        val builder = AlertDialog.Builder(requireContext())
+        val userName = EKTPLoginBiometricLoginViewModel().getSavedDataLogin()[3]
+        val bioUsed = EKTPLoginBiometricLoginViewModel().getSavedDataLogin()[1].toInt()
+        var biometricDialog: AlertDialog? = null
+        var noUserDialog: AlertDialog? = null
+        val biometricDialogBuilder = AlertDialog.Builder(requireContext())
+        val noUserDialogBuilder = AlertDialog.Builder(requireContext())
 
 
         // usar un layout personalizado para el alertdialog
@@ -57,11 +62,16 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
             bioAlertLayout = layoutInflater.inflate(R.layout.unrecognized_finger_alert_layout,null)
         }
 
-        builder.setView(bioAlertLayout)
+        biometricDialogBuilder.setView(bioAlertLayout)
         retryButton = bioAlertLayout.findViewById(R.id.biometricRetryButton)
         cancelButton = bioAlertLayout.findViewById(R.id.biometricCancelButton)
         // se crea el dialogo con el layout nesesario
-        dialog = builder.create()
+        biometricDialog = biometricDialogBuilder.create()
+
+        //no user build
+        noUserDialogBuilder.setView(noUserAlertLayout)
+        acceptButton = noUserAlertLayout.findViewById(R.id.acceptButton)
+        noUserDialog = noUserDialogBuilder.create()
 
         executor = ContextCompat.getMainExecutor(requireContext())
 
@@ -82,7 +92,7 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
             override fun onAuthenticationFailed() {
                 super.onAuthenticationFailed()
                 //messageOnToast("algo fallo")
-                dialog.show()
+                biometricDialog.show()
                 biometricPrompt.cancelAuthentication()
 
             }
@@ -96,13 +106,23 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
 
         //botones del alert dialog
         cancelButton.setOnClickListener {
-            dialog.dismiss()
+            biometricDialog.dismiss()
         }
 
         retryButton.setOnClickListener {
             biometricPrompt.authenticate(promptInfo)
         }
         //botones de alert dialog
+
+        if(userName == null || userName == "")
+        {
+            noUserDialog.show()
+            binding.biometricLoginImageButton.isEnabled = false
+        }
+
+        acceptButton.setOnClickListener {
+            noUserDialog.dismiss()
+        }
 
         binding.biometricLoginImageButton.setOnClickListener {
             biometricPrompt.authenticate(promptInfo)

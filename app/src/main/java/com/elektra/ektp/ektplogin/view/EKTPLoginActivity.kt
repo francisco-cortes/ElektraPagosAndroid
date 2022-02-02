@@ -2,6 +2,7 @@ package com.elektra.ektp.ektplogin.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.elektra.ektp.R
@@ -16,7 +17,6 @@ class EKTPLoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView<ActivityLoginBinding>(this,R.layout.activity_login)
-
         val bioStatus = EKTPBiometricUtil().checkBioStatus(this)
         val bioUsed = EKTPBiometricUtil().determineBio(this)
 
@@ -28,6 +28,7 @@ class EKTPLoginActivity : AppCompatActivity() {
             openFragment(EKTPLoginPassLoginFragment())
         }
         EKTPLoginActivityViewModel().saveBiometricStatus(bioStatus,bioUsed)
+
     }
 
     private fun openFragment(fragment: Fragment) {
