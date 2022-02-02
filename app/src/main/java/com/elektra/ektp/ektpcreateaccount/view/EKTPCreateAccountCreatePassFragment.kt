@@ -9,9 +9,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountCreatePassBinding
 import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
@@ -26,6 +28,15 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
     private var passTextVar = ""
     private var passTextVar2 = ""
     private val checkBiometricStatus = preferences.getBioStatus()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().popBackStack()
+            }
+        })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -202,7 +213,7 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
         }
 
         binding.backAppbarButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountContractsFragment)
+            findNavController().popBackStack()
         }
 
         binding.button7.setOnClickListener { view: View ->

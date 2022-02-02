@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
@@ -13,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.get
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountContractsViewBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountContractsViewModel
@@ -20,6 +22,15 @@ import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountContractsVi
 class EKTPCreateAccountContractsViewFragment : Fragment() {
 
     private lateinit var binding: FragmentEktpCreateAccountContractsViewBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().popBackStack()
+            }
+        })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +43,7 @@ class EKTPCreateAccountContractsViewFragment : Fragment() {
         binding.contractBodyTexView.text = LoremIpsum(100).toString()
 
         binding.backAppbarButton.setOnClickListener{view: View ->
-            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsViewFragment_to_EKTPCreateAccountContractsFragment)
+            findNavController().popBackStack()
         }
 
         return binding.root

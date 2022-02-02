@@ -7,9 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountSmsVerificationBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountSMSVerificationViewModel
@@ -26,6 +28,15 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
     private var codechar3 = ""
     private var codechar4 = ""
     private var codechar5 = ""
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().popBackStack()
+            }
+        })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -215,7 +226,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
         }
 
         binding.backAppbarButton.setOnClickListener { view : View ->
-            view.findNavController().navigate(R.id.action_EKTPCreateAccountSMSVerificationFragment_to_EKTPCreateAccountFragment)
+            findNavController().popBackStack()
         }
 
         return  binding.root
