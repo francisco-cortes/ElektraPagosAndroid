@@ -12,12 +12,6 @@ class EKTPCreateAccountActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        @Suppress("UNUSED_VARIABLE")
-        binding = DataBindingUtil.setContentView<ActivityCreateAccountBinding>(this, R.layout.activity_create_account)
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_create_account)
     }
 }
