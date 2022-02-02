@@ -1,12 +1,12 @@
 package com.elektra.ektp.ektphome.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.elektra.ektp.ektpsharedpreferences.EKPTUserApplication
+import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication
 
 class EKTPHomeMainViewModel : ViewModel() {
 
     fun getUserHomeMain() : String{
-        val username = EKPTUserApplication.preferences.getNameUser()
+        val username = EKTPUserApplication.preferences.getNameUser()
         return username
     }
 

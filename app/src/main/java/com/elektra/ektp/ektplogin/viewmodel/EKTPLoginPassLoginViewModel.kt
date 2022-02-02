@@ -1,16 +1,17 @@
 package com.elektra.ektp.ektplogin.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.elektra.ektp.ektpsharedpreferences.EKPTUserApplication
+import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication
 
 class EKTPLoginPassLoginViewModel : ViewModel() {
 
     fun getSavedDataLogin() : ArrayList<String>{
         val loginData = arrayListOf<String>()
 
-        loginData.add(EKPTUserApplication.preferences.getBioStatus().toString())
-        loginData.add(EKPTUserApplication.preferences.getBioType().toString())
-        loginData.add(EKPTUserApplication.preferences.getEncryptToken())
+        loginData.add(EKTPUserApplication.preferences.getBioStatus().toString())
+        loginData.add(EKTPUserApplication.preferences.getBioType().toString())
+        loginData.add(EKTPUserApplication.preferences.getEncryptToken())
+        loginData.add(EKTPUserApplication.preferences.getNameUser())
 
         return  loginData
     }

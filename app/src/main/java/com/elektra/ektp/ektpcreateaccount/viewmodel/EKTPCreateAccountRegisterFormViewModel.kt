@@ -1,8 +1,7 @@
 package com.elektra.ektp.ektpcreateaccount.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.elektra.ektp.ektpsharedpreferences.EKPTUserApplication.Companion.preferences
-import com.elektra.ektp.ektpsharedpreferences.EKTPUserPreferences
+import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
 
 class EKTPCreateAccountRegisterFormViewModel: ViewModel() {
 
