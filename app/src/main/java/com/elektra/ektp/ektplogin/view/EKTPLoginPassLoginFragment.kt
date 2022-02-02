@@ -14,6 +14,7 @@ import androidx.navigation.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEKTPLoginPassLoginBinding
 import com.elektra.ektp.ektpbiometricutil.EKTPBiometricUtil
+import com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountActivity
 import com.elektra.ektp.ektpforgottenpass.view.EKTPForgottenPassActivity
 import com.elektra.ektp.ektphome.view.EKTPHomeActivity
 import com.elektra.ektp.ektplogin.viewmodel.EKTPLoginPassLoginViewModel
@@ -85,6 +86,12 @@ class EKTPLoginPassLoginFragment : Fragment() {
             val intent = Intent(activity, EKTPForgottenPassActivity::class.java)
             val context = view?.context
             context?.startActivity(intent)
+        }
+
+        binding.createAccountTextView.setOnClickListener{view: View ->
+            val intent = Intent(activity, EKTPCreateAccountActivity::class.java)
+            val context = view.context
+            context.startActivity(intent)
         }
 
         return binding.root
