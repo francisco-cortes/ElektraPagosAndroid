@@ -31,7 +31,9 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
 
     private lateinit var retryButton: Button
     private lateinit var cancelButton: Button
+    private lateinit var acceptButton: Button
     private lateinit var bioAlertLayout: View
+    private lateinit var noUserAlertLayout: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,12 +41,15 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
     ): View? {
         // Inflar el layout para este fragmento
         binding = DataBindingUtil.inflate<FragmentEKTPLoginBiometricLoginBinding>(inflater,R.layout.fragment_e_k_t_p_login_biometric_login, container, false)
-
         loginData = EKTPLoginBiometricLoginViewModel().getSavedDataLogin()
+        noUserAlertLayout = layoutInflater.inflate(R.layout.no_user_alert_layout,null)
 
+        val userName = loginData[3]
         val bioUsed = loginData[1].toInt()
         var dialog: AlertDialog? = null
+        var noUserDialog: AlertDialog? = null
         val builder = AlertDialog.Builder(requireContext())
+        val noUserDialogBuilder = AlertDialog.Builder(requireContext())
 
 
         // usar un layout personalizado para el alertdialog
@@ -62,6 +67,11 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
         cancelButton = bioAlertLayout.findViewById(R.id.biometricCancelButton)
         // se crea el dialogo con el layout nesesario
         dialog = builder.create()
+
+        //no user build
+        noUserDialogBuilder.setView(noUserAlertLayout)
+        acceptButton = noUserAlertLayout.findViewById(R.id.acceptButton)
+        noUserDialog = noUserDialogBuilder.create()
 
         executor = ContextCompat.getMainExecutor(requireContext())
 
@@ -103,6 +113,16 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
             biometricPrompt.authenticate(promptInfo)
         }
         //botones de alert dialog
+
+        if(userName == null || userName == "")
+        {
+            noUserDialog.show()
+            binding.biometricLoginImageButton.isEnabled = false
+        }
+
+        acceptButton.setOnClickListener {
+            noUserDialog.dismiss()
+        }
 
         binding.biometricLoginImageButton.setOnClickListener {
             biometricPrompt.authenticate(promptInfo)

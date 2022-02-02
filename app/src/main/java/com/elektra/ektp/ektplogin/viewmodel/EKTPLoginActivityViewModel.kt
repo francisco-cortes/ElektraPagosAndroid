@@ -10,4 +10,12 @@ class EKTPLoginActivityViewModel : ViewModel() {
         EKTPUserApplication.preferences.saveBioType(bioType)
     }
 
+    fun userIsEnrolled () : Boolean {
+        val isEnrolled = false
+        val name = EKTPUserApplication.preferences.getNameUser()
+
+        if (name != null || name != "") isEnrolled == false
+
+        return isEnrolled
+    }
 }
