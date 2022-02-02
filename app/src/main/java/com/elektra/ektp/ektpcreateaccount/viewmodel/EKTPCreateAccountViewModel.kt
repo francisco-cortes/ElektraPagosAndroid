@@ -2,6 +2,7 @@ package com.elektra.ektp.ektpcreateaccount.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication
+import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
 
 class EKTPCreateAccountViewModel(): ViewModel() {
 
@@ -9,14 +10,14 @@ class EKTPCreateAccountViewModel(): ViewModel() {
         nameUser: String, paternalLast: String, maternalLast: String, birthDate: String, birthState: String,
         phone: String, eMailText: String, gender: String
     ){
-        EKTPUserApplication.preferences.saveNameUser(nameUser)
-        EKTPUserApplication.preferences.savePaternalUser(paternalLast)
-        EKTPUserApplication.preferences.saveMaternalUser(maternalLast)
-        EKTPUserApplication.preferences.saveBirthDateUser(birthDate)
-        EKTPUserApplication.preferences.saveBirthStateUser(birthState)
-        EKTPUserApplication.preferences.saveGenderUser(gender)
-        EKTPUserApplication.preferences.saveEmailUser(eMailText)
-        EKTPUserApplication.preferences.savePhoneUser(phone)
+        preferences.saveNameUser(nameUser)
+        preferences.savePaternalUser(paternalLast)
+        preferences.saveMaternalUser(maternalLast)
+        preferences.saveBirthDateUser(birthDate)
+        preferences.saveBirthStateUser(birthState)
+        preferences.saveGenderUser(gender)
+        preferences.saveEmailUser(eMailText)
+        preferences.savePhoneUser(phone)
     }
 
 }
