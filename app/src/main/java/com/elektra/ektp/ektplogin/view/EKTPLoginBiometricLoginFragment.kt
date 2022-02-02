@@ -44,11 +44,11 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
         loginData = EKTPLoginBiometricLoginViewModel().getSavedDataLogin()
         noUserAlertLayout = layoutInflater.inflate(R.layout.no_user_alert_layout,null)
 
-        val userName = loginData[3]
-        val bioUsed = loginData[1].toInt()
-        var dialog: AlertDialog? = null
+        val userName = EKTPLoginBiometricLoginViewModel().getSavedDataLogin()[3]
+        val bioUsed = EKTPLoginBiometricLoginViewModel().getSavedDataLogin()[1].toInt()
+        var biometricDialog: AlertDialog? = null
         var noUserDialog: AlertDialog? = null
-        val builder = AlertDialog.Builder(requireContext())
+        val biometricDialogBuilder = AlertDialog.Builder(requireContext())
         val noUserDialogBuilder = AlertDialog.Builder(requireContext())
 
 
@@ -62,11 +62,11 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
             bioAlertLayout = layoutInflater.inflate(R.layout.unrecognized_finger_alert_layout,null)
         }
 
-        builder.setView(bioAlertLayout)
+        biometricDialogBuilder.setView(bioAlertLayout)
         retryButton = bioAlertLayout.findViewById(R.id.biometricRetryButton)
         cancelButton = bioAlertLayout.findViewById(R.id.biometricCancelButton)
         // se crea el dialogo con el layout nesesario
-        dialog = builder.create()
+        biometricDialog = biometricDialogBuilder.create()
 
         //no user build
         noUserDialogBuilder.setView(noUserAlertLayout)
@@ -92,7 +92,7 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
             override fun onAuthenticationFailed() {
                 super.onAuthenticationFailed()
                 //messageOnToast("algo fallo")
-                dialog.show()
+                biometricDialog.show()
                 biometricPrompt.cancelAuthentication()
 
             }
@@ -106,7 +106,7 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
 
         //botones del alert dialog
         cancelButton.setOnClickListener {
-            dialog.dismiss()
+            biometricDialog.dismiss()
         }
 
         retryButton.setOnClickListener {
