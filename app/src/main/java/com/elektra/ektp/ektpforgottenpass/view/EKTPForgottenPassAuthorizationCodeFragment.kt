@@ -7,16 +7,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpForgottenPassAuthorizationCodeBinding
-import com.elektra.ektp.databinding.FragmentEktpForgottenPassPhoneNumberBinding
 import com.elektra.ektp.ektpforgottenpass.view.viewmodel.EKTPForgottenPassAuthorizationCodeViewModel
+import com.elektra.ektp.ektptoaster.EKTPToaster
 import com.elektra.ektp.uservalidations.UserValidations
 
-class EKTPForgottenPassAuthorizationCodeFragment : Fragment() {
+class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
 
     private lateinit var binding: FragmentEktpForgottenPassAuthorizationCodeBinding
     private val authorizationViewModel: EKTPForgottenPassAuthorizationCodeViewModel by viewModels()
@@ -28,6 +30,17 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment() {
     private var codechar3 = ""
     private var codechar4 = ""
     private var codechar5 = ""
+    val toast = EKTPToaster()
+    val flagBackStack = 2
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                    findNavController().popBackStack()
+            }
+        })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -217,7 +230,7 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment() {
         }
 
         binding.backAppbarButton.setOnClickListener { view : View ->
-            activity?.onBackPressed()
+            findNavController().popBackStack()
         }
 
         return binding.root

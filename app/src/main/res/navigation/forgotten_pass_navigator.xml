@@ -20,9 +20,6 @@
         android:label="fragment_ektp_forgotten_pass_authorization_code"
         tools:layout="@layout/fragment_ektp_forgotten_pass_authorization_code" >
         <action
-            android:id="@+id/action_EKTPForgottenPassAuthorizationCodeFragment_to_EKTPForgottenPassPhoneNumberFragment"
-            app:destination="@id/EKTPForgottenPassPhoneNumberFragment" />
-        <action
             android:id="@+id/action_EKTPForgottenPassAuthorizationCodeFragment_to_EKTPForgottenPassNewPassFragment"
             app:destination="@id/EKTPForgottenPassNewPassFragment" />
     </fragment>
@@ -34,9 +31,6 @@
         <action
             android:id="@+id/action_EKTPForgottenPassNewPassFragment_to_EKTPForgottenPassSuccessfulFragment"
             app:destination="@id/EKTPForgottenPassSuccessfulFragment" />
-        <action
-            android:id="@+id/action_EKTPForgottenPassNewPassFragment_to_EKTPForgottenPassAuthorizationCodeFragment"
-            app:destination="@id/EKTPForgottenPassAuthorizationCodeFragment" />
     </fragment>
     <fragment
         android:id="@+id/EKTPForgottenPassSuccessfulFragment"
