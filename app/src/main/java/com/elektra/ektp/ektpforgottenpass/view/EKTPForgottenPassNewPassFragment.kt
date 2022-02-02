@@ -1,4 +1,4 @@
-package com.elektra.ektp.ektpcreateaccount.view
+package com.elektra.ektp.ektpforgottenpass.view
 
 import android.os.Bundle
 import android.text.Editable
@@ -9,23 +9,34 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
-import com.elektra.ektp.databinding.FragmentEktpCreateAccountCreatePassBinding
-import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
+import com.elektra.ektp.databinding.FragmentEktpForgottenPassNewPassBinding
+import com.elektra.ektp.ektptoaster.EKTPToaster
 import com.elektra.ektp.uservalidations.UserValidations
 
-class EKTPCreateAccountCreatePassFragment : Fragment() {
+class EKTPForgottenPassNewPassFragment : Fragment(){
 
-    private lateinit var binding: FragmentEktpCreateAccountCreatePassBinding
+    private lateinit var binding: FragmentEktpForgottenPassNewPassBinding
     private val validations = UserValidations()
     private var showPassVar = false
     private var showPassVar2 = false
     private var passTextVar = ""
     private var passTextVar2 = ""
-    private val checkBiometricStatus = preferences.getBioStatus()
+    val flagBackStack = 3
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                    findNavController().popBackStack()
+            }
+        })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,12 +44,12 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,
-            R.layout.fragment_ektp_create_account_create_pass, container, false)
+            R.layout.fragment_ektp_forgotten_pass_new_pass, container, false)
 
-        binding.button7.isEnabled = false
+        binding.buttonNewPass.isEnabled = false
         binding.matchPass.isVisible = false
 
-        binding.insertPass.addTextChangedListener(object: TextWatcher {
+        binding.insertNewPass.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
@@ -48,7 +59,7 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
                 if(passTextVar.length < 8 ){
                     binding.notMinIcon.isVisible = true
                     binding.okMinIcon.isVisible = false
-                    binding.button7.isEnabled = false
+                    binding.buttonNewPass.isEnabled = false
                 }
                 else{
                     binding.okMinIcon.isVisible = true
@@ -61,7 +72,7 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
                 else{
                     binding.okRepeatedIcon.isVisible = false
                     binding.notRepeatedIcon.isVisible = true
-                    binding.button7.isEnabled = false
+                    binding.buttonNewPass.isEnabled = false
                 }
                 if (validations.checkBankString(passTextVar)){
                     binding.okNameIcon.isVisible = true
@@ -70,7 +81,7 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
                 else{
                     binding.okNameIcon.isVisible = false
                     binding.notNameIcon.isVisible = true
-                    binding.button7.isEnabled = false
+                    binding.buttonNewPass.isEnabled = false
                 }
                 if (validations.checkConsecutiveString(passTextVar)){
                     binding.okMConsecutiveIcon.isVisible = true
@@ -79,7 +90,7 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
                 else{
                     binding.okMConsecutiveIcon.isVisible = false
                     binding.notConsecutiveIcon.isVisible = true
-                    binding.button7.isEnabled = false
+                    binding.buttonNewPass.isEnabled = false
                 }
                 if(passTextVar.length in 8..14 ){
                     binding.okMaxIcon.isVisible = true
@@ -88,15 +99,15 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
                 else{
                     binding.okMaxIcon.isVisible = false
                     binding.notMaxIcon.isVisible = true
-                    binding.button7.isEnabled = false
+                    binding.buttonNewPass.isEnabled = false
                 }
                 if (passTextVar.length in 8..14 && validations.checkRepeatedChars(passTextVar) && validations.checkBankString(passTextVar)
                     && validations.checkConsecutiveString(passTextVar)){
-                    binding.insertPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    binding.insertNewPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                 }
                 else{
-                    binding.insertPass.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button7.isEnabled = false
+                    binding.insertNewPass.setBackgroundResource(R.drawable.validation_edit_text)
+                    binding.buttonNewPass.isEnabled = false
                 }
             }
 
@@ -106,12 +117,12 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
                     if (passTextVar != passTextVar2){
                         binding.matchPass.isVisible = true
                         binding.notMatchesIcon.isVisible = true
-                        binding.button7.isEnabled = false
+                        binding.buttonNewPass.isEnabled = false
                     }
                     else{
                         binding.notMatchesIcon.isVisible = false
                         binding.matchPass.isVisible = false
-                        binding.button7.isEnabled = (passTextVar.length in 8..14 && validations.checkRepeatedChars(passTextVar) && validations.checkBankString(passTextVar)
+                        binding.buttonNewPass.isEnabled = (passTextVar.length in 8..14 && validations.checkRepeatedChars(passTextVar) && validations.checkBankString(passTextVar)
                                 && validations.checkConsecutiveString(passTextVar))
                     }
                 }
@@ -126,13 +137,13 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
                         binding.insertConfirmPass.setBackgroundResource(R.drawable.validation_edit_text)
                         binding.notMatchesIcon.isVisible = true
                         binding.matchPass.isVisible = true
-                        binding.button7.isEnabled = false
+                        binding.buttonNewPass.isEnabled = false
                     }
                     else{
                         binding.insertConfirmPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                         binding.notMatchesIcon.isVisible = false
                         binding.matchPass.isVisible = false
-                        binding.button7.isEnabled = (passTextVar.length in 8..14 && validations.checkRepeatedChars(passTextVar) && validations.checkBankString(passTextVar)
+                        binding.buttonNewPass.isEnabled = (passTextVar.length in 8..14 && validations.checkRepeatedChars(passTextVar) && validations.checkBankString(passTextVar)
                                 && validations.checkConsecutiveString(passTextVar))
                     }
                 }
@@ -145,13 +156,13 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
                         binding.insertConfirmPass.setBackgroundResource(R.drawable.validation_edit_text)
                         binding.notMatchesIcon.isVisible = true
                         binding.matchPass.isVisible = true
-                        binding.button7.isEnabled = false
+                        binding.buttonNewPass.isEnabled = false
                     }
                     else{
                         binding.insertConfirmPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                         binding.notMatchesIcon.isVisible = false
                         binding.matchPass.isVisible = false
-                        binding.button7.isEnabled = (passTextVar.length in 8..14 && validations.checkRepeatedChars(passTextVar) && validations.checkBankString(passTextVar)
+                        binding.buttonNewPass.isEnabled = (passTextVar.length in 8..14 && validations.checkRepeatedChars(passTextVar) && validations.checkBankString(passTextVar)
                                 && validations.checkConsecutiveString(passTextVar))
                     }
                 }
@@ -164,13 +175,13 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
                         binding.insertConfirmPass.setBackgroundResource(R.drawable.validation_edit_text)
                         binding.notMatchesIcon.isVisible = true
                         binding.matchPass.isVisible = true
-                        binding.button7.isEnabled = false
+                        binding.buttonNewPass.isEnabled = false
                     }
                     else{
                         binding.insertConfirmPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                         binding.notMatchesIcon.isVisible = false
                         binding.matchPass.isVisible = false
-                        binding.button7.isEnabled = (passTextVar.length in 8..14 && validations.checkRepeatedChars(passTextVar) && validations.checkBankString(passTextVar)
+                        binding.buttonNewPass.isEnabled = (passTextVar.length in 8..14 && validations.checkRepeatedChars(passTextVar) && validations.checkBankString(passTextVar)
                                 && validations.checkConsecutiveString(passTextVar))
                     }
                 }
@@ -180,11 +191,11 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
         binding.showPassButton1.setOnClickListener {
 
             if (!showPassVar) {
-                binding.insertPass.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                binding.insertNewPass.transformationMethod = HideReturnsTransformationMethod.getInstance()
                 showPassVar = true
             }
             else {
-                binding.insertPass.transformationMethod = PasswordTransformationMethod.getInstance()
+                binding.insertNewPass.transformationMethod = PasswordTransformationMethod.getInstance()
                 showPassVar = false
             }
         }
@@ -201,21 +212,14 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
             }
         }
 
-        binding.backAppbarButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountContractsFragment)
+        binding.backAppbarButton.setOnClickListener { view : View ->
+            view.findNavController().popBackStack()
         }
 
-        binding.button7.setOnClickListener { view: View ->
-            if (checkBiometricStatus ==1 ){
-                view.findNavController().navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountBiometricsActivationFragment)
-            }
-            else{
-                view.findNavController().navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountSuccessfulFragment)
-            }
-
+        binding.buttonNewPass.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_EKTPForgottenPassNewPassFragment_to_EKTPForgottenPassSuccessfulFragment)
         }
 
         return binding.root
     }
-
 }

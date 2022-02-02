@@ -14,7 +14,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountBiometricsActivationBinding
-import com.elektra.ektp.ektpsharedpreferences.EKPTUserApplication.Companion.preferences
+import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
 import com.elektra.ektp.uservalidations.KeyGenUtil
 import java.util.concurrent.Executor
 

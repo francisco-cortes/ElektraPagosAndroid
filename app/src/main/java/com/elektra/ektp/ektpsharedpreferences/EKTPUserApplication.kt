@@ -2,7 +2,7 @@ package com.elektra.ektp.ektpsharedpreferences
 
 import android.app.Application
 
-class EKPTUserApplication: Application() {
+class EKTPUserApplication: Application() {
     companion object{
         lateinit var preferences: EKTPUserPreferences
     }
