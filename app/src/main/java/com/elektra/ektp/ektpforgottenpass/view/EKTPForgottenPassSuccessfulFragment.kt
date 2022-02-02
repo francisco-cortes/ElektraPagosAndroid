@@ -24,9 +24,7 @@ class EKTPForgottenPassSuccessfulFragment : Fragment() {
         R.layout.fragment_ektp_forgotten_pass_successful, container, false)
 
         binding.buttonSuccessful.setOnClickListener { view: View ->
-            val context = view.context
-            val intent = Intent(activity, EKTPLoginPassLoginFragment::class.java)
-            context.startActivity(intent)
+            activity?.finish()
         }
 
         return binding.root

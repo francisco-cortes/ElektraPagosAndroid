@@ -82,7 +82,7 @@
                     android:layout_marginTop="@dimen/_30sdp"
                     android:layout_marginStart="@dimen/_43sdp"
                     android:layout_marginEnd="@dimen/_43sdp"
-                    android:theme="@style/title_1"
+                    android:theme="@style/title_2"
                     android:text="@string/forggoten_insert_new_label"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>

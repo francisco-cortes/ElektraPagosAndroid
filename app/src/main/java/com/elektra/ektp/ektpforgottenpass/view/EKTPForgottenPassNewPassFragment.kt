@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpForgottenPassNewPassBinding
 import com.elektra.ektp.uservalidations.UserValidations
@@ -196,6 +197,14 @@ class EKTPForgottenPassNewPassFragment : Fragment() {
                 binding.insertConfirmPass.transformationMethod = PasswordTransformationMethod.getInstance()
                 showPassVar2 = false
             }
+        }
+
+        binding.backAppbarButton.setOnClickListener { view : View ->
+            activity?.onBackPressed()
+        }
+
+        binding.buttonNewPass.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_EKTPForgottenPassNewPassFragment_to_EKTPForgottenPassSuccessfulFragment)
         }
 
         return binding.root

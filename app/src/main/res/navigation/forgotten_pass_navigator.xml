@@ -32,7 +32,15 @@
         android:label="fragment_ektp_forgotten_pass_new_pass"
         tools:layout="@layout/fragment_ektp_forgotten_pass_new_pass" >
         <action
-            android:id="@+id/action_EKTPForgottenPassNewPassFragment_to_EKTPForgottenPassPhoneNumberFragment"
-            app:destination="@id/EKTPForgottenPassPhoneNumberFragment" />
+            android:id="@+id/action_EKTPForgottenPassNewPassFragment_to_EKTPForgottenPassSuccessfulFragment"
+            app:destination="@id/EKTPForgottenPassSuccessfulFragment" />
+        <action
+            android:id="@+id/action_EKTPForgottenPassNewPassFragment_to_EKTPForgottenPassAuthorizationCodeFragment"
+            app:destination="@id/EKTPForgottenPassAuthorizationCodeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/EKTPForgottenPassSuccessfulFragment"
+        android:name="com.elektra.ektp.ektpforgottenpass.view.EKTPForgottenPassSuccessfulFragment"
+        android:label="fragment_ektp_forgotten_pass_successful"
+        tools:layout="@layout/fragment_ektp_forgotten_pass_successful" />
 </navigation>

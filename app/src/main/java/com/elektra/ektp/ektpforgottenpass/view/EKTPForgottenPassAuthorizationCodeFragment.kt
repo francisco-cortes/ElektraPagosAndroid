@@ -217,7 +217,7 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment() {
         }
 
         binding.backAppbarButton.setOnClickListener { view : View ->
-            view.findNavController().navigate(R.id.action_EKTPForgottenPassAuthorizationCodeFragment_to_EKTPForgottenPassPhoneNumberFragment)
+            activity?.onBackPressed()
         }
 
         return binding.root
