@@ -8,10 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEkptCreateAccountRegisterFormBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountRegisterFormViewModel
@@ -43,6 +45,15 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
     var colonyFlag = 0
     var streetFlag = 0
     var exteriorFlag = 0
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().popBackStack()
+            }
+        })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -622,7 +633,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
         }
 
         binding.backAppbarButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountFragment)
+            findNavController().popBackStack()
         }
 
         return binding.root
