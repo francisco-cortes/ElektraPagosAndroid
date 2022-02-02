@@ -40,6 +40,7 @@ class EKTPCreateAccountContractsFragment : Fragment() {
             R.layout.fragment_ektp_create_account_contracts, container, false)
 
         binding.termsContinueButton.isEnabled = false
+        binding.acceptanceCheckbox.isChecked = false
 
         binding.term1TextView.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
