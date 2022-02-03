@@ -8,16 +8,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="300dp"
-        android:layout_height="356dp">
+        android:layout_height="500dp">
 
         <ImageView
-            android:id="@+id/fingerUnrecognizedImageView"
+            android:id="@+id/cantDepositImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_44sdp"
-            android:layout_marginTop="@dimen/_44sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:layout_marginEnd="@dimen/_44sdp"
-            android:background="@drawable/ic_finger_unrecognizable_alert"
+            android:background="@drawable/ic_cant_deposit_alert"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -27,51 +27,40 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8sdp"
-            android:text="@string/unrecognized_finger_title_label"
+            android:text="@string/cant_deposit_title_label"
             android:theme="@style/title_2"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fingerUnrecognizedImageView" />
+            app:layout_constraintTop_toBottomOf="@+id/cantDepositImageView" />
 
         <TextView
             android:id="@+id/alertBodyTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
-            android:text="@string/unrecognized_finger_body_label"
+            android:text="@string/cant_deposit_body_label"
             android:theme="@style/body_1"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/alertTitleTextView" />
 
         <Button
-            android:id="@+id/biometricRetryButton"
-            android:layout_width="wrap_content"
+            android:id="@+id/acceptButton"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_25sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
-            android:backgroundTint="@color/elektra_light_gray"
-            android:text="@string/unrecognized_finger_retry_button_label"
-            android:textColor="@color/elektra_gray"
-            android:theme="@style/text_button_2"
-            app:layout_constraintEnd_toStartOf="@+id/biometricCancelButton"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/alertBodyTextView" />
-
-        <Button
-            android:id="@+id/biometricCancelButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_25sdp"
-            android:text="@string/unrecognized_finger_cancel_button_label"
+            android:layout_marginStart="@dimen/_31sdp"
+            android:layout_marginEnd="@dimen/_31sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="@string/cant_deposit_accept_button_label"
             android:theme="@style/text_button_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/biometricRetryButton"
-            app:layout_constraintTop_toBottomOf="@+id/alertBodyTextView" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/alertBodyTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

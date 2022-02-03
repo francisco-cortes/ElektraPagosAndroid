@@ -263,4 +263,39 @@
     <string name="prompt_info_subtitle">Please login to get access</string>
     <string name="prompt_info_description">Sample App is using Android biometric authentication</string>
     <string name="prompt_info_use_app_password">Use app password</string>
+    
+    <!--alert dialogs labels-->
+    <!--no user case -->
+    <string name="no_user_alert_title_label">No existe usuario</string>
+    <string name="no_user_alert_body_label">Crea una cuenta para acceder a todos los servicios</string>
+    <string name="no_user_alert_accept_button_label">ACEPTAR</string>
+    <!--no service case-->
+    <string name="no_service_title_label">Sin servicio</string>
+    <string name="no_service_body_label">Intenta más tarde</string>
+    <string name="no_service_accept_button_label">ACEPTAR</string>
+    <!--incorrect password-->
+    <string name="incorrect_password_title_label">Contraseña incorrecta</string>
+    <string name="incorrect_password_body_label">Verificala nuevamente. Después de \n 3 intentos erróneos se bloqueará </string>
+    <string name="incorrect_password_attempt_label">INTENTO </string>
+    <string name="incorrect_password_accept_button_label">ACEPTAR</string>
+    <!--blocked password-->
+    <string name="locked_password_title_label">Contraseña bloqueada</string>
+    <string name="locked_password_body_label">Por tu seguridad la App \n fue bloqueada</string>
+    <string name="locked_password_cancel_button_label">CANCELAR</string>
+    <string name="locked_passwprd_unlock_button_label">DESBLOQUEAR</string>
+    <!--unrecognized face-->
+    <string name="unrecognized_face_title_label">Rostro no reconocido</string>
+    <string name="unrecognized_face_body_label">Intenta nuevamente</string>
+    <string name="unrecognized_face_retry_button_label">REINTENTAR</string>
+    <string name="unrecognized_face_cancel_button_label">CANCELAR</string>
+    <!--unrecognized finger-->
+    <string name="unrecognized_finger_title_label">Huella no reconocida</string>
+    <string name="unrecognized_finger_body_label">Intenta nuevamente</string>
+    <string name="unrecognized_finger_retry_button_label">REINTENTAR</string>
+    <string name="unrecognized_finger_cancel_button_label">CANCELAR</string>
+    <!--cant deposit-->
+    <string name="cant_deposit_title_label">No se puede \n depositar el dinero</string>
+    <string name="cant_deposit_body_label">Intenta más tarde o <u>comunicate</u> \n al Center de Ayuda</string>
+    <string name="cant_deposit_accept_button_label">ACEPTAR</string>
+
 </resources>
