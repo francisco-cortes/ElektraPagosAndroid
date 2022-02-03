@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -48,6 +49,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
             R.layout.fragment_ektp_create_account_sms_verification, container, false)
 
         binding.smsContinueButton.isEnabled = false
+        binding.invalidSMSTextView.isVisible = true
 
         binding.verificationNumber1.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -56,6 +58,11 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 codechar1 = s.toString()
+                binding.verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                 codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
@@ -227,7 +234,12 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                 view.findNavController().navigate(R.id.action_EKTPCreateAccountSMSVerificationFragment_to_EKPTCreateAccountRegisterFormFragment)
             }
             else{
-
+                binding.verificationNumber1.setBackgroundResource(R.drawable.validation_edit_text)
+                binding.verificationNumber2.setBackgroundResource(R.drawable.validation_edit_text)
+                binding.verificationNumber3.setBackgroundResource(R.drawable.validation_edit_text)
+                binding.verificationNumber4.setBackgroundResource(R.drawable.validation_edit_text)
+                binding.verificationNumber5.setBackgroundResource(R.drawable.validation_edit_text)
+                binding.invalidSMSTextView.isVisible = true
             }
 
         }
