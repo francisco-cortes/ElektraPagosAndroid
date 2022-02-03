@@ -293,8 +293,8 @@
     <string name="unrecognized_finger_retry_button_label">REINTENTAR</string>
     <string name="unrecognized_finger_cancel_button_label">CANCELAR</string>
     <!--cant deposit-->
-    <string name="cant_deposit_title_label">Rostro no reconocido</string>
-    <string name="cant_deposit_body_label">Intenta nuevamente</string>
+    <string name="cant_deposit_title_label">No se puede \n depositar el dinero</string>
+    <string name="cant_deposit_body_label">Intenta más tarde o <u>comunicate</u> \n al Center de Ayuda</string>
     <string name="cant_deposit_accept_button_label">ACEPTAR</string>
 
 </resources>
