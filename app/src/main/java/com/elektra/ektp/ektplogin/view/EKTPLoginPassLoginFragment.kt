@@ -17,6 +17,7 @@ import com.elektra.ektp.ektpbiometricutil.EKTPBiometricUtil
 import com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountActivity
 import com.elektra.ektp.ektpforgottenpass.view.EKTPForgottenPassActivity
 import com.elektra.ektp.ektphome.view.EKTPHomeActivity
+import com.elektra.ektp.ektplogin.viewmodel.EKTPLoginActivityViewModel
 import com.elektra.ektp.ektplogin.viewmodel.EKTPLoginPassLoginViewModel
 
 class EKTPLoginPassLoginFragment : Fragment() {
@@ -30,6 +31,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        EKTPLoginActivityViewModel().setBiometricLogin(false)
         binding =  DataBindingUtil.inflate<FragmentEKTPLoginPassLoginBinding>(inflater,R.layout.fragment_e_k_t_p_login_pass_login, container, false)
         noUserAlertLayout = layoutInflater.inflate(R.layout.no_user_alert_layout,null)
 
@@ -46,6 +48,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
 
         if (checkBioStatus!=1){
             binding.biometricSignInButton.isGone = true
+            binding.backAppbarButton.isGone = true
         }
 
         if (bioUsed==1){
@@ -70,7 +73,11 @@ class EKTPLoginPassLoginFragment : Fragment() {
         }
 
         binding.backAppbarButton.setOnClickListener { view: View ->
-            activity?.onBackPressed()
+            requireActivity()
+                .supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.loginNavHostFragment, EKTPLoginBiometricLoginFragment())
+                .commitNow()
         }
 
         binding.biometricSignInButton.setOnClickListener { view: View ->

@@ -17,6 +17,7 @@ import com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountActivity
 import com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountFragment
 import com.elektra.ektp.ektpbiometricutil.EKTPBiometricUtil
 import com.elektra.ektp.ektphome.view.EKTPHomeActivity
+import com.elektra.ektp.ektplogin.viewmodel.EKTPLoginActivityViewModel
 import com.elektra.ektp.ektplogin.viewmodel.EKTPLoginBiometricLoginViewModel
 import com.elektra.ektp.ektptoaster.EKTPToaster
 import java.util.concurrent.Executor
@@ -40,6 +41,7 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflar el layout para este fragmento
+        EKTPLoginActivityViewModel().setBiometricLogin(true)
         binding = DataBindingUtil.inflate<FragmentEKTPLoginBiometricLoginBinding>(inflater,R.layout.fragment_e_k_t_p_login_biometric_login, container, false)
         loginData = EKTPLoginBiometricLoginViewModel().getSavedDataLogin()
         noUserAlertLayout = layoutInflater.inflate(R.layout.no_user_alert_layout,null)

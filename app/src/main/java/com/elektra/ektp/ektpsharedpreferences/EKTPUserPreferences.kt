@@ -20,6 +20,7 @@ class EKTPUserPreferences(val context: Context) {
     val SHARED_BIO_TYPE = "BiometricUSed"
     val SHARED_ENCRYPT_TOKEN = "Token"
     val SHARED_BIO_STATUS = "BioStatus"
+    val SHARED_LOGIN_FRAGMENT = "isLoginWithBiometric"
 
     private val enSharedPreferences: SharedPreferences = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         EncryptedSharedPreferences.create(
@@ -118,6 +119,14 @@ class EKTPUserPreferences(val context: Context) {
 
     fun getEmailUser():String{
         return enSharedPreferences.getString(SHARED_EMAIL_USER,"")!!
+    }
+
+    fun saveLoginWithBio(isBioLogin: Boolean){
+        enSharedPreferences.edit().putBoolean(SHARED_LOGIN_FRAGMENT,isBioLogin).apply()
+    }
+
+    fun getLoginWithBio(): Boolean{
+        return  enSharedPreferences.getBoolean(SHARED_LOGIN_FRAGMENT,true)!!
     }
 
 }
