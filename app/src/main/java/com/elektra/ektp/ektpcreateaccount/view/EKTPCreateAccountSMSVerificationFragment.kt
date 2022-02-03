@@ -49,7 +49,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
             R.layout.fragment_ektp_create_account_sms_verification, container, false)
 
         binding.smsContinueButton.isEnabled = false
-        binding.invalidSMSTextView.isVisible = true
+        binding.invalidSMSTextView.isVisible = false
 
         binding.verificationNumber1.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -63,6 +63,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                 binding.verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                 binding.verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                 binding.verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.invalidSMSTextView.isVisible = false
                 codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
@@ -230,7 +231,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
         })
 
         binding.smsContinueButton.setOnClickListener { view: View ->
-            if (smsVerificationViewModel.checkSMSVerification(codeSMS)){
+            if (!smsVerificationViewModel.checkSMSVerification(codeSMS)){
                 view.findNavController().navigate(R.id.action_EKTPCreateAccountSMSVerificationFragment_to_EKPTCreateAccountRegisterFormFragment)
             }
             else{
