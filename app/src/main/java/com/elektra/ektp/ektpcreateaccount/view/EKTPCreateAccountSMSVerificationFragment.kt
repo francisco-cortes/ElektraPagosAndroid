@@ -21,6 +21,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
     private val verificationCodeViewModel: EKTPCreateAccountSMSVerificationViewModel by viewModels()
     val validations = UserValidations()
+    private val smsVerificationViewModel: EKTPCreateAccountSMSVerificationViewModel by viewModels()
 
     private lateinit var codeSMS: String
     private var codechar1 = ""
@@ -222,7 +223,13 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
         })
 
         binding.smsContinueButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_EKTPCreateAccountSMSVerificationFragment_to_EKPTCreateAccountRegisterFormFragment)
+            if (smsVerificationViewModel.checkSMSVerification(codeSMS)){
+                view.findNavController().navigate(R.id.action_EKTPCreateAccountSMSVerificationFragment_to_EKPTCreateAccountRegisterFormFragment)
+            }
+            else{
+                
+            }
+
         }
 
         binding.backAppbarButton.setOnClickListener { view : View ->
