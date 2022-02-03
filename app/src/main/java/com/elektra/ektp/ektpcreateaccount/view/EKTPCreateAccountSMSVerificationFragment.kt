@@ -78,6 +78,12 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 codechar1 = s.toString()
+                binding.verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.invalidSMSTextView.isVisible = false
                 codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
@@ -99,6 +105,12 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 codechar2 = s.toString()
+                binding.verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.invalidSMSTextView.isVisible = false
                 codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
@@ -113,6 +125,12 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 codechar2 = s.toString()
+                binding.verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.invalidSMSTextView.isVisible = false
                 codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
@@ -134,6 +152,12 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 codechar3 = s.toString()
+                binding.verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.invalidSMSTextView.isVisible = false
                 codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
@@ -148,6 +172,12 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 codechar3 = s.toString()
+                binding.verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.invalidSMSTextView.isVisible = false
                 codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
@@ -169,6 +199,12 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 codechar4 = s.toString()
+                binding.verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.invalidSMSTextView.isVisible = false
                 codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
@@ -183,6 +219,12 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 codechar4 = s.toString()
+                binding.verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.invalidSMSTextView.isVisible = false
                 codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
@@ -204,6 +246,12 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 codechar5 = s.toString()
+                binding.verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.invalidSMSTextView.isVisible = false
                 codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
@@ -217,6 +265,12 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 codechar5 = s.toString()
+                binding.verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                binding.invalidSMSTextView.isVisible = false
                 codeSMS = validations.concatenaterCode(
                     codechar1, codechar2, codechar3, codechar4, codechar5
                 )
