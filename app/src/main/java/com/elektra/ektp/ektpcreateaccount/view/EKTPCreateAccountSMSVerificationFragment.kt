@@ -227,7 +227,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                 view.findNavController().navigate(R.id.action_EKTPCreateAccountSMSVerificationFragment_to_EKPTCreateAccountRegisterFormFragment)
             }
             else{
-                
+
             }
 
         }

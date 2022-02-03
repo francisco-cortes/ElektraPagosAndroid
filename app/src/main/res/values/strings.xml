@@ -48,6 +48,7 @@
     <string name="fragment_verification_insert_code">Ingresa el código de verificación</string>
     <string name="fragment_verification_recieved">Recibiste un número de 5 dígitos por SMS</string>
     <string name="fragment_verification_resend_code"><u>Reenviar Código</u></string>
+    <string name="invalid_sms_verification">Tu código es incorrecto, verifícalo\nnuevamente para continuar</string>
 
     <!-- Fragment crete account form strings -->
     <string name="form_header_label">Registro</string>
