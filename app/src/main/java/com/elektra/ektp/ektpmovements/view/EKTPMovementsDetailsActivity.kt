@@ -54,6 +54,10 @@ class EKTPMovementsDetailsActivity : AppCompatActivity() {
             Toast.makeText(this, "Compartir detalles de movimiento", Toast.LENGTH_SHORT)
                 .show()
         }
+
+        binding.backAppbarButton.setOnClickListener {
+            onBackPressed()
+        }
         
     }
 
@@ -92,5 +96,11 @@ class EKTPMovementsDetailsActivity : AppCompatActivity() {
         }
         // return the bitmap
         return screenshot
+    }
+
+    override fun onBackPressed(){
+        super.onBackPressed()
+        finish()
+
     }
 }
