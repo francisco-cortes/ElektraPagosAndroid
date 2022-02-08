@@ -77,7 +77,7 @@
                     android:layout_height="@dimen/_20sdp"
                     android:background="@drawable/ic_forward_arrow"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="@dimen/_55sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
                     app:layout_constraintTop_toTopOf="@id/notifi1Title"/>
 
                 <TextView
@@ -132,7 +132,7 @@
                     android:layout_height="@dimen/_20sdp"
                     android:background="@drawable/ic_forward_arrow"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="@dimen/_55sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
                     app:layout_constraintTop_toTopOf="@id/recibeTextView"/>
 
                 <TextView
