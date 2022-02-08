@@ -6,13 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpMovementsListBinding
 import com.elektra.ektp.ektpmovements.model.EKTPMovementsModel
+import com.elektra.ektp.ektpmovements.viewmodel.EKTPMovementsRecyclerViewAdapter
 
 class EKTPMovementsListFragment : Fragment() {
     
 private lateinit var binding: FragmentEktpMovementsListBinding
+    private lateinit var manager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,8 +78,22 @@ private lateinit var binding: FragmentEktpMovementsListBinding
                 "Francisco Javier Cortes Torres", "Envío de dinero", "12345678",
                 "Transferencia exitosa")
         )
+
+        manager = LinearLayoutManager(this.context)
+
+        binding.movementsRecyclerView.apply{
+            adapter = EKTPMovementsRecyclerViewAdapter(this.context,data)
+            layoutManager = manager
+
+        }
         
         return binding.root
+    }
+
+    companion object {
+        fun newInstance(): EKTPMovementsListFragment {
+            return EKTPMovementsListFragment()
+        }
     }
 
 }
