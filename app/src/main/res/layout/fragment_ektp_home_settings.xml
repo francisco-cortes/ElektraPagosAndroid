@@ -91,7 +91,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:maxWidth="@dimen/_270sdp"
-                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_16sdp"
                             android:text="@string/settings_change_recovery_pass"
                             android:theme="@style/label_edit_text"
                             app:layout_constraintStart_toEndOf="@+id/changePassStartImage"
