@@ -12,6 +12,7 @@
         android:theme="@style/Theme.ElektraPagos">
         <activity
             android:name=".ektpmovements.view.EKTPMovementsActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".ektpforgottenpass.view.EKTPForgottenPassActivity"
