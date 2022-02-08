@@ -75,7 +75,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/hiUserNameTextView"
                     app:layout_constraintStart_toEndOf="@+id/hiUserNameTextView"/>
-                <!---->
+
                 <ImageButton
                     android:id="@+id/balanceMovementsImageButton"
                     android:layout_width="@dimen/_91sdp"
