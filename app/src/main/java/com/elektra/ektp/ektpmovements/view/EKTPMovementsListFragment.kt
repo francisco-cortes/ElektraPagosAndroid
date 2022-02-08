@@ -10,7 +10,7 @@ import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpMovementsListBinding
 
 class EKTPMovementsListFragment : Fragment() {
-
+    
 private lateinit var binding: FragmentEktpMovementsListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +23,7 @@ private lateinit var binding: FragmentEktpMovementsListBinding
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater,
+        binding = DataBindingUtil.inflate(inflater, 
             R.layout.fragment_ektp_movements_list, container, false)
         
         return binding.root
