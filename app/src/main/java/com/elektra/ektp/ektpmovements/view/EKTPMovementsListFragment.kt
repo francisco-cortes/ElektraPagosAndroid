@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,7 +21,12 @@ private lateinit var binding: FragmentEktpMovementsListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                isEnabled = false
+                activity?.onBackPressed()
+            }
+        })
     }
 
     override fun onCreateView(
@@ -85,6 +91,10 @@ private lateinit var binding: FragmentEktpMovementsListBinding
             adapter = EKTPMovementsRecyclerViewAdapter(this.context,data)
             layoutManager = manager
 
+        }
+
+        binding.backAppbarButton.setOnClickListener { view: View ->
+            activity?.finish()
         }
         
         return binding.root
