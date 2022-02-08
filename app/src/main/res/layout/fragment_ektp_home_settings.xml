@@ -25,8 +25,8 @@
 
                 <ImageView
                     android:id="@+id/appLogoImage"
-                    android:layout_width="@dimen/_115sdp"
-                    android:layout_height="@dimen/_44sdp"
+                    android:layout_width="@dimen/_127sdp"
+                    android:layout_height="@dimen/_49sdp"
                     android:background="@drawable/ic_home_appbar_elektra_logo"
                     android:layout_marginTop="@dimen/_35sdp"
                     app:layout_constraintEnd_toEndOf="parent"
