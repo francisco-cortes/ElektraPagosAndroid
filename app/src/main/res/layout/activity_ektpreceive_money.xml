@@ -11,10 +11,11 @@
         android:orientation="vertical">
 
         <fragment
-            android:id="@+id/receiveMoneyNavHostFragment"
+            android:id="@+id/reciveMoneyNavHostFragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:navGraph="@navigation/receive_money_navigator"
             app:defaultNavHost = "true"/>
     </LinearLayout>
 </layout>

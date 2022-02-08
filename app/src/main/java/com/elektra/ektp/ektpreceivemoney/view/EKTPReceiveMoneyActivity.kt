@@ -13,6 +13,6 @@ class EKTPReceiveMoneyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView<ActivityEktpreceiveMoneyBinding>(this,R.layout.activity_ektpreceive_money)
-        
+
     }
 }
