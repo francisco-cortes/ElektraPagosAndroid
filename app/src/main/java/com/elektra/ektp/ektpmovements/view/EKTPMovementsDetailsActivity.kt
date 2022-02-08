@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
@@ -46,6 +47,13 @@ class EKTPMovementsDetailsActivity : AppCompatActivity() {
         )
 
         binding.movementsDetailsItem = dataList
+
+        binding.shareButtonDetailsCardView.setOnClickListener {
+            val bitMap = getScreenShot(binding.detailsCardViewToShare)
+            shareImage(bitMap)
+            Toast.makeText(this, "Compartir detalles de movimiento", Toast.LENGTH_SHORT)
+                .show()
+        }
         
     }
 
