@@ -263,7 +263,7 @@
     <string name="prompt_info_subtitle">Please login to get access</string>
     <string name="prompt_info_description">Sample App is using Android biometric authentication</string>
     <string name="prompt_info_use_app_password">Use app password</string>
-    
+
     <!--alert dialogs labels-->
     <!--no user case -->
     <string name="no_user_alert_title_label">No existe usuario</string>
