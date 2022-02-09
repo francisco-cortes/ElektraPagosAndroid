@@ -72,7 +72,7 @@ class EKTPMovementsDetailsActivity : AppCompatActivity() {
             mediaImage.setReadable(true, false)
             val intent = Intent(Intent.ACTION_SEND)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            val uriIntent = FileProvider.getUriForFile(this, "com.inteligenciadedatoseinovacion.elektrapagos", mediaImage)
+            val uriIntent = FileProvider.getUriForFile(this, "com.elektra.ektp", mediaImage)
             intent.putExtra(Intent.EXTRA_STREAM, uriIntent)
             intent.type = "image/png"
             startActivity(Intent.createChooser(intent, "Compartir imagen vía"))
