@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.elektra.ektp">
+    package="com.elektra.ektp" >
 
     <application
+        android:name=".ektpsharedpreferences.EKTPUserApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ElektraPagos">
+        android:theme="@style/Theme.ElektraPagos" >
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".ektpforgottenpass.view.EKTPForgottenPassActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HighLight" />
+        <activity
+            android:name=".ektpcreateaccount.view.EKTPCreateAccountActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HighLight" />
+        <activity
+            android:name=".ektphome.view.EKTPHomeSettingsHelpActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ektphome.view.EKTPHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ektplogin.view.EKTPLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ektpsplashactivity.view.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

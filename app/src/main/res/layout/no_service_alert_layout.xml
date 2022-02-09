@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_width="300dp"
+    android:layout_height="356dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="300dp"
+        android:layout_height="356dp">
+
+        <ImageView
+            android:id="@+id/noServiceImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_44sdp"
+            android:layout_marginTop="@dimen/_44sdp"
+            android:layout_marginEnd="@dimen/_44sdp"
+            android:background="@drawable/ic_no_service_alert"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/alertTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="@string/no_service_title_label"
+            android:theme="@style/title_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/noServiceImageView" />
+
+        <TextView
+            android:id="@+id/alertBodyTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/no_service_body_label"
+            android:theme="@style/body_1"
+            android:layout_marginEnd="@dimen/_31sdp"
+            android:layout_marginStart="@dimen/_31sdp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/alertTitleTextView" />
+
+        <Button
+            android:id="@+id/acceptButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_31sdp"
+            android:layout_marginEnd="@dimen/_31sdp"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:text="@string/no_service_accept_button_label"
+            android:theme="@style/text_button_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/alertBodyTextView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

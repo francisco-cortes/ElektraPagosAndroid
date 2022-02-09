@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_width="300dp"
+    android:layout_height="356dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="300dp"
+        android:layout_height="356dp">
+
+        <ImageView
+            android:id="@+id/fingerUnrecognizedImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_44sdp"
+            android:layout_marginTop="@dimen/_44sdp"
+            android:layout_marginEnd="@dimen/_44sdp"
+            android:background="@drawable/ic_face_unrecognizable_alert"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/alertTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="@string/unrecognized_face_title_label"
+            android:theme="@style/title_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fingerUnrecognizedImageView" />
+
+        <TextView
+            android:id="@+id/alertBodyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/unrecognized_face_body_label"
+            android:theme="@style/body_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/alertTitleTextView" />
+
+        <Button
+            android:id="@+id/biometricRetryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:backgroundTint="@color/elektra_light_gray"
+            android:text="@string/unrecognized_face_retry_button_label"
+            android:textColor="@color/elektra_gray"
+            android:theme="@style/text_button_2"
+            app:layout_constraintEnd_toStartOf="@+id/biometricCancelButton"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/alertBodyTextView" />
+
+        <Button
+            android:id="@+id/biometricCancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:text="@string/unrecognized_face_cancel_button_label"
+            android:theme="@style/text_button_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/biometricRetryButton"
+            app:layout_constraintTop_toBottomOf="@+id/alertBodyTextView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
