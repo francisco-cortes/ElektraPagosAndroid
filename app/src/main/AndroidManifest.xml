@@ -24,7 +24,8 @@
         </provider>
         <activity
             android:name=".ektpmovements.view.EKTPMovementsDetailsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ektpmovements.view.EKTPMovementsActivity"
             android:exported="false"
@@ -45,10 +46,12 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ektphome.view.EKTPHomeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ektplogin.view.EKTPLoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ektpsplashactivity.view.SplashActivity"
             android:exported="true"
