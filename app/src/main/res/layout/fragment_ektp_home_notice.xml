@@ -49,7 +49,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_40sdp"
             app:layout_constraintTop_toBottomOf="@+id/noticeImageView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -70,15 +70,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/notificationDetails"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:background="@drawable/ic_forward_arrow"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="@dimen/_43sdp"
-                    app:layout_constraintTop_toTopOf="@id/notifi1Title"/>
 
                 <TextView
                     android:id="@+id/notifi1Body"
@@ -104,8 +95,8 @@
                     android:id="@+id/separator1"
                     android:layout_width="0dp"
                     android:layout_height="1dp"
-                    android:layout_marginStart="@dimen/_39sdp"
-                    android:layout_marginEnd="@dimen/_39sdp"
+                    android:layout_marginStart="@dimen/_55sdp"
+                    android:layout_marginEnd="@dimen/_55sdp"
                     android:background="@color/elektra_white_gray"
                     android:layout_marginTop="@dimen/_16sdp"
                     app:layout_constraintTop_toBottomOf="@+id/notifi1Date"
@@ -125,15 +116,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/separator1" />
-
-                <ImageView
-                    android:id="@+id/notificationDetails2"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:background="@drawable/ic_forward_arrow"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="@dimen/_43sdp"
-                    app:layout_constraintTop_toTopOf="@id/recibeTextView"/>
 
                 <TextView
                     android:id="@+id/recibeNoticeTextView"
