@@ -49,14 +49,36 @@
             />
 
         <TextView
+            android:id="@+id/ammountPesosSignMovementTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:gravity="center_vertical"
+            android:theme="@style/subtitle_3"
+            android:text="@string/super_pesos_sign"
+            app:layout_constraintBottom_toBottomOf="@id/accountMovementTextView"
+            app:layout_constraintEnd_toStartOf="@id/ammountMovementTextView" />
+
+        <TextView
             android:id="@+id/ammountMovementTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="end"
             android:theme="@style/title_3"
-            android:text="@{movementsListItem.detailAmount}"
+            android:text="@{movementsListItem.detailAmount+`.`}"
             app:layout_constraintTop_toTopOf="@id/titleMovementTextView"
             app:layout_constraintBottom_toBottomOf="@id/accountMovementTextView"
+            app:layout_constraintEnd_toStartOf="@id/ammountCentsMovementTextView" />
+
+        <TextView
+            android:id="@+id/ammountCentsMovementTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:gravity="center_vertical"
+            android:theme="@style/subtitle_3"
+            android:text="@string/super_index_cents"
+            app:layout_constraintBottom_toBottomOf="@id/ammountMovementTextView"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <View
