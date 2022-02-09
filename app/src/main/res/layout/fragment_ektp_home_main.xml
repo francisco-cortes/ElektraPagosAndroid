@@ -60,7 +60,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <!--cambiar el tamaño del nombre de usuario dpendiendo su logitud-->
                 <TextView
                     android:id="@+id/userNameTextView"
                     android:layout_width="0dp"
@@ -75,7 +74,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/hiUserNameTextView"
                     app:layout_constraintStart_toEndOf="@+id/hiUserNameTextView"/>
-                <!---->
+
                 <ImageButton
                     android:id="@+id/balanceMovementsImageButton"
                     android:layout_width="@dimen/_91sdp"

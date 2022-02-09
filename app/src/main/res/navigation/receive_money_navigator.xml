@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/receive_money_navigator"
+    app:startDestination="@id/EKTPReceiveMoneyMTCNFragment">
+
+    <fragment
+        android:id="@+id/EKTPReceiveMoneyMTCNFragment"
+        android:name="com.elektra.ektp.ektpreceivemoney.view.EKTPReceiveMoneyMTCNFragment"
+        android:label="EKTPReceiveMoneyMTCNFragment" >
+        <action
+            android:id="@+id/action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNStatusFragment"
+            app:destination="@id/EKTPReceiveMTCNStatusFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/EKTPReceiveMTCNStatusFragment"
+        android:name="com.elektra.ektp.ektpreceivemoney.view.EKTPReceiveMTCNStatusFragment"
+        android:label="EKTPReceiveMTCNStatusFragment" >
+        <action
+            android:id="@+id/action_EKTPReceiveMTCNStatusFragment_to_EKTPReceiveMTCNDetailsFragment"
+            app:destination="@id/EKTPReceiveMTCNDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/EKTPReceiveMTCNDetailsFragment"
+        android:name="com.elektra.ektp.ektpreceivemoney.view.EKTPReceiveMTCNDetailsFragment"
+        android:label="EKTPReceiveMTCNDetailsFragment" >
+        <action
+            android:id="@+id/action_EKTPReceiveMTCNDetailsFragment_to_receiveMTCNAcountSuccesFragment"
+            app:destination="@id/receiveMTCNAcountSuccesFragment" />
+        <action
+            android:id="@+id/action_EKTPReceiveMTCNDetailsFragment_to_EKTPReceiveMoneyMTCNFragment2"
+            app:destination="@id/EKTPReceiveMoneyMTCNFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/receiveMTCNAcountSuccesFragment"
+        android:name="com.elektra.ektp.ektpreceivemoney.view.EKTPReceiveMTCNAcountSuccesFragment"
+        android:label="ReceiveMTCNAcountSuccesFragment" />
+</navigation>
