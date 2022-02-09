@@ -113,9 +113,9 @@
 
                 <ImageButton
                     android:id="@+id/shareButtonDetailsCardView"
-                    android:layout_width="@dimen/_25sdp"
-                    android:layout_height="@dimen/_35sdp"
-                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_width="@dimen/_14sdp"
+                    android:layout_height="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
                     android:layout_marginEnd="@dimen/_21sdp"
                     android:background="@drawable/ic_share_icon"
                     android:maxWidth="@dimen/_50sdp"
