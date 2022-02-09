@@ -42,7 +42,7 @@
             app:layout_constraintTop_toBottomOf="@+id/appbar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toTopOf="@id/bankNoteTextView">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -196,21 +196,19 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
 
-                <TextView
-                    android:id="@+id/bankNoteTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_30sdp"
-                    android:layout_marginBottom="@dimen/_20sdp"
-                    android:gravity="center"
-                    android:text="@string/home_bankBottomNote"
-                    android:theme="@style/note_1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/contractLegalTextView"/>
-
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
+
+        <TextView
+            android:id="@+id/bankNoteTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_bankBottomNote"
+            android:theme="@style/note_1"
+            android:layout_marginBottom="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

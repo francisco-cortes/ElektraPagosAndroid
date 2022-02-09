@@ -21,7 +21,7 @@ class EKTPHomeMainFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate<FragmentEktpHomeMainBinding>(inflater,R.layout.fragment_ektp_home_main,container,false)
 
-        binding.userNameTextView.text = EKTPHomeMainViewModel().getUserHomeMain() + "!"
+        //binding.userNameTextView.text = EKTPHomeMainViewModel().getUserHomeMain() + "!"
 
         return binding.root
     }
