@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpHomeMainBinding
 import com.elektra.ektp.ektphome.viewmodel.EKTPHomeMainViewModel
+import com.elektra.ektp.ektpmovements.view.EKTPMovementsActivity
 import com.elektra.ektp.ektpreceivemoney.view.EKTPReceiveMoneyActivity
 
 class EKTPHomeMainFragment : Fragment() {
@@ -28,6 +29,12 @@ class EKTPHomeMainFragment : Fragment() {
             context?.startActivity(intent)
         }
         //binding.userNameTextView.text = EKTPHomeMainViewModel().getUserHomeMain() + "!"
+
+        binding.balanceMovementsImageButton.setOnClickListener {view: View->
+            val intent = Intent(activity, EKTPMovementsActivity::class.java)
+            val context = view.context
+            context.startActivity(intent)
+        }
 
         return binding.root
     }

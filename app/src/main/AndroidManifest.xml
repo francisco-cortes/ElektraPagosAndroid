@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.elektra.ektp">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".ektpsharedpreferences.EKTPUserApplication"
         android:allowBackup="true"
@@ -10,11 +13,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ElektraPagos">
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.elektra.ektp"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+        <activity
+            android:name=".ektpmovements.view.EKTPMovementsDetailsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ektpmovements.view.EKTPMovementsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ektpreceivemoney.view.EKTPReceiveMoneyActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HighLight"/>
+
         <activity
             android:name=".ektpforgottenpass.view.EKTPForgottenPassActivity"
             android:exported="false"
@@ -33,6 +54,14 @@
         <activity
             android:name=".ektphome.view.EKTPHomeActivity"
             android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ektplogin.view.EKTPLoginActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ektpsplashactivity.view.SplashActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HighLight"/>
         <activity
