@@ -94,8 +94,8 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
             override fun onAuthenticationFailed() {
                 super.onAuthenticationFailed()
                 //messageOnToast("algo fallo")
-                biometricDialog.show()
-                biometricPrompt.cancelAuthentication()
+                //biometricDialog.show()
+                //biometricPrompt.cancelAuthentication()
 
             }
         })
@@ -116,11 +116,11 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
         }
         //botones de alert dialog
 
-        if(userName == null || userName == "")
+        /*if(userName == null || userName == "")
         {
             noUserDialog.show()
             binding.biometricLoginImageButton.isEnabled = false
-        }
+        }*/
 
         acceptButton.setOnClickListener {
             noUserDialog.dismiss()
