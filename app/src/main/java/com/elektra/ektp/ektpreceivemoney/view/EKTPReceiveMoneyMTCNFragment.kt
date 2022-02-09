@@ -60,7 +60,7 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
         }
 
         binding.consultButton.setOnClickListener { view:View ->
-            //view.findNavController().navigate(R.id.action_reciveMoneyMTCNFragment_to_moneyStatusFragment)
+            view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNStatusFragment)
         }
 
         return binding.root

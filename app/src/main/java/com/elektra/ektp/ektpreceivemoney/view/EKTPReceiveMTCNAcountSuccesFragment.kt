@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentReceiveMtcnAcountSuccesBinding
 
-class ReceiveMTCNAcountSuccesFragment : Fragment() {
+class EKTPReceiveMTCNAcountSuccesFragment : Fragment() {
 
     private lateinit var binding: FragmentReceiveMtcnAcountSuccesBinding
 
