@@ -15,8 +15,8 @@ import com.elektra.ektp.ektpmovements.model.EKTPMovementsModel
 import com.elektra.ektp.ektpmovements.viewmodel.EKTPMovementsRecyclerViewAdapter
 
 class EKTPMovementsListFragment : Fragment() {
-    
-private lateinit var binding: FragmentEktpMovementsListBinding
+
+    private lateinit var binding: FragmentEktpMovementsListBinding
     private lateinit var manager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +34,7 @@ private lateinit var binding: FragmentEktpMovementsListBinding
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, 
+        binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_ektp_movements_list, container, false)
 
         val data = listOf(
@@ -96,7 +96,7 @@ private lateinit var binding: FragmentEktpMovementsListBinding
         binding.backAppbarButton.setOnClickListener { view: View ->
             activity?.finish()
         }
-        
+
         return binding.root
     }
 

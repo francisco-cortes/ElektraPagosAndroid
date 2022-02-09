@@ -5,9 +5,15 @@
     tools:context=".ektpmovements.view.EKTPMovementsActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <fragment
+            android:id="@+id/fargmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.elektra.ektp.ektpmovements.view.EKTPMovementsListFragment"/>
 
 
     </LinearLayout>
