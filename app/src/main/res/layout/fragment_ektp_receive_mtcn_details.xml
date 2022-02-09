@@ -78,7 +78,7 @@
                     android:layout_marginStart="@dimen/_43sdp"
                     android:theme="@style/title_2"
                     android:text="@string/recieve_details_label"
-                    android:layout_marginTop="@dimen/_60sdp"
+                    android:layout_marginTop="@dimen/_50sdp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>
 
