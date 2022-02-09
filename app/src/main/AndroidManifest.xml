@@ -58,15 +58,6 @@
         <activity
             android:name=".ektplogin.view.EKTPLoginActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".ektpsplashactivity.view.SplashActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.HighLight"/>
-        <activity
-            android:name=".ektplogin.view.EKTPLoginActivity"
-            android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HighLight"/>
         <activity

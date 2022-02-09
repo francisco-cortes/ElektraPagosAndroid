@@ -57,7 +57,7 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_20sdp"
                     android:padding="@dimen/_10sdp"
-                    android:background="@drawable/ic_share_button"
+                    android:background="@drawable/ic_share_icon"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
