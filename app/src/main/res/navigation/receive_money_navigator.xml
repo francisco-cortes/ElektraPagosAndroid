@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_EKTPReceiveMTCNDetailsFragment_to_receiveMTCNAcountSuccesFragment"
             app:destination="@id/receiveMTCNAcountSuccesFragment" />
+        <action
+            android:id="@+id/action_EKTPReceiveMTCNDetailsFragment_to_EKTPReceiveMoneyMTCNFragment2"
+            app:destination="@id/EKTPReceiveMoneyMTCNFragment" />
     </fragment>
     <fragment
         android:id="@+id/receiveMTCNAcountSuccesFragment"

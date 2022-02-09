@@ -7,9 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpReciveMoneyMtcnBinding
 import com.elektra.ektp.ektpreceivemoney.viewmodel.EKTPReceiveMoneyMTCNViewModel
@@ -61,6 +63,10 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
 
         binding.consultButton.setOnClickListener { view:View ->
             view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNStatusFragment)
+        }
+
+        binding.backAppbarButton.setOnClickListener {
+            activity?.finish()
         }
 
         return binding.root
