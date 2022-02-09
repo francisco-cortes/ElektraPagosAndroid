@@ -100,16 +100,38 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/amountDetailPesosSignCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/super_pesos_sign"
+                    android:theme="@style/title_2"
+                    app:layout_constraintEnd_toStartOf="@id/amountDetailCardView"
+                    app:layout_constraintTop_toTopOf="@id/amountDetailCardView" />
+
+                <TextView
                     android:id="@+id/amountDetailCardView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_24sdp"
                     android:gravity="center"
-                    android:text="@{movementsDetailsItem.detailAmount}"
+                    android:text="@{movementsDetailsItem.detailAmount + `.`}"
                     android:theme="@style/header_1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/amountDetailCentsCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/super_index_cents"
+                    android:gravity="top"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:theme="@style/title_2"
+                    app:layout_constraintStart_toEndOf="@id/amountDetailCardView"
+                    app:layout_constraintTop_toTopOf="@id/amountDetailCardView" />
 
                 <ImageButton
                     android:id="@+id/shareButtonDetailsCardView"
@@ -120,6 +142,7 @@
                     android:background="@drawable/ic_share_icon"
                     android:maxWidth="@dimen/_50sdp"
                     android:maxHeight="@dimen/_50sdp"
+                    android:padding="@dimen/_20sdp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 
@@ -348,16 +371,38 @@
                     app:layout_constraintTop_toBottomOf="@id/detailsHeader" />
 
                 <TextView
+                    android:id="@+id/amDetailPesosSignCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/super_pesos_sign"
+                    android:theme="@style/title_5"
+                    app:layout_constraintEnd_toStartOf="@id/amDetailCardView"
+                    app:layout_constraintTop_toTopOf="@id/amDetailCardView" />
+
+                <TextView
                     android:id="@+id/amDetailCardView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:gravity="center"
-                    android:text="@{movementsDetailsItem.detailAmount}"
+                    android:text="500."
                     android:theme="@style/header_3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/labelShipmentOk" />
+
+                <TextView
+                    android:id="@+id/amDetailCentsCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/super_index_cents"
+                    android:gravity="top"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:theme="@style/title_5"
+                    app:layout_constraintStart_toEndOf="@id/amDetailCardView"
+                    app:layout_constraintTop_toTopOf="@id/amDetailCardView" />
 
                 <TextView
                     android:id="@+id/tiDetailCardView"
