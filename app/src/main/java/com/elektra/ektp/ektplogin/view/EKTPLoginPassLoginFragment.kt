@@ -56,11 +56,11 @@ class EKTPLoginPassLoginFragment : Fragment() {
             binding.biometricSignInButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_on_button_face_icon, 0, 0, 0)
         }
 
-        if(userName == null || userName == "")
+        /*if(userName == null || userName == "")
         {
             noUserDialog.show()
             binding.loginPassButton.isEnabled = false
-        }
+        }*/
 
         acceptButton.setOnClickListener {
             noUserDialog.dismiss()

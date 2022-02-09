@@ -186,13 +186,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_40sdp"
+                    android:layout_marginStart="@dimen/_43sdp"
                     android:buttonTint="@color/elektra_yellow"
                     android:checked="false"
                     android:gravity="start"
                     android:paddingStart="@dimen/_8sdp"
                     android:text="@string/fragment_terms_have_readed"
                     android:theme="@style/checkbox_text"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/term8TextView" />
 

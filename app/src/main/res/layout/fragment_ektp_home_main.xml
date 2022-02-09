@@ -42,7 +42,7 @@
             app:layout_constraintTop_toBottomOf="@+id/appbar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toTopOf="@id/bankNoteTextView">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -60,7 +60,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <!--cambiar el tamaño del nombre de usuario dpendiendo su logitud-->
                 <TextView
                     android:id="@+id/userNameTextView"
                     android:layout_width="0dp"
@@ -188,7 +187,7 @@
                             android:id="@+id/bankAccountBalanceTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="$1000.00"
+                            android:text="$100.00"
                             android:theme="@style/body_2"
                             android:layout_marginBottom="@dimen/_16sdp"
                             android:layout_marginEnd="@dimen/_33sdp"
@@ -199,19 +198,19 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:id="@+id/bankNoteTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/home_bankBottomNote"
-                    android:theme="@style/note_1"
-                    android:layout_marginTop="@dimen/_81sdp"
-                    android:layout_marginBottom="@dimen/_40sdp"
-                    app:layout_constraintTop_toBottomOf="@+id/balanceCardView"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
+
+        <TextView
+            android:id="@+id/bankNoteTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_bankBottomNote"
+            android:theme="@style/note_1"
+            android:layout_marginBottom="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

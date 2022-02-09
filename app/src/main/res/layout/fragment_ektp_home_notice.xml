@@ -49,7 +49,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_40sdp"
             app:layout_constraintTop_toBottomOf="@+id/noticeImageView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -60,13 +60,13 @@
 
                 <TextView
                     android:id="@+id/notifi1Title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Se ha restablecido tu contraseña"
                     android:theme="@style/appbar_title"
                     android:textColor="@color/elektra_gray"
-                    android:drawableEnd="@drawable/ic_forward_arrow"
-                    android:drawablePadding="@dimen/_6sdp"
+                    android:layout_marginStart="@dimen/_55sdp"
+                    android:layout_marginEnd="@dimen/_55sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -95,8 +95,8 @@
                     android:id="@+id/separator1"
                     android:layout_width="0dp"
                     android:layout_height="1dp"
-                    android:layout_marginStart="@dimen/_39sdp"
-                    android:layout_marginEnd="@dimen/_39sdp"
+                    android:layout_marginStart="@dimen/_55sdp"
+                    android:layout_marginEnd="@dimen/_55sdp"
                     android:background="@color/elektra_white_gray"
                     android:layout_marginTop="@dimen/_16sdp"
                     app:layout_constraintTop_toBottomOf="@+id/notifi1Date"
@@ -105,14 +105,14 @@
 
                 <TextView
                     android:id="@+id/recibeTextView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:text="Recibiste un envio de dinero"
                     android:theme="@style/appbar_title"
                     android:textColor="@color/elektra_gray"
-                    android:drawableEnd="@drawable/ic_forward_arrow"
-                    android:drawablePadding="@dimen/_6sdp"
+                    android:layout_marginStart="@dimen/_55sdp"
+                    android:layout_marginEnd="@dimen/_55sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/separator1" />
@@ -144,10 +144,10 @@
             android:id="@+id/bankNoteTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_8sdp"
             android:text="@string/home_bankBottomNote"
             android:theme="@style/note_1"
             android:gravity="center"
+            android:layout_marginBottom="@dimen/_8sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

@@ -31,6 +31,12 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".ektpreceivemoney.view.EKTPReceiveMoneyActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HighLight"/>
+
+        <activity
             android:name=".ektpforgottenpass.view.EKTPForgottenPassActivity"
             android:exported="false"
             android:screenOrientation="portrait"
@@ -43,7 +49,8 @@
         <activity
             android:name=".ektphome.view.EKTPHomeSettingsHelpActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HighLight"/>
         <activity
             android:name=".ektphome.view.EKTPHomeActivity"
             android:exported="false"
@@ -55,7 +62,18 @@
         <activity
             android:name=".ektpsplashactivity.view.SplashActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HighLight"/>
+        <activity
+            android:name=".ektplogin.view.EKTPLoginActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HighLight"/>
+        <activity
+            android:name=".ektpsplashactivity.view.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HighLight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
