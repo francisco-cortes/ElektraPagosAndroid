@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AutoCompleteTextView
 import android.widget.Button
+import android.widget.TextView
 import androidx.core.view.isGone
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
@@ -24,7 +26,12 @@ class EKTPLoginPassLoginFragment : Fragment() {
 
     private lateinit var binding: FragmentEKTPLoginPassLoginBinding
     private lateinit var noUserAlertLayout: View
-    private lateinit var acceptButton: Button
+    private lateinit var incorrectPasswordLayout: View
+    private lateinit var lockedPasswordLayout: View
+
+    private lateinit var noUserAcceptButton: Button
+    private lateinit var incorrectPassAcceptButton: Button
+    private lateinit var passAttemptTextView: TextView
 
     private var activityViewModel = EKTPLoginActivityViewModel()
     private var viewModel = EKTPLoginPassLoginViewModel()
@@ -36,20 +43,36 @@ class EKTPLoginPassLoginFragment : Fragment() {
         // Inflate the layout for this fragment
         activityViewModel.setBiometricLogin(false)
         binding =  DataBindingUtil.inflate<FragmentEKTPLoginPassLoginBinding>(inflater,R.layout.fragment_e_k_t_p_login_pass_login, container, false)
-        noUserAlertLayout = layoutInflater.inflate(R.layout.no_user_alert_layout,null)
+        noUserAlertLayout = layoutInflater.inflate(R.layout.no_user_alert_layout,null)//no user dialog layout
+        incorrectPasswordLayout = layoutInflater.inflate(R.layout.incorrect_password_alert_layout,null)//no user dialog layout
+        lockedPasswordLayout = layoutInflater.inflate(R.layout.locked_password_alert_layout,null)//locked pasword layout
 
         val checkBioStatus = viewModel.getSavedDataLogin()[0].toInt()//get the biostastus from sharedpreferences trough viewmodel
         val bioUsed = viewModel.getSavedDataLogin()[1].toInt()//get bioUsed from sharedpreferences trough viewmodel
         val userName = viewModel.getSavedDataLogin()[3]//get the userName from sharedpreferences trough viewmodel
+        val password = viewModel.getSavedDataLogin()[4]
+
+        var passwordAttempt = 0
 
         //no user alertdialig builder
         var noUserDialog: AlertDialog? = null
         val noUserDialogBuilder = AlertDialog.Builder(requireContext())
 
         noUserDialogBuilder.setView(noUserAlertLayout)
-        acceptButton = noUserAlertLayout.findViewById(R.id.acceptButton)
+        noUserAcceptButton = noUserAlertLayout.findViewById(R.id.acceptButton)
         noUserDialog = noUserDialogBuilder.create()
-        //--
+        //---
+
+        //incorrect password alertDialog builder
+        var incorrectPassDialog : AlertDialog? = null
+        val incorrectPassDialogBuilder = AlertDialog.Builder(requireContext())
+
+        incorrectPassDialogBuilder.setView(incorrectPasswordLayout)
+        incorrectPassAcceptButton = incorrectPasswordLayout.findViewById(R.id.acceptButton)
+        passAttemptTextView = incorrectPasswordLayout.findViewById(R.id.passwordAttemptTextView)
+        incorrectPassDialog = incorrectPassDialogBuilder.create()
+        //---
+
 
         //if biometric status isn´t ok disable the button to access at that fragment
         if (checkBioStatus!=1){
@@ -73,10 +96,15 @@ class EKTPLoginPassLoginFragment : Fragment() {
         //--
 
         //no user alert dialog button clicklistner
-        acceptButton.setOnClickListener {
+        noUserAcceptButton.setOnClickListener {
             noUserDialog.dismiss()
         }
         //--
+
+        //incorrect pass alert dialog buttons
+        incorrectPassAcceptButton.setOnClickListener {
+            incorrectPassDialog.dismiss()
+        }
 
 
         //main layout buttons
@@ -96,9 +124,16 @@ class EKTPLoginPassLoginFragment : Fragment() {
             }
 
             loginPassButton.setOnClickListener { view : View ->
-                val intent = Intent(activity, EKTPHomeActivity::class.java)
-                val context = view?.context
-                context?.startActivity(intent)
+                val passwordInput = editTextTextPassword.text.toString()
+                if (password == passwordInput){
+                    val intent = Intent(activity, EKTPHomeActivity::class.java)
+                    val context = view?.context
+                    context?.startActivity(intent)
+                }else{
+                    passwordAttempt ++
+                    passAttemptTextView.text = resources.getText(R.string.incorrect_password_attempt_label).toString() + passwordAttempt.toString()
+                    incorrectPassDialog.show()
+                }
             }
 
             biometricSignInButton.setOnClickListener { view: View ->
