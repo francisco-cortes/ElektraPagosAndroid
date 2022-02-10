@@ -114,7 +114,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
                 val context = view.context
                 context.startActivity(intent)
             }
-            
+
         }
         return binding.root
     }
