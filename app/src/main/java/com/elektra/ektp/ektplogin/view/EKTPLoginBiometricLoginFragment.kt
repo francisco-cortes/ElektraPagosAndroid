@@ -29,32 +29,38 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
     private lateinit var loginData: ArrayList<String>
-
+    //widgets for alertDialogs
     private lateinit var retryButton: Button
     private lateinit var cancelButton: Button
     private lateinit var acceptButton: Button
     private lateinit var bioAlertLayout: View
     private lateinit var noUserAlertLayout: View
-
+    //---
+    private val activityViewModel = EKTPLoginActivityViewModel()
+    private val viewModel = EKTPLoginBiometricLoginViewModel()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflar el layout para este fragmento
-        EKTPLoginActivityViewModel().setBiometricLogin(true)
+        // inlfate layout for this fragment
+        activityViewModel.setBiometricLogin(true)//is this biometricLogin?
+
         binding = DataBindingUtil.inflate<FragmentEKTPLoginBiometricLoginBinding>(inflater,R.layout.fragment_e_k_t_p_login_biometric_login, container, false)
-        loginData = EKTPLoginBiometricLoginViewModel().getSavedDataLogin()
         noUserAlertLayout = layoutInflater.inflate(R.layout.no_user_alert_layout,null)
 
-        val userName = EKTPLoginBiometricLoginViewModel().getSavedDataLogin()[3]
-        val bioUsed = EKTPLoginBiometricLoginViewModel().getSavedDataLogin()[1].toInt()
+        loginData = viewModel.getSavedDataLogin()//get userData from shared preferences
+
+        val userName = viewModel.getSavedDataLogin()[3].toString()//get the user name from the sharedpreferences through viewModel
+        val bioUsed = viewModel.getSavedDataLogin()[1].toInt()//get the biotype 1 = face, 2 = iris, 3 = fingerprint
+        //var used in Dialog Build
         var biometricDialog: AlertDialog? = null
         var noUserDialog: AlertDialog? = null
         val biometricDialogBuilder = AlertDialog.Builder(requireContext())
         val noUserDialogBuilder = AlertDialog.Builder(requireContext())
+        //---
 
 
-        // usar un layout personalizado para el alertdialog
+        //inflate diferent layout for the dialog depeding biotype
         if (bioUsed == 1) {
             bioAlertLayout = layoutInflater.inflate(R.layout.unrecognized_face_alert_layout, null)
             binding.biometricLoginImageButton.setBackgroundDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_face_button))
@@ -63,50 +69,57 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
         else {
             bioAlertLayout = layoutInflater.inflate(R.layout.unrecognized_finger_alert_layout,null)
         }
+        //---
 
+        //find the views for bio alertDialog
         biometricDialogBuilder.setView(bioAlertLayout)
         retryButton = bioAlertLayout.findViewById(R.id.biometricRetryButton)
         cancelButton = bioAlertLayout.findViewById(R.id.biometricCancelButton)
-        // se crea el dialogo con el layout nesesario
+        // creates de biometric alertDialog
         biometricDialog = biometricDialogBuilder.create()
+        //--
 
-        //no user build
+        //no user alertDialog build
         noUserDialogBuilder.setView(noUserAlertLayout)
         acceptButton = noUserAlertLayout.findViewById(R.id.acceptButton)
         noUserDialog = noUserDialogBuilder.create()
 
         executor = ContextCompat.getMainExecutor(requireContext())
+        //--
 
+        //biometric prompt actioner
         biometricPrompt = androidx.biometric.BiometricPrompt(this,executor,object:androidx.biometric.BiometricPrompt.AuthenticationCallback(){
             override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
-                super.onAuthenticationError(errorCode, errString)
+                super.onAuthenticationError(errorCode, errString)//execute if there are an error
                 //messageOnToast("$errString")
 
             }
 
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
-                super.onAuthenticationSucceeded(result)
+                super.onAuthenticationSucceeded(result)//execute if pass the auth
                 val intent = Intent(activity, EKTPHomeActivity::class.java)
                 val context = view?.context
                 context?.startActivity(intent)
             }
 
             override fun onAuthenticationFailed() {
-                super.onAuthenticationFailed()
+                super.onAuthenticationFailed()//execute if dont pass the auth
                 //messageOnToast("algo fallo")
                 //biometricDialog.show()
                 //biometricPrompt.cancelAuthentication()
 
             }
         })
-
+        //---
+        //info show in biometric popup
         promptInfo = androidx.biometric.BiometricPrompt.PromptInfo.Builder()
             .setTitle("Autenticacion Biometrica")
             .setSubtitle("usa el biometrico de tu celular")
             .setNegativeButtonText("cancelar")
             .build()
+        //---
 
-        //botones del alert dialog
+        //biometric alertDialog click listener
         cancelButton.setOnClickListener {
             biometricDialog.dismiss()
         }
@@ -114,43 +127,40 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
         retryButton.setOnClickListener {
             biometricPrompt.authenticate(promptInfo)
         }
-        //botones de alert dialog
+        //--
 
-        /*if(userName == null || userName == "")
+        //Check for username if there are no user name can considerate a new user an show no user alertDialog
+        if(userName == null || userName == "")
         {
             noUserDialog.show()
             binding.biometricLoginImageButton.isEnabled = false
-        }*/
-
+        }
+        //--
+        //no user alertDialog button clicklistener
         acceptButton.setOnClickListener {
             noUserDialog.dismiss()
         }
+        //--
 
-        binding.biometricLoginImageButton.setOnClickListener {
-            biometricPrompt.authenticate(promptInfo)
-        }
-
-        binding.passSignInButton.setOnClickListener{view: View ->
-            requireActivity()
-                .supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.loginNavHostFragment, EKTPLoginPassLoginFragment())
-                .commitNow()
-            /*if(fragment != null){
+        //layoutbuttons
+        with(binding){
+            biometricLoginImageButton.setOnClickListener {
+                biometricPrompt.authenticate(promptInfo)
+            }
+            passSignInButton.setOnClickListener{view: View ->
                 requireActivity()
                     .supportFragmentManager
                     .beginTransaction()
-                    .remove(fragment)
-                    .commit();
-            }*/
-
+                    .replace(R.id.loginNavHostFragment, EKTPLoginPassLoginFragment())
+                    .commitNow()
+            }
+            createAccountTextView.setOnClickListener{view: View ->
+                val intent = Intent(activity, EKTPCreateAccountActivity::class.java)
+                val context = view.context
+                context.startActivity(intent)
+            }
         }
 
-        binding.createAccountTextView.setOnClickListener{view: View ->
-            val intent = Intent(activity, EKTPCreateAccountActivity::class.java)
-            val context = view.context
-            context.startActivity(intent)
-        }
 
         return binding.root
     }
