@@ -22,11 +22,16 @@ import java.util.*
 
 class EKTPCreateAccountFragment : Fragment() {
 
+    //Global variable for databinding
     private lateinit var binding: FragmentCreateAccountBinding
+    //---
+    //ViewModel variable access
     private val createAccountViewModel: EKTPCreateAccountViewModel by viewModels()
-
+    //---
+    //SharedPreferences variable access
     val validations = UserValidations()
-
+    //---
+    //Global variables for user entries
     private var name: String = ""
     private var paternalLast: String = ""
     private var maternalLast: String = ""
@@ -40,9 +45,11 @@ class EKTPCreateAccountFragment : Fragment() {
     val year = c.get(Calendar.YEAR)
     val month = c.get(Calendar.MONTH)
     val day = c.get(Calendar.DAY_OF_MONTH)
+    //---
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Overriding OnBackPressed function to destroy fragment and activity
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 isEnabled = false
@@ -59,342 +66,359 @@ class EKTPCreateAccountFragment : Fragment() {
         binding = DataBindingUtil.inflate<FragmentCreateAccountBinding>(inflater,
             R.layout.fragment_create_account, container, false)
 
-        binding.button.isEnabled = false
+        //Wrap this block code for all the lines with binding variable
+        with(binding){
+            //Initialize disable button
+            button.isEnabled = false
 
-        binding.insertName.addTextChangedListener(object: TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            //TextWatcher function to listen for changes on editText
+            insertName.addTextChangedListener(object: TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    name = s.toString()
+                    if (validations.checkValidInput(name)){
+                        insertName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        invalidNameText.isVisible = false
+                    }
+                    else{
+                        insertName.setBackgroundResource(R.drawable.validation_edit_text)
+                        button.isEnabled = false
+                        invalidNameText.isVisible = true
+                    }
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    name = s.toString()
+                    if (validations.checkValidInput(name)){
+                        insertName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        button.isEnabled = validations.checkFilledFields(
+                            name, paternalLast, birthDate, birthState,
+                            phone, eMailText, emailConfirmationText, gender
+                        )
+                        invalidNameText.isVisible = false
+                    }
+                    else{
+                        insertName.setBackgroundResource(R.drawable.validation_edit_text)
+                        button.isEnabled = validations.checkFilledFields(
+                            name, paternalLast, birthDate, birthState,
+                            phone, eMailText, emailConfirmationText, gender
+                        )
+                        invalidNameText.isVisible = true
+                    }
+                }
+
+            })
+            //---
+            //TextWatcher function to listen for changes on editText
+            paternalLastName.addTextChangedListener(object: TextWatcher{
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    paternalLast = s.toString()
+                    if (validations.checkValidInput(paternalLast)){
+                        paternalLastName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        invalidPaternalText.isVisible = false
+                    }
+                    else{
+                        paternalLastName.setBackgroundResource(R.drawable.validation_edit_text)
+                        button.isEnabled = false
+                        invalidPaternalText.isVisible = true
+                    }
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    paternalLast = s.toString()
+                    if (validations.checkValidInput(paternalLast)){
+                        paternalLastName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        button.isEnabled = validations.checkFilledFields(
+                            name, paternalLast, birthDate, birthState,
+                            phone, eMailText, emailConfirmationText, gender
+                        )
+                        invalidPaternalText.isVisible = false
+                    }
+                    else{
+                        paternalLastName.setBackgroundResource(R.drawable.validation_edit_text)
+                        button.isEnabled = validations.checkFilledFields(
+                            name, paternalLast, birthDate, birthState,
+                            phone, eMailText, emailConfirmationText, gender
+                        )
+                        invalidPaternalText.isVisible = true
+                    }
+                }
+
+            })
+            //---
+            //TextWatcher function to listen for changes on editText
+            maternalLastName.addTextChangedListener(object: TextWatcher{
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    maternalLast = s.toString()
+                    if (validations.checkValidInput(maternalLast) || maternalLast.isEmpty()){
+                        maternalLastName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        invalidMaternalText.isVisible = false
+                    }
+                    else{
+                        maternalLastName.setBackgroundResource(R.drawable.validation_edit_text)
+                        invalidMaternalText.isVisible = true
+                    }
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    maternalLast = s.toString()
+                    if (validations.checkValidInput(maternalLast) || maternalLast.isEmpty()){
+                        maternalLastName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        invalidMaternalText.isVisible = false
+                    }
+                    else{
+                        maternalLastName.setBackgroundResource(R.drawable.validation_edit_text)
+                        invalidMaternalText.isVisible = true
+                    }
+                }
+
+            })
+            //---
+            //TextWatcher function to listen for changes on editText
+            dateBirth.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    birthDate = s.toString()
+                    if (validations.checkValidDate(birthDate)){
+                        dateBirth.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        invalidDateText.isVisible = false
+                    }
+                    else{
+                        dateBirth.setBackgroundResource(R.drawable.validation_edit_text)
+                        button.isEnabled = false
+                        invalidDateText.isVisible = true
+                    }
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    birthDate = s.toString()
+                    if (validations.checkValidDate(birthDate)){
+                        dateBirth.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        button.isEnabled = validations.checkFilledFields(
+                            name, paternalLast, birthDate, birthState,
+                            phone, eMailText, emailConfirmationText, gender
+                        )
+                        invalidDateText.isVisible = false
+                    }
+                    else{
+                        dateBirth.setBackgroundResource(R.drawable.validation_edit_text)
+                        button.isEnabled = validations.checkFilledFields(
+                            name, paternalLast, birthDate, birthState,
+                            phone, eMailText, emailConfirmationText, gender
+                        )
+                        invalidDateText.isVisible = true
+                    }
+                }
+
+            })
+            //---
+            //TextWatcher function to listen for changes on editText
+            phoneNumber.addTextChangedListener(object: TextWatcher{
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    phone = s.toString()
+                    if(validations.checkPhoneNumber(phone)) {
+                        phoneNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        invalidPhoneText.isVisible = false
+                    }
+                    else{
+                        phoneNumber.setBackgroundResource(R.drawable.validation_edit_text)
+                        invalidPhoneText.isVisible = true
+                    }
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    phone = s.toString()
+                    if(validations.checkPhoneNumber(phone)) {
+                        phoneNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        button.isEnabled = validations.checkFilledFields(
+                            name, paternalLast, birthDate, birthState,
+                            phone, eMailText, emailConfirmationText, gender
+                        )
+                        invalidPhoneText.isVisible = false
+                    }
+                    else{
+                        phoneNumber.setBackgroundResource(R.drawable.validation_edit_text)
+                        button.isEnabled = validations.checkFilledFields(
+                            name, paternalLast, birthDate, birthState,
+                            phone, eMailText, emailConfirmationText, gender
+                        )
+                        invalidPhoneText.isVisible = true
+                    }
+                }
+            })
+            //---
+            //TextWatcher function to listen for changes on editText
+            setDateButton.setOnClickListener {
+                val dpp = DatePickerDialog(
+                    requireContext(),
+                    DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
+                        dateBirth.setText("" + mDay + "/" + "${mMonth + 1}" + "/" + mYear)
+                    },
+                    year,
+                    month,
+                    day
+                )
+                dpp.show()
             }
+            //--
+            //TextWatcher function to listen for changes on editText
+            eMail.addTextChangedListener(object: TextWatcher{
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                name = s.toString()
-                if (validations.checkValidInput(name)){
-                    binding.insertName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.invalidNameText.isVisible = false
                 }
-                else{
-                    binding.insertName.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button.isEnabled = false
-                    binding.invalidNameText.isVisible = true
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    eMailText = s.toString()
+                    if (validations.checkEmail(eMailText)){
+                        eMail.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        invalidEmailText.isVisible = false
+                    }
+                    else{
+                        eMail.setBackgroundResource(R.drawable.validation_edit_text)
+                        button.isEnabled = false
+                        invalidEmailText.isVisible = true
+                    }
                 }
+
+                override fun afterTextChanged(s: Editable?) {
+                    eMailText = s.toString()
+                    if (!validations.checkEmail(eMailText)){
+                        eMail.setBackgroundResource(R.drawable.validation_edit_text)
+                        button.isEnabled = validations.checkFilledFields(
+                            name, paternalLast, birthDate, birthState,
+                            phone, eMailText, emailConfirmationText, gender
+                        )
+                        invalidEmailText.isVisible = true
+                    }
+                    else{
+                        eMail.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        button.isEnabled = validations.checkFilledFields(
+                            name, paternalLast, birthDate, birthState,
+                            phone, eMailText, emailConfirmationText, gender
+                        )
+                        invalidEmailText.isVisible = false
+                    }
+                }
+            })
+            //
+            //TextWatcher function to listen for changes on editText
+            emailConfirmation.addTextChangedListener(object: TextWatcher{
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                    emailConfirmationText = s.toString()
+                    if (eMailText != emailConfirmationText){
+                        emailConfirmation.setBackgroundResource(R.drawable.validation_edit_text)
+                        button.isEnabled = validations.checkFilledFields(
+                            name, paternalLast, birthDate, birthState,
+                            phone, eMailText, emailConfirmationText, gender
+                        )
+                        invalidEmailConfirmationText.isVisible = true
+                    }
+                    else{
+                        emailConfirmation.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        button.isEnabled = validations.checkFilledFields(
+                            name, paternalLast, birthDate, birthState,
+                            phone, eMailText, emailConfirmationText, gender
+                        )
+                        invalidEmailConfirmationText.isVisible = false
+                    }
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    emailConfirmationText = s.toString()
+                    if (eMailText != emailConfirmationText){
+                        emailConfirmation.setBackgroundResource(R.drawable.validation_edit_text)
+                        button.isEnabled = false
+                        invalidEmailConfirmationText.isVisible = true
+                    }
+                    else{
+                        emailConfirmation.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        button.isEnabled = validations.checkFilledFields(
+                            name, paternalLast, birthDate, birthState,
+                            phone, eMailText, emailConfirmationText, gender
+                        )
+                        invalidEmailConfirmationText.isVisible = false
+                    }
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+
+                }
+            })
+            //---
+            //OnItemSelectedListener function on Spinner to listen for selection changes
+            birthSiteSpinner.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                    }
+
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+                        birthState = birthSiteSpinner.selectedItem.toString()
+                        button.isEnabled = validations.checkFilledFields(
+                            name, paternalLast, birthDate, birthState,
+                            phone, eMailText, emailConfirmationText, gender
+                        )
+                    }
+                }
+            //---
+            //onClickListener on WomanGender to listen for radioButton selection
+            womanGenderRadioButton.setOnClickListener {
+                gender = "Mujer"
+                button.isEnabled = validations.checkFilledFields(
+                    name, paternalLast, birthDate, birthState,
+                    phone, eMailText, emailConfirmationText, gender
+                )
+                manGenderRadioButton.isChecked = false
             }
-
-            override fun afterTextChanged(s: Editable?) {
-                name = s.toString()
-                if (validations.checkValidInput(name)){
-                    binding.insertName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button.isEnabled = validations.checkFilledFields(
-                        name, paternalLast, birthDate, birthState,
-                        phone, eMailText, emailConfirmationText, gender
-                    )
-                    binding.invalidNameText.isVisible = false
-                }
-                else{
-                    binding.insertName.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button.isEnabled = validations.checkFilledFields(
-                        name, paternalLast, birthDate, birthState,
-                        phone, eMailText, emailConfirmationText, gender
-                    )
-                    binding.invalidNameText.isVisible = true
-                }
+            //---
+            //onClickListener on ManGender to listen for radioButton selection
+            manGenderRadioButton.setOnClickListener {
+                gender = "Hombre"
+                button.isEnabled = validations.checkFilledFields(
+                    name, paternalLast, birthDate, birthState,
+                    phone, eMailText, emailConfirmationText, gender
+                )
+                womanGenderRadioButton.isChecked = false
             }
-
-        })
-
-        binding.paternalLastName.addTextChangedListener(object: TextWatcher{
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
+            //---
+            //onClickListener on continueButton to listen for saveUserData in SharedPreferences
+            button.setOnClickListener { view: View ->
+                createAccountViewModel.saveRegisterData(
+                    name, paternalLast, maternalLast, birthDate, birthState, phone, eMailText, gender
+                )
+                view.findNavController().navigate(R.id.action_EKTPCreateAccountFragment_to_EKTPCreateAccountSMSVerificationFragment)
             }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                paternalLast = s.toString()
-                if (validations.checkValidInput(paternalLast)){
-                    binding.paternalLastName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.invalidPaternalText.isVisible = false
-                }
-                else{
-                    binding.paternalLastName.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button.isEnabled = false
-                    binding.invalidPaternalText.isVisible = true
-                }
+            //---
+            //onClickListener on appBar BackButton to destroy fragment and activity
+            backAppbarButton.setOnClickListener { view: View ->
+                activity?.finish()
             }
-
-            override fun afterTextChanged(s: Editable?) {
-                paternalLast = s.toString()
-                if (validations.checkValidInput(paternalLast)){
-                    binding.paternalLastName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button.isEnabled = validations.checkFilledFields(
-                        name, paternalLast, birthDate, birthState,
-                        phone, eMailText, emailConfirmationText, gender
-                    )
-                    binding.invalidPaternalText.isVisible = false
-                }
-                else{
-                    binding.paternalLastName.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button.isEnabled = validations.checkFilledFields(
-                        name, paternalLast, birthDate, birthState,
-                        phone, eMailText, emailConfirmationText, gender
-                    )
-                    binding.invalidPaternalText.isVisible = true
-                }
-            }
-
-        })
-
-        binding.maternalLastName.addTextChangedListener(object: TextWatcher{
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                maternalLast = s.toString()
-                if (validations.checkValidInput(maternalLast) || maternalLast.isEmpty()){
-                    binding.maternalLastName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.invalidMaternalText.isVisible = false
-                }
-                else{
-                    binding.maternalLastName.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.invalidMaternalText.isVisible = true
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                maternalLast = s.toString()
-                if (validations.checkValidInput(maternalLast) || maternalLast.isEmpty()){
-                    binding.maternalLastName.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.invalidMaternalText.isVisible = false
-                }
-                else{
-                    binding.maternalLastName.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.invalidMaternalText.isVisible = true
-                }
-            }
-
-        })
-
-        binding.dateBirth.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                birthDate = s.toString()
-                if (validations.checkValidDate(birthDate)){
-                    binding.dateBirth.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.invalidDateText.isVisible = false
-                }
-                else{
-                    binding.dateBirth.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button.isEnabled = false
-                    binding.invalidDateText.isVisible = true
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                birthDate = s.toString()
-                if (validations.checkValidDate(birthDate)){
-                    binding.dateBirth.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button.isEnabled = validations.checkFilledFields(
-                        name, paternalLast, birthDate, birthState,
-                        phone, eMailText, emailConfirmationText, gender
-                    )
-                    binding.invalidDateText.isVisible = false
-                }
-                else{
-                    binding.dateBirth.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button.isEnabled = validations.checkFilledFields(
-                        name, paternalLast, birthDate, birthState,
-                        phone, eMailText, emailConfirmationText, gender
-                    )
-                    binding.invalidDateText.isVisible = true
-                }
-            }
-
-        })
-
-        binding.phoneNumber.addTextChangedListener(object: TextWatcher{
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                phone = s.toString()
-                if(validations.checkPhoneNumber(phone)) {
-                    binding.phoneNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.invalidPhoneText.isVisible = false
-                }
-                else{
-                    binding.phoneNumber.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.invalidPhoneText.isVisible = true
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                phone = s.toString()
-                if(validations.checkPhoneNumber(phone)) {
-                    binding.phoneNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button.isEnabled = validations.checkFilledFields(
-                        name, paternalLast, birthDate, birthState,
-                        phone, eMailText, emailConfirmationText, gender
-                    )
-                    binding.invalidPhoneText.isVisible = false
-                }
-                else{
-                    binding.phoneNumber.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button.isEnabled = validations.checkFilledFields(
-                        name, paternalLast, birthDate, birthState,
-                        phone, eMailText, emailConfirmationText, gender
-                    )
-                    binding.invalidPhoneText.isVisible = true
-                }
-            }
-        })
-
-        binding.setDateButton.setOnClickListener {
-            val dpp = DatePickerDialog(
-                requireContext(),
-                DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
-                    binding.dateBirth.setText("" + mDay + "/" + "${mMonth + 1}" + "/" + mYear)
-                },
-                year,
-                month,
-                day
-            )
-            dpp.show()
+            //---
+            return root
         }
-
-        binding.eMail.addTextChangedListener(object: TextWatcher{
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                eMailText = s.toString()
-                if (validations.checkEmail(eMailText)){
-                    binding.eMail.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.invalidEmailText.isVisible = false
-                }
-                else{
-                    binding.eMail.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button.isEnabled = false
-                    binding.invalidEmailText.isVisible = true
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                eMailText = s.toString()
-                if (!validations.checkEmail(eMailText)){
-                    binding.eMail.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button.isEnabled = validations.checkFilledFields(
-                        name, paternalLast, birthDate, birthState,
-                        phone, eMailText, emailConfirmationText, gender
-                    )
-                    binding.invalidEmailText.isVisible = true
-                }
-                else{
-                    binding.eMail.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button.isEnabled = validations.checkFilledFields(
-                        name, paternalLast, birthDate, birthState,
-                        phone, eMailText, emailConfirmationText, gender
-                    )
-                    binding.invalidEmailText.isVisible = false
-                }
-            }
-        })
-
-        binding.emailConfirmation.addTextChangedListener(object: TextWatcher{
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                emailConfirmationText = s.toString()
-                if (eMailText != emailConfirmationText){
-                    binding.emailConfirmation.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button.isEnabled = validations.checkFilledFields(
-                        name, paternalLast, birthDate, birthState,
-                        phone, eMailText, emailConfirmationText, gender
-                    )
-                    binding.invalidEmailConfirmationText.isVisible = true
-                }
-                else{
-                    binding.emailConfirmation.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button.isEnabled = validations.checkFilledFields(
-                        name, paternalLast, birthDate, birthState,
-                        phone, eMailText, emailConfirmationText, gender
-                    )
-                    binding.invalidEmailConfirmationText.isVisible = false
-                }
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                emailConfirmationText = s.toString()
-                if (eMailText != emailConfirmationText){
-                    binding.emailConfirmation.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button.isEnabled = false
-                    binding.invalidEmailConfirmationText.isVisible = true
-                }
-                else{
-                    binding.emailConfirmation.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button.isEnabled = validations.checkFilledFields(
-                        name, paternalLast, birthDate, birthState,
-                        phone, eMailText, emailConfirmationText, gender
-                    )
-                    binding.invalidEmailConfirmationText.isVisible = false
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-
-            }
-        })
-
-        binding.birthSiteSpinner?.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-
-                }
-
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    birthState = binding.birthSiteSpinner.selectedItem.toString()
-                    binding.button.isEnabled = validations.checkFilledFields(
-                        name, paternalLast, birthDate, birthState,
-                        phone, eMailText, emailConfirmationText, gender
-                    )
-                }
-            }
-
-        binding.womanGenderRadioButton.setOnClickListener {
-            gender = "Mujer"
-            binding.button.isEnabled = validations.checkFilledFields(
-                name, paternalLast, birthDate, birthState,
-                phone, eMailText, emailConfirmationText, gender
-            )
-            binding.manGenderRadioButton.isChecked = false
-        }
-
-        binding.manGenderRadioButton.setOnClickListener {
-            gender = "Hombre"
-            binding.button.isEnabled = validations.checkFilledFields(
-                name, paternalLast, birthDate, birthState,
-                phone, eMailText, emailConfirmationText, gender
-            )
-            binding.womanGenderRadioButton.isChecked = false
-        }
-
-        binding.button.setOnClickListener { view: View ->
-            createAccountViewModel.saveRegisterData(
-                name, paternalLast, maternalLast, birthDate, birthState, phone, eMailText, gender
-            )
-            view.findNavController().navigate(R.id.action_EKTPCreateAccountFragment_to_EKTPCreateAccountSMSVerificationFragment)
-        }
-
-        binding.backAppbarButton.setOnClickListener { view: View ->
-            activity?.finish()
-        }
-
-        return binding.root
+        //---
     }
-
 }
