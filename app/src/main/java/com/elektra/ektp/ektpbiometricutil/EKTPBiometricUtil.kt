@@ -5,10 +5,10 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.biometric.BiometricManager
 
-class EKTPBiometricUtil {
+class EKTPBiometricUtil(private val context: Context) {
 
     //requiere el contexto donde sea llamado
-    fun checkBioStatus(context: Context): Int {
+    fun checkBioStatus(): Int {
         val biometricManager = BiometricManager.from(context)
         return when (biometricManager.canAuthenticate()) {
             BiometricManager.BIOMETRIC_SUCCESS ->
@@ -28,7 +28,7 @@ class EKTPBiometricUtil {
     }
 
     //requiere el contexto donde es llamado
-    fun determineBio(context: Context) : Int {
+    fun determineBio() : Int {
 
         var packageManager: PackageManager = context.getPackageManager()
         var bioUsed = 0

@@ -1,6 +1,7 @@
 package com.elektra.ektp.ektpcreateaccount.view
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -17,6 +18,8 @@ import androidx.navigation.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentCreateAccountBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountViewModel
+import com.elektra.ektp.ektphome.view.EKTPHomeActivity
+import com.elektra.ektp.ektplogin.view.EKTPLoginActivity
 import com.elektra.ektp.uservalidations.UserValidations
 import java.util.*
 
@@ -392,6 +395,9 @@ class EKTPCreateAccountFragment : Fragment() {
 
         binding.backAppbarButton.setOnClickListener { view: View ->
             activity?.finish()
+            val intent = Intent(activity, EKTPLoginActivity::class.java)
+            val context = view?.context
+            context?.startActivity(intent)
         }
 
         return binding.root
