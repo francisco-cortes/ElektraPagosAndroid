@@ -53,11 +53,12 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_ektp_create_account_sms_verification, container, false)
-
+        //Wrap this block code for all the lines with binding variable
         with(binding){
             smsContinueButton.isEnabled = false
             invalidSMSTextView.isVisible = false
 
+            //TextWatcher function to listen for changes on editText
             verificationNumber1.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
@@ -104,7 +105,9 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                 }
 
             })
+            //--
 
+            //TextWatcher function to listen for changes on editText
             verificationNumber2.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
@@ -151,7 +154,9 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                 }
 
             })
+            //--
 
+            //TextWatcher function to listen for changes on editText
             verificationNumber3.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
@@ -198,7 +203,9 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                 }
 
             })
+            //---
 
+            //TextWatcher function to listen for changes on editText
             verificationNumber4.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
@@ -245,7 +252,9 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                 }
 
             })
+            //---
 
+            //TextWatcher function to listen for changes on editText
             verificationNumber5.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
@@ -290,7 +299,9 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                 }
 
             })
+            //---
 
+            //TextWatcher function to listen for changes on editText
             smsContinueButton.setOnClickListener { view: View ->
                 if (!smsVerificationViewModel.checkSMSVerification(codeSMS)){
                     view.findNavController().navigate(R.id.action_EKTPCreateAccountSMSVerificationFragment_to_EKPTCreateAccountRegisterFormFragment)
@@ -305,10 +316,13 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                 }
 
             }
+            //---
 
+            //onClickListener on appBar BackButton to destroy fragment and activity
             backAppbarButton.setOnClickListener { view : View ->
                 findNavController().popBackStack()
             }
+            //---
 
             return  root
         }

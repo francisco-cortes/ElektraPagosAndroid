@@ -26,6 +26,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
     private lateinit var binding: FragmentEkptCreateAccountRegisterFormBinding
     private val registerFormViewModel: EKTPCreateAccountRegisterFormViewModel by viewModels()
     private val validations = UserValidations()
+    //---
 
     //Data variables
     private lateinit var userData: ArrayList<String>
@@ -34,20 +35,23 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
     private var zipCode: String = ""
     private var colonyUser: String = ""
     private var streetUser: String = ""
-    private var exteriorNumber: String = ""
-    private var interiorNumber: String = ""
+    private var exteriorNumberString: String = ""
+    private var interiorNumberString: String = ""
     private var country: String = ""
     private var state: String = ""
     private var town: String = ""
+    //---
 
     //Flags variables
     var zipCodeFlag = 0
     var colonyFlag = 0
     var streetFlag = 0
     var exteriorFlag = 0
+    //---
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Overriding obBackPressed to popBackStack fragment
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 findNavController().popBackStack()
@@ -60,462 +64,308 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_ekpt_create_account_register_form, container, false)
+        binding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_ekpt_create_account_register_form, container, false)
+
         progressInForm(progressValue, completed)
 
         userData = registerFormViewModel.getSavedRegisterData()
 
-
-        binding.insertName.setText(userData[0])
-        binding.paternalLastName.setText(userData[1])
-        binding.maternalLastName.setText(userData[2])
-        binding.dateBirth.setText(userData[3])
-        binding.birthSiteSpinner.setText(userData[4])
-        when (userData[5]) {
-            "Hombre" -> {
-                binding.manGenderRadioButton.isChecked = true
-                binding.womanGenderRadioButton.isChecked = false
-            }
-            "Mujer" -> {
-                binding.manGenderRadioButton.isChecked = false
-                binding.womanGenderRadioButton.isChecked = true
-            }
-        }
-
-        binding.postalCode.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                zipCode = s.toString()
-                if (validations.checkZipCode(zipCode)) {
-                    binding.postalCode.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button5.isEnabled =
-                        validations.checkFieldsProgressBar(
-                            zipCode,
-                            colonyUser,
-                            streetUser,
-                            exteriorNumber,
-                            country,
-                            state,
-                            town,
-                            completed
-                        )
-                    binding.invalidZipCodeText.isVisible = false
-                } else {
-                    binding.postalCode.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button5.isEnabled = false
-                    binding.invalidZipCodeText.isVisible = true
+        //Wrap this block code for all the lines with binding variable
+        with(binding){
+            //Recover data from SharedPreferences and initialize fields
+            insertName.setText(userData[0])
+            paternalLastName.setText(userData[1])
+            maternalLastName.setText(userData[2])
+            dateBirth.setText(userData[3])
+            birthSiteSpinner.setText(userData[4])
+            when (userData[5]) {
+                "Hombre" -> {
+                    manGenderRadioButton.isChecked = true
+                    womanGenderRadioButton.isChecked = false
+                }
+                "Mujer" -> {
+                    manGenderRadioButton.isChecked = false
+                    womanGenderRadioButton.isChecked = true
                 }
             }
+            //---
 
-            override fun afterTextChanged(s: Editable?) {
-                zipCode = s.toString()
-                if (validations.checkZipCode(zipCode)) {
-                    binding.postalCode.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button5.isEnabled =
-                        validations.checkFieldsProgressBar(
-                            zipCode,
-                            colonyUser,
-                            streetUser,
-                            exteriorNumber,
-                            country,
-                            state,
-                            town,
-                            completed
-                        )
-                    binding.invalidZipCodeText.isVisible = false
-                } else {
-                    binding.postalCode.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button5.isEnabled =
-                        validations.checkFieldsProgressBar(
-                            zipCode,
-                            colonyUser,
-                            streetUser,
-                            exteriorNumber,
-                            country,
-                            state,
-                            town,
-                            completed
-                        )
-                    binding.invalidZipCodeText.isVisible = true
-                }
-            }
+            //TextWatcher function to listen for changes on editText
+            postalCode.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
-        })
-
-        binding.postalCode.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) {
-                if (validations.checkZipCode(zipCode) && zipCodeFlag == 0) {
-                    zipCodeFlag = 1
-                    progressValue += 10
-                    completed += 1
-                    binding.button5.isEnabled =
-                        validations.checkFieldsProgressBar(
-                            zipCode,
-                            colonyUser,
-                            streetUser,
-                            exteriorNumber,
-                            country,
-                            state,
-                            town,
-                            completed
-                        )
-                } else {
-                    if (!validations.checkZipCode(zipCode) && zipCodeFlag == 1) {
-                        zipCodeFlag = 0
-                        progressValue -= 10
-                        completed -= 1
-                    }
-                }
-                progressInForm(progressValue, completed)
-            }
-        }
-
-        binding.insertColony.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(
-                s: CharSequence?,
-                start: Int,
-                count: Int,
-                after: Int
-            ) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                colonyUser = s.toString()
-                if (validations.checkAddress(colonyUser)) {
-                    binding.insertColony.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button5.isEnabled =
-                        validations.checkFieldsProgressBar(
-                            zipCode,
-                            colonyUser,
-                            streetUser,
-                            exteriorNumber,
-                            country,
-                            state,
-                            town,
-                            completed
-                        )
-                    binding.invalidColonyText.isVisible = false
-                } else {
-                    binding.insertColony.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button5.isEnabled = false
-                    binding.invalidColonyText.isVisible = true
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                colonyUser = s.toString()
-                if (validations.checkAddress(colonyUser)) {
-                    binding.insertColony.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button5.isEnabled =
-                        validations.checkFieldsProgressBar(
-                            zipCode,
-                            colonyUser,
-                            streetUser,
-                            exteriorNumber,
-                            country,
-                            state,
-                            town,
-                            completed
-                        )
-                    binding.invalidColonyText.isVisible = false
-                } else {
-                    binding.insertColony.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button5.isEnabled =
-                        validations.checkFieldsProgressBar(
-                            zipCode,
-                            colonyUser,
-                            streetUser,
-                            exteriorNumber,
-                            country,
-                            state,
-                            town,
-                            completed
-                        )
-                    binding.invalidColonyText.isVisible = true
-                }
-            }
-
-        })
-
-        binding.insertColony.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) {
-                if (validations.checkAddress(colonyUser) && colonyFlag == 0) {
-                    colonyFlag = 1
-                    progressValue += 10
-                    completed += 1
-                    binding.button5.isEnabled =
-                        validations.checkFieldsProgressBar(
-                            zipCode,
-                            colonyUser,
-                            streetUser,
-                            exteriorNumber,
-                            country,
-                            state,
-                            town,
-                            completed
-                        )
-                } else {
-                    if (!validations.checkAddress(colonyUser) && colonyFlag == 1) {
-                        colonyFlag = 0
-                        progressValue -= 10
-                        completed -= 1
-                    }
-                }
-                progressInForm(progressValue, completed)
-            }
-        }
-
-        binding.insertStreet.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                streetUser = s.toString()
-                if (validations.checkAddress(streetUser)){
-                    binding.insertStreet.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button5.isEnabled =
-                        validations.checkFieldsProgressBar(
-                            zipCode,
-                            colonyUser,
-                            streetUser,
-                            exteriorNumber,
-                            country,
-                            state,
-                            town,
-                            completed
-                        )
-                    binding.invalidStreetText.isVisible = false
-                }
-                else{
-                    binding.insertStreet.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button5.isEnabled = false
-                    binding.invalidStreetText.isVisible = true
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                streetUser = s.toString()
-                if (validations.checkAddress(streetUser)){
-                    binding.insertStreet.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button5.isEnabled =
-                        validations.checkFieldsProgressBar(
-                            zipCode,
-                            colonyUser,
-                            streetUser,
-                            exteriorNumber,
-                            country,
-                            state,
-                            town,
-                            completed
-                        )
-                    binding.invalidStreetText.isVisible = false
-                }
-                else{
-                    binding.insertStreet.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button5.isEnabled =
-                        validations.checkFieldsProgressBar(
-                            zipCode,
-                            colonyUser,
-                            streetUser,
-                            exteriorNumber,
-                            country,
-                            state,
-                            town,
-                            completed
-                        )
-                    binding.invalidStreetText.isVisible = true
-                }
-            }
-
-        })
-
-        binding.insertStreet.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) {
-                if (validations.checkAddress(streetUser) && streetFlag == 0){
-                    streetFlag = 1
-                    progressValue += 10
-                    completed += 1
-                    binding.button5.isEnabled =
-                        validations.checkFieldsProgressBar(
-                            zipCode,
-                            colonyUser,
-                            streetUser,
-                            exteriorNumber,
-                            country,
-                            state,
-                            town,
-                            completed
-                        )
-                }
-                else{
-                    if (!validations.checkAddress(streetUser) && streetFlag ==1){
-                        streetFlag = 0
-                        progressValue -= 10
-                        completed -= 1
-                    }
-                }
-                progressInForm(progressValue, completed)
-            }
-        }
-
-        binding.exteriorNumber.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                exteriorNumber = s.toString()
-                if (validations.checkAddress(exteriorNumber)){
-                    binding.exteriorNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button5.isEnabled =
-                        validations.checkFieldsProgressBar(
-                            zipCode,
-                            colonyUser,
-                            streetUser,
-                            exteriorNumber,
-                            country,
-                            state,
-                            town,
-                            completed
-                        )
-                    binding.invalidExteriorText.isVisible = false
-                }
-                else{
-                    binding.exteriorNumber.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button5.isEnabled = false
-                    binding.invalidExteriorText.isVisible = true
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                exteriorNumber = s.toString()
-                if (validations.checkAddress(exteriorNumber)){
-                    binding.exteriorNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.button5.isEnabled =
-                        validations.checkFieldsProgressBar(
-                            zipCode,
-                            colonyUser,
-                            streetUser,
-                            exteriorNumber,
-                            country,
-                            state,
-                            town,
-                            completed
-                        )
-                    binding.invalidExteriorText.isVisible = false
-                }
-                else{
-                    binding.exteriorNumber.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.button5.isEnabled =
-                        validations.checkFieldsProgressBar(
-                            zipCode,
-                            colonyUser,
-                            streetUser,
-                            exteriorNumber,
-                            country,
-                            state,
-                            town,
-                            completed
-                        )
-                    binding.invalidExteriorText.isVisible = true
-                }
-            }
-
-        })
-
-        binding.exteriorNumber.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) {
-                if (validations.checkAddress(exteriorNumber) && exteriorFlag == 0){
-                    exteriorFlag = 1
-                    progressValue += 10
-                    completed += 1
-                    binding.button5.isEnabled =
-                        validations.checkFieldsProgressBar(
-                            zipCode,
-                            colonyUser,
-                            streetUser,
-                            exteriorNumber,
-                            country,
-                            state,
-                            town,
-                            completed
-                        )
-                }
-                else{
-                    if (!validations.checkAddress(exteriorNumber) && exteriorFlag ==1){
-                        exteriorFlag = 0
-                        progressValue -= 10
-                        completed -= 1
-                    }
-                }
-                progressInForm(progressValue, completed)
-            }
-        }
-
-        binding.interiorNumber.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                interiorNumber = s.toString()
-                if (validations.checkAddress(interiorNumber) || interiorNumber.isEmpty()){
-                    binding.interiorNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.invalidInteriorText.isVisible = false
-                }
-                else{
-                    binding.interiorNumber.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.invalidInteriorText.isVisible = true
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-
-            }
-
-        })
-
-        binding.countrySpinner?.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(parent: AdapterView<*>?) {
                 }
 
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    if (country != "Selecciona una opción*" && country.isNotEmpty()) {
-                        progressValue -= 10
-                        completed -= 1
-                        binding.button5.isEnabled =
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    zipCode = s.toString()
+                    if (validations.checkZipCode(zipCode)) {
+                        postalCode.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        button5.isEnabled =
                             validations.checkFieldsProgressBar(
                                 zipCode,
                                 colonyUser,
                                 streetUser,
-                                exteriorNumber,
+                                exteriorNumberString,
                                 country,
                                 state,
                                 town,
                                 completed
                             )
+                        invalidZipCodeText.isVisible = false
+                    } else {
+                        postalCode.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        button5.isEnabled = false
+                        invalidZipCodeText.isVisible = true
                     }
-                    country = binding.countrySpinner.selectedItem.toString()
-                    if (country != "Selecciona una opción*") {
-                        progressValue += 10
-                        completed += 1
-                        binding.button5.isEnabled =
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    zipCode = s.toString()
+                    if (validations.checkZipCode(zipCode)) {
+                        postalCode.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        button5.isEnabled =
                             validations.checkFieldsProgressBar(
                                 zipCode,
                                 colonyUser,
                                 streetUser,
-                                exteriorNumber,
+                                exteriorNumberString,
+                                country,
+                                state,
+                                town,
+                                completed
+                            )
+                        invalidZipCodeText.isVisible = false
+                    } else {
+                        postalCode.setBackgroundResource(R.drawable.validation_edit_text)
+                        button5.isEnabled =
+                            validations.checkFieldsProgressBar(
+                                zipCode,
+                                colonyUser,
+                                streetUser,
+                                exteriorNumberString,
+                                country,
+                                state,
+                                town,
+                                completed
+                            )
+                        invalidZipCodeText.isVisible = true
+                    }
+                }
+
+            })
+            //--
+
+            //OnFocusChangeListener function to listen for changes on editText unfocused
+            postalCode.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+                if (!hasFocus) {
+                    if (validations.checkZipCode(zipCode) && zipCodeFlag == 0) {
+                        zipCodeFlag = 1
+                        progressValue += 10
+                        completed += 1
+                        button5.isEnabled =
+                            validations.checkFieldsProgressBar(
+                                zipCode,
+                                colonyUser,
+                                streetUser,
+                                exteriorNumberString,
+                                country,
+                                state,
+                                town,
+                                completed
+                            )
+                    } else {
+                        if (!validations.checkZipCode(zipCode) && zipCodeFlag == 1) {
+                            zipCodeFlag = 0
+                            progressValue -= 10
+                            completed -= 1
+                        }
+                    }
+                    progressInForm(progressValue, completed)
+                }
+            }
+            //---
+
+            //TextWatcher function to listen for changes on editText
+            insertColony.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    colonyUser = s.toString()
+                    if (validations.checkAddress(colonyUser)) {
+                        insertColony.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        button5.isEnabled =
+                            validations.checkFieldsProgressBar(
+                                zipCode,
+                                colonyUser,
+                                streetUser,
+                                exteriorNumberString,
+                                country,
+                                state,
+                                town,
+                                completed
+                            )
+                        invalidColonyText.isVisible = false
+                    } else {
+                        insertColony.setBackgroundResource(R.drawable.validation_edit_text)
+                        button5.isEnabled = false
+                        invalidColonyText.isVisible = true
+                    }
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    colonyUser = s.toString()
+                    if (validations.checkAddress(colonyUser)) {
+                        insertColony.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        button5.isEnabled =
+                            validations.checkFieldsProgressBar(
+                                zipCode,
+                                colonyUser,
+                                streetUser,
+                                exteriorNumberString,
+                                country,
+                                state,
+                                town,
+                                completed
+                            )
+                        invalidColonyText.isVisible = false
+                    } else {
+                        insertColony.setBackgroundResource(R.drawable.validation_edit_text)
+                        button5.isEnabled =
+                            validations.checkFieldsProgressBar(
+                                zipCode,
+                                colonyUser,
+                                streetUser,
+                                exteriorNumberString,
+                                country,
+                                state,
+                                town,
+                                completed
+                            )
+                        invalidColonyText.isVisible = true
+                    }
+                }
+
+            })
+            //---
+
+            //OnFocusChangeListener function to listen for changes on editText unfocused
+            insertColony.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+                if (!hasFocus) {
+                    if (validations.checkAddress(colonyUser) && colonyFlag == 0) {
+                        colonyFlag = 1
+                        progressValue += 10
+                        completed += 1
+                        button5.isEnabled =
+                            validations.checkFieldsProgressBar(
+                                zipCode,
+                                colonyUser,
+                                streetUser,
+                                exteriorNumberString,
+                                country,
+                                state,
+                                town,
+                                completed
+                            )
+                    } else {
+                        if (!validations.checkAddress(colonyUser) && colonyFlag == 1) {
+                            colonyFlag = 0
+                            progressValue -= 10
+                            completed -= 1
+                        }
+                    }
+                    progressInForm(progressValue, completed)
+                }
+            }
+            //---
+
+            //TextWatcher function to listen for changes on editText
+            insertStreet.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    streetUser = s.toString()
+                    if (validations.checkAddress(streetUser)){
+                        insertStreet.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        button5.isEnabled =
+                            validations.checkFieldsProgressBar(
+                                zipCode,
+                                colonyUser,
+                                streetUser,
+                                exteriorNumberString,
+                                country,
+                                state,
+                                town,
+                                completed
+                            )
+                        invalidStreetText.isVisible = false
+                    }
+                    else{
+                        insertStreet.setBackgroundResource(R.drawable.validation_edit_text)
+                        button5.isEnabled = false
+                        invalidStreetText.isVisible = true
+                    }
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    streetUser = s.toString()
+                    if (validations.checkAddress(streetUser)){
+                        insertStreet.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        button5.isEnabled =
+                            validations.checkFieldsProgressBar(
+                                zipCode,
+                                colonyUser,
+                                streetUser,
+                                exteriorNumberString,
+                                country,
+                                state,
+                                town,
+                                completed
+                            )
+                        invalidStreetText.isVisible = false
+                    }
+                    else{
+                        insertStreet.setBackgroundResource(R.drawable.validation_edit_text)
+                        button5.isEnabled =
+                            validations.checkFieldsProgressBar(
+                                zipCode,
+                                colonyUser,
+                                streetUser,
+                                exteriorNumberString,
+                                country,
+                                state,
+                                town,
+                                completed
+                            )
+                        invalidStreetText.isVisible = true
+                    }
+                }
+
+            })
+            //---
+
+            //OnFocusChangeListener function to listen for changes on editText unfocused
+            insertStreet.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+                if (!hasFocus) {
+                    if (validations.checkAddress(streetUser) && streetFlag == 0){
+                        streetFlag = 1
+                        progressValue += 10
+                        completed += 1
+                        button5.isEnabled =
+                            validations.checkFieldsProgressBar(
+                                zipCode,
+                                colonyUser,
+                                streetUser,
+                                exteriorNumberString,
                                 country,
                                 state,
                                 town,
@@ -523,48 +373,97 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
                             )
                     }
                     else{
-                        binding.button5.isEnabled = false
+                        if (!validations.checkAddress(streetUser) && streetFlag ==1){
+                            streetFlag = 0
+                            progressValue -= 10
+                            completed -= 1
+                        }
                     }
                     progressInForm(progressValue, completed)
                 }
             }
+            //---
 
-        binding.stateSpinner?.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(parent: AdapterView<*>?) {
+            //TextWatcher function to listen for changes on editText
+            exteriorNumber.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
                 }
 
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    if (state != "Selecciona una opción*" && state.isNotEmpty()) {
-                        progressValue -= 10
-                        completed -= 1
-                        binding.button5.isEnabled =
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    exteriorNumberString = s.toString()
+                    if (validations.checkAddress(exteriorNumberString)){
+                        exteriorNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        button5.isEnabled =
                             validations.checkFieldsProgressBar(
                                 zipCode,
                                 colonyUser,
                                 streetUser,
-                                exteriorNumber,
+                                exteriorNumberString,
                                 country,
                                 state,
                                 town,
                                 completed
                             )
+                        invalidExteriorText.isVisible = false
                     }
-                    state = binding.stateSpinner.selectedItem.toString()
-                    if (state != "Selecciona una opción*") {
-                        progressValue += 10
-                        completed += 1
-                        binding.button5.isEnabled =
+                    else{
+                        exteriorNumber.setBackgroundResource(R.drawable.validation_edit_text)
+                        button5.isEnabled = false
+                        invalidExteriorText.isVisible = true
+                    }
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    exteriorNumberString = s.toString()
+                    if (validations.checkAddress(exteriorNumberString)){
+                        exteriorNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        button5.isEnabled =
                             validations.checkFieldsProgressBar(
                                 zipCode,
                                 colonyUser,
                                 streetUser,
-                                exteriorNumber,
+                                exteriorNumberString,
+                                country,
+                                state,
+                                town,
+                                completed
+                            )
+                        invalidExteriorText.isVisible = false
+                    }
+                    else{
+                        exteriorNumber.setBackgroundResource(R.drawable.validation_edit_text)
+                        button5.isEnabled =
+                            validations.checkFieldsProgressBar(
+                                zipCode,
+                                colonyUser,
+                                streetUser,
+                                exteriorNumberString,
+                                country,
+                                state,
+                                town,
+                                completed
+                            )
+                        invalidExteriorText.isVisible = true
+                    }
+                }
+
+            })
+            //---
+
+            //OnFocusChangeListener function to listen for changes on editText unfocused
+            exteriorNumber.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+                if (!hasFocus) {
+                    if (validations.checkAddress(exteriorNumberString) && exteriorFlag == 0){
+                        exteriorFlag = 1
+                        progressValue += 10
+                        completed += 1
+                        button5.isEnabled =
+                            validations.checkFieldsProgressBar(
+                                zipCode,
+                                colonyUser,
+                                streetUser,
+                                exteriorNumberString,
                                 country,
                                 state,
                                 town,
@@ -572,78 +471,218 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
                             )
                     }
                     else{
-                        binding.button5.isEnabled = false
+                        if (!validations.checkAddress(exteriorNumberString) && exteriorFlag ==1){
+                            exteriorFlag = 0
+                            progressValue -= 10
+                            completed -= 1
+                        }
                     }
                     progressInForm(progressValue, completed)
                 }
             }
+            //---
 
-        binding.townHallSpinner?.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(parent: AdapterView<*>?) {
+            //TextWatcher function to listen for changes on editText
+            interiorNumber.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
                 }
 
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    if (town != "Selecciona una opción*" && town.isNotEmpty()) {
-                        progressValue -= 10
-                        completed -= 1
-                        binding.button5.isEnabled =
-                            validations.checkFieldsProgressBar(
-                                zipCode,
-                                colonyUser,
-                                streetUser,
-                                exteriorNumber,
-                                country,
-                                state,
-                                town,
-                                completed
-                            )
-                    }
-                    town = binding.townHallSpinner.selectedItem.toString()
-                    if (town != "Selecciona una opción*") {
-                        progressValue += 10
-                        completed += 1
-                        binding.button5.isEnabled =
-                            validations.checkFieldsProgressBar(
-                                zipCode,
-                                colonyUser,
-                                streetUser,
-                                exteriorNumber,
-                                country,
-                                state,
-                                town,
-                                completed
-                            )
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    exteriorNumberString = s.toString()
+                    if (validations.checkAddress(interiorNumberString) || interiorNumberString.isEmpty()){
+                        interiorNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        invalidInteriorText.isVisible = false
                     }
                     else{
-                        binding.button5.isEnabled = false
+                        interiorNumber.setBackgroundResource(R.drawable.validation_edit_text)
+                        invalidInteriorText.isVisible = true
                     }
-                    progressInForm(progressValue, completed)
                 }
+
+                override fun afterTextChanged(s: Editable?) {
+
+                }
+
+            })
+            //---
+
+            //OnItemSelectedListener function on Spinner to listen for selection changes
+            countrySpinner?.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+                        if (country != "Selecciona una opción*" && country.isNotEmpty()) {
+                            progressValue -= 10
+                            completed -= 1
+                            button5.isEnabled =
+                                validations.checkFieldsProgressBar(
+                                    zipCode,
+                                    colonyUser,
+                                    streetUser,
+                                    exteriorNumberString,
+                                    country,
+                                    state,
+                                    town,
+                                    completed
+                                )
+                        }
+                        country = countrySpinner.selectedItem.toString()
+                        if (country != "Selecciona una opción*") {
+                            progressValue += 10
+                            completed += 1
+                            button5.isEnabled =
+                                validations.checkFieldsProgressBar(
+                                    zipCode,
+                                    colonyUser,
+                                    streetUser,
+                                    exteriorNumberString,
+                                    country,
+                                    state,
+                                    town,
+                                    completed
+                                )
+                        }
+                        else{
+                            button5.isEnabled = false
+                        }
+                        progressInForm(progressValue, completed)
+                    }
+                }
+            //---
+
+            //OnItemSelectedListener function on Spinner to listen for selection changes
+            stateSpinner?.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+                        if (state != "Selecciona una opción*" && state.isNotEmpty()) {
+                            progressValue -= 10
+                            completed -= 1
+                            button5.isEnabled =
+                                validations.checkFieldsProgressBar(
+                                    zipCode,
+                                    colonyUser,
+                                    streetUser,
+                                    exteriorNumberString,
+                                    country,
+                                    state,
+                                    town,
+                                    completed
+                                )
+                        }
+                        state = stateSpinner.selectedItem.toString()
+                        if (state != "Selecciona una opción*") {
+                            progressValue += 10
+                            completed += 1
+                            button5.isEnabled =
+                                validations.checkFieldsProgressBar(
+                                    zipCode,
+                                    colonyUser,
+                                    streetUser,
+                                    exteriorNumberString,
+                                    country,
+                                    state,
+                                    town,
+                                    completed
+                                )
+                        }
+                        else{
+                            button5.isEnabled = false
+                        }
+                        progressInForm(progressValue, completed)
+                    }
+                }
+            //---
+
+            //OnItemSelectedListener function on Spinner to listen for selection changes
+            townHallSpinner?.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+                        if (town != "Selecciona una opción*" && town.isNotEmpty()) {
+                            progressValue -= 10
+                            completed -= 1
+                            button5.isEnabled =
+                                validations.checkFieldsProgressBar(
+                                    zipCode,
+                                    colonyUser,
+                                    streetUser,
+                                    exteriorNumberString,
+                                    country,
+                                    state,
+                                    town,
+                                    completed
+                                )
+                        }
+                        town = townHallSpinner.selectedItem.toString()
+                        if (town != "Selecciona una opción*") {
+                            progressValue += 10
+                            completed += 1
+                            button5.isEnabled =
+                                validations.checkFieldsProgressBar(
+                                    zipCode,
+                                    colonyUser,
+                                    streetUser,
+                                    exteriorNumberString,
+                                    country,
+                                    state,
+                                    town,
+                                    completed
+                                )
+                        }
+                        else{
+                            button5.isEnabled = false
+                        }
+                        progressInForm(progressValue, completed)
+                    }
+                }
+            //---
+
+            //onClickListener on continueButton to listen for saveUserData in SharedPreferences
+            button5.setOnClickListener { view: View ->
+                view.findNavController()
+                    .navigate(R.id.action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountContractsFragment)
             }
+            //---
 
-        binding.button5.setOnClickListener { view: View ->
-            view.findNavController()
-                .navigate(R.id.action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountContractsFragment)
+            //onClickListener on appBar BackButton to popBackStack fragment
+            backAppbarButton.setOnClickListener { view: View ->
+                findNavController().popBackStack()
+            }
+            //---
+
+            return root
         }
-
-        binding.backAppbarButton.setOnClickListener { view: View ->
-            findNavController().popBackStack()
-        }
-
-        return binding.root
     }
-
+    //ProgressInForm to draw onScreen the user progress according to the added information
     private fun progressInForm(proValBar: Int, proTexVal: Int) {
         binding.progressBar.progress = proValBar
         if (proTexVal <= 7) {
             binding.barCounter.text = "$proTexVal/7"
         }
     }
+    //---
 
 }
