@@ -192,10 +192,12 @@ class EKTPForgottenPassNewPassFragment : Fragment(){
 
             if (!showPassVar) {
                 binding.insertNewPass.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                binding.showPassButton1.setBackgroundResource(R.drawable.ic_hide_pass)
                 showPassVar = true
             }
             else {
                 binding.insertNewPass.transformationMethod = PasswordTransformationMethod.getInstance()
+                binding.showPassButton1.setBackgroundResource(R.drawable.ic_show_pass)
                 showPassVar = false
             }
         }
@@ -204,10 +206,12 @@ class EKTPForgottenPassNewPassFragment : Fragment(){
 
             if (!showPassVar2) {
                 binding.insertConfirmPass.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                binding.showPassButton2.setBackgroundResource(R.drawable.ic_hide_pass)
                 showPassVar2 = true
             }
             else {
                 binding.insertConfirmPass.transformationMethod = PasswordTransformationMethod.getInstance()
+                binding.showPassButton2.setBackgroundResource(R.drawable.ic_show_pass)
                 showPassVar2 = false
             }
         }
