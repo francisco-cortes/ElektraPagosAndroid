@@ -497,31 +497,44 @@
                         android:theme="@style/hint_edit_text" />
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/invalidExteriorText"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/hintInvalidNumbers"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_50sdp"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:theme="@style/hint_edit_text"
-                    android:text="@string/invalid_data"
-                    android:textColor="@color/elektra_red"
-                    android:visibility="invisible"
-                    app:layout_constraintTop_toBottomOf="@id/numbersFieldsForm"
-                    app:layout_constraintStart_toStartOf="parent"/>
-
-                <TextView
-                    android:id="@+id/invalidInteriorText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal"
                     android:layout_marginEnd="@dimen/_31sdp"
-                    android:theme="@style/hint_edit_text"
-                    android:visibility="invisible"
-                    android:text="@string/invalid_data"
-                    android:textColor="@color/elektra_red"
+                    android:layout_marginTop="@dimen/_5sdp"
                     app:layout_constraintTop_toBottomOf="@id/numbersFieldsForm"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <TextView
+                        android:id="@+id/invalidExteriorText"
+                        android:layout_width="@dimen/_134sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAlignment="textEnd"
+                        android:theme="@style/hint_edit_text"
+                        android:text="@string/invalid_data"
+                        android:textColor="@color/elektra_red"
+                        android:visibility="invisible" />
+
+                    <Space
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/invalidInteriorText"
+                        android:layout_width="@dimen/_134sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAlignment="textEnd"
+                        android:theme="@style/hint_edit_text"
+                        android:visibility="invisible"
+                        android:text="@string/invalid_data"
+                        android:textColor="@color/elektra_red" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/countryLabel"

@@ -489,7 +489,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    exteriorNumberString = s.toString()
+                    interiorNumberString = s.toString()
                     if (validations.checkAddress(interiorNumberString) || interiorNumberString.isEmpty()){
                         interiorNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                         invalidInteriorText.isVisible = false
