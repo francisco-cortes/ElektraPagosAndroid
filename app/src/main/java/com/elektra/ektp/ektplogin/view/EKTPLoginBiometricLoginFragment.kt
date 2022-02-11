@@ -153,10 +153,10 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
                     .commitNow()
             }
             createAccountTextView.setOnClickListener{view: View ->
-                activity?.finish()
                 val intent = Intent(activity, EKTPCreateAccountActivity::class.java)
                 val context = view.context
                 context.startActivity(intent)
+                activity?.finish()
             }
         }
 

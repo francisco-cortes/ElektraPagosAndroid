@@ -420,10 +420,10 @@ class EKTPCreateAccountFragment : Fragment() {
             //---
             //onClickListener on appBar BackButton to destroy fragment and activity
             backAppbarButton.setOnClickListener { view: View ->
-                activity?.finish()
                 val intent = Intent(activity, EKTPLoginActivity::class.java)
                 val context = view?.context
                 context?.startActivity(intent)
+                activity?.finish()
             }
             //---
             return root
