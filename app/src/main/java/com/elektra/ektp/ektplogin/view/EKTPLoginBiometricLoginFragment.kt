@@ -96,7 +96,6 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
 
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                 super.onAuthenticationSucceeded(result)//execute if pass the auth
-                activity?.finish()
                 val intent = Intent(activity, EKTPHomeActivity::class.java)
                 val context = view?.context
                 context?.startActivity(intent)
