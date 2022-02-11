@@ -14,6 +14,7 @@ class EKTPLoginPassLoginViewModel : ViewModel() {
         loginData.add(preferences.getEncryptToken())
         loginData.add(preferences.getNameUser())
         loginData.add(preferences.getTemporalPassword())
+        loginData.add(preferences.getTemporalLocked().toString())
 
         return  loginData
     }

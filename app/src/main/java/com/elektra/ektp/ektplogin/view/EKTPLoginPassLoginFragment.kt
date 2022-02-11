@@ -32,6 +32,8 @@ class EKTPLoginPassLoginFragment : Fragment() {
     private lateinit var noUserAcceptButton: Button
     private lateinit var incorrectPassAcceptButton: Button
     private lateinit var passAttemptTextView: TextView
+    private lateinit var lockedCancelButton: Button
+    private lateinit var lockedUnlockButton: Button
 
     private var activityViewModel = EKTPLoginActivityViewModel()
     private var viewModel = EKTPLoginPassLoginViewModel()
@@ -51,6 +53,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
         val bioUsed = viewModel.getSavedDataLogin()[1].toInt()//get bioUsed from sharedpreferences trough viewmodel
         val userName = viewModel.getSavedDataLogin()[3]//get the userName from sharedpreferences trough viewmodel
         val password = viewModel.getSavedDataLogin()[4]
+        val isLocked = viewModel.getSavedDataLogin()[5].toBoolean()
 
         var passwordAttempt = 0
 
@@ -72,6 +75,16 @@ class EKTPLoginPassLoginFragment : Fragment() {
         passAttemptTextView = incorrectPasswordLayout.findViewById(R.id.passwordAttemptTextView)
         incorrectPassDialog = incorrectPassDialogBuilder.create()
         //---
+
+        //locked password alert dialog builder
+        var lockedPasswordDialog: AlertDialog? = null
+        val lockedPasswordDialogBuilder = AlertDialog.Builder(requireContext())
+
+        lockedPasswordDialogBuilder.setView(lockedPasswordLayout)
+        lockedCancelButton = lockedPasswordLayout.findViewById(R.id.cancelButton)
+        lockedUnlockButton = lockedPasswordLayout.findViewById(R.id.unlockButton)
+        lockedPasswordDialog = lockedPasswordDialogBuilder.create()
+        //----
 
 
         //if biometric status isn´t ok disable the button to access at that fragment
@@ -105,6 +118,17 @@ class EKTPLoginPassLoginFragment : Fragment() {
         incorrectPassAcceptButton.setOnClickListener {
             incorrectPassDialog.dismiss()
         }
+        //--
+
+        //locked password alert dialog button
+        lockedCancelButton.setOnClickListener {
+            lockedPasswordDialog.dismiss()
+        }
+
+        lockedUnlockButton.setOnClickListener {
+            passwordAttempt = 0
+            lockedPasswordDialog.dismiss()
+        }
 
 
         //main layout buttons
@@ -130,9 +154,13 @@ class EKTPLoginPassLoginFragment : Fragment() {
                     val context = view?.context
                     context?.startActivity(intent)
                 }else{
-                    passwordAttempt ++
-                    passAttemptTextView.text = resources.getText(R.string.incorrect_password_attempt_label).toString() + passwordAttempt.toString()
-                    incorrectPassDialog.show()
+                    if (passwordAttempt >= 3){
+                        lockedPasswordDialog.show()
+                    }else {
+                        passwordAttempt ++
+                        passAttemptTextView.text = resources.getText(R.string.incorrect_password_attempt_label).toString() + passwordAttempt.toString()
+                        incorrectPassDialog.show()
+                    }
                 }
             }
 
