@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
@@ -405,12 +406,12 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
                                 town,
                                 completed
                             )
-                        invalidExteriorText.isVisible = false
+                        invalidExteriorText.isInvisible = true
                     }
                     else{
                         exteriorNumber.setBackgroundResource(R.drawable.validation_edit_text)
                         button5.isEnabled = false
-                        invalidExteriorText.isVisible = true
+                        invalidExteriorText.isInvisible = false
                     }
                 }
 
@@ -429,7 +430,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
                                 town,
                                 completed
                             )
-                        invalidExteriorText.isVisible = false
+                        invalidExteriorText.isInvisible = true
                     }
                     else{
                         exteriorNumber.setBackgroundResource(R.drawable.validation_edit_text)
@@ -444,7 +445,7 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
                                 town,
                                 completed
                             )
-                        invalidExteriorText.isVisible = true
+                        invalidExteriorText.isInvisible = false
                     }
                 }
 
@@ -492,11 +493,11 @@ class EKPTCreateAccountRegisterFormFragment : Fragment() {
                     interiorNumberString = s.toString()
                     if (validations.checkAddress(interiorNumberString) || interiorNumberString.isEmpty()){
                         interiorNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                        invalidInteriorText.isVisible = false
+                        invalidInteriorText.isInvisible = true
                     }
                     else{
                         interiorNumber.setBackgroundResource(R.drawable.validation_edit_text)
-                        invalidInteriorText.isVisible = true
+                        invalidInteriorText.isInvisible = false
                     }
                 }
 
