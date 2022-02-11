@@ -171,6 +171,19 @@
 
                 </LinearLayout>
 
+                <TextView
+                    android:id="@+id/invalidCodeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_43sdp"
+                    android:text="@string/invalid_sms_verification"
+                    android:theme="@style/text_button_1"
+                    android:textColor="@color/elektra_red"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/linearId"/>
+
                 <Button
                     android:id="@+id/buttonAuth"
                     android:layout_width="match_parent"
