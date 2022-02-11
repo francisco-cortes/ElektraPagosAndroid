@@ -20,13 +20,18 @@ import com.elektra.ektp.uservalidations.UserValidations
 
 class EKTPForgottenPassPhoneNumberFragment : Fragment(){
 
+    //Global databinding access variable
     private lateinit var binding: FragmentEktpForgottenPassPhoneNumberBinding
+    //ViewModel access variable
     private val phoneNumberViewModel: EKTPForgottenPassPhoneNumberViewModel by viewModels()
-    private lateinit var phoneNumber: String
+    //General data variable
+    private lateinit var phoneNumberString: String
+    //UserValidations access variable
     private val validations = UserValidations()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Overriding OnBackPressed function to destroy fragment and activity
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                     isEnabled = false
@@ -43,40 +48,50 @@ class EKTPForgottenPassPhoneNumberFragment : Fragment(){
         binding = DataBindingUtil.inflate(inflater,
         R.layout.fragment_ektp_forgotten_pass_phone_number, container, false)
 
-        binding.buttonForgottenPas.isEnabled = false
+        //Wrap this block code for all the lines with binding variable
+        with(binding){
+            buttonForgottenPas.isEnabled = false
 
-        binding.phoneNumber.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            //TextWatcher function to listen for changes on editText
+            phoneNumber.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                phoneNumber = s.toString()
-                if (validations.checkPhoneNumber(phoneNumber)){
-                    binding.phoneNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    binding.toastPhoneInvalid.isVisible = false
-                    binding.buttonForgottenPas.isEnabled = true
                 }
-                else{
-                    binding.phoneNumber.setBackgroundResource(R.drawable.validation_edit_text)
-                    binding.toastPhoneInvalid.isVisible = true
-                    binding.buttonForgottenPas.isEnabled = false
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    phoneNumberString = s.toString()
+                    if (validations.checkPhoneNumber(phoneNumberString)){
+                        phoneNumber.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        toastPhoneInvalid.isVisible = false
+                        buttonForgottenPas.isEnabled = true
+                    }
+                    else{
+                        phoneNumber.setBackgroundResource(R.drawable.validation_edit_text)
+                        toastPhoneInvalid.isVisible = true
+                        buttonForgottenPas.isEnabled = false
+                    }
                 }
+
+                override fun afterTextChanged(s: Editable?) {
+
+                }
+            })
+            //---
+
+            //onClickListener function to listen for  ask for authorization code
+            buttonForgottenPas.setOnClickListener {view: View ->
+                view.findNavController().navigate(R.id.action_EKTPForgottenPassPhoneNumberFragment_to_EKTPForgottenPassAuthorizationCodeFragment)
             }
+            //--
 
-            override fun afterTextChanged(s: Editable?) {
-
+            //onClickListener on appBar BackButton to destroy fragment and activity
+            backAppbarButton.setOnClickListener { view: View ->
+                activity?.finish()
             }
-        })
+            //--
 
-        binding.buttonForgottenPas.setOnClickListener {view: View ->
-            view.findNavController().navigate(R.id.action_EKTPForgottenPassPhoneNumberFragment_to_EKTPForgottenPassAuthorizationCodeFragment)
+            return root
         }
-
-        binding.backAppbarButton.setOnClickListener { view: View ->
-            activity?.finish()
-        }
-
-        return binding.root
+        //--
     }
 }
