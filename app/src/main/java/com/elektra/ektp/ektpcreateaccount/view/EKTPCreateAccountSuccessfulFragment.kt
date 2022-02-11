@@ -33,7 +33,7 @@ class EKTPCreateAccountSuccessfulFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate<FragmentEktpCreateAccountSuccessfulBinding>(inflater,
+        binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_ektp_create_account_successful, container, false)
 
         //The account has been created successfully, user can return to home
