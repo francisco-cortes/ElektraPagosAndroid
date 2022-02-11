@@ -142,7 +142,6 @@ class EKTPLoginPassLoginFragment : Fragment() {
             }
 
             frgPassClickTextView.setOnClickListener{ view: View ->
-                activity?.finish()
                 val intent = Intent(activity, EKTPForgottenPassActivity::class.java)
                 val context = view?.context
                 context?.startActivity(intent)
@@ -151,7 +150,6 @@ class EKTPLoginPassLoginFragment : Fragment() {
             loginPassButton.setOnClickListener { view : View ->
                 val passwordInput = editTextTextPassword.text.toString()
                 if (password == passwordInput){
-                    activity?.finish()
                     val intent = Intent(activity, EKTPHomeActivity::class.java)
                     val context = view?.context
                     context?.startActivity(intent)

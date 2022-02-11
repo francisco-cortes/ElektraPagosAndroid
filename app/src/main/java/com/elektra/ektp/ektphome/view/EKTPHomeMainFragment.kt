@@ -28,7 +28,8 @@ class EKTPHomeMainFragment : Fragment() {
             val context = view?.context
             context?.startActivity(intent)
         }
-        //binding.userNameTextView.text = EKTPHomeMainViewModel().getUserHomeMain() + "!"
+
+        binding.userNameTextView.text = EKTPHomeMainViewModel().getUserHomeMain() + "!"
 
         binding.balanceMovementsImageButton.setOnClickListener {view: View->
             val intent = Intent(activity, EKTPMovementsActivity::class.java)
