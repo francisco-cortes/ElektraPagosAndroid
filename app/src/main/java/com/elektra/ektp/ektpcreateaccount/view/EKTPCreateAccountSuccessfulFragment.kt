@@ -1,5 +1,6 @@
 package com.elektra.ektp.ektpcreateaccount.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountSuccessfulBinding
+import com.elektra.ektp.ektplogin.view.EKTPLoginActivity
 
 class EKTPCreateAccountSuccessfulFragment : Fragment() {
 
@@ -37,6 +39,9 @@ class EKTPCreateAccountSuccessfulFragment : Fragment() {
         //The account has been created successfully, user can return to home
         binding.buttonSuccessful.setOnClickListener {view: View ->
             activity?.finish()
+            val intent = Intent(activity, EKTPLoginActivity::class.java)
+            val context = view?.context
+            context?.startActivity(intent)
         }
 
         return binding.root
