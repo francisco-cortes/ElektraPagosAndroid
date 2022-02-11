@@ -17,37 +17,41 @@ import kotlin.properties.Delegates
 
 class EKTPLoginActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityLoginBinding
-
-    private var bioStatus by Delegates.notNull<Int>()
-    private var bioUsed by Delegates.notNull<Int>()
+    private lateinit var binding: ActivityLoginBinding //binding for activity layout
+    private val viewModel = EKTPLoginActivityViewModel() //instance of viewModel
+    private val bioChecker = EKTPBiometricUtil(this) //instance of biometricAuthUtil
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //inflater for this layout
         binding = DataBindingUtil.setContentView<ActivityLoginBinding>(this,R.layout.activity_login)
-        bioStatus = EKTPBiometricUtil().checkBioStatus(this)
-        bioUsed = EKTPBiometricUtil().determineBio(this)
-
+        //check the biostatus and set the layout
+        val bioStatus = bioChecker.checkBioStatus()
+        val bioUsed = bioChecker.determineBio()
         if (bioStatus==1){
             if(bioUsed == 1 || bioUsed == 3){
-                EKTPLoginActivityViewModel().setBiometricLogin(true)
-                openFragment(EKTPLoginBiometricLoginFragment())
+                viewModel.setBiometricLogin(true)//variable used for navigation
+                openFragment(EKTPLoginBiometricLoginFragment())//change the fragmen
             }
         } else {
-            openFragment(EKTPLoginPassLoginFragment())
-            EKTPLoginActivityViewModel().setBiometricLogin(false)
+            viewModel.setBiometricLogin(false)//variable use for navigaqtion
+            openFragment(EKTPLoginPassLoginFragment())//cange the fragment
         }
-        EKTPLoginActivityViewModel().saveBiometricStatus(bioStatus,bioUsed)
+        viewModel.saveBiometricStatus(bioStatus,bioUsed)//save the biometric status trough activity vie model
     }
+    //---
 
+    //funtion made for remplace fragments
     private fun openFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
             add(R.id.loginNavHostFragment, fragment)
             commit()
         }
     }
-
+    //---
+    //define for back button behavior
     override fun onBackPressed() {
+        val bioStatus = bioChecker.checkBioStatus()
         if (bioStatus!=1) {
             super.onBackPressed()
             finish()
@@ -63,5 +67,5 @@ class EKTPLoginActivity : AppCompatActivity() {
             }
         }
     }
-
+    //---
 }

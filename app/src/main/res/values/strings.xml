@@ -278,7 +278,7 @@
     <!--incorrect password-->
     <string name="incorrect_password_title_label">Contraseña incorrecta</string>
     <string name="incorrect_password_body_label">Verificala nuevamente. Después de \n 3 intentos erróneos se bloqueará </string>
-    <string name="incorrect_password_attempt_label">INTENTO </string>
+    <string name="incorrect_password_attempt_label">INTENTO: </string>
     <string name="incorrect_password_accept_button_label">ACEPTAR</string>
     <!--blocked password-->
     <string name="locked_password_title_label">Contraseña bloqueada</string>

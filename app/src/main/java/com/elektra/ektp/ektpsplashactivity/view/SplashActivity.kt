@@ -19,6 +19,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash)
+        binding.actualVersionTextView.text = actualVersion
 
         /* Esto se usa para esconder el estatus bar
         y hacer que el splash screen este en pantalla completa

@@ -50,7 +50,6 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
 
         loginData = viewModel.getSavedDataLogin()//get userData from shared preferences
 
-        val userName = viewModel.getSavedDataLogin()[3].toString()//get the user name from the sharedpreferences through viewModel
         val bioUsed = viewModel.getSavedDataLogin()[1].toInt()//get the biotype 1 = face, 2 = iris, 3 = fingerprint
         //var used in Dialog Build
         var biometricDialog: AlertDialog? = null
@@ -97,6 +96,7 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
 
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                 super.onAuthenticationSucceeded(result)//execute if pass the auth
+                activity?.finish()
                 val intent = Intent(activity, EKTPHomeActivity::class.java)
                 val context = view?.context
                 context?.startActivity(intent)
@@ -104,9 +104,8 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
 
             override fun onAuthenticationFailed() {
                 super.onAuthenticationFailed()//execute if dont pass the auth
-                //messageOnToast("algo fallo")
-                //biometricDialog.show()
-                //biometricPrompt.cancelAuthentication()
+                biometricDialog.show()
+                biometricPrompt.cancelAuthentication()
 
             }
         })
@@ -130,7 +129,7 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
         //--
 
         //Check for username if there are no user name can considerate a new user an show no user alertDialog
-        if(userName == null || userName == "")
+        if(viewModel.getSavedDataLogin()[3] == "")
         {
             noUserDialog.show()
             binding.biometricLoginImageButton.isEnabled = false
