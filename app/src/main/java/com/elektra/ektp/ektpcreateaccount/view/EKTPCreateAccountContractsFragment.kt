@@ -19,11 +19,14 @@ import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountContractsVi
 
 class EKTPCreateAccountContractsFragment : Fragment() {
 
+    //Global databinding access variable
     private lateinit var binding: FragmentEktpCreateAccountContractsBinding
-    //private val contractsViewModel: EKTPCreateAccountContractsViewModel by viewModels()
+    //ViewModel access var
+    private val contractsViewModel: EKTPCreateAccountContractsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Overriding obBackPressed to popBackStack fragment
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 findNavController().popBackStack()
@@ -39,67 +42,86 @@ class EKTPCreateAccountContractsFragment : Fragment() {
         binding = DataBindingUtil.inflate<FragmentEktpCreateAccountContractsBinding>(inflater,
             R.layout.fragment_ektp_create_account_contracts, container, false)
 
-        binding.termsContinueButton.isEnabled = false
-        binding.acceptanceCheckbox.isChecked = false
+        with(binding){
+            termsContinueButton.isEnabled = false
+                    acceptanceCheckbox.isChecked = false
 
-        binding.term1TextView.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
-        }
+                //onClickListener on TextView to open contract title
+                term1TextView.setOnClickListener { view: View ->
+                    view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
+                }
+            //----
 
-        binding.term2TextView.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
-        }
+            //onClickListener on TextView to open contract title
+            term2TextView.setOnClickListener { view: View ->
+                view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
+            }
+                    //---
 
-        binding.term3TextView.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
-        }
+                    //onClickListener on TextView to open contract title
+                    term3TextView.setOnClickListener { view: View ->
+                view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
+            }
+                    //---
 
-        binding.term4TextView.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
-        }
+                    //onClickListener on TextView to open contract title
+                    term4TextView.setOnClickListener { view: View ->
+                view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
+            }
+                    //---
 
-        binding.term5TextView.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
-        }
+                    //onClickListener on TextView to open contract title
+                    term5TextView.setOnClickListener { view: View ->
+                view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
+            }
+                    //---
 
-        binding.term6TextView.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
-        }
+                    //onClickListener on TextView to open contract title
+                    term6TextView.setOnClickListener { view: View ->
+                view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
+            }
+                    //---
 
-        binding.term7TextView.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
-        }
+                    //onClickListener on TextView to open contract title
+                    term7TextView.setOnClickListener { view: View ->
+                view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
+            }
+                    //---
 
-        binding.term8TextView.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
-        }
+                    //onClickListener on TextView to open contract title
+                    term8TextView.setOnClickListener { view: View ->
+                view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
+            }
+                    //---
 
-        binding.backAppbarButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKPTCreateAccountRegisterFormFragment)
-        }
+                    //onClickListener on appBar BackButton to popBackStack fragment
+                    backAppbarButton.setOnClickListener { view: View ->
+                findNavController().popBackStack()
+            }
+                    //---
 
-        binding.acceptanceCheckbox.setOnClickListener { view: View ->
-            if (view is CheckBox) {
-                val checked: Boolean = view.isChecked
+                    //OnClickListener to check the user acceptance of contracts
+                    acceptanceCheckbox.setOnClickListener { view: View ->
+                if (view is CheckBox) {
+                    val checked: Boolean = view.isChecked
 
-                when (view.id) {
-                    R.id.acceptanceCheckbox -> {
-                        binding.termsContinueButton.isEnabled = checked
+                    when (view.id) {
+                        R.id.acceptanceCheckbox -> {
+                            termsContinueButton.isEnabled = checked
+                        }
                     }
                 }
             }
-        }
+                    //--
 
-        binding.termsContinueButton.setOnClickListener {view: View ->
-            view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountCreatePassFragment)
-        }
+                    //onClickListener on termsButton to listen for forward advance in create account
+                    termsContinueButton.setOnClickListener {view: View ->
+                view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountCreatePassFragment)
+            }
+                //--
 
-        binding.backAppbarButton.setOnClickListener{
-            view: View ->
-            findNavController().popBackStack()
+                return root
         }
-
-        return binding.root
     }
 
 }

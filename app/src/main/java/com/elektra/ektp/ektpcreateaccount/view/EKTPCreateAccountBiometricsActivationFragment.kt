@@ -24,15 +24,24 @@ import java.util.concurrent.Executor
 
 class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
 
+    //Global databinding access variable
     private lateinit var binding : FragmentEktpCreateAccountBiometricsActivationBinding
+
+    //General biometrics access variables
     private lateinit var executor: Executor
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
+    //---
+
+    //SharedPreferences access variable
     private val bioUsed = preferences.getBioType()
+
+    //Toaster fuction variable
     val toast = EKTPToaster()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Overriding obBackPressed to popBackStack fragment
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 findNavController().popBackStack()
@@ -51,7 +60,8 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
 
         executor = ContextCompat.getMainExecutor(requireContext())
 
-        biometricPrompt = androidx.biometric.BiometricPrompt(this,executor,object:androidx.biometric.BiometricPrompt.AuthenticationCallback(){
+        //System authentication constructor, members methods implemented
+        biometricPrompt = BiometricPrompt(this,executor,object:androidx.biometric.BiometricPrompt.AuthenticationCallback(){
             override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                 super.onAuthenticationError(errorCode, errString)
                 toast.makeAToast(activity as Context, "Error $errString")
@@ -79,34 +89,49 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
                 toast.makeAToast(activity as Context, "Algo falló")
             }
         })
+        //---
 
+        //System authentication information to show onScreen
         promptInfo = BiometricPrompt.PromptInfo.Builder()
             .setTitle("Autenticacion Biométrica")
             .setSubtitle("Usa el biométrico de tu teléfono")
             .setNegativeButtonText("Cancelar")
             .build()
+        //---
 
-        if (bioUsed == 1){
-            binding.sectionTitleAppbarTextView.text = "Activar Face ID"
-            binding.textViewBio.text = "¿Te gustaría activar tu Face ID"
-            binding.textViewBio2.text = "Tu Rostro será tu clave de seguridad y contraseña"
-            binding.imageButtonBio.setBackgroundResource(R.drawable.ic_active_face_button)
-            binding.textViewBio3.text = "Toca el ícono para activar tu Face ID"
+        with(binding){
+            /*According to api level, the authentication hardware can change,
+        so the information to show changes too*/
+            if (bioUsed == 1){
+                sectionTitleAppbarTextView.text = "Activar Face ID"
+                textViewBio.text = "¿Te gustaría activar tu Face ID"
+                textViewBio2.text = "Tu Rostro será tu clave de seguridad y contraseña"
+                imageButtonBio.setBackgroundResource(R.drawable.ic_active_face_button)
+                textViewBio3.text = "Toca el ícono para activar tu Face ID"
+            }
+            //---
+
+            //onClickListener on appBar BackButton to popBackStack fragment
+            backAppbarButton.setOnClickListener { view: View ->
+                findNavController().popBackStack()
+            }
+            //---
+
+            /*OnClickLIstener to TextView when user does not want
+            to activate biometric authentication now*/
+            textViewBio4.setOnClickListener{view: View ->
+                view.findNavController().navigate(R.id.action_EKTPCreateAccountBiometricsActivationFragment_to_EKTPCreateAccountSuccessfulFragment)
+            }
+            //---
+
+            //OnClickListener to call system authentication with biometric hardware activated
+            imageButtonBio.setOnClickListener { view: View ->
+                biometricPrompt.authenticate(promptInfo)
+            }
+            //---
+
+            return root
         }
-
-        binding.backAppbarButton.setOnClickListener { view: View ->
-            findNavController().popBackStack()
-        }
-
-        binding.textViewBio4.setOnClickListener{view: View ->
-            view.findNavController().navigate(R.id.action_EKTPCreateAccountBiometricsActivationFragment_to_EKTPCreateAccountSuccessfulFragment)
-        }
-
-        binding.imageButtonBio.setOnClickListener { view: View ->
-            biometricPrompt.authenticate(promptInfo)
-        }
-
-        return binding.root
     }
 
 }

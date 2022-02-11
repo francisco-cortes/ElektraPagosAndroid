@@ -146,7 +146,7 @@
                     android:maxLength="50"
                     android:enabled="false"
                     android:theme="@style/hint_edit_text"
-                    android:padding="10sp"
+                    android:padding="@dimen/_10sdp"
                     app:layout_constraintTop_toBottomOf="@id/nameLabel"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
@@ -170,7 +170,7 @@
                     android:layout_marginEnd="@dimen/_31sdp"
                     android:background="@color/elektra_white_gray"
                     android:maxLength="50"
-                    android:padding="10sp"
+                    android:padding="@dimen/_10sdp"
                     android:theme="@style/hint_edit_text"
                     android:enabled="false"
                     android:imeOptions="actionNext"
@@ -198,7 +198,7 @@
                     android:background="@color/elektra_white_gray"
                     android:maxLength="50"
                     android:theme="@style/hint_edit_text"
-                    android:padding="10sp"
+                    android:padding="@dimen/_10sdp"
                     android:enabled="false"
                     android:imeOptions="actionNext"
                     app:layout_constraintTop_toBottomOf="@id/maternalLastNameLabel"
@@ -224,7 +224,7 @@
                     android:layout_marginEnd="@dimen/_31sdp"
                     android:background="@color/elektra_white_gray"
                     android:theme="@style/hint_edit_text"
-                    android:padding="10sp"
+                    android:padding="@dimen/_10sdp"
                     android:maxLength="10"
                     android:enabled="false"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -328,7 +328,7 @@
                     android:background="@drawable/rounded_rectangle_gray"
                     android:hint="@string/required_field_hint"
                     android:inputType="number"
-                    android:padding="10sp"
+                    android:padding="@dimen/_10sdp"
                     android:theme="@style/hint_edit_text"
                     android:imeOptions="actionNext"
                     android:maxLength="5"
@@ -409,7 +409,7 @@
                     android:maxLength="50"
                     android:hint="@string/required_field_hint"
                     android:inputType="textCapSentences"
-                    android:padding="10sp"
+                    android:padding="@dimen/_10sdp"
                     android:theme="@style/hint_edit_text"
                     android:imeOptions="actionNext"
                     app:layout_constraintTop_toBottomOf="@id/streetLabel"
@@ -477,7 +477,7 @@
                         android:imeOptions="actionNext"
                         android:maxLength="50"
                         android:inputType="textNoSuggestions"
-                        android:padding="10sp"
+                        android:padding="@dimen/_10sdp"
                         android:theme="@style/hint_edit_text" />
                     <Space
                         android:layout_width="@dimen/_18sdp"
@@ -493,35 +493,48 @@
                         android:hint="@string/optional_field_hint"
                         android:imeOptions="actionDone"
                         android:inputType="textNoSuggestions"
-                        android:padding="10sp"
+                        android:padding="@dimen/_10sdp"
                         android:theme="@style/hint_edit_text" />
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/invalidExteriorText"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/hintInvalidNumbers"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_50sdp"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:theme="@style/hint_edit_text"
-                    android:text="@string/invalid_data"
-                    android:textColor="@color/elektra_red"
-                    android:visibility="invisible"
-                    app:layout_constraintTop_toBottomOf="@id/numbersFieldsForm"
-                    app:layout_constraintStart_toStartOf="parent"/>
-
-                <TextView
-                    android:id="@+id/invalidInteriorText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal"
                     android:layout_marginEnd="@dimen/_31sdp"
-                    android:theme="@style/hint_edit_text"
-                    android:visibility="invisible"
-                    android:text="@string/invalid_data"
-                    android:textColor="@color/elektra_red"
+                    android:layout_marginTop="@dimen/_5sdp"
                     app:layout_constraintTop_toBottomOf="@id/numbersFieldsForm"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <TextView
+                        android:id="@+id/invalidExteriorText"
+                        android:layout_width="@dimen/_134sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAlignment="textEnd"
+                        android:theme="@style/hint_edit_text"
+                        android:text="@string/invalid_data"
+                        android:textColor="@color/elektra_red"
+                        android:visibility="invisible" />
+
+                    <Space
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/invalidInteriorText"
+                        android:layout_width="@dimen/_134sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAlignment="textEnd"
+                        android:theme="@style/hint_edit_text"
+                        android:visibility="invisible"
+                        android:text="@string/invalid_data"
+                        android:textColor="@color/elektra_red" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/countryLabel"
