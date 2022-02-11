@@ -12,10 +12,12 @@ import com.elektra.ektp.databinding.FragmentEktpCreateAccountSuccessfulBinding
 
 class EKTPCreateAccountSuccessfulFragment : Fragment() {
 
+    //Global databinding access variable
     private lateinit var binding: FragmentEktpCreateAccountSuccessfulBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Overriding obBackPressed to popBackStack fragment
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 isEnabled = false
@@ -32,6 +34,7 @@ class EKTPCreateAccountSuccessfulFragment : Fragment() {
         binding = DataBindingUtil.inflate<FragmentEktpCreateAccountSuccessfulBinding>(inflater,
             R.layout.fragment_ektp_create_account_successful, container, false)
 
+        //The account has been created successfully, user can return to home
         binding.buttonSuccessful.setOnClickListener {view: View ->
             activity?.finish()
         }
