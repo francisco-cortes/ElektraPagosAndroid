@@ -22,9 +22,9 @@ class EKTPHomeProfileFragment : Fragment() {
         binding = DataBindingUtil.inflate<FragmentEktpHomeProfileBinding>(inflater,R.layout.fragment_ektp_home_profile,container,false)
         val userProfileData = EKTPHomeProfileViewModel().getUserData()
 
-        binding.nameTextView.text = userProfileData[0]
-        binding.phoneTextView.text = userProfileData[1]
-        binding.emailTextView.text = userProfileData[2]
+        binding.nameTextView.text = userProfileData[0] +" "+ userProfileData[1] + " " + userProfileData[2]
+        binding.phoneTextView.text = userProfileData[3]
+        binding.emailTextView.text = userProfileData[4]
 
         return binding.root
     }
