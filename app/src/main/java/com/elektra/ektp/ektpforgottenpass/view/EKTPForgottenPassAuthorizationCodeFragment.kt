@@ -20,21 +20,26 @@ import com.elektra.ektp.uservalidations.UserValidations
 
 class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
 
+    //Global databinding access variable
     private lateinit var binding: FragmentEktpForgottenPassAuthorizationCodeBinding
+    //ViewModel access variable
     private val authorizationViewModel: EKTPForgottenPassAuthorizationCodeViewModel by viewModels()
+    //UserValidations access variable
     val validations = UserValidations()
 
+    //General data variables
     private lateinit var codeSMS: String
     private var codechar1 = ""
     private var codechar2 = ""
     private var codechar3 = ""
     private var codechar4 = ""
     private var codechar5 = ""
+    //Toast functios access variable
     val toast = EKTPToaster()
-    val flagBackStack = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Overriding OnBackPressed function to destroy fragment and activity
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                     findNavController().popBackStack()
@@ -50,189 +55,206 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
         binding = DataBindingUtil.inflate(inflater,
         R.layout.fragment_ektp_forgotten_pass_authorization_code, container, false)
 
-        binding.buttonAuth.isEnabled = false
+        //Wrap this block code for all the lines with binding variable
+        with(binding){
+            buttonAuth.isEnabled = false
 
-        binding.verificationNumber1.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            //TextWatcher function to listen for changes on editText
+            verificationNumber1.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    codechar1 = s.toString()
+                    codeSMS = validations.concatenaterCode(
+                        codechar1, codechar2, codechar3, codechar4, codechar5
+                    )
+                    if (!codechar1.isNullOrBlank() && codechar1.length == 1) {
+                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                        verificationNumber2.requestFocus()
+                    }
+                    else{
+                        buttonAuth.isEnabled = false
+                    }
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    codechar1 = s.toString()
+                    codeSMS = validations.concatenaterCode(
+                        codechar1, codechar2, codechar3, codechar4, codechar5
+                    )
+                    if (!codechar1.isNullOrBlank() && codechar1.length == 1) {
+                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                        verificationNumber2.requestFocus()
+                    }
+                    else{
+                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                    }
+                }
+
+            })
+            //---
+
+            //TextWatcher function to listen for changes on editText
+            verificationNumber2.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    codechar2 = s.toString()
+                    codeSMS = validations.concatenaterCode(
+                        codechar1, codechar2, codechar3, codechar4, codechar5
+                    )
+                    if (!codechar2.isNullOrBlank() && codechar2.length == 1) {
+                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                        verificationNumber3.requestFocus()
+                    }
+                    else{
+                        buttonAuth.isEnabled = false
+                    }
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    codechar2 = s.toString()
+                    codeSMS = validations.concatenaterCode(
+                        codechar1, codechar2, codechar3, codechar4, codechar5
+                    )
+                    if (!codechar2.isNullOrBlank() && codechar2.length == 1) {
+                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                        verificationNumber3.requestFocus()
+                    }
+                    else{
+                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                    }
+                }
+
+            })
+            //---
+
+            //TextWatcher function to listen for changes on editText
+            verificationNumber3.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    codechar3 = s.toString()
+                    codeSMS = validations.concatenaterCode(
+                        codechar1, codechar2, codechar3, codechar4, codechar5
+                    )
+                    if (!codechar3.isNullOrBlank() && codechar3.length == 1) {
+                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                        verificationNumber4.requestFocus()
+                    }
+                    else{
+                        buttonAuth.isEnabled = false
+                    }
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    codechar3 = s.toString()
+                    codeSMS = validations.concatenaterCode(
+                        codechar1, codechar2, codechar3, codechar4, codechar5
+                    )
+                    if (!codechar3.isNullOrBlank() && codechar3.length == 1) {
+                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                        verificationNumber4.requestFocus()
+                    }
+                    else{
+                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                    }
+                }
+
+            })
+            //---
+
+            //TextWatcher function to listen for changes on editText
+            verificationNumber4.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    codechar4 = s.toString()
+                    codeSMS = validations.concatenaterCode(
+                        codechar1, codechar2, codechar3, codechar4, codechar5
+                    )
+                    if (!codechar4.isNullOrBlank() && codechar4.length == 1) {
+                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                        verificationNumber5.requestFocus()
+                    }
+                    else{
+                        buttonAuth.isEnabled = false
+                    }
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    codechar4 = s.toString()
+                    codeSMS = validations.concatenaterCode(
+                        codechar1, codechar2, codechar3, codechar4, codechar5
+                    )
+                    if (!codechar4.isNullOrBlank() && codechar4.length == 1) {
+                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                        verificationNumber5.requestFocus()
+                    }
+                    else{
+                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                    }
+                }
+
+            })
+            //---
+
+            //TextWatcher function to listen for changes on editText
+            verificationNumber5.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    codechar5 = s.toString()
+                    codeSMS = validations.concatenaterCode(
+                        codechar1, codechar2, codechar3, codechar4, codechar5
+                    )
+                    if (!codechar5.isNullOrBlank() && codechar5.length == 1) {
+                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                    }
+                    else{
+                        buttonAuth.isEnabled = false
+                    }
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    codechar5 = s.toString()
+                    codeSMS = validations.concatenaterCode(
+                        codechar1, codechar2, codechar3, codechar4, codechar5
+                    )
+                    if (!codechar5.isNullOrBlank() && codechar5.length == 1) {
+                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                    }
+                    else{
+                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
+                    }
+                }
+
+            })
+            //---
+
+            //onClickListener function to listen for  ask for check authorization code
+            buttonAuth.setOnClickListener { view: View ->
+                view.findNavController().navigate(R.id.action_EKTPForgottenPassAuthorizationCodeFragment_to_EKTPForgottenPassNewPassFragment)
             }
+            //---
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                codechar1 = s.toString()
-                codeSMS = validations.concatenaterCode(
-                    codechar1, codechar2, codechar3, codechar4, codechar5
-                )
-                if (!codechar1.isNullOrBlank() && codechar1.length == 1) {
-                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
-                    binding.verificationNumber2.requestFocus()
-                }
-                else{
-                    binding.buttonAuth.isEnabled = false
-                }
+            //onClickListener on appBar BackButton to popBackStack fragment to earlier
+            backAppbarButton.setOnClickListener { view : View ->
+                findNavController().popBackStack()
             }
+            //---
 
-            override fun afterTextChanged(s: Editable?) {
-                codechar1 = s.toString()
-                codeSMS = validations.concatenaterCode(
-                    codechar1, codechar2, codechar3, codechar4, codechar5
-                )
-                if (!codechar1.isNullOrBlank() && codechar1.length == 1) {
-                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
-                    binding.verificationNumber2.requestFocus()
-                }
-                else{
-                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
-                }
-            }
-
-        })
-
-        binding.verificationNumber2.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                codechar2 = s.toString()
-                codeSMS = validations.concatenaterCode(
-                    codechar1, codechar2, codechar3, codechar4, codechar5
-                )
-                if (!codechar2.isNullOrBlank() && codechar2.length == 1) {
-                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
-                    binding.verificationNumber3.requestFocus()
-                }
-                else{
-                    binding.buttonAuth.isEnabled = false
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                codechar2 = s.toString()
-                codeSMS = validations.concatenaterCode(
-                    codechar1, codechar2, codechar3, codechar4, codechar5
-                )
-                if (!codechar2.isNullOrBlank() && codechar2.length == 1) {
-                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
-                    binding.verificationNumber3.requestFocus()
-                }
-                else{
-                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
-                }
-            }
-
-        })
-
-        binding.verificationNumber3.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                codechar3 = s.toString()
-                codeSMS = validations.concatenaterCode(
-                    codechar1, codechar2, codechar3, codechar4, codechar5
-                )
-                if (!codechar3.isNullOrBlank() && codechar3.length == 1) {
-                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
-                    binding.verificationNumber4.requestFocus()
-                }
-                else{
-                    binding.buttonAuth.isEnabled = false
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                codechar3 = s.toString()
-                codeSMS = validations.concatenaterCode(
-                    codechar1, codechar2, codechar3, codechar4, codechar5
-                )
-                if (!codechar3.isNullOrBlank() && codechar3.length == 1) {
-                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
-                    binding.verificationNumber4.requestFocus()
-                }
-                else{
-                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
-                }
-            }
-
-        })
-
-        binding.verificationNumber4.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                codechar4 = s.toString()
-                codeSMS = validations.concatenaterCode(
-                    codechar1, codechar2, codechar3, codechar4, codechar5
-                )
-                if (!codechar4.isNullOrBlank() && codechar4.length == 1) {
-                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
-                    binding.verificationNumber5.requestFocus()
-                }
-                else{
-                    binding.buttonAuth.isEnabled = false
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                codechar4 = s.toString()
-                codeSMS = validations.concatenaterCode(
-                    codechar1, codechar2, codechar3, codechar4, codechar5
-                )
-                if (!codechar4.isNullOrBlank() && codechar4.length == 1) {
-                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
-                    binding.verificationNumber5.requestFocus()
-                }
-                else{
-                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
-                }
-            }
-
-        })
-
-        binding.verificationNumber5.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                codechar5 = s.toString()
-                codeSMS = validations.concatenaterCode(
-                    codechar1, codechar2, codechar3, codechar4, codechar5
-                )
-                if (!codechar5.isNullOrBlank() && codechar5.length == 1) {
-                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
-                }
-                else{
-                    binding.buttonAuth.isEnabled = false
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                codechar5 = s.toString()
-                codeSMS = validations.concatenaterCode(
-                    codechar1, codechar2, codechar3, codechar4, codechar5
-                )
-                if (!codechar5.isNullOrBlank() && codechar5.length == 1) {
-                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
-                }
-                else{
-                    binding.buttonAuth.isEnabled = validations.codeLenghtChecker(codeSMS)
-                }
-            }
-
-        })
-
-        binding.buttonAuth.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_EKTPForgottenPassAuthorizationCodeFragment_to_EKTPForgottenPassNewPassFragment)
+            return root
         }
-
-        binding.backAppbarButton.setOnClickListener { view : View ->
-            findNavController().popBackStack()
-        }
-
-        return binding.root
     }
 }
