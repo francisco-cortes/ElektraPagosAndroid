@@ -54,6 +54,7 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_ektp_create_account_create_pass, container, false)
 
+        //Wrap this block code for all the lines with binding variable
         with(binding){
             button7.isEnabled = false
             matchPass.isVisible = false
@@ -212,7 +213,7 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
             }
             //---
 
-            //onClickListener on show/hidePassCOnfirmation to listen for user interaction with password visibility
+            //onClickListener on show/hidePassConfirmation to listen for user interaction with password visibility
             showPassButton2.setOnClickListener {
 
                 if (!showPassVar2) {
@@ -234,7 +235,7 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
             }
             //---
 
-            //onClickListener on continueBUtton to navigate to biometricsActivation or Successful createAccount according to sharedPreferences
+            //onClickListener on continueButton to navigate to biometricsActivation or Successful createAccount according to sharedPreferences
             button7.setOnClickListener { view: View ->
                 if (checkBiometricStatus ==1 ){
                     view.findNavController().navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountBiometricsActivationFragment)
