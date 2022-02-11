@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -34,8 +35,6 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
     private var codechar3 = ""
     private var codechar4 = ""
     private var codechar5 = ""
-    //Toast functios access variable
-    val toast = EKTPToaster()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +66,12 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     codechar1 = s.toString()
+                    verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    invalidCodeTextView.isVisible = false
                     codeSMS = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
@@ -81,6 +86,12 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
 
                 override fun afterTextChanged(s: Editable?) {
                     codechar1 = s.toString()
+                    verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    invalidCodeTextView.isVisible = false
                     codeSMS = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
@@ -104,6 +115,12 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     codechar2 = s.toString()
+                    verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    invalidCodeTextView.isVisible = false
                     codeSMS = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
@@ -118,6 +135,12 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
 
                 override fun afterTextChanged(s: Editable?) {
                     codechar2 = s.toString()
+                    verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    invalidCodeTextView.isVisible = false
                     codeSMS = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
@@ -141,6 +164,12 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     codechar3 = s.toString()
+                    verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    invalidCodeTextView.isVisible = false
                     codeSMS = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
@@ -155,6 +184,12 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
 
                 override fun afterTextChanged(s: Editable?) {
                     codechar3 = s.toString()
+                    verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    invalidCodeTextView.isVisible = false
                     codeSMS = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
@@ -178,6 +213,12 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     codechar4 = s.toString()
+                    verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    invalidCodeTextView.isVisible = false
                     codeSMS = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
@@ -192,6 +233,12 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
 
                 override fun afterTextChanged(s: Editable?) {
                     codechar4 = s.toString()
+                    verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    invalidCodeTextView.isVisible = false
                     codeSMS = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
@@ -215,6 +262,12 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     codechar5 = s.toString()
+                    verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    invalidCodeTextView.isVisible = false
                     codeSMS = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
@@ -228,6 +281,12 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
 
                 override fun afterTextChanged(s: Editable?) {
                     codechar5 = s.toString()
+                    verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                    invalidCodeTextView.isVisible = false
                     codeSMS = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
