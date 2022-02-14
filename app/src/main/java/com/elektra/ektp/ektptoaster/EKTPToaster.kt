@@ -4,8 +4,9 @@ import android.content.Context
 import android.widget.Toast
 
 class EKTPToaster {
-    //requiere la activity como contexto y el mensaje
+    //requires context and message, cant use to show massages trough toast
     fun makeAToast(context: Context, message: String){
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
+    //---
 }
