@@ -1,5 +1,6 @@
 package com.elektra.ektp.ektplogin.view
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
@@ -98,9 +99,7 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
 
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                 super.onAuthenticationSucceeded(result)//execute if pass the auth
-                val intent = Intent(activity, EKTPHomeActivity::class.java)
-                val context = view?.context
-                context?.startActivity(intent)
+                openActivity(EKTPHomeActivity())
             }
 
             override fun onAuthenticationFailed() {
@@ -157,15 +156,18 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
                     .commitNow()
             }
             createAccountTextView.setOnClickListener{view: View ->
-                val intent = Intent(activity, EKTPCreateAccountActivity::class.java)
-                val context = view.context
-                context.startActivity(intent)
+                openActivity(EKTPCreateAccountActivity())
                 activity?.finish()
             }
         }
-
-
+        //---
         return binding.root
+    }
+
+    private fun openActivity(activityName: Activity){
+        val intent = Intent(activity, activityName::class.java)
+        val context = view?.context
+        context?.startActivity(intent)
     }
 
 }

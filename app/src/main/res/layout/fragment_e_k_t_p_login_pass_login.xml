@@ -110,7 +110,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/frtHintTextView" />
 
                 <EditText
-                    android:id="@+id/editTextTextPassword"
+                    android:id="@+id/passwordInputEditText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_43sdp"
@@ -132,9 +132,9 @@
                     android:layout_height="@dimen/_26sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:background="@drawable/ic_eye_pass_icon"
-                    app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
-                    app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
-                    app:layout_constraintTop_toTopOf="@+id/editTextTextPassword" />
+                    app:layout_constraintBottom_toBottomOf="@+id/passwordInputEditText"
+                    app:layout_constraintEnd_toEndOf="@+id/passwordInputEditText"
+                    app:layout_constraintTop_toTopOf="@+id/passwordInputEditText" />
 
                 <TextView
                     android:id="@+id/frgPassClickTextView"
@@ -147,7 +147,7 @@
                     android:clickable="true"
                     android:theme="@style/text_button_2"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+                    app:layout_constraintTop_toBottomOf="@+id/passwordInputEditText" />
 
                 <Button
                     android:id="@+id/loginPassButton"
@@ -161,7 +161,7 @@
                     android:background="@drawable/enable_disable_red"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+                    app:layout_constraintTop_toBottomOf="@+id/passwordInputEditText" />
 
                 <LinearLayout
                     android:id="@+id/separatorTextView"

@@ -1,8 +1,11 @@
 package com.elektra.ektp.ektplogin.view
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -28,22 +31,23 @@ class EKTPLoginPassLoginFragment : Fragment() {
     private lateinit var noUserAlertLayout: View
     private lateinit var incorrectPasswordLayout: View
     private lateinit var lockedPasswordLayout: View
-
+    //alert dialogs widgets
     private lateinit var noUserAcceptButton: Button
     private lateinit var incorrectPassAcceptButton: Button
     private lateinit var passAttemptTextView: TextView
     private lateinit var lockedCancelButton: Button
     private lateinit var lockedUnlockButton: Button
-
-    private var activityViewModel = EKTPLoginActivityViewModel()
-    private var viewModel = EKTPLoginPassLoginViewModel()
+    //---
+    private var showPassVar = false
+    private var activityViewModel = EKTPLoginActivityViewModel()//instance for activity view Model
+    private var viewModel = EKTPLoginPassLoginViewModel()// instance for fragment view Model
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        activityViewModel.setBiometricLogin(false)
+        activityViewModel.setBiometricLogin(false)//is biometric login?
         binding =  DataBindingUtil.inflate<FragmentEKTPLoginPassLoginBinding>(inflater,R.layout.fragment_e_k_t_p_login_pass_login, container, false)
         noUserAlertLayout = layoutInflater.inflate(R.layout.no_user_alert_layout,null)//no user dialog layout
         incorrectPasswordLayout = layoutInflater.inflate(R.layout.incorrect_password_alert_layout,null)//no user dialog layout
@@ -55,7 +59,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
         val password = viewModel.getSavedDataLogin()[4]
         val isLocked = viewModel.getSavedDataLogin()[5].toBoolean()
 
-        var passwordAttempt = 0
+        var passwordAttempt = 0 // used to know how many times the password has failed
 
         //no user alertdialig builder
         var noUserDialog: AlertDialog? = null
@@ -101,7 +105,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
         }
 
         //Check for username if there are no user name can considerate a new user an show no user alertDialog
-        if(userName == null || userName == "")
+        if(userName == "")
         {
             noUserDialog.show()
             binding.loginPassButton.isEnabled = false
@@ -133,26 +137,38 @@ class EKTPLoginPassLoginFragment : Fragment() {
 
         //main layout buttons
         with(binding){
+
+            hidePassButton.setOnClickListener { view: View ->
+                //show an hide password text
+                if (!showPassVar) {
+                    passwordInputEditText.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                    hidePassButton.setBackgroundResource(R.drawable.ic_hide_pass)
+                    showPassVar = true
+                }
+                else {
+                    passwordInputEditText.transformationMethod = PasswordTransformationMethod.getInstance()
+                    hidePassButton.setBackgroundResource(R.drawable.ic_show_pass)
+                    showPassVar = false
+                }
+            }
+
             backAppbarButton.setOnClickListener { view: View ->
             requireActivity()
                 .supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.loginNavHostFragment, EKTPLoginBiometricLoginFragment())
-                .commitNow()
+                .commitNow()//change the fragment
             }
 
             frgPassClickTextView.setOnClickListener{ view: View ->
-                val intent = Intent(activity, EKTPForgottenPassActivity::class.java)
-                val context = view?.context
-                context?.startActivity(intent)
+                openActivity(EKTPForgottenPassActivity())//open the forgotten pass activity
             }
 
             loginPassButton.setOnClickListener { view : View ->
-                val passwordInput = editTextTextPassword.text.toString()
+                //check the pasword
+                val passwordInput = passwordInputEditText.text.toString()
                 if (password == passwordInput){
-                    val intent = Intent(activity, EKTPHomeActivity::class.java)
-                    val context = view?.context
-                    context?.startActivity(intent)
+                    openActivity(EKTPHomeActivity())
                 }else{
                     if (passwordAttempt >= 3){
                         lockedPasswordDialog.show()
@@ -169,18 +185,24 @@ class EKTPLoginPassLoginFragment : Fragment() {
                     .supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.loginNavHostFragment, EKTPLoginBiometricLoginFragment())
-                    .commitNow()
+                    .commitNow()//open the biometric login fragment
             }
 
             createAccountTextView.setOnClickListener{view: View ->
-                val intent = Intent(activity, EKTPCreateAccountActivity::class.java)
-                val context = view.context
-                context.startActivity(intent)
+                openActivity(EKTPCreateAccountActivity())// open the create account activity
                 activity?.finish()
             }
 
         }
+        //---
         return binding.root
     }
 
+    //function to open another activity trough intent
+    private fun openActivity(activityName: Activity){
+        val intent = Intent(activity, activityName::class.java)
+        val context = view?.context
+        context?.startActivity(intent)
+    }
+    //---
 }
