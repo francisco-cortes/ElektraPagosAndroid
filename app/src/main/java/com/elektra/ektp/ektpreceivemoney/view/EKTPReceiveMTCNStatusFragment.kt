@@ -20,7 +20,7 @@ class EKTPReceiveMTCNStatusFragment : Fragment() {
         super.onCreate(savedInstanceState)
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                findNavController().popBackStack()
+                findNavController().popBackStack()// used for back button behaviour to destroy the current fragment an return to previous fragment
             }
         })
     }
@@ -32,12 +32,13 @@ class EKTPReceiveMTCNStatusFragment : Fragment() {
         // Inflate the layout for this fragment
         binding =  DataBindingUtil.inflate<FragmentEktpReceiveMtcnStatusBinding>(inflater,R.layout.fragment_ektp_receive_mtcn_status, container, false)
 
-        binding.backAppbarButton.setOnClickListener {
-            findNavController().popBackStack()
-        }
-
-        binding.seeDetailsButton.setOnClickListener {
-            view?.findNavController()?.navigate(R.id.action_EKTPReceiveMTCNStatusFragment_to_EKTPReceiveMTCNDetailsFragment)
+        with(binding){
+            binding.backAppbarButton.setOnClickListener {
+                findNavController().popBackStack()
+            }
+            binding.seeDetailsButton.setOnClickListener {
+                view?.findNavController()?.navigate(R.id.action_EKTPReceiveMTCNStatusFragment_to_EKTPReceiveMTCNDetailsFragment)
+            }
         }
 
         return binding.root

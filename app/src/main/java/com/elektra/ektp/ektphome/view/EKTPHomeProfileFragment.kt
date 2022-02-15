@@ -14,18 +14,23 @@ class EKTPHomeProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentEktpHomeProfileBinding
 
+    private var viewModel = EKTPHomeProfileViewModel() // instance for fragment view model
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate<FragmentEktpHomeProfileBinding>(inflater,R.layout.fragment_ektp_home_profile,container,false)
-        val userProfileData = EKTPHomeProfileViewModel().getUserData()
+        val userProfileData = viewModel.getUserData()
 
-        binding.nameTextView.text = userProfileData[0] +" "+ userProfileData[1] + " " + userProfileData[2]
-        binding.phoneTextView.text = userProfileData[3]
-        binding.emailTextView.text = userProfileData[4]
-
+        //layout controls
+        with(binding){
+            nameTextView.text = userProfileData[0] +" "+ userProfileData[1] +" "+ userProfileData[2]
+            phoneTextView.text = userProfileData[3]
+            emailTextView.text = userProfileData[4]
+        }
+        //---
         return binding.root
     }
 

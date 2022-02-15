@@ -14,34 +14,28 @@ import com.elektra.ektp.ektplogin.view.EKTPLoginActivity
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashBinding
-    val actualVersion = "PreAlpha"
-
+    val actualVersion = "PreAlpha" // write here the current version for this app
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash)
         binding.actualVersionTextView.text = actualVersion
 
-        /* Esto se usa para esconder el estatus bar
-        y hacer que el splash screen este en pantalla completa
-        aunque depende del sistema operativo*/
-
+        //to show the activity in full-screen mode used only for the splash
         window.decorView.apply {
             systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
         }
-
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-
-        /* Usamos el metodo postdelayed para
-        hacer algo con tiempo demorado*/
-
+        //--
+        //this use a delay to close the activity and open a new one
         Handler().postDelayed({
             val intent = Intent(this, EKTPLoginActivity::class.java)
             startActivity(intent)
             finish()
-        }, 3000) // 3000 es el tiempo de la demora en milisegundos.
-
+        }, 2000) // delay is in milliseconds trough this function.
+        //---
     }
 }

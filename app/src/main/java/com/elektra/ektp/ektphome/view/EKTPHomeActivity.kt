@@ -11,15 +11,17 @@ import com.elektra.ektp.databinding.ActivityLoginBinding
 class EKTPHomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEktphomeBinding
 
-    private var isHome = true
+    private var isHome = true //used for navBar behaviour
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //inflate for this activity
         binding = DataBindingUtil.setContentView<ActivityEktphomeBinding>(this,R.layout.activity_ektphome)
 
-        openFragment(EKTPHomeMainFragment())
+        openFragment(EKTPHomeMainFragment())//open the home main fragment
 
-        binding.navbar.setOnNavigationItemSelectedListener { menuItem ->
+        //button navigation bar controller
+        binding.navbar.setOnItemSelectedListener{ menuItem ->
             when (menuItem.itemId){
                 R.id.startButton->{
                     openFragment(EKTPHomeMainFragment())
@@ -42,24 +44,24 @@ class EKTPHomeActivity : AppCompatActivity() {
                     true
                 }
                 else -> false
-
             }
         }
+        //---
     }
 
+    //back button behaviour
     override fun onBackPressed() {
-        if (isHome)
-        {
+        if (isHome) { // the home variable tell us if the user is in the first fragment
             super.onBackPressed()
-        }
-        else
-        {
-            openFragment(EKTPHomeMainFragment())
+            finish()// close the home activity
+        } else {
+            openFragment(EKTPHomeMainFragment())// return to first fragment
             binding.navbar.menu.findItem(R.id.startButton).setChecked(true)
             isHome = true
         }
     }
 
+    //function to open a fragment
     private fun openFragment(fragment: Fragment){
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.homeNavHostFragment, fragment)

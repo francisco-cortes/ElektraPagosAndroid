@@ -1,5 +1,6 @@
 package com.elektra.ektp.ektphome.view
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -22,18 +23,26 @@ class EKTPHomeSettingsFragment : Fragment() {
         // Inflate the layout for this fragment
 
         binding = DataBindingUtil.inflate<FragmentEktpHomeSettingsBinding>(inflater,R.layout.fragment_ektp_home_settings, container, false)
+        //layout control
+        with(binding){
+            helpFrame.setOnClickListener {
+                openActivity(EKTPHomeSettingsHelpActivity())//opens help
+            }
 
-        binding.helpFrame.setOnClickListener { view : View ->
-            val intent = Intent(activity, EKTPHomeSettingsHelpActivity::class.java)
-            val context = view.context
-            context.startActivity(intent)
-        }
+            changePassFrame.setOnClickListener {
+                openActivity(EKTPForgottenPassActivity())//open forgotten pass activity
+            }
 
-        binding.changePassFrame.setOnClickListener {view: View ->
-            val intent = Intent(activity, EKTPForgottenPassActivity::class.java)
-            val context = view.context
-            context.startActivity(intent)
         }
+        //---
         return binding.root
     }
+
+    // function to open another activity trough intent
+    private fun openActivity(activityName: Activity){
+        val intent = Intent(activity, activityName::class.java)
+        val context = view?.context
+        context?.startActivity(intent)
+    }
+    //---
 }

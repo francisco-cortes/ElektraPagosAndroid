@@ -1,5 +1,6 @@
 package com.elektra.ektp.ektplogin.view
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
@@ -36,13 +37,15 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
     private lateinit var bioAlertLayout: View
     private lateinit var noUserAlertLayout: View
     //---
-    private val activityViewModel = EKTPLoginActivityViewModel()
-    private val viewModel = EKTPLoginBiometricLoginViewModel()
+    private val activityViewModel = EKTPLoginActivityViewModel()//instance of activity viewModel used as shared Viewmodel
+    private val viewModel = EKTPLoginBiometricLoginViewModel()//instance of fragment viewModel
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // inlfate layout for this fragment
+        // Inflater layout for this fragment
         activityViewModel.setBiometricLogin(true)//is this biometricLogin?
 
         binding = DataBindingUtil.inflate<FragmentEKTPLoginBiometricLoginBinding>(inflater,R.layout.fragment_e_k_t_p_login_biometric_login, container, false)
@@ -96,19 +99,18 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
 
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                 super.onAuthenticationSucceeded(result)//execute if pass the auth
-                val intent = Intent(activity, EKTPHomeActivity::class.java)
-                val context = view?.context
-                context?.startActivity(intent)
+                openActivity(EKTPHomeActivity())
             }
 
             override fun onAuthenticationFailed() {
                 super.onAuthenticationFailed()//execute if dont pass the auth
-                biometricDialog.show()
                 biometricPrompt.cancelAuthentication()
+                biometricDialog.show()
 
             }
         })
         //---
+
         //info show in biometric popup
         promptInfo = androidx.biometric.BiometricPrompt.PromptInfo.Builder()
             .setTitle("Autenticacion Biometrica")
@@ -134,6 +136,7 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
             binding.biometricLoginImageButton.isEnabled = false
         }
         //--
+
         //no user alertDialog button clicklistener
         acceptButton.setOnClickListener {
             noUserDialog.dismiss()
@@ -153,15 +156,18 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
                     .commitNow()
             }
             createAccountTextView.setOnClickListener{view: View ->
-                val intent = Intent(activity, EKTPCreateAccountActivity::class.java)
-                val context = view.context
-                context.startActivity(intent)
+                openActivity(EKTPCreateAccountActivity())
                 activity?.finish()
             }
         }
-
-
+        //---
         return binding.root
+    }
+
+    private fun openActivity(activityName: Activity){
+        val intent = Intent(activity, activityName::class.java)
+        val context = view?.context
+        context?.startActivity(intent)
     }
 
 }

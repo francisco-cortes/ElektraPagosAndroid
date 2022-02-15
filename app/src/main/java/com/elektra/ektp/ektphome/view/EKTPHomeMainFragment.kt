@@ -1,5 +1,6 @@
 package com.elektra.ektp.ektphome.view
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -17,26 +18,33 @@ class EKTPHomeMainFragment : Fragment() {
 
     private lateinit var binding: FragmentEktpHomeMainBinding
 
+    private val viewModel = EKTPHomeMainViewModel()//instance for fragment viewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate<FragmentEktpHomeMainBinding>(inflater,R.layout.fragment_ektp_home_main,container,false)
-        binding.receiveMoneyImageButton.setOnClickListener {
-            val intent = Intent(activity, EKTPReceiveMoneyActivity::class.java)
-            val context = view?.context
-            context?.startActivity(intent)
+        //layout controls
+        with(binding){
+            userNameTextView.text = "${viewModel.getUserHomeMain()} !" // set the user name next to "hi" text
+
+            receiveMoneyImageButton.setOnClickListener {
+                openActivity(EKTPReceiveMoneyActivity())// open Receive Money Activity
+            }
+            balanceMovementsImageButton.setOnClickListener {
+                openActivity(EKTPMovementsActivity())// open Movements activity
+            }
         }
-
-        binding.userNameTextView.text = EKTPHomeMainViewModel().getUserHomeMain() + "!"
-
-        binding.balanceMovementsImageButton.setOnClickListener {view: View->
-            val intent = Intent(activity, EKTPMovementsActivity::class.java)
-            val context = view.context
-            context.startActivity(intent)
-        }
-
+        //---
         return binding.root
     }
+    // function to open another activity trough intent
+    private fun openActivity(activityName: Activity){
+        val intent = Intent(activity, activityName::class.java)
+        val context = view?.context
+        context?.startActivity(intent)
+    }
+    //---
 }

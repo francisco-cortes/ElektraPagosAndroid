@@ -5,7 +5,7 @@ import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication
 import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
 
 class EKTPLoginBiometricLoginViewModel : ViewModel() {
-
+    //get data from shared preferences as an array
     fun getSavedDataLogin() : ArrayList<String>{
         val loginData = arrayListOf<String>()
 
@@ -16,4 +16,5 @@ class EKTPLoginBiometricLoginViewModel : ViewModel() {
 
         return  loginData
     }
+    //---
 }

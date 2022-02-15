@@ -8,10 +8,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpHomeNoticeBinding
+import com.elektra.ektp.ektphome.viewmodel.EKTPHomeNoticeViewModel
 
 class EKTPHomeNoticeFragment : Fragment() {
 
     private lateinit var binding : FragmentEktpHomeNoticeBinding
+
+    private var viewModel = EKTPHomeNoticeViewModel() //instance view model for home notice fragment
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

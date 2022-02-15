@@ -28,47 +28,44 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
         // Inflate the layout for this fragment
         binding =  DataBindingUtil.inflate<FragmentEktpReciveMoneyMtcnBinding>(inflater,R.layout.fragment_ektp_recive_money_mtcn, container, false)
 
-        binding.mtcnEntryEditText.addTextChangedListener(object: TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+        with(binding){
+            mtcnEntryEditText.addTextChangedListener(object: TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                }
 
-            }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val enableCheck = checkMTCNKey(s.toString())
-                binding.mtcnOk.isVisible = enableCheck
-                binding.consultButton.isEnabled = !enableCheck
-            }
-            override fun afterTextChanged(s: Editable?) {
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    val enableCheck = checkMTCNKey(s.toString()) //check if input text
+                    binding.mtcnOk.isVisible = enableCheck
+                    binding.consultButton.isEnabled = !enableCheck
+                }
+                override fun afterTextChanged(s: Editable?) {
 
+                }
+            })
+            backAppbarButton.setOnClickListener { view: View ->
+                activity?.finish()
             }
-        })
-
-        binding.backAppbarButton.setOnClickListener { view: View ->
-            activity?.finish()
+            mtcnHintPopUpButton.setOnClickListener { view: View ->
+                //change the status of hint tooltip
+                if (toolTipShow){
+                    toolTipShow=false
+                    binding.toolTipImageView.isVisible = false
+                    binding.toolTipTextView.isVisible = false
+                }
+                else{
+                    toolTipShow=true
+                    binding.toolTipImageView.isVisible =true
+                    binding.toolTipTextView.isVisible = true
+                }
+                //----
+            }
+            consultButton.setOnClickListener { view:View ->
+                view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNStatusFragment)
+            }
+            backAppbarButton.setOnClickListener {
+                activity?.finish()
+            }
         }
-
-        binding.mtcnHintPopUpButton.setOnClickListener { view: View ->
-            //change the status of hint tooltip
-            if (toolTipShow){
-                toolTipShow=false
-                binding.toolTipImageView.isVisible = false
-                binding.toolTipTextView.isVisible = false
-            }
-            else{
-                toolTipShow=true
-                binding.toolTipImageView.isVisible =true
-                binding.toolTipTextView.isVisible = true
-            }
-            //----
-        }
-
-        binding.consultButton.setOnClickListener { view:View ->
-            view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNStatusFragment)
-        }
-
-        binding.backAppbarButton.setOnClickListener {
-            activity?.finish()
-        }
-
         return binding.root
     }
     // MTCN Regex Checker

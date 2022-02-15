@@ -18,6 +18,7 @@ import kotlin.properties.Delegates
 class EKTPLoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding //binding for activity layout
+
     private val viewModel = EKTPLoginActivityViewModel() //instance of viewModel
     private val bioChecker = EKTPBiometricUtil(this) //instance of biometricAuthUtil
 
@@ -25,9 +26,11 @@ class EKTPLoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //inflater for this layout
         binding = DataBindingUtil.setContentView<ActivityLoginBinding>(this,R.layout.activity_login)
+
         //check the biostatus and set the layout
         val bioStatus = bioChecker.checkBioStatus()
         val bioUsed = bioChecker.determineBio()
+
         if (bioStatus==1){
             if(bioUsed == 1 || bioUsed == 3){
                 viewModel.setBiometricLogin(true)//variable used for navigation
@@ -37,11 +40,11 @@ class EKTPLoginActivity : AppCompatActivity() {
             viewModel.setBiometricLogin(false)//variable use for navigaqtion
             openFragment(EKTPLoginPassLoginFragment())//cange the fragment
         }
-        viewModel.saveBiometricStatus(bioStatus,bioUsed)//save the biometric status trough activity vie model
+        viewModel.saveBiometricStatus(bioStatus,bioUsed)//save the biometric status trough activity viewmodel
     }
     //---
 
-    //funtion made for remplace fragments
+    //function made for open fragments
     private fun openFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
             add(R.id.loginNavHostFragment, fragment)
@@ -49,14 +52,15 @@ class EKTPLoginActivity : AppCompatActivity() {
         }
     }
     //---
+
     //define for back button behavior
     override fun onBackPressed() {
         val bioStatus = bioChecker.checkBioStatus()
-        if (bioStatus!=1) {
+        if (bioStatus!=1) { //if the biometric isn´t ok it open pass login and must be only in that view
             super.onBackPressed()
             finish()
-        }else{
-            if (EKTPLoginActivityViewModel().getBiometricLogin()){
+        }else{//if the biometric is ok it will open the biometric login and this is the first view for close the app must be here
+            if (viewModel.getBiometricLogin()){
                 super.onBackPressed()
                 finish()
             }else{
