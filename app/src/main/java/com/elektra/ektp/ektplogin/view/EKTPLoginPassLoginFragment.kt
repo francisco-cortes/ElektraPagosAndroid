@@ -37,6 +37,8 @@ class EKTPLoginPassLoginFragment : Fragment() {
     private lateinit var passAttemptTextView: TextView
     private lateinit var lockedCancelButton: Button
     private lateinit var lockedUnlockButton: Button
+    private lateinit var noServiceAccept: Button
+    private lateinit var noServiceAlertLayout: View
     //---
     private var showPassVar = false
     private var activityViewModel = EKTPLoginActivityViewModel()//instance for activity view Model
@@ -52,6 +54,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
         noUserAlertLayout = layoutInflater.inflate(R.layout.no_user_alert_layout,null)//no user dialog layout
         incorrectPasswordLayout = layoutInflater.inflate(R.layout.incorrect_password_alert_layout,null)//no user dialog layout
         lockedPasswordLayout = layoutInflater.inflate(R.layout.locked_password_alert_layout,null)//locked pasword layout
+        noServiceAlertLayout = layoutInflater.inflate(R.layout.no_service_alert_layout,null)// inflater for the no service case
 
         val checkBioStatus = viewModel.getSavedDataLogin()[0].toInt()//get the biostastus from sharedpreferences trough viewmodel
         val bioUsed = viewModel.getSavedDataLogin()[1].toInt()//get bioUsed from sharedpreferences trough viewmodel
@@ -89,6 +92,14 @@ class EKTPLoginPassLoginFragment : Fragment() {
         lockedUnlockButton = lockedPasswordLayout.findViewById(R.id.unlockButton)
         lockedPasswordDialog = lockedPasswordDialogBuilder.create()
         //----
+
+        //no service alert dialog builder
+        var noServiceDialog: AlertDialog? = null
+        val noServiceDialogBuilder = AlertDialog.Builder(requireContext())
+        noServiceDialogBuilder.setView(noServiceAlertLayout)
+        noServiceAccept = noServiceAlertLayout.findViewById(R.id.acceptButton)
+        noServiceDialog = noServiceDialogBuilder.create()
+        //---
 
 
         //if biometric status isn´t ok disable the button to access at that fragment
@@ -133,6 +144,13 @@ class EKTPLoginPassLoginFragment : Fragment() {
             passwordAttempt = 0
             lockedPasswordDialog.dismiss()
         }
+        //---
+
+        //no user alertDialog button clicklistener
+        noServiceAccept.setOnClickListener {
+            noServiceDialog.dismiss()
+        }
+        //--
 
 
         //main layout buttons
@@ -168,7 +186,12 @@ class EKTPLoginPassLoginFragment : Fragment() {
                 //check the pasword
                 val passwordInput = passwordInputEditText.text.toString()
                 if (password == passwordInput){
-                    openActivity(EKTPHomeActivity())
+                    val displayCase = (0..1).random()//50% probabilities to make appear the case when there are no service
+                    if (displayCase== 0){
+                        noServiceDialog.show()
+                    }else{
+                        openActivity(EKTPHomeActivity())
+                    }
                 }else{
                     if (passwordAttempt >= 3){
                         lockedPasswordDialog.show()
