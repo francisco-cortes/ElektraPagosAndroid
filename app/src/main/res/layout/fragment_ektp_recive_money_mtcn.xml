@@ -106,7 +106,7 @@
                     android:maxLength="16"
                     android:inputType="textNoSuggestions"
                     android:textAllCaps="true"
-                    android:padding="@dimen/_10sdp"
+                    android:padding="@dimen/_13sdp"
                     android:theme="@style/hint_edit_text"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/mtcnEntryTextView"
@@ -131,12 +131,13 @@
                     android:layout_height="@dimen/_22sdp"
                     android:background="@drawable/ic_help_button"
                     android:layout_marginBottom="@dimen/_6sdp"
+                    android:padding="@dimen/_10sdp"
                     app:layout_constraintBottom_toTopOf="@+id/mtcnEntryEditText"
                     app:layout_constraintEnd_toEndOf="@+id/mtcnEntryEditText"/>
 
                 <ImageView
                     android:id="@+id/toolTipImageView"
-                    android:layout_width="@dimen/_150sdp"
+                    android:layout_width="@dimen/_200sdp"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_marginBottom="-5dp"
                     android:layout_marginEnd="5dp"
@@ -156,6 +157,9 @@
                     android:fontFamily="@font/azo_sans_regular"
                     android:layout_marginBottom="@dimen/_8sdp"
                     android:visibility="invisible"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:textAlignment="center"
                     app:layout_constraintTop_toTopOf="@id/toolTipImageView"
                     app:layout_constraintStart_toStartOf="@id/toolTipImageView"
                     app:layout_constraintEnd_toEndOf="@id/toolTipImageView"
