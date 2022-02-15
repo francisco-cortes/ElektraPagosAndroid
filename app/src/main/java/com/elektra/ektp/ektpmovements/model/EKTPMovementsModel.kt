@@ -1,5 +1,6 @@
 package com.elektra.ektp.ektpmovements.model
 
+//Data class for model
 data class EKTPMovementsModel(
     var detailAmount: String = "",
     var detailTitle: String = "",
@@ -10,3 +11,4 @@ data class EKTPMovementsModel(
     var detailFolio: String = "",
     var detailStatus: String = ""
 )
+//---
