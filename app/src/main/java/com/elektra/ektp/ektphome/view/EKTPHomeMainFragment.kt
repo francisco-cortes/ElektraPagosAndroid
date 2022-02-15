@@ -28,11 +28,11 @@ class EKTPHomeMainFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate<FragmentEktpHomeMainBinding>(inflater,R.layout.fragment_ektp_home_main,container,false)
 
-        val displayCase = (0..1).random()
+        val displayCase = (0..1).random()//50% probabilities to make appear the case when there are no information
 
         //layout controls
         with(binding){
-            if (displayCase == 0){
+            if (displayCase == 0){// set for the home case
                 bankAccountBalanceTextView.text = getString(R.string.account_balance_unavaliable)
                 bankAccountBalanceTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 10F)
             }
