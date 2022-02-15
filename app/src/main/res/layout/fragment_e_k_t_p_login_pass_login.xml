@@ -129,9 +129,9 @@
                 <ImageButton
                     android:id="@+id/hidePassButton"
                     android:layout_width="@dimen/_28sdp"
-                    android:layout_height="@dimen/_26sdp"
+                    android:layout_height="@dimen/_19sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:background="@drawable/ic_eye_pass_icon"
+                    android:background="@drawable/ic_show_pass"
                     app:layout_constraintBottom_toBottomOf="@+id/passwordInputEditText"
                     app:layout_constraintEnd_toEndOf="@+id/passwordInputEditText"
                     app:layout_constraintTop_toTopOf="@+id/passwordInputEditText" />

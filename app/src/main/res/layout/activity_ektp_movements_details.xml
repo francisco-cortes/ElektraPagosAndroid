@@ -142,7 +142,7 @@
                     android:background="@drawable/ic_share_icon"
                     android:maxWidth="@dimen/_50sdp"
                     android:maxHeight="@dimen/_50sdp"
-                    android:padding="@dimen/_20sdp"
+                    android:padding="@dimen/_30sdp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 

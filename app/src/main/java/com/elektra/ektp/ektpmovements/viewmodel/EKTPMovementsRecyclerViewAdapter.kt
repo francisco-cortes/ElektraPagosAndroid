@@ -43,7 +43,6 @@ class EKTPMovementsRecyclerViewAdapter(
             moveIntent.putExtra("detailFolio", msg.detailFolio)
             moveIntent.putExtra("detailAccount", msg.detailAccount)
             context.startActivity(moveIntent)
-            Toast.makeText(holder.binding.root.context, "Elemento ${position + 1} seleccionado", Toast.LENGTH_SHORT).show()
         }
     }
 
