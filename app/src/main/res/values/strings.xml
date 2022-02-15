@@ -299,5 +299,6 @@
     <string name="cant_deposit_title_label">No se puede \n depositar el dinero</string>
     <string name="cant_deposit_body_label">Intenta más tarde o <u>comunicate</u> \n al Center de Ayuda</string>
     <string name="cant_deposit_accept_button_label">ACEPTAR</string>
+    <string name="account_balance_unavaliable">Información No disponible</string>
 
 </resources>
