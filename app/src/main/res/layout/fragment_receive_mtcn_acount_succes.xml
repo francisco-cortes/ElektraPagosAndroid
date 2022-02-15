@@ -56,7 +56,7 @@
                     android:layout_width="@dimen/_14sdp"
                     android:layout_height="@dimen/_19sdp"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_50sdp"
+                    android:layout_marginEnd="@dimen/_40sdp"
                     android:padding="@dimen/_30sdp"
                     android:background="@drawable/ic_share_icon"
                     app:layout_constraintEnd_toEndOf="parent"
