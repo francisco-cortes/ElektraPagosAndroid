@@ -16,11 +16,15 @@ import com.elektra.ektp.ektpmovements.viewmodel.EKTPMovementsRecyclerViewAdapter
 
 class EKTPMovementsListFragment : Fragment() {
 
+    //Global databinding access variable
     private lateinit var binding: FragmentEktpMovementsListBinding
+    //Manager variable for recycler View Adapter
     private lateinit var manager: RecyclerView.LayoutManager
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Functions OnBackPressed for destroy activity on clicking
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 isEnabled = false
@@ -37,6 +41,7 @@ class EKTPMovementsListFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_ektp_movements_list, container, false)
 
+        //Filling data model list
         val data = listOf(
             EKTPMovementsModel("+500","Orden de Pago", "23/12/2021","Cuenta destino ****1234",
                 "Francisco Javier Cortes Torres", "Envío de dinero", "12345678",
@@ -84,26 +89,34 @@ class EKTPMovementsListFragment : Fragment() {
                 "Francisco Javier Cortes Torres", "Envío de dinero", "12345678",
                 "Transferencia exitosa")
         )
+        //---
 
+        //Set context to manager
         manager = LinearLayoutManager(this.context)
 
+        //Setting recyclerview Adapter
         binding.movementsRecyclerView.apply{
+            //pass context and data list
             adapter = EKTPMovementsRecyclerViewAdapter(this.context,data)
             layoutManager = manager
-
         }
+        //---
 
+        //OnClickListener for appbar back button
         binding.backAppbarButton.setOnClickListener { view: View ->
             activity?.finish()
         }
+        //---
 
         return binding.root
     }
 
+    //Companion object for create instance from MovementsList
     companion object {
         fun newInstance(): EKTPMovementsListFragment {
             return EKTPMovementsListFragment()
         }
     }
+    //---
 
 }
