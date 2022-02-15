@@ -49,10 +49,10 @@ class EKTPMovementsDetailsActivity : AppCompatActivity() {
         binding.movementsDetailsItem = dataList
 
         binding.shareButtonDetailsCardView.setOnClickListener {
+            Toast.makeText(this, "Compartiendo detalles de movimiento", Toast.LENGTH_SHORT)
+                .show()
             val bitMap = getScreenShot(binding.detailsCardViewToShare)
             shareImage(bitMap)
-            Toast.makeText(this, "Compartir detalles de movimiento", Toast.LENGTH_SHORT)
-                .show()
         }
 
         binding.backAppbarButton.setOnClickListener {
