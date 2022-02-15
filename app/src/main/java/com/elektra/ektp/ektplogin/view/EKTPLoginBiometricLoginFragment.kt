@@ -34,8 +34,10 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
     private lateinit var retryButton: Button
     private lateinit var cancelButton: Button
     private lateinit var acceptButton: Button
+    private lateinit var noServiceAccept: Button
     private lateinit var bioAlertLayout: View
     private lateinit var noUserAlertLayout: View
+    private lateinit var noServiceAlertLayout: View
     //---
     private val activityViewModel = EKTPLoginActivityViewModel()//instance of activity viewModel used as shared Viewmodel
     private val viewModel = EKTPLoginBiometricLoginViewModel()//instance of fragment viewModel
@@ -49,7 +51,8 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
         activityViewModel.setBiometricLogin(true)//is this biometricLogin?
 
         binding = DataBindingUtil.inflate<FragmentEKTPLoginBiometricLoginBinding>(inflater,R.layout.fragment_e_k_t_p_login_biometric_login, container, false)
-        noUserAlertLayout = layoutInflater.inflate(R.layout.no_user_alert_layout,null)
+        noUserAlertLayout = layoutInflater.inflate(R.layout.no_user_alert_layout,null)//inlfater for the no user registred case
+        noServiceAlertLayout = layoutInflater.inflate(R.layout.no_service_alert_layout,null)// inflater for the no service case
 
         loginData = viewModel.getSavedDataLogin()//get userData from shared preferences
 
@@ -57,10 +60,11 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
         //var used in Dialog Build
         var biometricDialog: AlertDialog? = null
         var noUserDialog: AlertDialog? = null
+        var noServiceDialog: AlertDialog? = null
         val biometricDialogBuilder = AlertDialog.Builder(requireContext())
         val noUserDialogBuilder = AlertDialog.Builder(requireContext())
+        val noServiceDialogBuilder = AlertDialog.Builder(requireContext())
         //---
-
 
         //inflate diferent layout for the dialog depeding biotype
         if (bioUsed == 1) {
@@ -85,9 +89,14 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
         noUserDialogBuilder.setView(noUserAlertLayout)
         acceptButton = noUserAlertLayout.findViewById(R.id.acceptButton)
         noUserDialog = noUserDialogBuilder.create()
+        //---
+        //no service alertDialog Build
+        noServiceDialogBuilder.setView(noServiceAlertLayout)
+        noServiceAccept = noServiceAlertLayout.findViewById(R.id.acceptButton)
+        noServiceDialog = noServiceDialogBuilder.create()
+        //---
 
         executor = ContextCompat.getMainExecutor(requireContext())
-        //--
 
         //biometric prompt actioner
         biometricPrompt = androidx.biometric.BiometricPrompt(this,executor,object:androidx.biometric.BiometricPrompt.AuthenticationCallback(){
@@ -99,7 +108,12 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
 
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                 super.onAuthenticationSucceeded(result)//execute if pass the auth
-                openActivity(EKTPHomeActivity())
+                val displayCase = (0..1).random()//50% probabilities to make appear the case when there are no service
+                if (displayCase== 0){
+                    noServiceDialog.show()
+                }else{
+                    openActivity(EKTPHomeActivity())
+                }
             }
 
             override fun onAuthenticationFailed() {
@@ -142,6 +156,13 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
             noUserDialog.dismiss()
         }
         //--
+
+        //no user alertDialog button clicklistener
+        noServiceAccept.setOnClickListener {
+            noServiceDialog.dismiss()
+        }
+        //--
+
 
         //layoutbuttons
         with(binding){
