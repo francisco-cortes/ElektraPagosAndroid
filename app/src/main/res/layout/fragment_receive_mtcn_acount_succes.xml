@@ -52,11 +52,12 @@
                 android:layout_gravity="center">
 
                 <ImageButton
+                    android:id="@+id/shareDetailsButton"
                     android:layout_width="@dimen/_14sdp"
                     android:layout_height="@dimen/_19sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_50sdp"
-                    android:padding="@dimen/_10sdp"
+                    android:padding="@dimen/_30sdp"
                     android:background="@drawable/ic_share_icon"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
@@ -354,7 +355,7 @@
                     android:layout_marginStart="@dimen/_25sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginEnd="@dimen/_25sdp"
-                    android:layout_marginBottom="@dimen/_40sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
                     android:gravity="start"
                     android:text="****2456"
                     android:theme="@style/subtitle_2"
@@ -368,7 +369,7 @@
                     android:layout_marginStart="@dimen/_25sdp"
                     android:layout_marginTop="@dimen/_32sdp"
                     android:layout_marginEnd="@dimen/_25sdp"
-                    android:layout_marginBottom="@dimen/_40sdp"
+                    android:layout_marginBottom="@dimen/_24sdp"
                     android:gravity="start"
                     android:text="Consulta el estatus en:"
                     android:textColor="@color/elektra_gray"
@@ -383,7 +384,7 @@
                     android:layout_marginStart="@dimen/_25sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginEnd="@dimen/_25sdp"
-                    android:layout_marginBottom="@dimen/_40sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
                     android:gravity="start"
                     android:text="http://www.banxico.org.mx/cep"
                     android:textColor="@color/elektra_red"
@@ -398,14 +399,13 @@
                     android:layout_marginStart="@dimen/_25sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginEnd="@dimen/_25sdp"
-                    android:layout_marginBottom="@dimen/_70sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
                     android:gravity="start"
                     android:text="Clave de rastreo"
                     android:textColor="@color/elektra_gray"
                     android:theme="@style/appbar_title"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/banxicoLinkLabel"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/banxicoLinkLabel" />
 
                 <TextView
                     android:id="@+id/traceKeyDetails"
@@ -414,7 +414,7 @@
                     android:layout_marginStart="@dimen/_25sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginEnd="@dimen/_25sdp"
-                    android:layout_marginBottom="@dimen/_40sdp"
+                    android:layout_marginBottom="@dimen/_16sdp"
                     android:gravity="start"
                     android:text="3544513245456454684T"
                     android:theme="@style/subtitle_2"
@@ -428,12 +428,13 @@
                     android:layout_marginStart="@dimen/_25sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginEnd="@dimen/_25sdp"
-                    android:layout_marginBottom="@dimen/_40sdp"
+                    android:layout_marginBottom="@dimen/_50sdp"
                     android:gravity="start"
                     android:text="@string/warn_message_banxico"
                     android:theme="@style/subtitle_2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/traceKeyDetails" />
+                    app:layout_constraintTop_toBottomOf="@id/traceKeyDetails"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
