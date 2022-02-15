@@ -3,6 +3,7 @@ package com.elektra.ektp.ektphome.view
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.TypedValue
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,8 +27,15 @@ class EKTPHomeMainFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate<FragmentEktpHomeMainBinding>(inflater,R.layout.fragment_ektp_home_main,container,false)
+
+        val displayCase = (0..1).random()//50% probabilities to make appear the case when there are no information
+
         //layout controls
         with(binding){
+            if (displayCase == 0){// set for the home case
+                bankAccountBalanceTextView.text = getString(R.string.account_balance_unavaliable)
+                bankAccountBalanceTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 10F)
+            }
             userNameTextView.text = "${viewModel.getUserHomeMain()} !" // set the user name next to "hi" text
 
             receiveMoneyImageButton.setOnClickListener {
