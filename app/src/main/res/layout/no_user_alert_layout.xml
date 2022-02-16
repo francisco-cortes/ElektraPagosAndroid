@@ -3,24 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:gravity="center"
-    android:layout_width="300dp"
-    android:layout_height="300dp">
+    android:layout_width="290dp"
+    android:layout_height="325dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="300dp"
-        android:layout_height="300dp">
+        android:layout_width="290dp"
+        android:layout_height="325dp">
 
         <ImageView
             android:id="@+id/noUserImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_44sdp"
-            android:layout_marginTop="@dimen/_44sdp"
             android:layout_marginEnd="@dimen/_44sdp"
+            android:layout_marginTop="@dimen/_40sdp"
             android:background="@drawable/ic_no_user_alert"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/alertTitleTextView"

@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:gravity="center"
-    android:layout_width="300dp"
-    android:layout_height="356dp">
+    android:layout_width="290dp"
+    android:layout_height="325dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="300dp"
-        android:layout_height="500dp">
+        android:layout_width="290dp"
+        android:layout_height="325dp">
 
         <ImageView
             android:id="@+id/cantDepositImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_44sdp"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_30sdp"
             android:layout_marginEnd="@dimen/_44sdp"
             android:background="@drawable/ic_cant_deposit_alert"
             app:layout_constraintEnd_toEndOf="parent"
