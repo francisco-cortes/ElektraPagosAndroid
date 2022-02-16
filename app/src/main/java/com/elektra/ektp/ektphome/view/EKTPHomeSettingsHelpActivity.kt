@@ -25,6 +25,9 @@ class EKTPHomeSettingsHelpActivity : AppCompatActivity() {
             onBackPressed()
             }
             helpCallButton.setOnClickListener {
+                val dialIntent = Intent(Intent.ACTION_DIAL)
+                dialIntent.data = Uri.parse("tel:" + "8344814819")
+                startActivity(dialIntent)
             }
         }
     }
