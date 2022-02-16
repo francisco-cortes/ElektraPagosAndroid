@@ -40,6 +40,7 @@
             android:layout_height="wrap_content"
             android:text="@string/app_version"
             android:theme="@style/body_3"
+            android:layout_marginBottom="@dimen/_10sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
