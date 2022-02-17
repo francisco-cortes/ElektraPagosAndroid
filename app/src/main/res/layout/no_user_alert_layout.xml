@@ -3,19 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:gravity="center"
-    android:layout_width="290dp"
-    android:layout_height="325dp">
+    android:layout_width="@dimen/_300sdp"
+    android:layout_height="@dimen/_335sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="290dp"
-        android:layout_height="325dp">
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="@dimen/_335sdp">
 
         <ImageView
             android:id="@+id/noUserImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_44sdp"
-            android:layout_marginEnd="@dimen/_44sdp"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_110sdp"
             android:layout_marginTop="@dimen/_40sdp"
             android:background="@drawable/ic_no_user_alert"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +50,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_31sdp"
-            android:layout_marginTop="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginEnd="@dimen/_31sdp"
             android:text="@string/no_user_alert_accept_button_label"
             android:theme="@style/text_button_2"

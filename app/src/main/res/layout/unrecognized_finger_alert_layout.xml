@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:gravity="center"
-    android:layout_width="290dp"
-    android:layout_height="325dp">
+    android:layout_width="@dimen/_300sdp"
+    android:layout_height="@dimen/_340sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="290dp"
-        android:layout_height="325dp">
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="@dimen/_340sdp">
 
         <ImageView
             android:id="@+id/fingerUnrecognizedImageView"

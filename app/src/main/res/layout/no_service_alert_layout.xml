@@ -3,19 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:gravity="center"
-    android:layout_width="290dp"
-    android:layout_height="325dp">
+    android:layout_width="@dimen/_260sdp"
+    android:layout_height="@dimen/_305sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="290dp"
-        android:layout_height="325dp">
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/noServiceImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_44sdp"
-            android:layout_marginTop="@dimen/_44sdp"
+            android:layout_marginTop="@dimen/_40sdp"
             android:layout_marginEnd="@dimen/_44sdp"
             android:background="@drawable/ic_no_service_alert"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,12 +55,25 @@
             android:layout_marginStart="@dimen/_31sdp"
             android:layout_marginEnd="@dimen/_31sdp"
             android:layout_marginTop="@dimen/_25sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
             android:text="@string/no_service_accept_button_label"
             android:theme="@style/text_button_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/alertBodyTextView" />
+
+        <View
+            android:id="@+id/separator1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/_55sdp"
+            android:layout_marginEnd="@dimen/_55sdp"
+            android:background="@color/elektra_white_gray"
+            android:layout_marginTop="@dimen/_16sdp"
+            app:layout_constraintTop_toBottomOf="@+id/acceptButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>
