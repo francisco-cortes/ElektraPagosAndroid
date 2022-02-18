@@ -237,6 +237,7 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
 
             //onClickListener on continueButton to navigate to biometricsActivation or Successful createAccount according to sharedPreferences
             button7.setOnClickListener { view: View ->
+                preferences.saveTemporalPassword(passTextVar)
                 if (checkBiometricStatus ==1 ){
                     view.findNavController().navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountBiometricsActivationFragment)
                 }
