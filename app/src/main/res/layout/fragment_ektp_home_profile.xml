@@ -50,9 +50,9 @@
 
                 <ImageView
                     android:id="@+id/userProfileImageView"
-                    android:layout_width="@dimen/_110sdp"
-                    android:layout_height="@dimen/_110sdp"
-                    android:layout_marginTop="@dimen/_27sdp"
+                    android:layout_width="@dimen/_125sdp"
+                    android:layout_height="@dimen/_125sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
                     android:background="@drawable/ic_profile_image"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

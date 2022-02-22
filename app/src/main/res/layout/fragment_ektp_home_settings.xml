@@ -53,9 +53,9 @@
 
                 <ImageView
                     android:id="@+id/settingsImage"
-                    android:layout_width="@dimen/_110sdp"
-                    android:layout_height="@dimen/_110sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_width="@dimen/_125sdp"
+                    android:layout_height="@dimen/_125sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
                     android:background="@drawable/ic_settings_image"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
