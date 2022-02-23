@@ -111,7 +111,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
 
         //set the string and drawable for the button for login trough biometric
         if (bioUsed==1){
-            binding.biometricSignInButton.text = "Entrar con FaceID"
+            binding.biometricSignInButton.text = getString(R.string.login_face_button)
             binding.biometricSignInButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_on_button_face_icon, 0, 0, 0)
         }
 

@@ -216,6 +216,11 @@
     <string name="help_phone_schedule">Lun-Dom de 9 a 21 hrs</string>
     <string name="help_button">LLAMAR</string>
 
+    <!--Biometrics System-->
+    <string name="biometrics_title">Autenticación Biométrica</string>
+    <string name="biometrics_subtitle">Usa el biométrico de tu teléfono</string>
+    <string name="biometrics_cancel">Cancelar</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
