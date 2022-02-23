@@ -103,11 +103,11 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
             /*According to api level, the authentication hardware can change,
         so the information to show changes too*/
             if (bioUsed == 1){
-                sectionTitleAppbarTextView.text = "Activar Face ID"
-                textViewBio.text = "¿Te gustaría activar tu Face ID"
-                textViewBio2.text = "Tu Rostro será tu clave de seguridad y contraseña"
+                sectionTitleAppbarTextView.text = getString(R.string.face_header_label)
+                textViewBio.text = getString(R.string.fragment_biometrics_activation_activate_face)
+                textViewBio2.text = getString(R.string.fragment_biometrics_activation_security_face)
                 imageButtonBio.setBackgroundResource(R.drawable.ic_active_face_button)
-                textViewBio3.text = "Toca el ícono para activar tu Face ID"
+                textViewBio3.text = getString(R.string.fragment_biometrics_activation_face)
             }
             //---
 

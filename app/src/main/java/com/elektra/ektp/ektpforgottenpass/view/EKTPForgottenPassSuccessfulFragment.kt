@@ -1,5 +1,7 @@
 package com.elektra.ektp.ektpforgottenpass.view
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +11,8 @@ import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpForgottenPassSuccessfulBinding
+import com.elektra.ektp.ektplogin.view.EKTPLoginActivity
+import com.elektra.ektp.ektplogin.view.EKTPLoginPassLoginFragment
 
 class EKTPForgottenPassSuccessfulFragment : Fragment() {
 

@@ -86,7 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="lunes 11 de nov 2021"
+                    android:text="Lunes 11 de noviembre, 2021"
                     android:theme="@style/note_2"
                     app:layout_constraintStart_toStartOf="@+id/notifi1Body"
                     app:layout_constraintTop_toBottomOf="@+id/notifi1Body" />
@@ -108,7 +108,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:text="Recibiste un envio de dinero"
+                    android:text="Recibíste un envío de dinero"
                     android:theme="@style/appbar_title"
                     android:textColor="@color/elektra_gray"
                     android:layout_marginStart="@dimen/_55sdp"
@@ -122,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_16sdp"
-                    android:text="Depositalo en tu cuenta o cobralo en \n ventanilla de BAZ"
+                    android:text="Deposítalo en tu cuenta o cobralo en ventanilla de BAZ"
                     android:theme="@style/hint_edit_text"
                     app:layout_constraintStart_toStartOf="@id/recibeTextView"
                     app:layout_constraintTop_toBottomOf="@+id/recibeTextView" />
@@ -132,7 +132,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_16sdp"
-                    android:text="Miercoles 24 de octubre, 2021"
+                    android:text="Martes 24 de octubre, 2021"
                     android:theme="@style/note_2"
                     app:layout_constraintStart_toStartOf="@id/recibeNoticeTextView"
                     app:layout_constraintTop_toBottomOf="@+id/recibeNoticeTextView" />
