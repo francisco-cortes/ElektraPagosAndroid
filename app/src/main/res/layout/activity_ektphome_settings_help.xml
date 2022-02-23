@@ -70,14 +70,15 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_gravity="center">
 
                 <ImageView
                     android:id="@+id/helpIconImageView"
                     android:layout_width="@dimen/_60sdp"
                     android:layout_height="@dimen/_59sdp"
                     android:background="@drawable/ic_help_image"
-                    android:layout_marginTop="@dimen/_60sdp"
+                    android:layout_marginTop="@dimen/_40sdp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>
@@ -135,7 +136,7 @@
                     android:layout_marginTop="@dimen/_150sdp"
                     android:layout_marginEnd="@dimen/_65sdp"
                     android:layout_marginStart="@dimen/_65sdp"
-                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_40sdp"
                     app:layout_constraintTop_toBottomOf="@+id/helpPhoneScheduleTextView"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>

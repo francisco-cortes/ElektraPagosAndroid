@@ -62,7 +62,7 @@
                     android:id="@+id/nameLabelTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_35sdp"
+                    android:layout_marginTop="@dimen/_40sdp"
                     android:text="@string/profile_name"
                     android:theme="@style/label_edit_text"
                     android:gravity="center"
