@@ -263,7 +263,7 @@
                 <Button
                     android:id="@+id/depositToButton"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_54sdp"
                     android:text="@string/recieve_details_deposit_button"
                     android:theme="@style/bottom_button"
                     android:background="@drawable/enable_disable_red"
@@ -277,7 +277,7 @@
                 <Button
                     android:id="@+id/laterButton"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_64sdp"
                     android:text="@string/recieve_details_later_button"
                     android:theme="@style/bottom_button"
                     android:textColor="@color/elektra_gray"
@@ -288,7 +288,6 @@
                     android:layout_marginBottom="@dimen/_22sdp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/depositToButton"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
