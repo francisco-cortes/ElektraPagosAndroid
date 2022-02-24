@@ -45,11 +45,21 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     val enableCheck = checkMTCNKey(s.toString()) //check if input text
-                    binding.mtcnOk.isVisible = enableCheck
-                    binding.consultButton.isEnabled = !enableCheck
+
+                    when(enableCheck){
+                        true -> {
+                            binding.mtcnOk.isVisible = true
+                            binding.consultButton.isEnabled = false
+                            binding.mtcnEntryEditText.setBackgroundResource(R.drawable.validation_edit_text)
+                        }
+                        else ->{
+                            binding.mtcnOk.isVisible = false
+                            binding.consultButton.isEnabled = true
+                            binding.mtcnEntryEditText.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        }
+                    }
                 }
                 override fun afterTextChanged(s: Editable?) {
-
                 }
             })
             backAppbarButton.setOnClickListener { view: View ->
