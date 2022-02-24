@@ -1,5 +1,6 @@
 package com.elektra.ektp.ektpreceivemoney.view
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
@@ -14,10 +16,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpReciveMoneyMtcnBinding
+import com.elektra.ektp.ektphome.view.EKTPHomeActivity
 import com.elektra.ektp.ektpreceivemoney.viewmodel.EKTPReceiveMoneyMTCNViewModel
 
 class EKTPReceiveMoneyMTCNFragment : Fragment() {
-
     private lateinit var binding: FragmentEktpReciveMoneyMtcnBinding
     private var toolTipShow = false
 
