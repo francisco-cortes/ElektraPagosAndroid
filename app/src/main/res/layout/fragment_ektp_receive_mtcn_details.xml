@@ -282,7 +282,6 @@
                     android:theme="@style/bottom_button"
                     android:textColor="@color/elektra_gray"
                     android:backgroundTint="@color/elektra_yellow"
-                    android:background="@drawable/rounded_rectangle_yellow"
                     android:layout_marginStart="@dimen/_43sdp"
                     android:layout_marginEnd="@dimen/_43sdp"
                     android:layout_marginTop="@dimen/_22sdp"
