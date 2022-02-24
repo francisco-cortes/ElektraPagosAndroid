@@ -38,9 +38,9 @@ class EKTPHomeMainFragment : Fragment() {
             }
             userNameTextView.text = "${viewModel.getUserHomeMain()} !" // set the user name next to "hi" text
 
-            /*receiveMoneyImageButton.setOnClickListener {
+            receiveMoneyImageButton.setOnClickListener {
                 openActivity(EKTPReceiveMoneyActivity())// open Receive Money Activity
-            }*/
+            }
             balanceMovementsImageButton.setOnClickListener {
                 openActivity(EKTPMovementsActivity())// open Movements activity
             }
