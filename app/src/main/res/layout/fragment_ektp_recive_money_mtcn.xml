@@ -111,16 +111,16 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/mtcnEntryTextView"
                     app:layout_constraintStart_toStartOf="parent" />
-
                 <TextView
                     android:id="@+id/mtcnOk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_43sdp"
                     android:text="@string/mtcn_invalid"
                     android:theme="@style/label_edit_text"
                     android:textColor="@color/elektra_red"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textAlignment="viewStart"
+                    app:layout_constraintStart_toStartOf="@+id/mtcnEntryEditText"
+                    app:layout_constraintEnd_toEndOf="@+id/mtcnEntryEditText"
                     app:layout_constraintTop_toBottomOf="@id/mtcnEntryEditText"
                     android:visibility="invisible"/>
 
