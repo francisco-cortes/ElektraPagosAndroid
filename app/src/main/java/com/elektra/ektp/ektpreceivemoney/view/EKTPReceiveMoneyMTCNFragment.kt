@@ -21,6 +21,16 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
     private lateinit var binding: FragmentEktpReciveMoneyMtcnBinding
     private var toolTipShow = false
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //Overriding obBackPressed to popBackStack fragment
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                activity?.finish()
+            }
+        })
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

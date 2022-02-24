@@ -19,7 +19,7 @@ class EKTPReceiveMTCNDetailsFragment : Fragment() {
         super.onCreate(savedInstanceState)
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                findNavController().popBackStack()// used on back button behaviour to elimiante the current fragment
+                view?.findNavController()?.navigate(R.id.action_EKTPReceiveMTCNDetailsFragment_to_EKTPReceiveMoneyMTCNFragment2)
             }
         })
     }
@@ -34,7 +34,7 @@ class EKTPReceiveMTCNDetailsFragment : Fragment() {
         //layout widgets
         with(binding){
             backAppbarButton.setOnClickListener {
-                findNavController().popBackStack()// eliminate the current fragment to return to the previous
+                view?.findNavController()?.navigate(R.id.action_EKTPReceiveMTCNDetailsFragment_to_EKTPReceiveMoneyMTCNFragment2)
             }
 
             depositToButton.setOnClickListener {
@@ -42,7 +42,7 @@ class EKTPReceiveMTCNDetailsFragment : Fragment() {
             }
 
             laterButton.setOnClickListener {
-                activity?.finish()//finish this activity
+                view?.findNavController()?.navigate(R.id.action_EKTPReceiveMTCNDetailsFragment_to_EKTPReceiveMoneyMTCNFragment2)
             }
         }
 
