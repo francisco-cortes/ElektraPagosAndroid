@@ -111,16 +111,16 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/mtcnEntryTextView"
                     app:layout_constraintStart_toStartOf="parent" />
-
                 <TextView
                     android:id="@+id/mtcnOk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_43sdp"
                     android:text="@string/mtcn_invalid"
                     android:theme="@style/label_edit_text"
                     android:textColor="@color/elektra_red"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textAlignment="viewStart"
+                    app:layout_constraintStart_toStartOf="@+id/mtcnEntryEditText"
+                    app:layout_constraintEnd_toEndOf="@+id/mtcnEntryEditText"
                     app:layout_constraintTop_toBottomOf="@id/mtcnEntryEditText"
                     android:visibility="invisible"/>
 
@@ -137,11 +137,11 @@
 
                 <ImageView
                     android:id="@+id/toolTipImageView"
-                    android:layout_width="@dimen/_200sdp"
+                    android:layout_width="@dimen/_40sdp"
                     android:layout_height="@dimen/_40sdp"
-                    android:layout_marginBottom="-5dp"
-                    android:layout_marginEnd="5dp"
-                    android:background="@drawable/vector_tooltip"
+                    android:layout_marginBottom="-10dp"
+                    android:layout_marginEnd="-10dp"
+                    android:background="@drawable/vector_tip_tooltip"
                     android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="@id/mtcnHintPopUpButton"
                     app:layout_constraintBottom_toTopOf="@id/mtcnHintPopUpButton"
@@ -149,21 +149,20 @@
 
                 <TextView
                     android:id="@+id/toolTipTextView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/_180sdp"
                     android:layout_height="wrap_content"
                     android:text="@string/receivi_details_tooltip"
-                    android:textSize="@dimen/_11sdp"
+                    android:textSize="@dimen/_10sdp"
                     android:textColor="@color/elektra_white_gray"
                     android:fontFamily="@font/azo_sans_regular"
-                    android:layout_marginBottom="@dimen/_8sdp"
                     android:visibility="invisible"
-                    android:layout_marginStart="@dimen/_5sdp"
+                    android:padding="@dimen/_6sdp"
+                    android:layout_marginBottom="-15dp"
                     android:layout_marginEnd="@dimen/_5sdp"
                     android:textAlignment="center"
-                    app:layout_constraintTop_toTopOf="@id/toolTipImageView"
-                    app:layout_constraintStart_toStartOf="@id/toolTipImageView"
+                    android:background="@drawable/tooltip_body"
                     app:layout_constraintEnd_toEndOf="@id/toolTipImageView"
-                    app:layout_constraintBottom_toBottomOf="@id/toolTipImageView"/>
+                    app:layout_constraintBottom_toTopOf="@id/toolTipImageView"/>
 
                 <TextView
                     android:id="@+id/instructionHeadTextView"

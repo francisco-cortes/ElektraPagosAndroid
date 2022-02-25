@@ -1,5 +1,6 @@
 package com.elektra.ektp.ektpreceivemoney.view
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
@@ -14,12 +16,22 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpReciveMoneyMtcnBinding
+import com.elektra.ektp.ektphome.view.EKTPHomeActivity
 import com.elektra.ektp.ektpreceivemoney.viewmodel.EKTPReceiveMoneyMTCNViewModel
 
 class EKTPReceiveMoneyMTCNFragment : Fragment() {
-
     private lateinit var binding: FragmentEktpReciveMoneyMtcnBinding
     private var toolTipShow = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //Overriding obBackPressed to popBackStack fragment
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                activity?.finish()
+            }
+        })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,11 +47,21 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     val enableCheck = checkMTCNKey(s.toString()) //check if input text
-                    binding.mtcnOk.isVisible = enableCheck
-                    binding.consultButton.isEnabled = !enableCheck
+
+                    when(enableCheck){
+                        true -> {
+                            binding.mtcnOk.isVisible = true
+                            binding.consultButton.isEnabled = false
+                            binding.mtcnEntryEditText.setBackgroundResource(R.drawable.validation_edit_text)
+                        }
+                        else ->{
+                            binding.mtcnOk.isVisible = false
+                            binding.consultButton.isEnabled = true
+                            binding.mtcnEntryEditText.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        }
+                    }
                 }
                 override fun afterTextChanged(s: Editable?) {
-
                 }
             })
             backAppbarButton.setOnClickListener { view: View ->
