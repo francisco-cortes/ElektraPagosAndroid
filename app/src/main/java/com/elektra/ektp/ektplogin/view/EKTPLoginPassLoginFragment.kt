@@ -81,7 +81,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
 
 
         //if biometric status isn´t ok disable the button to access at that fragment
-        if (viewModel.getSavedDataLogin()[0].toInt()!=1){
+        if (viewModel.getSavedDataLogin()[0].toInt()!=1 || !activityViewModel.getBioLoginActivated()){
             binding.biometricSignInButton.isGone = true
             binding.backAppbarButton.isGone = true
         }
