@@ -149,6 +149,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                         verificationNumber3.requestFocus()
                     }
                     else{
+                        verificationNumber1.requestFocus()
                         smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                     }
                 }
@@ -198,6 +199,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                         verificationNumber4.requestFocus()
                     }
                     else{
+                        verificationNumber2.requestFocus()
                         smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                     }
                 }
@@ -247,6 +249,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                         verificationNumber5.requestFocus()
                     }
                     else{
+                        verificationNumber3.requestFocus()
                         smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                     }
                 }
@@ -294,6 +297,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                         smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                     }
                     else{
+                        verificationNumber4.requestFocus()
                         smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                     }
                 }
