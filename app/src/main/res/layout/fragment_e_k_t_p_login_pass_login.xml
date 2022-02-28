@@ -55,6 +55,7 @@
                     android:layout_width="@dimen/_22sdp"
                     android:layout_height="@dimen/_22sdp"
                     android:background="@drawable/ic_appbar_back_button"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -86,6 +87,17 @@
                     android:theme="@style/title_1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/hiUserTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxWidth="@dimen/_290sdp"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:text="!"
+                    android:theme="@style/title_1"
+                    app:layout_constraintStart_toEndOf="@id/hiTextView"
+                    app:layout_constraintTop_toTopOf="@id/hiTextView" />
 
                 <TextView
                     android:id="@+id/frtHintTextView"

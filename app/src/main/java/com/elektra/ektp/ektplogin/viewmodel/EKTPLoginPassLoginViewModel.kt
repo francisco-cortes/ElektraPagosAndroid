@@ -18,4 +18,8 @@ class EKTPLoginPassLoginViewModel : ViewModel() {
 
         return  loginData
     }
+
+    fun saveLockedStatus(isLock: Boolean){
+        preferences.saveTemporalLocked(isLock)
+    }
 }
