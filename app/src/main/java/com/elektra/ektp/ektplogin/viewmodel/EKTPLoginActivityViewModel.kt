@@ -18,4 +18,8 @@ class EKTPLoginActivityViewModel : ViewModel() {
         return preferences.getLoginWithBio()
     }
     //---
+    //use to know if the user activated the biometric login in create account
+    fun getBioLoginActivated(): Boolean{
+        return preferences.getBioLogin()
+    }
 }
