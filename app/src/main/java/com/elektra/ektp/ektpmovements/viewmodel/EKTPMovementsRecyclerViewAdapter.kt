@@ -37,6 +37,11 @@ class EKTPMovementsRecyclerViewAdapter(
         fun bind(item: EKTPMovementsModel){
             //Set databinding from data model into layout
             binding.movementsListItem = item
+            itemView.setOnClickListener {
+                itemView.isSelected = true
+                bindingListener(item)
+                itemView.isSelected = false
+            }
         }
         //---
     }
@@ -59,7 +64,6 @@ class EKTPMovementsRecyclerViewAdapter(
 
     //Bind view holder to fill each cell on recycler view
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        holder.itemView.isSelected = false
         /*var dateData = data[position].detailDate
         day = dateData.substring(0..1)
         month = dateData.substring(3..4).toInt()-1
@@ -72,20 +76,22 @@ class EKTPMovementsRecyclerViewAdapter(
         dateData = "$day de $mesString"
         data[position].detailDate = dateData*/
         if (position != RecyclerView.NO_POSITION){
-            holder.itemView.isSelected = true
             if (holder.itemViewType == 0){
                 val dateViewHolder: DateMovementsViewHolder = holder as DateMovementsViewHolder
                 dateViewHolder.binding.dividerView.isVisible = true
                 dateViewHolder.bind(data[position])
-                bindingListener(holder.itemView, position)
+                dateViewHolder.itemView.setOnClickListener {
+                    bindingListener(data[position])
+                }
             }
             else{
                 val itemViewHolder: ItemMovementsViewHolder = holder as ItemMovementsViewHolder
                 itemViewHolder.bind(data[position])
-                bindingListener(holder.itemView, position)
+                itemViewHolder.itemView.setOnClickListener {
+                    bindingListener(data[position])
+                }
             }
         }
-
     }
 
     //Function gets the data size
@@ -105,15 +111,14 @@ class EKTPMovementsRecyclerViewAdapter(
         return dateType
     }
 
-    private fun bindingListener(holder: View, position: Int){
+    private fun bindingListener(item: EKTPMovementsModel){
         //On Click Listener for each item on recyclerview, clickable items
-        holder.setOnClickListener{
             //Create an intent to open details activity
             val moveIntent = Intent(context, EKTPMovementsDetailsActivity::class.java)
             //Get the item clicked on recyclerview
-            var msg = data[position]
+            var msg = item
             //set the extras on intent from recycler view item
-            var day = msg.detailDate.substring(0..2)
+            /*var day = msg.detailDate.substring(0..2)
             var month = msg.detailDate.substring(3..4)
             var monthInt = month.toInt()
             var yearString = msg.detailDate.substring(5..9)
@@ -123,7 +128,7 @@ class EKTPMovementsRecyclerViewAdapter(
                     monthString = months[i].substring(0..2)
                 }
             }
-            msg.detailDate = "$day$monthString$yearString"
+            msg.detailDate = "$day$monthString$yearString"*/
 
             moveIntent.putExtra("detailDate", msg.detailDate)
             moveIntent.putExtra("detailTitle", msg.detailTitle)
@@ -135,7 +140,6 @@ class EKTPMovementsRecyclerViewAdapter(
             moveIntent.putExtra("detailAccount", msg.detailAccount)
             //launch intent
             context.startActivity(moveIntent)
-        }
         //---
     }
 

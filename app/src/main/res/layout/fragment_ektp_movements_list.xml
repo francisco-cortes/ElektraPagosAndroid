@@ -159,8 +159,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/movementsRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintHeight_default="wrap"
+            android:layout_height="wrap_content"
             android:foregroundGravity="center_vertical"
             android:layout_marginStart="@dimen/_43sdp"
             android:layout_marginTop="@dimen/_40sdp"
