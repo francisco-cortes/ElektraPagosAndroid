@@ -1,6 +1,7 @@
 package com.elektra.ektp.ektpcreateaccount.view
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.fragment.app.Fragment
@@ -328,8 +329,25 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
             }
             //---
 
+            resendCodeTextView.setOnClickListener {
+                startCoolDown()
+            }
+
             return  root
         }
     }
+    private fun startCoolDown(){
+        object : CountDownTimer(15000, 1000) {
 
+            override fun onTick(millisUntilFinished: Long) {
+                binding.resendCodeTextView.isEnabled = false
+                binding.resendCodeTextView.text = getString(R.string.fragment_verification_resend_code) + " en " + (millisUntilFinished/1000).toString()
+            }
+
+            override fun onFinish() {
+                binding.resendCodeTextView.isEnabled = true
+                binding.resendCodeTextView.text = getString(R.string.fragment_verification_resend_code)
+            }
+        }.start()
+    }
 }

@@ -219,6 +219,7 @@
                     android:layout_marginTop="@dimen/_54sdp"
                     android:layout_marginBottom="@dimen/_69sdp"
                     android:gravity="center"
+                    android:padding="@dimen/_8sdp"
                     android:text="@string/fragment_verification_resend_code"
                     android:theme="@style/text_button_1"
                     app:layout_constraintStart_toStartOf="parent"
