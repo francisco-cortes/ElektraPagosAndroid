@@ -1,5 +1,7 @@
 package com.elektra.ektp.ektpmovements.model
 
+import java.util.*
+
 //Data class for model
 data class EKTPMovementsModel(
     var detailAmount: String = "",

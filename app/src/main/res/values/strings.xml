@@ -172,6 +172,9 @@
     <string name="movements_details_status">Estatus de transferencia</string>
     <string name="super_pesos_sign">$</string>
     <string name="super_index_cents">00</string>
+    <string name="no_movements_avaible">Movimientos no\ndisponibles</string>
+    <string name="try_later">Intenta más tarde</string>
+    <string name="accept_movements">ACEPTAR</string>
 
 
     <!-- Recieve strings-->
@@ -258,6 +261,21 @@
         <item>Veracruz</item>
         <item>Yucatán</item>
         <item>Zacatecas</item>
+    </string-array>
+
+    <string-array name="months">
+        <item>Enero</item>
+        <item>Febrero</item>
+        <item>Marzo</item>
+        <item>Abril</item>
+        <item>Mayo</item>
+        <item>Junio</item>
+        <item>Julio</item>
+        <item>Agosto</item>
+        <item>Septiembre</item>
+        <item>Octubre</item>
+        <item>Noviembre</item>
+        <item>Diciembre</item>
     </string-array>
 
     <string-array name="country">

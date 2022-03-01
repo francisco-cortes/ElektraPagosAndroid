@@ -55,7 +55,7 @@ class EKTPMovementsDetailsActivity : AppCompatActivity() {
         binding.movementsDetailsItem = dataList
 
         //OnClickListener for call shareDetails from card view
-        /*binding.shareButtonDetailsCardView.setOnClickListener {
+        binding.shareButtonDetailsCardView.setOnClickListener {
             //Toast message indicates to user that details will be shared
             Toast.makeText(this, "Compartiendo detalles de movimiento", Toast.LENGTH_SHORT)
                 .show()
@@ -63,7 +63,7 @@ class EKTPMovementsDetailsActivity : AppCompatActivity() {
             val bitMap = getScreenShot(binding.detailsCardViewToShare)
             //Invocation intent to share screenshot
             shareImage(bitMap)
-        }*/
+        }
         //---
 
         //OnClickListener for destroy activity and back to earlier activity
