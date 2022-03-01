@@ -14,9 +14,11 @@ import android.view.ViewGroup
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isGone
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEKTPLoginPassLoginBinding
 import com.elektra.ektp.ektpbiometricutil.EKTPBiometricUtil
@@ -45,12 +47,30 @@ class EKTPLoginPassLoginFragment : Fragment() {
     private var activityViewModel = EKTPLoginActivityViewModel()//instance for activity view Model
     private var viewModel = EKTPLoginPassLoginViewModel()// instance for fragment view Model
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //Overriding obBackPressed to popBackStack fragment
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (viewModel.getSavedDataLogin()[0].toInt()!=1 || !activityViewModel.getBioLoginActivated()){
+                    activity?.finish()
+                }else{
+                    requireActivity()
+                        .supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.loginNavHostFragment, EKTPLoginBiometricLoginFragment())
+                        .commitNow()//open the biometric login fragment
+                }
+            }
+        })
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        activityViewModel.setBiometricLogin(false)//is biometric login?
+        //activityViewModel.setBiometricLogin(false)//is biometric login?
         binding =  DataBindingUtil.inflate<FragmentEKTPLoginPassLoginBinding>(inflater,R.layout.fragment_e_k_t_p_login_pass_login, container, false)
         noUserAlertLayout = layoutInflater.inflate(R.layout.no_user_alert_layout,null)//no user dialog layout
         incorrectPasswordLayout = layoutInflater.inflate(R.layout.incorrect_password_alert_layout,null)//no user dialog layout
@@ -95,7 +115,8 @@ class EKTPLoginPassLoginFragment : Fragment() {
 
         //no user alert dialog button clicklistner
         noUserAcceptButton.setOnClickListener {
-            noUserAlertDialog.dismiss()
+            openActivity(EKTPCreateAccountActivity())// open the create account activity
+            activity?.finish()
         }
         //--
         //incorrect pass alert dialog buttons
@@ -146,7 +167,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
                 .beginTransaction()
                 .replace(R.id.loginNavHostFragment, EKTPLoginBiometricLoginFragment())
                 .commitNow()//change the fragment
-            }
+            } 
 
             frgPassClickTextView.setOnClickListener{ view: View ->
                 openActivity(EKTPForgottenPassActivity())//open the forgotten pass activity
@@ -156,26 +177,31 @@ class EKTPLoginPassLoginFragment : Fragment() {
                 //check the pasword
                 val passwordInput = passwordInputEditText.text.toString()
 
-                if (!viewModel.getSavedDataLogin()[5].toBoolean()){
-                    if (viewModel.getSavedDataLogin()[4] == passwordInput){
-                        //50% probabilities to make appear the case when there are no service
-                        if ((0..1).random() == 0){
-                            noServiceAlertDialog.show()
+                if (viewModel.getSavedDataLogin()[3]!=""){
+                    if (!viewModel.getSavedDataLogin()[5].toBoolean()){
+                        if (viewModel.getSavedDataLogin()[4] == passwordInput){
+                            //50% probabilities to make appear the case when there are no service
+                            if ((0..1).random() == 0){
+                                noServiceAlertDialog.show()
+                            }else{
+                                openActivity(EKTPHomeActivity())
+                                activity?.finish()
+                            }
                         }else{
-                            openActivity(EKTPHomeActivity())
+                            if (passwordAttempt >= 3){
+                                lockedPasswordAlertDialog.show()
+                                viewModel.saveLockedStatus(true)
+                            }else {
+                                passwordAttempt ++
+                                passAttemptTextView.text = resources.getText(R.string.incorrect_password_attempt_label).toString() + passwordAttempt.toString()
+                                incorrectPasswordAlertDialog.show()
+                            }
                         }
                     }else{
-                        if (passwordAttempt >= 3){
-                            lockedPasswordAlertDialog.show()
-                            viewModel.saveLockedStatus(true)
-                        }else {
-                            passwordAttempt ++
-                            passAttemptTextView.text = resources.getText(R.string.incorrect_password_attempt_label).toString() + passwordAttempt.toString()
-                            incorrectPasswordAlertDialog.show()
-                        }
+                        lockedPasswordAlertDialog.show()
                     }
                 }else{
-                    lockedPasswordAlertDialog.show()
+                    noUserAlertDialog.show()
                 }
             }
 

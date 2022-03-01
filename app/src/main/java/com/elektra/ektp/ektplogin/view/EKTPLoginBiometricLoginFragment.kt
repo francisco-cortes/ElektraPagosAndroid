@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.activity.OnBackPressedCallback
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -42,13 +43,22 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
     private val activityViewModel = EKTPLoginActivityViewModel()//instance of activity viewModel used as shared Viewmodel
     private val viewModel = EKTPLoginBiometricLoginViewModel()//instance of fragment viewModel
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //Overriding obBackPressed to popBackStack fragment
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                activity?.finish()
+            }
+        })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflater layout for this fragment
-        activityViewModel.setBiometricLogin(true)//is this biometricLogin?
+        //activityViewModel.setBiometricLogin(true)//is this biometricLogin?
 
         binding = DataBindingUtil.inflate<FragmentEKTPLoginBiometricLoginBinding>(inflater,R.layout.fragment_e_k_t_p_login_biometric_login, container, false)
         noUserAlertLayout = layoutInflater.inflate(R.layout.no_user_alert_layout,null)//inlfater for the no user registred case

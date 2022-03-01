@@ -28,11 +28,11 @@ class EKTPLoginActivity : AppCompatActivity() {
 
         if (bioChecker.checkBioStatus()==1 && viewModel.getBioLoginActivated() ){
             if(bioChecker.determineBio()== 1 || bioChecker.determineBio() == 3){
-                viewModel.setBiometricLogin(true)//variable used for navigation
+                //viewModel.setBiometricLogin(true)//variable used for navigation
                 openFragment(EKTPLoginBiometricLoginFragment())//change the fragmen
             }
         } else {
-            viewModel.setBiometricLogin(false)//variable use for navigaqtion
+            //viewModel.setBiometricLogin(false)//variable use for navigaqtion
             openFragment(EKTPLoginPassLoginFragment())//cange the fragment
         }
         viewModel.saveBiometricStatus(bioChecker.checkBioStatus(),bioChecker.determineBio())//save the biometric status trough activity viewmodel
@@ -49,7 +49,7 @@ class EKTPLoginActivity : AppCompatActivity() {
     //---
 
     //define for back button behavior
-    override fun onBackPressed() {
+    /*override fun onBackPressed() {
         if (bioChecker.checkBioStatus()!=1 && !viewModel.getBioLoginActivated()) { //if the biometric isn´t ok it open pass login and must be only in that view
             super.onBackPressed()
             finish()
@@ -65,5 +65,5 @@ class EKTPLoginActivity : AppCompatActivity() {
             }
         }
     }
-    //---
+    //---*/
 }

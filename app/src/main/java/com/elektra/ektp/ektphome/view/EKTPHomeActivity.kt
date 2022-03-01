@@ -1,5 +1,7 @@
 package com.elektra.ektp.ektphome.view
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -7,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.ActivityEktphomeBinding
 import com.elektra.ektp.databinding.ActivityLoginBinding
+import com.elektra.ektp.ektplogin.view.EKTPLoginActivity
 
 class EKTPHomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEktphomeBinding
@@ -53,6 +56,7 @@ class EKTPHomeActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (isHome) { // the home variable tell us if the user is in the first fragment
             super.onBackPressed()
+            openActivity(EKTPLoginActivity())
             finish()// close the home activity
         } else {
             openFragment(EKTPHomeMainFragment())// return to first fragment
@@ -67,5 +71,10 @@ class EKTPHomeActivity : AppCompatActivity() {
             replace(R.id.homeNavHostFragment, fragment)
             commit()
         }
+    }
+
+    private fun openActivity(activityName: Activity){
+        val intent = Intent(this, activityName::class.java)
+        startActivity(intent)
     }
 }
