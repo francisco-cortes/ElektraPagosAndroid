@@ -167,7 +167,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
                 .beginTransaction()
                 .replace(R.id.loginNavHostFragment, EKTPLoginBiometricLoginFragment())
                 .commitNow()//change the fragment
-            } 
+            }
 
             frgPassClickTextView.setOnClickListener{ view: View ->
                 openActivity(EKTPForgottenPassActivity())//open the forgotten pass activity
