@@ -259,13 +259,28 @@
                     android:layout_marginStart="@dimen/_50sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginEnd="@dimen/_25sdp"
-                    android:layout_marginBottom="@dimen/_50sdp"
                     android:gravity="start"
                     android:text="@{movementsDetailsItem.detailAccount}"
                     android:theme="@style/subtitle_2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/stLabelDetailCardView"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/stLabelDetailCardView" />
+
+                <Button
+                    android:id="@+id/shareThisButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_50sdp"
+                    android:layout_marginBottom="@dimen/_50sdp"
+                    android:layout_marginStart="@dimen/_43sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:text="@string/share_details_button"
+                    android:theme="@style/bottom_button"
+                    android:background="@drawable/enable_disable_red"
+                    app:layout_constraintTop_toBottomOf="@+id/stDetailCardView4"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
