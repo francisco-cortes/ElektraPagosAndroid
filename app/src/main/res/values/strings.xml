@@ -5,8 +5,8 @@
     <string name="app_version">V1.0.0</string>
 
     <!-- General strings -->
-    <string name="required_field_hint">Campo Obligatorio*</string>
-    <string name="optional_field_hint">Campo Opcional</string>
+    <string name="required_field_hint">Campo obligatorio*</string>
+    <string name="optional_field_hint">Campo opcional</string>
     <string name="option_selection_hint">Selecciona una opción*</string>
     <string name="continue_button">CONTINUAR</string>
     <string name="invalid_data">*Dato no válido</string>
@@ -18,7 +18,7 @@
     <string name="login_face_label">Entrar con Reconocimiento Facial</string>
     <string name="login_pass_in_button">ENTRAR CON CONTRASEÑA</string>
     <string name="login_create_account"><u>Crear cuenta</u></string>
-    <string name="login_finger_label">Entrar con Huella</string>
+    <string name="login_finger_label">Entrar con Huella Dactilar</string>
     <string name="login_hello">¡Hola!</string>
     <string name="login_insert_data">Ingresa tu contraseña</string>
     <string name="login_user_name">Usuario</string>
@@ -40,8 +40,7 @@
     <string name="fragment_create_account_email">Correo electrónico</string>
     <string name="fragment_create_account_email_hint">@</string>
     <string name="fragment_create_account_email_confirmation">Confirmación de correo electrónico</string>
-    <string name="fragment_create_account_"></string>
-    <string name="fragment_create_account_warning">Para acceder a los servicios de Elektra pagos, <b>Banco Azteca</b> \n te pide abrir una cuenta bancaria y los datos para ello.</string>
+    <string name="fragment_create_account_warning">Para acceder a los servicios de Elektra pagos, <b>Banco Azteca</b>\nte pide abrir una cuenta bancaria y los datos para ello.</string>
 
     <!-- Fragment verification sms strings -->
     <string name="verification_header_label">Código de verificación</string>
@@ -53,7 +52,7 @@
     <!-- Fragment crete account form strings -->
     <string name="form_header_label">Registro</string>
     <string name="fragment_form_complete">Completa tus datos</string>
-    <string name="fragment_form_remind">Recuerda que estás abriendo una cuenta con \n datos bancarios</string>
+    <string name="fragment_form_remind">Recuerda que estás abriendo una cuenta con\ndatos bancarios</string>
     <string name="fragment_form_name">Nombre</string>
     <string name="fragment_form_name_invalid">Inserte un nombre válido</string>
     <string name="fragment_form_paternal_last_name">Apellido paterno</string>
@@ -108,14 +107,16 @@
     <!-- Fragment biometrics activation strings -->
     <string name="finger_header_label">Activar huella</string>
     <string name="face_header_label">Activar rostro</string>
-    <string name="fragment_biometrics_activation_activate">¿Te gustaría activar tu huella?</string>
-    <string name="fragment_biometrics_activation_security">Tu huella será tu clave de seguridad y&#xA;contraseña</string>
-    <string name="fragment_biometrics_activation_finger">Toca el ícono para activar \n tu huella dactilar</string>
-    <string name="fragment_biometrics_activation_face">Toca el ícono para activar &#xA; el reconocimiento facial</string>
+    <string name="fragment_biometrics_activation_activate_finger">¿Te gustaría activar tu huella?</string>
+    <string name="fragment_biometrics_activation_activate_face">¿Te gustaría activar tu rostro?</string>
+    <string name="fragment_biometrics_activation_security_finger">Tu huella será tu clave de\nseguridad y contraseña</string>
+    <string name="fragment_biometrics_activation_security_face">Tu rostro será tu clave de\nseguridad y contraseña</string>
+    <string name="fragment_biometrics_activation_finger">Toca el ícono para activar\ntu huella dactilar</string>
+    <string name="fragment_biometrics_activation_face">Toca el ícono para activar\nel reconocimiento facial</string>
     <string name="fragment_biometrics_activation_later"><u>En otro momento</u></string>
 
     <!-- Fragment successful create account strings -->
-    <string name="fragment_successful_message">Tu cuenta se ha \n creado con éxito</string>
+    <string name="fragment_successful_message">Tu cuenta se ha\ncreado con éxito</string>
     <string name="fragment_successful_message2">Ya puedes hacer uso de tu Wallet</string>
     <string name="fragment_successful_back_button">IR AL INICIO</string>
 
@@ -131,8 +132,8 @@
     <string name="forggoten_insert_new_pass">Nueva contraseña</string>
     <string name="forgotten_confirmation_pass">Confirmar contraseña</string>
     <string name="forgotten_resend_code"><u>Reenviar Código</u></string>
-    <string name="forgotten_change_successful">Tu contraseña se ha \n cambiado con éxito</string>
-    <string name="forgotten_login_label">Podrás iniciar sesión en el momento \n que lo desees.</string>
+    <string name="forgotten_change_successful">Tu contraseña se ha\ncambiado con éxito</string>
+    <string name="forgotten_login_label">Podrás iniciar sesión en el momento\nque lo desees.</string>
     <string name="forgotten_successful_back_button">IR AL INICIO</string>
 
     <!-- Home strings-->
@@ -152,7 +153,7 @@
     <string name="profile_contract"><u>Contrato y legales</u></string>
 
     <!-- Settings strings-->
-    <string name="settings_change_recovery_pass">Cambio / Recuperación de contraseña</string>
+    <string name="settings_change_recovery_pass">Cambio o recuperación de contraseña</string>
     <string name="settings_help">Ayuda</string>
     <string name="settings_logout">Cerrar sesión</string>
 
@@ -168,9 +169,13 @@
     <string name="movements_details_reciever_account">MTCN</string>
     <string name="movements_details_concept">Concepto</string>
     <string name="movements_details_folio">Folio</string>
-    <string name="movements_details_status">Estatus de transferencia</string>
+    <string name="movements_details_status">Cuenta Destino</string>
     <string name="super_pesos_sign">$</string>
     <string name="super_index_cents">00</string>
+    <string name="no_movements_avaible">Movimientos no\ndisponibles</string>
+    <string name="try_later">Intenta más tarde</string>
+    <string name="accept_movements">ACEPTAR</string>
+    <string name="share_details_button">COMPARTIR</string>
 
 
     <!-- Recieve strings-->
@@ -210,10 +215,15 @@
     <!--help fragment-->
     <string name="help_appbar_title">Ayuda</string>
     <string name="help_headline_one_label">¿Necesitas ayuda?</string>
-    <string name="help_body_two_label">Comunicate con nosotros al telefono</string>
-    <string name="help_phone_number_label">5 7577 5547</string>
+    <string name="help_body_two_label">Comunícate con nosotros al teléfono</string>
+    <string name="help_phone_number_label">55 7577 5547</string>
     <string name="help_phone_schedule">Lun-Dom de 9 a 21 hrs</string>
-    <string name="help_button">LLAMA</string>
+    <string name="help_button">LLAMAR</string>
+
+    <!--Biometrics System-->
+    <string name="biometrics_title">Autenticación Biométrica</string>
+    <string name="biometrics_subtitle">Usa el biométrico de tu teléfono</string>
+    <string name="biometrics_cancel">Cancelar</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -252,6 +262,21 @@
         <item>Veracruz</item>
         <item>Yucatán</item>
         <item>Zacatecas</item>
+    </string-array>
+
+    <string-array name="months">
+        <item>Enero</item>
+        <item>Febrero</item>
+        <item>Marzo</item>
+        <item>Abril</item>
+        <item>Mayo</item>
+        <item>Junio</item>
+        <item>Julio</item>
+        <item>Agosto</item>
+        <item>Septiembre</item>
+        <item>Octubre</item>
+        <item>Noviembre</item>
+        <item>Diciembre</item>
     </string-array>
 
     <string-array name="country">

@@ -70,7 +70,7 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
         if (bioUsed == 1) {
             bioAlertLayout = layoutInflater.inflate(R.layout.unrecognized_face_alert_layout, null)
             binding.biometricLoginImageButton.setBackgroundDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_face_button))
-            binding.biometricInfoTextView.text = "Entrar con FaceID"
+            binding.biometricInfoTextView.text = getString(R.string.login_face_label)
         }
         else {
             bioAlertLayout = layoutInflater.inflate(R.layout.unrecognized_finger_alert_layout,null)
@@ -127,9 +127,9 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
 
         //info show in biometric popup
         promptInfo = androidx.biometric.BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Autenticacion Biometrica")
-            .setSubtitle("usa el biometrico de tu celular")
-            .setNegativeButtonText("cancelar")
+            .setTitle(getString(R.string.biometrics_title))
+            .setSubtitle(getString(R.string.biometrics_subtitle))
+            .setNegativeButtonText(getString(R.string.biometrics_cancel))
             .build()
         //---
 

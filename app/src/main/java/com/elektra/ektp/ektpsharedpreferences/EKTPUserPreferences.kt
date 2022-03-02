@@ -136,7 +136,7 @@ class EKTPUserPreferences(val context: Context) {
     }
 
     fun getTemporalPassword(): String{
-        return enSharedPreferences.getString(SHARED_TEMPORAL_PASSWORD,"qwertyuio")!!
+        return enSharedPreferences.getString(SHARED_TEMPORAL_PASSWORD,"")!!
     }
 
     fun saveTemporalLocked(isLock: Boolean){

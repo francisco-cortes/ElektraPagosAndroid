@@ -33,6 +33,11 @@ class EKTPHomeSettingsFragment : Fragment() {
                 openActivity(EKTPForgottenPassActivity())//open forgotten pass activity
             }
 
+            logOutTextView.setOnClickListener{
+                view: View ->
+                activity?.finish()
+            }
+
         }
         //---
         return binding.root
