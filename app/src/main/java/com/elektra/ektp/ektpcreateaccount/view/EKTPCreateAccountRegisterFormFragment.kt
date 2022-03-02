@@ -21,7 +21,7 @@ import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountRegisterFor
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountSMSVerificationViewModel
 import com.elektra.ektp.uservalidations.UserValidations
 
-class EKPTCreateAccountRegisterFormFragment : Fragment() {
+class EKTPCreateAccountRegisterFormFragment : Fragment() {
 
     //Access variables
     private lateinit var binding: FragmentEkptCreateAccountRegisterFormBinding

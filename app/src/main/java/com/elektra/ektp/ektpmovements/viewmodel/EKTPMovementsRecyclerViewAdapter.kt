@@ -139,6 +139,7 @@ class EKTPMovementsRecyclerViewAdapter(
             moveIntent.putExtra("detailName", msg.detailName)
             moveIntent.putExtra("detailFolio", msg.detailFolio)
             moveIntent.putExtra("detailAccount", msg.detailAccount)
+            moveIntent.putExtra("detailMTCN", msg.detailMTCN)
             //launch intent
             context.startActivity(moveIntent)
         //---
