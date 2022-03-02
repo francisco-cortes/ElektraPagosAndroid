@@ -79,20 +79,19 @@
                     android:id="@+id/textViewBio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_43sdp"
-                    android:text="@string/fragment_biometrics_activation_activate"
+                    android:text="@string/fragment_biometrics_activation_activate_finger"
                     android:theme="@style/title_2"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
                 <TextView
                     android:id="@+id/textViewBio2"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:layout_marginStart="@dimen/_43sdp"
-                    android:layout_marginEnd="@dimen/_43sdp"
-                    android:text="@string/fragment_biometrics_activation_security"
+                    android:textAlignment="center"
+                    android:text="@string/fragment_biometrics_activation_security_finger"
                     android:theme="@style/subtitle_2"
                     app:layout_constraintTop_toBottomOf="@id/textViewBio"
                     app:layout_constraintStart_toStartOf="parent"

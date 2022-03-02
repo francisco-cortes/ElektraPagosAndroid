@@ -118,9 +118,9 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
         //---
         //info show in biometric popup
         promptInfo = androidx.biometric.BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Autenticacion Biometrica")
-            .setSubtitle("usa el biometrico de tu celular")
-            .setNegativeButtonText("cancelar")
+            .setTitle(getString(R.string.biometrics_title))
+            .setSubtitle(getString(R.string.biometrics_subtitle))
+            .setNegativeButtonText(getString(R.string.biometrics_cancel))
             .build()
         //---
 

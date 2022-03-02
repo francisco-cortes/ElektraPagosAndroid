@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/EKPTCreateAccountRegisterFormFragment"
-        android:name="com.elektra.ektp.ektpcreateaccount.view.EKPTCreateAccountRegisterFormFragment"
+        android:name="com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountRegisterFormFragment"
         android:label="EKPTCreateAccountRegisterFormFragment" >
         <action
             android:id="@+id/action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountContractsFragment"

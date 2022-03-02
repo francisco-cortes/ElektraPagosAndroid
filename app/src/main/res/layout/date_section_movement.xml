@@ -13,16 +13,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <View
+            android:id="@+id/dividerView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_31sdp"
+            android:background="@color/elektra_light_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"/>
+
         <TextView
-            android:id="@+id/titleMovementTextView"
+            android:id="@+id/dateMovementTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_31sdp"
             android:gravity="start"
+            android:theme="@style/checkbox_text"
+            app:layout_constraintTop_toBottomOf="@id/dividerView"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/titleMovementTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:gravity="start"
             android:theme="@style/appbar_title"
             android:textColor="@color/elektra_gray"
             android:text="@{movementsListItem.detailTitle}"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dateMovementTextView"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -45,7 +66,7 @@
             android:theme="@style/subtitle_3"
             android:text="@string/super_pesos_sign"
             app:layout_constraintTop_toTopOf="@id/ammountMovementTextView"
-            app:layout_constraintEnd_toStartOf="@id/ammountMovementTextView" />
+            app:layout_constraintEnd_toStartOf="@id/ammountMovementTextView"/>
 
         <TextView
             android:id="@+id/ammountMovementTextView"
@@ -62,7 +83,6 @@
             android:id="@+id/ammountCentsMovementTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_31sdp"
             android:gravity="center_vertical"
             android:theme="@style/subtitle_3"
             android:text="@string/super_index_cents"

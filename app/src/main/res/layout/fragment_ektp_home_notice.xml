@@ -37,9 +37,9 @@
 
         <ImageView
             android:id="@+id/noticeImageView"
-            android:layout_width="@dimen/_110sdp"
-            android:layout_height="@dimen/_110sdp"
-            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_width="@dimen/_125sdp"
+            android:layout_height="@dimen/_125sdp"
+            android:layout_marginTop="@dimen/_30sdp"
             android:background="@drawable/ic_notifications_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

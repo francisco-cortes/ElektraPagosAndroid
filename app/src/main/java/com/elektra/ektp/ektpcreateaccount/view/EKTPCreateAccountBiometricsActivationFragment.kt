@@ -108,7 +108,7 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
                 textViewBio.text = "¿Te gustaría activar tu Face ID"
                 textViewBio2.text = "Tu Rostro será tu clave de seguridad y contraseña"
                 imageButtonBio.setBackgroundResource(R.drawable.ic_active_face_button)
-                textViewBio3.text = "Toca el ícono para activar tu Face ID"
+                textViewBio3.text = getString(R.string.fragment_biometrics_activation_face)
             }
             //---
 

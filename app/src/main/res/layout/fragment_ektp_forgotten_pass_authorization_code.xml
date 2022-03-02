@@ -80,11 +80,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_30sdp"
                     android:layout_marginStart="@dimen/_43sdp"
-                    android:layout_marginEnd="@dimen/_43sdp"
-                    android:theme="@style/title_2"
+                    android:theme="@style/subtitle_4"
                     android:text="@string/forgotten_insert_key"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <LinearLayout
@@ -194,7 +192,7 @@
                     android:layout_marginEnd="@dimen/_43sdp"
                     android:background="@drawable/enable_disable_red"
                     android:theme="@style/bottom_button"
-                    android:text="@string/continue_button"
+                    android:text="@string/forgotten_auth_button"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/linearId"/>
