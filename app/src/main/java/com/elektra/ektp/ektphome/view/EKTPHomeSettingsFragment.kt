@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpHomeSettingsBinding
 import com.elektra.ektp.ektpforgottenpass.view.EKTPForgottenPassActivity
+import com.elektra.ektp.ektplogin.view.EKTPLoginActivity
 
 class EKTPHomeSettingsFragment : Fragment() {
 
@@ -34,7 +35,7 @@ class EKTPHomeSettingsFragment : Fragment() {
             }
 
             logOutTextView.setOnClickListener{
-                view: View ->
+                openActivity(EKTPLoginActivity())
                 activity?.finish()
             }
 
