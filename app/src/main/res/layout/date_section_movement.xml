@@ -31,7 +31,6 @@
             android:layout_marginTop="@dimen/_31sdp"
             android:gravity="start"
             android:theme="@style/checkbox_text"
-            android:text="@{movementsListItem.detailDate}"
             app:layout_constraintTop_toBottomOf="@id/dividerView"
             app:layout_constraintStart_toStartOf="parent" />
 

@@ -18,8 +18,6 @@ class EKTPMovementsRecyclerViewAdapter(
     private var data: List<EKTPMovementsModel>,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var months: Array<String> = context.resources.getStringArray(R.array.months)
-
     //ViewHolder function to fill recycler view
     inner class ItemMovementsViewHolder(val binding: ItemMovementBinding) : RecyclerView.ViewHolder(binding.root){
         //Function get de data model structure
@@ -36,12 +34,15 @@ class EKTPMovementsRecyclerViewAdapter(
         //Function get de data model structure
         fun bind(item: EKTPMovementsModel){
             //Set databinding from data model into layout
-            binding.movementsListItem = item
-            itemView.setOnClickListener {
-                itemView.isSelected = true
-                bindingListener(item)
-                itemView.isSelected = false
+            var mes = ""
+            for (i in item.detailDate.indices){
+                if(item.detailDate[i].toString().matches("[aA-zZ]".toRegex())){
+                    mes += item.detailDate[i].toString()
+                }
             }
+            binding.dateMovementTextView.text = item.detailDate.substring(0..1) + " de " + mes
+            binding.movementsListItem = item
+
         }
         //---
     }
