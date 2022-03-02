@@ -23,6 +23,7 @@ class EKTPUserPreferences(val context: Context) {
     val SHARED_LOGIN_FRAGMENT = "isLoginWithBiometric"
     val SHARED_TEMPORAL_PASSWORD = "qwertyuio"
     val SHARED_TEMPORAL_LOCKED = "passwordIsLocked?"
+    val SHARED_BIO_LOGIN_ACTIVATED = "bioLoginActivated?"
 
     private val enSharedPreferences: SharedPreferences = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         EncryptedSharedPreferences.create(
@@ -145,6 +146,14 @@ class EKTPUserPreferences(val context: Context) {
 
     fun getTemporalLocked(): Boolean{
         return enSharedPreferences.getBoolean(SHARED_TEMPORAL_LOCKED,false)!!
+    }
+
+    fun saveBioLogin(bioLoginActivate: Boolean){
+        enSharedPreferences.edit().putBoolean(SHARED_BIO_LOGIN_ACTIVATED,bioLoginActivate).apply()
+    }
+
+    fun getBioLogin():Boolean{
+        return enSharedPreferences.getBoolean(SHARED_BIO_LOGIN_ACTIVATED,false)!!
     }
 
 }

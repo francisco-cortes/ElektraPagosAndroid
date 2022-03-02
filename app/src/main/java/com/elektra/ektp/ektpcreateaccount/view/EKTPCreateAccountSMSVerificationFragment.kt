@@ -1,6 +1,7 @@
 package com.elektra.ektp.ektpcreateaccount.view
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.fragment.app.Fragment
@@ -149,6 +150,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                         verificationNumber3.requestFocus()
                     }
                     else{
+                        verificationNumber1.requestFocus()
                         smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                     }
                 }
@@ -198,6 +200,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                         verificationNumber4.requestFocus()
                     }
                     else{
+                        verificationNumber2.requestFocus()
                         smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                     }
                 }
@@ -247,6 +250,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                         verificationNumber5.requestFocus()
                     }
                     else{
+                        verificationNumber3.requestFocus()
                         smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                     }
                 }
@@ -294,6 +298,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                         smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                     }
                     else{
+                        verificationNumber4.requestFocus()
                         smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                     }
                 }
@@ -324,8 +329,25 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
             }
             //---
 
+            resendCodeTextView.setOnClickListener {
+                startCoolDown()
+            }
+
             return  root
         }
     }
+    private fun startCoolDown(){
+        object : CountDownTimer(15000, 1000) {
 
+            override fun onTick(millisUntilFinished: Long) {
+                binding.resendCodeTextView.isEnabled = false
+                binding.resendCodeTextView.text = getString(R.string.fragment_verification_resend_code) + " en " + (millisUntilFinished/1000).toString()
+            }
+
+            override fun onFinish() {
+                binding.resendCodeTextView.isEnabled = true
+                binding.resendCodeTextView.text = getString(R.string.fragment_verification_resend_code)
+            }
+        }.start()
+    }
 }

@@ -18,8 +18,8 @@
     <string name="login_face_label">Entrar con Reconocimiento Facial</string>
     <string name="login_pass_in_button">ENTRAR CON CONTRASEÑA</string>
     <string name="login_create_account"><u>Crear cuenta</u></string>
-    <string name="login_finger_label">Entrar con Huella Dactilar</string>
-    <string name="login_hello">¡Hola!</string>
+    <string name="login_finger_label">Entrar con Huella</string>
+    <string name="login_hello">¡Hola,</string>
     <string name="login_insert_data">Ingresa tu contraseña</string>
     <string name="login_user_name">Usuario</string>
     <string name="login_user_pass">Contraseña</string>

@@ -13,6 +13,7 @@ class EKTPLoginBiometricLoginViewModel : ViewModel() {
         loginData.add(preferences.getBioType().toString())
         loginData.add(preferences.getEncryptToken())
         loginData.add(preferences.getNameUser())
+        loginData.add(preferences.getTemporalPassword())
 
         return  loginData
     }

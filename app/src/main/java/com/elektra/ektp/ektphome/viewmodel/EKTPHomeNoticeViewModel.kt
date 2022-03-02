@@ -1,4 +1,7 @@
 package com.elektra.ektp.ektphome.viewmodel
 
-class EKTPHomeNoticeViewModel {
+import androidx.lifecycle.ViewModel
+
+class EKTPHomeNoticeViewModel : ViewModel(){
+
 }

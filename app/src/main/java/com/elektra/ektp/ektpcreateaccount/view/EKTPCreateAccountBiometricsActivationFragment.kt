@@ -17,6 +17,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountBiometricsActivationBinding
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCReateAccountBiometricsActivationViewModel
 import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
 import com.elektra.ektp.ektptoaster.EKTPToaster
 import com.elektra.ektp.uservalidations.KeyGenUtil
@@ -34,7 +35,7 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
     //---
 
     //SharedPreferences access variable
-    private val bioUsed = preferences.getBioType()
+    private val viewModel = EKTPCReateAccountBiometricsActivationViewModel()
 
     //Toaster fuction variable
     val toast = EKTPToaster()
@@ -79,7 +80,7 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
                 //println("Decrypted data: $decryptedData")
 
                 preferences.saveEncryptToken(encrypted)
-
+                viewModel.saveBioInLogin(true)
                 toast.makeAToast(activity as Context, "Guardado con éxito")
                 view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountBiometricsActivationFragment_to_EKTPCreateAccountSuccessfulFragment)
             }
@@ -102,10 +103,10 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
         with(binding){
             /*According to api level, the authentication hardware can change,
         so the information to show changes too*/
-            if (bioUsed == 1){
-                sectionTitleAppbarTextView.text = getString(R.string.face_header_label)
-                textViewBio.text = getString(R.string.fragment_biometrics_activation_activate_face)
-                textViewBio2.text = getString(R.string.fragment_biometrics_activation_security_face)
+            if (preferences.getBioType()== 1){
+                sectionTitleAppbarTextView.text = "Activar Face ID"
+                textViewBio.text = "¿Te gustaría activar tu Face ID"
+                textViewBio2.text = "Tu Rostro será tu clave de seguridad y contraseña"
                 imageButtonBio.setBackgroundResource(R.drawable.ic_active_face_button)
                 textViewBio3.text = getString(R.string.fragment_biometrics_activation_face)
             }
@@ -120,6 +121,7 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
             /*OnClickLIstener to TextView when user does not want
             to activate biometric authentication now*/
             textViewBio4.setOnClickListener{view: View ->
+                viewModel.saveBioInLogin(false)
                 view.findNavController().navigate(R.id.action_EKTPCreateAccountBiometricsActivationFragment_to_EKTPCreateAccountSuccessfulFragment)
             }
             //---
