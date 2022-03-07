@@ -27,6 +27,7 @@
                     android:layout_width="@dimen/_127sdp"
                     android:layout_height="@dimen/_49sdp"
                     android:background="@drawable/ic_appbar_logo"
+                    android:layout_marginEnd="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_35sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -66,8 +67,8 @@
                     android:text="@string/profile_name"
                     android:theme="@style/label_edit_text"
                     android:gravity="center"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/userProfileImageView"
+                    app:layout_constraintStart_toStartOf="@id/userProfileImageView"
                     app:layout_constraintTop_toBottomOf="@+id/userProfileImageView" />
 
                 <TextView
@@ -75,13 +76,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:layout_marginStart="@dimen/_31sdp"
-                    android:layout_marginEnd="@dimen/_31sdp"
-                    android:gravity="center"
+                    android:textAlignment="center"
                     android:theme="@style/appbar_title"
                     android:textColor="@color/elektra_gray"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/nameLabelTextView"
+                    app:layout_constraintStart_toStartOf="@id/nameLabelTextView"
                     app:layout_constraintTop_toBottomOf="@+id/nameLabelTextView" />
 
                 <TextView
@@ -91,9 +90,9 @@
                     android:layout_marginTop="@dimen/_20sdp"
                     android:text="@string/profile_account"
                     android:theme="@style/label_edit_text"
-                    android:gravity="center"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@id/nameTextView"
+                    app:layout_constraintStart_toStartOf="@id/nameTextView"
                     app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
 
                 <TextView
@@ -103,10 +102,10 @@
                     android:layout_marginTop="@dimen/_8sdp"
                     android:text="9554 1722 6620 87"
                     android:theme="@style/appbar_title"
-                    android:gravity="center"
+                    android:textAlignment="center"
                     android:textColor="@color/elektra_gray"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/accountLabelTextView"
+                    app:layout_constraintStart_toStartOf="@id/accountLabelTextView"
                     app:layout_constraintTop_toBottomOf="@+id/accountLabelTextView" />
 
                 <TextView
@@ -115,10 +114,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:text="@string/profile_open_date"
-                    android:gravity="center"
+                    android:textAlignment="center"
                     android:theme="@style/label_edit_text"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/accountTextView"
+                    app:layout_constraintStart_toStartOf="@id/accountTextView"
                     app:layout_constraintTop_toBottomOf="@+id/accountTextView" />
 
                 <TextView
@@ -126,12 +125,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:gravity="center"
+                    android:textAlignment="center"
                     android:text="06/12/21"
                     android:theme="@style/appbar_title"
                     android:textColor="@color/elektra_gray"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/dateLabelTextView"
+                    app:layout_constraintStart_toStartOf="@id/dateLabelTextView"
                     app:layout_constraintTop_toBottomOf="@+id/dateLabelTextView" />
 
                 <TextView
@@ -139,11 +138,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_20sdp"
-                    android:gravity="center"
+                    android:textAlignment="center"
                     android:text="@string/profile_phone"
                     android:theme="@style/label_edit_text"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/dateTextView"
+                    app:layout_constraintStart_toStartOf="@id/dateTextView"
                     app:layout_constraintTop_toBottomOf="@+id/dateTextView" />
 
                 <TextView
@@ -151,11 +150,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:gravity="center"
+                    android:textAlignment="center"
                     android:theme="@style/appbar_title"
                     android:textColor="@color/elektra_gray"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/phoneLabelTextView"
+                    app:layout_constraintStart_toStartOf="@id/phoneLabelTextView"
                     app:layout_constraintTop_toBottomOf="@+id/phoneLabelTextView" />
 
                 <TextView
@@ -163,11 +162,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_20sdp"
-                    android:gravity="center"
+                    android:textAlignment="center"
                     android:text="@string/profile_email"
                     android:theme="@style/label_edit_text"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/phoneTextView"
+                    app:layout_constraintStart_toStartOf="@id/phoneTextView"
                     app:layout_constraintTop_toBottomOf="@+id/phoneTextView" />
 
                 <TextView
@@ -175,13 +174,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:layout_marginStart="@dimen/_31sdp"
-                    android:layout_marginEnd="@dimen/_31sdp"
-                    android:gravity="center"
+                    android:textAlignment="center"
                     android:theme="@style/appbar_title"
                     android:textColor="@color/elektra_gray"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/emailLabelTextView"
+                    app:layout_constraintStart_toStartOf="@id/emailLabelTextView"
                     app:layout_constraintTop_toBottomOf="@+id/emailLabelTextView" />
 
                 <TextView
@@ -189,12 +186,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_30sdp"
-                    android:gravity="center"
+                    android:textAlignment="center"
                     android:text="@string/profile_contract"
                     android:theme="@style/text_button_1"
                     android:padding="@dimen/_10sdp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/emailTextView"
+                    app:layout_constraintStart_toStartOf="@id/emailTextView"
                     app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -142,7 +142,7 @@
                     android:layout_marginBottom="-10dp"
                     android:layout_marginEnd="-3dp"
                     android:background="@drawable/ic_tip"
-                    android:visibility="visible"
+                    android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="@id/mtcnHintPopUpButton"
                     app:layout_constraintBottom_toTopOf="@id/mtcnHintPopUpButton"
                     />
@@ -160,7 +160,7 @@
                     android:textAlignment="center"
                     android:textColor="@color/elektra_white_gray"
                     android:textSize="@dimen/_10sdp"
-                    android:visibility="visible"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toTopOf="@id/toolTipImageView"
                     app:layout_constraintEnd_toEndOf="@id/toolTipImageView" />
 
