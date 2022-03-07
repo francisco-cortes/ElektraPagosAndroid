@@ -408,6 +408,10 @@ class EKTPCreateAccountFragment : Fragment() {
                         position: Int,
                         id: Long
                     ) {
+                        birthSiteSpinner.isFocusableInTouchMode = true
+                        birthSiteSpinner.requestFocus()
+                        birthSiteSpinner.isFocusableInTouchMode = false
+                        birthSiteSpinner.clearFocus()
                         birthState = birthSiteSpinner.selectedItem.toString()
                         button.isEnabled = validations.checkFilledFields(
                             name, paternalLast, birthDate, birthState,
