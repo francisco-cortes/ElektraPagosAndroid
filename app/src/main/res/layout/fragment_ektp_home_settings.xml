@@ -28,6 +28,7 @@
                     android:layout_width="@dimen/_127sdp"
                     android:layout_height="@dimen/_49sdp"
                     android:background="@drawable/ic_home_appbar_elektra_logo"
+                    android:layout_marginEnd="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_35sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
