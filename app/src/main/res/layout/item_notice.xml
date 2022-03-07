@@ -15,44 +15,48 @@
 
         <TextView
             android:id="@+id/noticeHeaderTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Header"
             android:textSize="@dimen/_17sdp"
+            android:textAlignment="viewStart"
             android:fontFamily="@font/azo_sans_bold"
             android:textColor="@color/elektra_gray"
             android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginStart="@dimen/_62sdp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintEnd_toEndOf="@+id/viewXD"
+            app:layout_constraintStart_toStartOf="@+id/viewXD"/>
 
         <TextView
             android:id="@+id/noticeBodyTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:maxWidth="@dimen/_300sdp"
             android:text="body"
             android:textSize="@dimen/_12sdp"
             android:textColor="@color/elektra_gray"
             android:fontFamily="@font/azo_sans_regular"
+            android:textAlignment="viewStart"
             android:layout_marginTop="@dimen/_6sdp"
-            android:layout_marginStart="@dimen/_62sdp"
             app:layout_constraintTop_toBottomOf="@+id/noticeHeaderTextView"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="@+id/viewXD"
+            app:layout_constraintEnd_toEndOf="@+id/viewXD"/>
 
         <TextView
             android:id="@+id/noticeDateTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:textAlignment="viewStart"
             android:text="date"
             android:textSize="@dimen/_10sdp"
             android:fontFamily="@font/azo_sans_bold"
             android:textColor="@color/elektra_gray"
             android:layout_marginTop="@dimen/_30sdp"
-            android:layout_marginStart="@dimen/_62sdp"
             app:layout_constraintTop_toBottomOf="@+id/noticeBodyTextView"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="@+id/viewXD"/>
 
         <View
+            android:id="@+id/viewXD"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
             android:layout_marginTop="@dimen/_8sdp"
