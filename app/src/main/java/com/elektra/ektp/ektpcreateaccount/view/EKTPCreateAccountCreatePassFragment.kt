@@ -132,6 +132,7 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
                         else{
                             notMatchesIcon.isVisible = false
                             matchPass.isVisible = false
+                            insertConfirmPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                             button7.isEnabled = (passTextVar.length in 8..14 && validations.checkRepeatedChars(passTextVar) && validations.checkBankString(passTextVar)
                                     && validations.checkConsecutiveString(passTextVar))
                         }
