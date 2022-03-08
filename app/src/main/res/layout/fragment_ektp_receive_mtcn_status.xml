@@ -38,13 +38,11 @@
                     android:id="@+id/sectionTitleAppbarTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_82sdp"
-                    android:layout_marginEnd="@dimen/_23sdp"
                     android:gravity="center"
                     android:text="@string/recieve_details_screen_title"
                     android:theme="@style/appbar_title"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/logoAppBar"
+                    app:layout_constraintEnd_toEndOf="@+id/logoAppBar"
                     app:layout_constraintStart_toEndOf="@+id/backAppbarButton"
                     app:layout_constraintTop_toTopOf="parent" />
 
