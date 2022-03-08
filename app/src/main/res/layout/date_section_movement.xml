@@ -58,17 +58,6 @@
             />
 
         <TextView
-            android:id="@+id/ammountPesosSignMovementTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:gravity="center"
-            android:theme="@style/subtitle_3"
-            android:text="@string/super_pesos_sign"
-            app:layout_constraintTop_toTopOf="@id/ammountMovementTextView"
-            app:layout_constraintEnd_toStartOf="@id/ammountMovementTextView"/>
-
-        <TextView
             android:id="@+id/ammountMovementTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

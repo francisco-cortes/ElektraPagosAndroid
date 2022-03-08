@@ -24,6 +24,13 @@ class EKTPMovementsRecyclerViewAdapter(
         fun bind(item: EKTPMovementsModel){
             //Set databinding from data model into layout
             binding.movementsListItem = item
+            val i: Int = (0..99).random()
+            if (i < 10){
+                binding.ammountCentsMovementTextView.text = "0$i"
+            }
+            else{
+                binding.ammountCentsMovementTextView.text = i.toString()
+            }
         }
         //---
     }
@@ -42,6 +49,13 @@ class EKTPMovementsRecyclerViewAdapter(
             }
             binding.dateMovementTextView.text = item.detailDate.substring(0..1) + " de " + mes
             binding.movementsListItem = item
+            val i: Int = (0..99).random()
+            if (i < 10){
+                binding.ammountCentsMovementTextView.text = "0$i"
+            }
+            else{
+                binding.ammountCentsMovementTextView.text = i.toString()
+            }
 
         }
         //---
@@ -82,14 +96,14 @@ class EKTPMovementsRecyclerViewAdapter(
                 dateViewHolder.binding.dividerView.isVisible = true
                 dateViewHolder.bind(data[position])
                 dateViewHolder.itemView.setOnClickListener {
-                    bindingListener(data[position])
+                    bindingListener(data[position], dateViewHolder.binding.ammountCentsMovementTextView.text.toString())
                 }
             }
             else{
                 val itemViewHolder: ItemMovementsViewHolder = holder as ItemMovementsViewHolder
                 itemViewHolder.bind(data[position])
                 itemViewHolder.itemView.setOnClickListener {
-                    bindingListener(data[position])
+                    bindingListener(data[position], itemViewHolder.binding.ammountCentsMovementTextView.text.toString())
                 }
             }
         }
@@ -112,7 +126,7 @@ class EKTPMovementsRecyclerViewAdapter(
         return dateType
     }
 
-    private fun bindingListener(item: EKTPMovementsModel){
+    private fun bindingListener(item: EKTPMovementsModel, cents: String){
         //On Click Listener for each item on recyclerview, clickable items
             //Create an intent to open details activity
             val moveIntent = Intent(context, EKTPMovementsDetailsActivity::class.java)
@@ -140,6 +154,7 @@ class EKTPMovementsRecyclerViewAdapter(
             moveIntent.putExtra("detailFolio", msg.detailFolio)
             moveIntent.putExtra("detailAccount", msg.detailAccount)
             moveIntent.putExtra("detailMTCN", msg.detailMTCN)
+            moveIntent.putExtra("detailCents", cents)
             //launch intent
             context.startActivity(moveIntent)
         //---

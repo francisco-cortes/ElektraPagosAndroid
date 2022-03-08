@@ -69,17 +69,6 @@
                     app:layout_constraintTop_toBottomOf="@id/ok_logo" />
 
                 <TextView
-                    android:id="@+id/amDetailPesosSignCardView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="@string/super_pesos_sign"
-                    android:theme="@style/title_5"
-                    app:layout_constraintEnd_toStartOf="@id/amDetailCardView"
-                    app:layout_constraintTop_toTopOf="@id/amDetailCardView" />
-
-                <TextView
                     android:id="@+id/amDetailCardView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
