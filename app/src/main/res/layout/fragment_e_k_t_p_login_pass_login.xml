@@ -29,7 +29,7 @@
                     android:layout_width="@dimen/_70sdp"
                     android:layout_height="@dimen/_27sdp"
                     android:layout_marginTop="@dimen/_21sdp"
-                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_35sdp"
                     android:layout_marginBottom="@dimen/_21sdp"
                     android:background="@drawable/ic_appbar_logo"
                     app:layout_constraintBottom_toBottomOf="parent"
