@@ -53,13 +53,12 @@ class EKTPReceiveMTCNDetailsFragment : Fragment() {
             }
 
             depositToButton.setOnClickListener {
-                view?.findNavController()?.navigate(R.id.action_EKTPReceiveMTCNDetailsFragment_to_receiveMTCNAcountSuccesFragment)//navigate to the next fragment
-                /*val displayCase = (0..1).random()//50% probabilities to make appear the case when there are no service
+                val displayCase = (0..1).random()//50% probabilities to make appear the case when there are no service
                 if (displayCase== 0){
                     cantDepositAlertDialog.show()
                 }else{
                     view?.findNavController()?.navigate(R.id.action_EKTPReceiveMTCNDetailsFragment_to_receiveMTCNAcountSuccesFragment)//navigate to the next fragment
-                }*/
+                }
             }
 
             laterButton.setOnClickListener {
