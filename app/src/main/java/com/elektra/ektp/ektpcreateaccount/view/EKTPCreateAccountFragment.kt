@@ -313,14 +313,27 @@ class EKTPCreateAccountFragment : Fragment() {
                             phone, eMailText, emailConfirmationText, gender
                         )
                         invalidEmailText.isVisible = true
+                        invalidEmailConfirmationText.isVisible = false
                     }
                     else{
-                        eMail.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                        button.isEnabled = validations.checkFilledFields(
-                            name, paternalLast, birthDate, birthState,
-                            phone, eMailText, emailConfirmationText, gender
-                        )
                         invalidEmailText.isVisible = false
+                        eMail.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        if (eMailText != emailConfirmationText && emailConfirmationText.isNotEmpty()){
+                            emailConfirmation.setBackgroundResource(R.drawable.validation_edit_text)
+                            button.isEnabled = validations.checkFilledFields(
+                                name, paternalLast, birthDate, birthState,
+                                phone, eMailText, emailConfirmationText, gender
+                            )
+                            invalidEmailConfirmationText.isVisible = true
+                        }
+                        else{
+                            emailConfirmation.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                            button.isEnabled = validations.checkFilledFields(
+                                name, paternalLast, birthDate, birthState,
+                                phone, eMailText, emailConfirmationText, gender
+                            )
+                            invalidEmailConfirmationText.isVisible = false
+                        }
                     }
                 }
             })
@@ -365,7 +378,20 @@ class EKTPCreateAccountFragment : Fragment() {
                 }
 
                 override fun afterTextChanged(s: Editable?) {
-
+                    emailConfirmationText = s.toString()
+                    if (eMailText != emailConfirmationText){
+                        emailConfirmation.setBackgroundResource(R.drawable.validation_edit_text)
+                        button.isEnabled = false
+                        invalidEmailConfirmationText.isVisible = true
+                    }
+                    else{
+                        emailConfirmation.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                        button.isEnabled = validations.checkFilledFields(
+                            name, paternalLast, birthDate, birthState,
+                            phone, eMailText, emailConfirmationText, gender
+                        )
+                        invalidEmailConfirmationText.isVisible = false
+                    }
                 }
             })
             //---
@@ -382,6 +408,10 @@ class EKTPCreateAccountFragment : Fragment() {
                         position: Int,
                         id: Long
                     ) {
+                        birthSiteSpinner.isFocusableInTouchMode = true
+                        birthSiteSpinner.requestFocus()
+                        birthSiteSpinner.isFocusableInTouchMode = false
+                        birthSiteSpinner.clearFocus()
                         birthState = birthSiteSpinner.selectedItem.toString()
                         button.isEnabled = validations.checkFilledFields(
                             name, paternalLast, birthDate, birthState,

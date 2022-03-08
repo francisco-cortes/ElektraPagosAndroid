@@ -111,7 +111,8 @@
                     android:theme="@style/title_2"
                     android:text="@string/fragment_create_account_insert_data"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:focusableInTouchMode="true"/>
 
                 <TextView
                     android:id="@+id/warnOpenBankAccount"
@@ -474,7 +475,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/rounded_rectangle_gray"
                         android:hint="@string/required_field_hint"
-                        android:imeOptions="actionNext"
+                        android:imeOptions="actionDone"
                         android:maxLength="50"
                         android:inputType="textNoSuggestions"
                         android:padding="@dimen/_10sdp"

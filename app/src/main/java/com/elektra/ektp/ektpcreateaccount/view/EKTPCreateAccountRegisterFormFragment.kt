@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.Spinner
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
@@ -80,6 +81,13 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
             maternalLastName.setText(userData[2])
             dateBirth.setText(userData[3])
             birthSiteSpinner.setText(userData[4])
+            /*countrySpinner.isFocusableInTouchMode = true
+            countrySpinner.isFocusable = true
+            stateSpinner.isFocusableInTouchMode = true
+            stateSpinner.isFocusable = true
+            townHallSpinner.isFocusableInTouchMode = true
+            townHallSpinner.isFocusable = true*/
+
             when (userData[5]) {
                 "Hombre" -> {
                     manGenderRadioButton.isChecked = true
@@ -521,6 +529,7 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
                         id: Long
                     ) {
                         if (country != "Selecciona una opción*" && country.isNotEmpty()) {
+                            focusSpinner(countrySpinner)
                             progressValue -= 10
                             completed -= 1
                             button5.isEnabled =
@@ -537,6 +546,7 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
                         }
                         country = countrySpinner.selectedItem.toString()
                         if (country != "Selecciona una opción*") {
+                            focusSpinner(countrySpinner)
                             progressValue += 10
                             completed += 1
                             button5.isEnabled =
@@ -572,6 +582,7 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
                         id: Long
                     ) {
                         if (state != "Selecciona una opción*" && state.isNotEmpty()) {
+                            focusSpinner(stateSpinner)
                             progressValue -= 10
                             completed -= 1
                             button5.isEnabled =
@@ -588,6 +599,7 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
                         }
                         state = stateSpinner.selectedItem.toString()
                         if (state != "Selecciona una opción*") {
+                            focusSpinner(stateSpinner)
                             progressValue += 10
                             completed += 1
                             button5.isEnabled =
@@ -623,6 +635,7 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
                         id: Long
                     ) {
                         if (town != "Selecciona una opción*" && town.isNotEmpty()) {
+                            focusSpinner(townHallSpinner)
                             progressValue -= 10
                             completed -= 1
                             button5.isEnabled =
@@ -639,6 +652,7 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
                         }
                         town = townHallSpinner.selectedItem.toString()
                         if (town != "Selecciona una opción*") {
+                            focusSpinner(townHallSpinner)
                             progressValue += 10
                             completed += 1
                             button5.isEnabled =
@@ -677,6 +691,14 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
             return root
         }
     }
+
+    private fun focusSpinner(requestedFocusSpinner: Spinner) {
+        requestedFocusSpinner.isFocusableInTouchMode = true
+        requestedFocusSpinner.requestFocus()
+        requestedFocusSpinner.isFocusableInTouchMode = false
+        requestedFocusSpinner.clearFocus()
+    }
+
     //ProgressInForm to draw onScreen the user progress according to the added information
     private fun progressInForm(proValBar: Int, proTexVal: Int) {
         binding.progressBar.progress = proValBar

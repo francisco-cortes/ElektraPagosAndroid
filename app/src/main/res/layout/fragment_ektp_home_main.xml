@@ -27,6 +27,7 @@
                     android:layout_height="@dimen/_49sdp"
                     android:background="@drawable/ic_appbar_logo"
                     android:layout_marginTop="@dimen/_35sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

@@ -16,6 +16,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpForgottenPassNewPassBinding
+import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication
 import com.elektra.ektp.ektptoaster.EKTPToaster
 import com.elektra.ektp.uservalidations.UserValidations
 
@@ -62,6 +63,14 @@ class EKTPForgottenPassNewPassFragment : Fragment(){
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     passTextVar = s.toString()
+                    if (passTextVar.length < 8){
+                        notMinIcon.isVisible = true
+                        okMinIcon.isVisible = false
+                    }
+                    else{
+                        notMinIcon.isVisible = false
+                        okMinIcon.isVisible = true
+                    }
                     if (validations.checkRepeatedChars(passTextVar)){
                         okRepeatedIcon.isVisible = true
                         notRepeatedIcon.isVisible = false
@@ -228,6 +237,7 @@ class EKTPForgottenPassNewPassFragment : Fragment(){
 
             //onClickListener on continueButton to navigate to biometricsActivation or Successful createAccount according to sharedPreferences
             buttonNewPass.setOnClickListener { view: View ->
+                EKTPUserApplication.preferences.saveTemporalPassword(passTextVar)
                 view.findNavController().navigate(R.id.action_EKTPForgottenPassNewPassFragment_to_EKTPForgottenPassSuccessfulFragment)
             }
             //---
