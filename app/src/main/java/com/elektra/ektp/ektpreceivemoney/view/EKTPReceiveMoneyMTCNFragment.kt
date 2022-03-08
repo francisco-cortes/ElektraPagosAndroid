@@ -82,7 +82,7 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
                 //----
             }
             consultButton.setOnClickListener { view:View ->
-                view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNStatusFragment)
+                view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNDetailsFragment)
             }
             backAppbarButton.setOnClickListener {
                 activity?.finish()

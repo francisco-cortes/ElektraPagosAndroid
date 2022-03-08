@@ -37,7 +37,7 @@ class EKTPReceiveMTCNStatusFragment : Fragment() {
                 findNavController().popBackStack()
             }
             binding.seeDetailsButton.setOnClickListener {
-                view?.findNavController()?.navigate(R.id.action_EKTPReceiveMTCNStatusFragment_to_EKTPReceiveMTCNDetailsFragment)
+                //view?.findNavController()?.navigate(R.id.action_EKTPReceiveMTCNStatusFragment_to_EKTPReceiveMTCNDetailsFragment)
             }
         }
 
