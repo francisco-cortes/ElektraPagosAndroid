@@ -67,6 +67,14 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     passTextVar = s.toString()
+                    if (passTextVar.length < 8){
+                        notMinIcon.isVisible = true
+                        okMinIcon.isVisible = false
+                    }
+                    else{
+                        notMinIcon.isVisible = false
+                        okMinIcon.isVisible = true
+                    }
                     if (validations.checkRepeatedChars(passTextVar)){
                         okRepeatedIcon.isVisible = true
                         notRepeatedIcon.isVisible = false
@@ -97,12 +105,8 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
                     if(passTextVar.length in 8..14 ){
                         okMaxIcon.isVisible = true
                         notMaxIcon.isVisible = false
-                        notMinIcon.isVisible = false
-                        okMinIcon.isVisible = true
                     }
                     else{
-                        notMinIcon.isVisible = true
-                        okMinIcon.isVisible = false
                         okMaxIcon.isVisible = false
                         notMaxIcon.isVisible = true
                         button7.isEnabled = false
@@ -128,6 +132,7 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
                         else{
                             notMatchesIcon.isVisible = false
                             matchPass.isVisible = false
+                            insertConfirmPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                             button7.isEnabled = (passTextVar.length in 8..14 && validations.checkRepeatedChars(passTextVar) && validations.checkBankString(passTextVar)
                                     && validations.checkConsecutiveString(passTextVar))
                         }

@@ -482,7 +482,7 @@
                     android:layout_marginEnd="@dimen/_31sdp"
                     android:theme="@style/hint_edit_text"
                     android:visibility="invisible"
-                    android:text="@string/invalid_data"
+                    android:text="@string/email_not_matches"
                     android:textColor="@color/elektra_red"
                     app:layout_constraintTop_toBottomOf="@id/emailConfirmation"
                     app:layout_constraintEnd_toEndOf="parent"/>

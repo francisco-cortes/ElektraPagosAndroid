@@ -141,6 +141,9 @@ class EKTPLoginPassLoginFragment : Fragment() {
         }
         //--
 
+        if(viewModel.getSavedDataLogin()[3]==""){
+            noUserAlertDialog.show()
+        }
 
         //main layout buttons
         with(binding){
@@ -177,7 +180,30 @@ class EKTPLoginPassLoginFragment : Fragment() {
                 //check the pasword
                 val passwordInput = passwordInputEditText.text.toString()
 
-                if (viewModel.getSavedDataLogin()[3]!=""){
+                if (!viewModel.getSavedDataLogin()[5].toBoolean()){
+                    if (viewModel.getSavedDataLogin()[4] == passwordInput){
+                        //50% probabilities to make appear the case when there are no service
+                        if ((0..1).random() == 0){
+                            noServiceAlertDialog.show()
+                        }else{
+                            openActivity(EKTPHomeActivity())
+                            activity?.finish()
+                        }
+                    }else{
+                        if (passwordAttempt >= 3){
+                            lockedPasswordAlertDialog.show()
+                            viewModel.saveLockedStatus(true)
+                        }else {
+                            passwordAttempt ++
+                            passAttemptTextView.text = resources.getText(R.string.incorrect_password_attempt_label).toString() + passwordAttempt.toString()
+                            incorrectPasswordAlertDialog.show()
+                        }
+                    }
+                }else{
+                    lockedPasswordAlertDialog.show()
+                }
+
+                /*if (viewModel.getSavedDataLogin()[3]!=""){
                     if (!viewModel.getSavedDataLogin()[5].toBoolean()){
                         if (viewModel.getSavedDataLogin()[4] == passwordInput){
                             //50% probabilities to make appear the case when there are no service
@@ -202,7 +228,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
                     }
                 }else{
                     noUserAlertDialog.show()
-                }
+                }*/
             }
 
             biometricSignInButton.setOnClickListener { view: View ->
