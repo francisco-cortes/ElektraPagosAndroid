@@ -114,17 +114,6 @@
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:id="@+id/amountDetailPesosSignCardView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="top"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            android:text="@string/super_pesos_sign"
-                            android:theme="@style/title_2"
-                            app:layout_constraintEnd_toStartOf="@id/amountDetailCardView"
-                            app:layout_constraintTop_toTopOf="@id/amountDetailCardView" />
-
-                        <TextView
                             android:id="@+id/amountDetailCardView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -213,7 +202,7 @@
                             android:layout_marginEnd="@dimen/_25sdp"
                             android:layout_marginTop="@dimen/_8sdp"
                             android:gravity="start"
-                            android:text="@{movementsDetailsItem.detailAccount}"
+                            android:text="@{movementsDetailsItem.detailName}"
                             android:theme="@style/subtitle_2"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/accountLabelDetailCardView" />
@@ -240,7 +229,7 @@
                             android:layout_marginEnd="@dimen/_25sdp"
                             android:layout_marginTop="@dimen/_8sdp"
                             android:gravity="start"
-                            android:text="@{movementsDetailsItem.detailName}"
+                            android:text="@{movementsDetailsItem.detailMTCN}"
                             android:theme="@style/subtitle_2"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/recieverLabelDetailCardView"/>
@@ -322,7 +311,7 @@
                             android:layout_marginTop="@dimen/_8sdp"
                             android:layout_marginBottom="@dimen/_24sdp"
                             android:gravity="start"
-                            android:text="@{movementsDetailsItem.detailStatus}"
+                            android:text="@{movementsDetailsItem.detailAccount}"
                             android:theme="@style/subtitle_2"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/statusLabelDetailCardView"

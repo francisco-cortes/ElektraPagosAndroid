@@ -50,6 +50,7 @@ class EKTPMovementsItemDetailsFragment : Fragment() {
         val moveFolio = bundle?.getString("detailFolio").toString()
         val moveAccount = bundle?.getString("detailAccount").toString()
         val moveMTCN = bundle?.getString("detailMTCN").toString()
+        val moveCents = bundle?.getString("detailCents").toString()
         val dataList = EKTPMovementsModel(
             moveAmount,
             moveTitle,
@@ -65,6 +66,7 @@ class EKTPMovementsItemDetailsFragment : Fragment() {
 
         //Assignment from intent data into layout
         binding.movementsDetailsItem = dataList
+        binding.amountDetailCentsCardView.text = moveCents
 
         //OnClickListener for call shareDetails from card view
         binding.shareButtonDetailsCardView.setOnClickListener {

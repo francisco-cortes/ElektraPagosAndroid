@@ -54,6 +54,7 @@ class EKTPDetailsToShareFragment : Fragment() {
         val moveFolio = bundle?.getString("detailFolio").toString()
         val moveAccount = bundle?.getString("detailAccount").toString()
         val moveMTCN = bundle?.getString("detailMTCN").toString()
+        val moveCents = bundle?.getString("detailCents").toString()
         val dataList = EKTPMovementsModel(
             moveAmount,
             moveTitle,
@@ -68,6 +69,7 @@ class EKTPDetailsToShareFragment : Fragment() {
         //---
 
         binding.movementsDetailsItem = dataList
+        binding.amDetailCentsCardView.text = moveCents
 
         binding.shareThisButton.setOnClickListener{
             view: View ->

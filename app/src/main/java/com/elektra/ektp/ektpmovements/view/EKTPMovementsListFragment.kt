@@ -49,51 +49,52 @@ class EKTPMovementsListFragment : Fragment() {
 
         //Filling data model list
         var data = listOf(
-            EKTPMovementsModel("+500","Orden de Pago", "23/12/2021","Cuenta destino ****1234",
+            EKTPMovementsModel("-$500","Orden de Pago", "01/01/2022","Cuenta destino ****1234",
                 "Francisco Javier Cortes Torres", "Envío de dinero", "12345678",
                 "Transferencia exitosa", "Western Union - N12345678RS "),
-            EKTPMovementsModel("-600","Orden de Pago", "23/12/2021","Cuenta destino ****1234",
+            EKTPMovementsModel("+$600","Orden de Pago", "01/01/2022","Cuenta destino ****1234",
                 "Francisco Javier Cortes Torres", "Envío de dinero", "12345678",
                 "Transferencia exitosa", "Western Union - N12345678RS "),
-            EKTPMovementsModel("+700","Orden de Pago", "23/12/2021","Cuenta destino ****1234",
+            EKTPMovementsModel("-$700","Orden de Pago", "01/01/2022","Cuenta destino ****1234",
                 "Francisco Javier Cortes Torres", "Envío de dinero", "12345678",
                 "Transferencia exitosa", "Western Union - N12345678RS "),
-            EKTPMovementsModel("-800","Orden de Pago", "23/12/2021","Cuenta destino ****1234",
+            EKTPMovementsModel("+$800","Orden de Pago", "01/01/2022","Cuenta destino ****1234",
                 "Francisco Javier Cortes Torres", "Envío de dinero", "12345678",
                 "Transferencia exitosa", "Western Union - N12345678RS "),
-            EKTPMovementsModel("-500","Orden de Pago", "27/12/2021","Cuenta destino ****1234",
+            EKTPMovementsModel("-$900","Orden de Pago", "01/01/2022","Cuenta destino ****1234",
                 "Francisco Javier Cortes Torres", "Envío de dinero", "12345678",
                 "Transferencia exitosa", "Western Union - N12345678RS "),
-            EKTPMovementsModel("+600","Orden de Pago", "27/12/2021","Cuenta destino ****1234",
+            EKTPMovementsModel("-$100","Orden de Pago", "01/01/2022","Cuenta destino ****1234",
                 "Francisco Javier Cortes Torres", "Envío de dinero", "12345678",
                 "Transferencia exitosa", "Western Union - N12345678RS "),
-            EKTPMovementsModel("-700","Orden de Pago", "27/12/2021","Cuenta destino ****1234",
+            EKTPMovementsModel("+$500","Orden de Pago", "30/12/2021","Cuenta destino ****1234",
                 "Francisco Javier Cortes Torres", "Envío de dinero", "12345678",
                 "Transferencia exitosa", "Western Union - N12345678RS "),
-            EKTPMovementsModel("+500","Orden de Pago", "30/12/2021","Cuenta destino ****1234",
+            EKTPMovementsModel("-$600","Orden de Pago", "30/12/2021","Cuenta destino ****1234",
                 "Francisco Javier Cortes Torres", "Envío de dinero", "12345678",
                 "Transferencia exitosa", "Western Union - N12345678RS "),
-            EKTPMovementsModel("-600","Orden de Pago", "30/12/2021","Cuenta destino ****1234",
+            EKTPMovementsModel("-$500","Orden de Pago", "27/12/2021","Cuenta destino ****1234",
                 "Francisco Javier Cortes Torres", "Envío de dinero", "12345678",
                 "Transferencia exitosa", "Western Union - N12345678RS "),
-            EKTPMovementsModel("-500","Orden de Pago", "01/01/2022","Cuenta destino ****1234",
+            EKTPMovementsModel("+$600","Orden de Pago", "27/12/2021","Cuenta destino ****1234",
                 "Francisco Javier Cortes Torres", "Envío de dinero", "12345678",
                 "Transferencia exitosa", "Western Union - N12345678RS "),
-            EKTPMovementsModel("+600","Orden de Pago", "01/01/2022","Cuenta destino ****1234",
+            EKTPMovementsModel("-$700","Orden de Pago", "27/12/2021","Cuenta destino ****1234",
                 "Francisco Javier Cortes Torres", "Envío de dinero", "12345678",
                 "Transferencia exitosa", "Western Union - N12345678RS "),
-            EKTPMovementsModel("-700","Orden de Pago", "01/01/2022","Cuenta destino ****1234",
+            EKTPMovementsModel("+$500","Orden de Pago", "23/12/2021","Cuenta destino ****1234",
                 "Francisco Javier Cortes Torres", "Envío de dinero", "12345678",
                 "Transferencia exitosa", "Western Union - N12345678RS "),
-            EKTPMovementsModel("+800","Orden de Pago", "01/01/2022","Cuenta destino ****1234",
+            EKTPMovementsModel("-$600","Orden de Pago", "23/12/2021","Cuenta destino ****1234",
                 "Francisco Javier Cortes Torres", "Envío de dinero", "12345678",
                 "Transferencia exitosa", "Western Union - N12345678RS "),
-            EKTPMovementsModel("-900","Orden de Pago", "01/01/2022","Cuenta destino ****1234",
+            EKTPMovementsModel("+$700","Orden de Pago", "23/12/2021","Cuenta destino ****1234",
                 "Francisco Javier Cortes Torres", "Envío de dinero", "12345678",
                 "Transferencia exitosa", "Western Union - N12345678RS "),
-            EKTPMovementsModel("-100","Orden de Pago", "01/01/2022","Cuenta destino ****1234",
+            EKTPMovementsModel("-$800","Orden de Pago", "23/12/2021","Cuenta destino ****1234",
                 "Francisco Javier Cortes Torres", "Envío de dinero", "12345678",
                 "Transferencia exitosa", "Western Union - N12345678RS ")
+
         )
         //---
         val context = this.context
@@ -102,6 +103,7 @@ class EKTPMovementsListFragment : Fragment() {
         if ((0..1).random() == 0){
             data = emptyList()
         }
+
 
         var months: Array<String> = context?.resources!!.getStringArray(R.array.months)
 
