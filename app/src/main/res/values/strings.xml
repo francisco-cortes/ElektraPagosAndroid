@@ -213,6 +213,8 @@
     <string name="receive_details_successful_button">IR AL INICIO</string>
     <string name="receivi_details_tooltip">Es el número de control \n de envio de dinero.</string>
     <string name="warn_message_banxico">Este vínculo se activará a más tardar dentro\nde los primeros 5 minutos siguientes de la\naceptación de la operación.</string>
+    <string name="mtcn_ready_label">¡Tu envío ya está listo!</string>
+    <string name="deposit_bank_hint_text_view">Puedes depositarlo en tu cuenta ahora mismo o cobrarlo en ventanilla cuando lo desees.</string>
     <!--help fragment-->
     <string name="help_appbar_title">Ayuda</string>
     <string name="help_headline_one_label">¿Necesitas ayuda?</string>

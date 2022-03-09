@@ -39,6 +39,7 @@
                     app:layout_constraintTop_toTopOf="@id/detailsHeader" />
 
                 <ImageView
+                    android:id="@+id/succesChebron"
                     android:layout_width="@dimen/_89sdp"
                     android:layout_height="@dimen/_89sdp"
                     android:layout_marginBottom="-44dp"
@@ -57,7 +58,7 @@
                     android:theme="@style/subtitle_5"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/detailsHeader" />
+                    app:layout_constraintTop_toBottomOf="@id/succesChebron" />
 
                 <TextView
                     android:id="@+id/amDetailPesosSignCardView"
@@ -141,6 +142,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_50sdp"
                     android:layout_marginEnd="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:gravity="start"
                     android:text="Diego Vázquez Pérez"
                     android:theme="@style/subtitle_2"
@@ -152,7 +154,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_50sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
                     android:layout_marginEnd="@dimen/_25sdp"
                     android:gravity="start"
                     android:text="@string/movements_details_reciever_account"
@@ -167,6 +169,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_50sdp"
                     android:layout_marginEnd="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:gravity="start"
                     android:text="Western Union - N12345678RS"
                     android:theme="@style/subtitle_2"
@@ -178,7 +181,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_50sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
                     android:layout_marginEnd="@dimen/_25sdp"
                     android:gravity="start"
                     android:text="@string/movements_details_concept"
@@ -193,6 +196,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_50sdp"
                     android:layout_marginEnd="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:gravity="start"
                     android:text="Envío de dinero"
                     android:theme="@style/subtitle_2"
@@ -219,6 +223,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_50sdp"
                     android:layout_marginEnd="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:gravity="start"
                     android:text="19283764"
                     android:theme="@style/subtitle_2"
@@ -230,7 +235,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_50sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
                     android:layout_marginEnd="@dimen/_25sdp"
                     android:gravity="start"
                     android:text="Cuenta Destino"
@@ -245,6 +250,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_50sdp"
                     android:layout_marginEnd="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:gravity="start"
                     android:text="****2456"
                     android:theme="@style/subtitle_2"

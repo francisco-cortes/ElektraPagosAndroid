@@ -27,7 +27,7 @@
                     android:id="@+id/logoAppBar"
                     android:layout_width="@dimen/_64sdp"
                     android:layout_height="@dimen/_26sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_35sdp"
                     android:background="@drawable/ic_appbar_logo"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -40,9 +40,8 @@
                     android:gravity="center"
                     android:text="@string/recieve_details_screen_title"
                     android:theme="@style/appbar_title"
-                    android:layout_marginStart="@dimen/_8sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/logoAppBar"
+                    app:layout_constraintEnd_toEndOf="@+id/logoAppBar"
                     app:layout_constraintStart_toEndOf="@+id/backAppbarButton"
                     app:layout_constraintTop_toTopOf="parent" />
 

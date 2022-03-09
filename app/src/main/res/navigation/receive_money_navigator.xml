@@ -10,15 +10,7 @@
         android:name="com.elektra.ektp.ektpreceivemoney.view.EKTPReceiveMoneyMTCNFragment"
         android:label="EKTPReceiveMoneyMTCNFragment" >
         <action
-            android:id="@+id/action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNStatusFragment"
-            app:destination="@id/EKTPReceiveMTCNStatusFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/EKTPReceiveMTCNStatusFragment"
-        android:name="com.elektra.ektp.ektpreceivemoney.view.EKTPReceiveMTCNStatusFragment"
-        android:label="EKTPReceiveMTCNStatusFragment" >
-        <action
-            android:id="@+id/action_EKTPReceiveMTCNStatusFragment_to_EKTPReceiveMTCNDetailsFragment"
+            android:id="@+id/action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNDetailsFragment"
             app:destination="@id/EKTPReceiveMTCNDetailsFragment" />
     </fragment>
     <fragment

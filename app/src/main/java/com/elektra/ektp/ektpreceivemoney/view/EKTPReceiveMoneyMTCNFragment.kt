@@ -50,14 +50,14 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
 
                     when(enableCheck){
                         true -> {
-                            //binding.mtcnOk.isVisible = true
+                            binding.mtcnOk.isVisible = true
                             binding.consultButton.isEnabled = false
-                            //binding.mtcnEntryEditText.setBackgroundResource(R.drawable.validation_edit_text)
+                            binding.mtcnEntryEditText.setBackgroundResource(R.drawable.validation_edit_text)
                         }
                         else ->{
-                            //binding.mtcnOk.isVisible = false
+                            binding.mtcnOk.isVisible = false
                             binding.consultButton.isEnabled = true
-                            //binding.mtcnEntryEditText.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+                            binding.mtcnEntryEditText.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                         }
                     }
                 }
@@ -82,7 +82,7 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
                 //----
             }
             consultButton.setOnClickListener { view:View ->
-                view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNStatusFragment)
+                view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNDetailsFragment)
             }
             backAppbarButton.setOnClickListener {
                 activity?.finish()
