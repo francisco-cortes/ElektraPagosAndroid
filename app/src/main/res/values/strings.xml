@@ -336,4 +336,8 @@
     <string name="mtcn_data_incorrect_title_label">Datos Incorrectos.</string>
     <string name="mtcn_data_incorrect_body_label">Es necesario validar los datos de Sucursal y Nivel de cliente.</string>
     <string name="mtcN_data_incorrect_button_label">ACEPTAR</string>
+    <!--incorrect mtcn type alert dialog-->
+    <string name="mtcn_type_incorrect_title_label">Tipo de Envío Incorrecto.</string>
+    <string name="mtcn_type_incorrect_body_label">Validación de Envío Familiar.</string>
+    <string name="mtcn_type_incorrect_button_label">ACEPTAR</string>
 </resources>
