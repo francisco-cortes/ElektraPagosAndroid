@@ -53,11 +53,11 @@
 
                 <ImageButton
                     android:id="@+id/shareDetailsButton"
-                    android:layout_width="@dimen/_14sdp"
-                    android:layout_height="@dimen/_19sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_40sdp"
-                    android:padding="@dimen/_30sdp"
+                    android:padding="@dimen/_15sdp"
                     android:background="@drawable/ic_share_icon"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
