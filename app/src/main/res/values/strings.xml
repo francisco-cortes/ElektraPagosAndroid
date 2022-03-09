@@ -152,6 +152,7 @@
     <string name="profile_phone">Celular</string>
     <string name="profile_email">Correo electrónico</string>
     <string name="profile_contract"><u>Contrato y legales</u></string>
+    <string name="contracts_lable_title">Contratos y Legales</string>
 
     <!-- Settings strings-->
     <string name="settings_change_recovery_pass">Cambio o recuperación de contraseña</string>

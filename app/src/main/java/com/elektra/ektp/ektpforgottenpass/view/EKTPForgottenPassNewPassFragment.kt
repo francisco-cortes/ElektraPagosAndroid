@@ -124,10 +124,12 @@ class EKTPForgottenPassNewPassFragment : Fragment(){
                             matchPass.isVisible = true
                             notMatchesIcon.isVisible = true
                             buttonNewPass.isEnabled = false
+                            insertConfirmPass.setBackgroundResource(R.drawable.validation_edit_text)
                         }
                         else{
                             notMatchesIcon.isVisible = false
                             matchPass.isVisible = false
+                            insertConfirmPass.setBackgroundResource(R.drawable.rounded_rectangle_gray)
                             buttonNewPass.isEnabled = (passTextVar.length in 8..14 && validations.checkRepeatedChars(passTextVar) && validations.checkBankString(passTextVar)
                                     && validations.checkConsecutiveString(passTextVar))
                         }
