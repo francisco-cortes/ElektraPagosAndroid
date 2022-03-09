@@ -1,6 +1,7 @@
 package com.elektra.ektp.ektpreceivemoney.view
 
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -22,6 +23,14 @@ import com.elektra.ektp.ektpreceivemoney.viewmodel.EKTPReceiveMoneyMTCNViewModel
 class EKTPReceiveMoneyMTCNFragment : Fragment() {
     private lateinit var binding: FragmentEktpReciveMoneyMtcnBinding
     private var toolTipShow = false
+    private lateinit var mtcnDataIncorrectLayout: View
+    private lateinit var mtcnNumIncorrectLayout: View
+    private lateinit var mtcnTypeIncorrectLayout: View
+
+    private lateinit var mtcnDataIncorrectAcceptButton: Button
+    private lateinit var mtcnNumIncorrectAcceptButton: Button
+    private lateinit var mtcnTypeIncorrectAcceptButton: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +48,28 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding =  DataBindingUtil.inflate<FragmentEktpReciveMoneyMtcnBinding>(inflater,R.layout.fragment_ektp_recive_money_mtcn, container, false)
+
+        mtcnDataIncorrectLayout = layoutInflater.inflate(R.layout.mtcn_data_incorrect_alert_layout,null)
+        mtcnNumIncorrectLayout = layoutInflater.inflate(R.layout.mtcn_num_incorrect_alert_layout,null)
+        mtcnTypeIncorrectLayout = layoutInflater.inflate(R.layout.mtcn_type_incorrect_alert_layout,null)
+
+        mtcnDataIncorrectAcceptButton = mtcnDataIncorrectLayout.findViewById(R.id.acceptButton)
+        mtcnNumIncorrectAcceptButton = mtcnNumIncorrectLayout.findViewById(R.id.acceptButton)
+        mtcnTypeIncorrectAcceptButton = mtcnTypeIncorrectLayout.findViewById(R.id.acceptButton)
+
+        val mtcnDataIncorrectAlert = alertDialogOpener(mtcnDataIncorrectLayout,requireContext())
+        val mtcnTypeIncorrectAlert = alertDialogOpener(mtcnTypeIncorrectLayout,requireContext())
+        val mtcnNumIncorrectAlert = alertDialogOpener(mtcnNumIncorrectLayout,requireContext())
+
+        mtcnDataIncorrectAcceptButton.setOnClickListener {
+            mtcnDataIncorrectAlert.dismiss()
+        }
+        mtcnNumIncorrectAcceptButton.setOnClickListener {
+            mtcnNumIncorrectAlert.dismiss()
+        }
+        mtcnTypeIncorrectAcceptButton.setOnClickListener {
+            mtcnTypeIncorrectAlert.dismiss()
+        }
 
         with(binding){
             mtcnEntryEditText.addTextChangedListener(object: TextWatcher {
@@ -82,7 +113,13 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
                 //----
             }
             consultButton.setOnClickListener { view:View ->
-                view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNDetailsFragment)
+                //view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNDetailsFragment)
+                when((0..3).random()){
+                    0 -> mtcnDataIncorrectAlert.show()
+                    1 -> mtcnNumIncorrectAlert.show()
+                    2 -> mtcnTypeIncorrectAlert.show()
+                    3 -> view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNDetailsFragment)
+                }
             }
             backAppbarButton.setOnClickListener {
                 activity?.finish()
@@ -115,4 +152,13 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
         return true
     }
 //----
+    private fun alertDialogOpener(dialogLayout: View, context: Context): AlertDialog {
+        var alertDialog: AlertDialog? = null
+        val alertDialogBuilder = AlertDialog.Builder(context)
+
+        alertDialogBuilder.setView(dialogLayout)
+        alertDialog = alertDialogBuilder.create()
+
+        return alertDialog
+    }
 }
