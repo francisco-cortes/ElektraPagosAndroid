@@ -328,5 +328,8 @@
     <string name="cant_deposit_body_label">Intenta más tarde o <u>comunicate</u> \n al Center de Ayuda</string>
     <string name="cant_deposit_accept_button_label">ACEPTAR</string>
     <string name="account_balance_unavaliable">Información No disponible</string>
-
+    <!--mtcn number incorrect alert dialog-->
+    <string name="mtcn_num_incorrect_title_label">Número de clave de envío incorrecto.</string>
+    <string name="mtcn_num_incorrect_body_label">Verifícalo nuevamente con tu remitente.</string>
+    <string name="mtc_num_incorrect_button_label">ACEPTAR</string>
 </resources>
