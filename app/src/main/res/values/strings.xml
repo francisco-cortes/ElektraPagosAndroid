@@ -332,4 +332,8 @@
     <string name="mtcn_num_incorrect_title_label">Número de clave de envío incorrecto.</string>
     <string name="mtcn_num_incorrect_body_label">Verifícalo nuevamente con tu remitente.</string>
     <string name="mtc_num_incorrect_button_label">ACEPTAR</string>
+    <!--incorrect data in mtc alert dialog-->
+    <string name="mtcn_data_incorrect_title_label">Datos Incorrectos.</string>
+    <string name="mtcn_data_incorrect_body_label">Es necesario validar los datos de Sucursal y Nivel de cliente.</string>
+    <string name="mtcN_data_incorrect_button_label">ACEPTAR</string>
 </resources>
