@@ -329,5 +329,16 @@
     <string name="cant_deposit_body_label">Intenta más tarde o <u>comunicate</u> \n al Center de Ayuda</string>
     <string name="cant_deposit_accept_button_label">ACEPTAR</string>
     <string name="account_balance_unavaliable">Información No disponible</string>
-
+    <!--mtcn number incorrect alert dialog-->
+    <string name="mtcn_num_incorrect_title_label">Número de clave de envío incorrecto.</string>
+    <string name="mtcn_num_incorrect_body_label">Verifícalo nuevamente con tu remitente.</string>
+    <string name="mtc_num_incorrect_button_label">ACEPTAR</string>
+    <!--incorrect data in mtc alert dialog-->
+    <string name="mtcn_data_incorrect_title_label">Datos Incorrectos.</string>
+    <string name="mtcn_data_incorrect_body_label">Es necesario validar los datos de Sucursal y Nivel de cliente.</string>
+    <string name="mtcN_data_incorrect_button_label">ACEPTAR</string>
+    <!--incorrect mtcn type alert dialog-->
+    <string name="mtcn_type_incorrect_title_label">Tipo de Envío Incorrecto.</string>
+    <string name="mtcn_type_incorrect_body_label">Validación de Envío Familiar.</string>
+    <string name="mtcn_type_incorrect_button_label">ACEPTAR</string>
 </resources>
