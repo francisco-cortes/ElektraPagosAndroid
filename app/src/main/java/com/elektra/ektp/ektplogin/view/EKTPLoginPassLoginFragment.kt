@@ -183,7 +183,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
                 if (!viewModel.getSavedDataLogin()[5].toBoolean()){
                     if (viewModel.getSavedDataLogin()[4] == passwordInput){
                         //50% probabilities to make appear the case when there are no service
-                        if ((0..1).random() == 0){
+                        if ((0..1).random() == 2){ //Changed 0 for 2
                             noServiceAlertDialog.show()
                         }else{
                             openActivity(EKTPHomeActivity())
