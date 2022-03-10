@@ -15,7 +15,7 @@
             android:layout_width="@dimen/_120sdp"
             android:layout_height="@dimen/_110sdp"
             android:layout_marginTop="@dimen/_40sdp"
-            android:background="@drawable/ic_no_user_alert"
+            android:background="@drawable/ic_mtcn_num_incorrect"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
