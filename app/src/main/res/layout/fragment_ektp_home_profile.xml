@@ -189,7 +189,7 @@
                     android:textAlignment="center"
                     android:text="@string/profile_contract"
                     android:theme="@style/text_button_1"
-                    android:padding="@dimen/_10sdp"
+                    android:padding="@dimen/_20sdp"
                     app:layout_constraintEnd_toEndOf="@id/emailTextView"
                     app:layout_constraintStart_toStartOf="@id/emailTextView"
                     app:layout_constraintTop_toBottomOf="@+id/emailTextView" />

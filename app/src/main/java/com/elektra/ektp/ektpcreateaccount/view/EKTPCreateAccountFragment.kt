@@ -18,7 +18,6 @@ import androidx.navigation.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentCreateAccountBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountViewModel
-import com.elektra.ektp.ektphome.view.EKTPHomeActivity
 import com.elektra.ektp.ektplogin.view.EKTPLoginActivity
 import com.elektra.ektp.uservalidations.UserValidations
 import java.util.*
@@ -44,10 +43,10 @@ class EKTPCreateAccountFragment : Fragment() {
     private var phone: String = "Selecciona una opción*"
     private var eMailText: String = ""
     private var emailConfirmationText: String = ""
-    val c = Calendar.getInstance()
-    val year = c.get(Calendar.YEAR)
-    val month = c.get(Calendar.MONTH)
-    val day = c.get(Calendar.DAY_OF_MONTH)
+    private val c = Calendar.getInstance()
+    private val year = c.get(Calendar.YEAR)-18
+    private val month = c.get(Calendar.MONTH)
+    private val day = c.get(Calendar.DAY_OF_MONTH)
     //---
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,7 +65,7 @@ class EKTPCreateAccountFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate<FragmentCreateAccountBinding>(inflater,
@@ -274,14 +273,27 @@ class EKTPCreateAccountFragment : Fragment() {
             //TextWatcher function to listen for changes on editText
             setDateButton.setOnClickListener {
                 val dpp = DatePickerDialog(
-                    requireContext(),
-                    DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
-                        dateBirth.setText("" + mDay + "/" + "${mMonth + 1}" + "/" + mYear)
+                    requireContext(), { _, mYear, mMonth, mDay ->
+                        var sMonth = ""
+                        var sDay = ""
+                        sMonth = if(mMonth < 10){
+                            "0${mMonth+1}"
+                        } else{
+                            "${mMonth+1}"
+                        }
+                        sDay = if(mDay < 10){
+                            "0$mDay"
+                        } else{
+                            "$mDay"
+                        }
+                        dateBirth.setText("$sDay/$sMonth/$mYear")
                     },
                     year,
                     month,
                     day
                 )
+                c.set(year,month,day)
+                dpp.datePicker.maxDate = c.timeInMillis
                 dpp.show()
             }
             //--
@@ -406,7 +418,7 @@ class EKTPCreateAccountFragment : Fragment() {
                         parent: AdapterView<*>?,
                         view: View?,
                         position: Int,
-                        id: Long
+                        id: Long,
                     ) {
                         birthSiteSpinner.isFocusableInTouchMode = true
                         birthSiteSpinner.requestFocus()

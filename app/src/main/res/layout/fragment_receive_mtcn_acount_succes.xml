@@ -51,17 +51,6 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center">
 
-                <ImageButton
-                    android:id="@+id/shareDetailsButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_40sdp"
-                    android:padding="@dimen/_10sdp"
-                    android:background="@drawable/ic_share_icon"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
                 <ImageView
                     android:id="@+id/moneyReceivedSuccessfullyImageView"
                     android:layout_width="@dimen/_228sdp"
@@ -95,6 +84,17 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/receivedMoneySuccessfulTextView"/>
 
+                <ImageButton
+                    android:id="@+id/shareDetailsButton"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:padding="@dimen/_20sdp"
+                    android:background="@drawable/ic_share_icon"
+                    app:layout_constraintTop_toBottomOf="@id/receivedSuccessAdviceTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
                 <Button
                     android:id="@+id/doneButton"
                     android:layout_width="0dp"
@@ -102,10 +102,10 @@
                     android:text="@string/receive_details_successful_button"
                     android:theme="@style/bottom_button"
                     android:background="@drawable/enable_disable_red"
-                    android:layout_marginTop="@dimen/_81sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
                     android:layout_marginStart="@dimen/_43sdp"
                     android:layout_marginEnd="@dimen/_43sdp"
-                    app:layout_constraintTop_toBottomOf="@+id/receivedSuccessAdviceTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/shareDetailsButton"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
 

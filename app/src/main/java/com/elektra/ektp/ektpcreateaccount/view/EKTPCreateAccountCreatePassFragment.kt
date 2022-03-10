@@ -128,6 +128,7 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
                             matchPass.isVisible = true
                             notMatchesIcon.isVisible = true
                             button7.isEnabled = false
+                            insertConfirmPass.setBackgroundResource(R.drawable.validation_edit_text)
                         }
                         else{
                             notMatchesIcon.isVisible = false
