@@ -1,5 +1,7 @@
 package com.elektra.ektp.uservalidations
 
+import java.util.*
+
 class UserValidations {
     fun checkValidInput(wordToCheck: String): Boolean{
         return wordToCheck.matches("^[a-zA-ZÀ-ÿ\\u00f1\\u00d1.]+(\\s*[a-zA-ZÀ-ÿ\\u00f1\\u00d1.])*[a-zA-ZÀ-ÿ\\u00f1\\u00d1.]+(\\s|$)".toRegex())
@@ -7,7 +9,7 @@ class UserValidations {
     }
 
     fun checkValidDate(dateToCheck: String): Boolean{
-        return dateToCheck.matches("^(0?[1-9]|[1-2][0-9]|3[0-1])(\\/)(0?[1-9]|1[012])(\\/)(19[0-9]{2}|200[0-4])".toRegex())
+        return dateToCheck.matches("^(0?[1-9]|[1-2][0-9]|3[0-1])(/)(0?[1-9]|1[012])(/)(\\d{4})".toRegex())
                 && dateToCheck.isNotEmpty()
     }
 
