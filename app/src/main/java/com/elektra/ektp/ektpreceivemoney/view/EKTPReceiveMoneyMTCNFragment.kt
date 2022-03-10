@@ -113,7 +113,6 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
                 //----
             }
             consultButton.setOnClickListener { view:View ->
-                //view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNDetailsFragment)
                 when((0..3).random()){
                     0 -> mtcnDataIncorrectAlert.show()
                     1 -> mtcnNumIncorrectAlert.show()
