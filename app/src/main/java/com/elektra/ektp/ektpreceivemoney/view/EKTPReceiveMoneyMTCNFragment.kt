@@ -31,6 +31,9 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
     private lateinit var mtcnNumIncorrectAcceptButton: Button
     private lateinit var mtcnTypeIncorrectAcceptButton: Button
 
+    private lateinit var bundle: Bundle
+    private var mtcnString = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,9 +80,9 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    val enableCheck = checkMTCNKey(s.toString()) //check if input text
+                    mtcnString = s.toString()
 
-                    when(enableCheck){
+                    when(checkMTCNKey(mtcnString)){
                         true -> {
                             binding.mtcnOk.isVisible = true
                             binding.consultButton.isEnabled = false
@@ -113,11 +116,12 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
                 //----
             }
             consultButton.setOnClickListener { view:View ->
+                bundle.putString("mtcnString", mtcnString)
                 when((0..3).random()){
                     0 -> mtcnDataIncorrectAlert.show()
                     1 -> mtcnNumIncorrectAlert.show()
                     2 -> mtcnTypeIncorrectAlert.show()
-                    3 -> view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNDetailsFragment)
+                    3 -> view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNDetailsFragment, bundle)
                 }
             }
             backAppbarButton.setOnClickListener {
