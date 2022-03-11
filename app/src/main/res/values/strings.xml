@@ -341,4 +341,13 @@
     <string name="mtcn_type_incorrect_title_label">Operación No realizada.</string>
     <string name="mtcn_type_incorrect_body_label">Comunícate al Centro de contacto para recibir ayuda.</string>
     <string name="mtcn_type_incorrect_button_label">ACEPTAR</string>
+    <!--cant deliver mtcn alert -dialog-->
+    <string name="cant_deliver_mtcn_title_label">No se pudo entregar el dinero.</string>
+    <string name="cant_deliver_mtcn_body_label">Comunícate al Centro de contacto para recibir ayuda.</string>
+    <string name="cant_deliver_mtcn_button_label">ACEPTAR</string>
+    <!--cant offer service alert dialog-->
+    <string name="cant_offer_service_title_label">No es posible brindarte el servicio.</string>
+    <string name="cant_offer_service_body_label">Por disposición gubernamental, te sugerimos acudir ante el Titular de la Unidad de Inteligencia Financiera de la Secretaria de Hacienda y Crédito Público para hacer valer tus derechos.</string>
+    <string name="cant_offer_service_button_label">ACEPTAR</string>
+
 </resources>
