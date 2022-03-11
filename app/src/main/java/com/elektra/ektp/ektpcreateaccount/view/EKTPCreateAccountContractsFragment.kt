@@ -50,7 +50,7 @@ class EKTPCreateAccountContractsFragment : Fragment() {
                 term1TextView.setOnClickListener { view: View ->
                     //view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
                     val intent = Intent(requireContext(), EKTPPDFViewerActivity::class.java)
-                    intent.putExtra("selected_contract", "mm@email.com")
+                    intent.putExtra("selected_contract", "ejemplo_contrato_banca_digital.pdf")
                     startActivity(intent)
                 }
             //----
