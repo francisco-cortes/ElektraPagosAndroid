@@ -56,4 +56,5 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.biometric:biometric:1.0.0-rc01'
+    implementation 'com.mindorks.android:prdownloader:0.6.0'//pdf
 }
