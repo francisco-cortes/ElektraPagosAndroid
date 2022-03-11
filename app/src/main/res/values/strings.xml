@@ -330,20 +330,20 @@
     <string name="cant_deposit_accept_button_label">ACEPTAR</string>
     <string name="account_balance_unavaliable">Información No disponible</string>
     <!--mtcn number incorrect alert dialog-->
-    <string name="mtcn_num_incorrect_title_label">Número de clave de envío incorrecto.</string>
+    <string name="mtcn_num_incorrect_title_label">Clave de envío incorrecto.</string>
     <string name="mtcn_num_incorrect_body_label">Verifícalo nuevamente con tu remitente.</string>
     <string name="mtc_num_incorrect_button_label">ACEPTAR</string>
     <!--incorrect data in mtc alert dialog-->
     <string name="mtcn_data_incorrect_title_label">Datos Faltantes.</string>
-    <string name="mtcn_data_incorrect_body_label">Es necesario que acudas con un ejecutivo a proporcionar la información completa.</string>
+    <string name="mtcn_data_incorrect_body_label">Es necesario que acudas a ventanilla, en una sucursal Elektra, para recibir este envío de dinero.</string>
     <string name="mtcN_data_incorrect_button_label">ACEPTAR</string>
     <!--incorrect mtcn type alert dialog-->
-    <string name="mtcn_type_incorrect_title_label">Operación No realizada.</string>
-    <string name="mtcn_type_incorrect_body_label">Comunícate al Centro de contacto para recibir ayuda.</string>
+    <string name="mtcn_type_incorrect_title_label">Operación no realizada.</string>
+    <string name="mtcn_type_incorrect_body_label">Comunícate al Centro de Contacto para recibir ayuda: 5554478868 opción 1.</string>
     <string name="mtcn_type_incorrect_button_label">ACEPTAR</string>
     <!--cant deliver mtcn alert -dialog-->
     <string name="cant_deliver_mtcn_title_label">No se pudo entregar el dinero.</string>
-    <string name="cant_deliver_mtcn_body_label">Comunícate al Centro de contacto para recibir ayuda.</string>
+    <string name="cant_deliver_mtcn_body_label">Comunícate al Centro de Contacto para recibir ayuda: 5554478868 opción 1.</string>
     <string name="cant_deliver_mtcn_button_label">ACEPTAR</string>
     <!--cant offer service alert dialog-->
     <string name="cant_offer_service_title_label">No es posible brindarte el servicio.</string>
