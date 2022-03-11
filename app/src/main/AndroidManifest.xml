@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ElektraPagos">
         <activity
+            android:name=".ektppdfviewer.EKTPPDFViewerActivity"
+            android:exported="false" />
+        <activity
             android:name=".ektphome.view.EKTPHomeContractsActivity"
             android:exported="false" />
 
