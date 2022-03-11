@@ -46,7 +46,7 @@ class UserValidations {
     }
 
     fun checkAddress(wordToCheck: String): Boolean {
-        return wordToCheck.matches("^[A-Za-z0-9Á-ý. ]*[A-Za-z0-9Á-ý.][A-Za-z0-9Á-ý. ]*$".toRegex())
+        return wordToCheck.matches("^[A-Za-z0-9Á-ý.\\- ]*[A-Za-z0-9Á-ý.\\-][A-Za-z0-9Á-ý.\\- ]*$".toRegex())
     }
 
     fun checkFieldsProgressBar(
