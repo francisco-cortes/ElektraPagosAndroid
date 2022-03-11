@@ -100,7 +100,7 @@ class EKTPMovementsListFragment : Fragment() {
         val context = this.context
         //Set context to manager
         manager = LinearLayoutManager(context)
-        if ((0..1).random() == 0){
+        if ((0..1).random() == 2){ //changed 0 for 2
             data = emptyList()
         }
 
