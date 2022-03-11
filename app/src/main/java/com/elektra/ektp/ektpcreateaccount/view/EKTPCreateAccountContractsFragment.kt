@@ -49,51 +49,49 @@ class EKTPCreateAccountContractsFragment : Fragment() {
                 //onClickListener on TextView to open contract title
                 term1TextView.setOnClickListener { view: View ->
                     //view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
-                    val intent = Intent(requireContext(), EKTPPDFViewerActivity::class.java)
-                    intent.putExtra("selected_contract", "ejemplo_contrato_banca_digital.pdf")
-                    startActivity(intent)
+                    intentOpener("ejemplo_contrato_banca_digital.pdf")
                 }
             //----
 
             //onClickListener on TextView to open contract title
             term2TextView.setOnClickListener { view: View ->
-                view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
+                intentOpener("ejemplo_contrato_banca_digital.pdf")
             }
                     //---
 
                     //onClickListener on TextView to open contract title
                     term3TextView.setOnClickListener { view: View ->
-                view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
+                        intentOpener("ejemplo_contrato_banca_digital.pdf")
             }
                     //---
 
                     //onClickListener on TextView to open contract title
                     term4TextView.setOnClickListener { view: View ->
-                view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
+                        intentOpener("ejemplo_contrato_banca_digital.pdf")
             }
                     //---
 
                     //onClickListener on TextView to open contract title
                     term5TextView.setOnClickListener { view: View ->
-                view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
+                        intentOpener("ejemplo_contrato_banca_digital.pdf")
             }
                     //---
 
                     //onClickListener on TextView to open contract title
                     term6TextView.setOnClickListener { view: View ->
-                view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
+                        intentOpener("ejemplo_contrato_banca_digital.pdf")
             }
                     //---
 
                     //onClickListener on TextView to open contract title
                     term7TextView.setOnClickListener { view: View ->
-                view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
+                        intentOpener("ejemplo_contrato_banca_digital.pdf")
             }
                     //---
 
                     //onClickListener on TextView to open contract title
                     term8TextView.setOnClickListener { view: View ->
-                view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
+                        intentOpener("ejemplo_contrato_banca_digital.pdf")
             }
                     //---
 
@@ -125,6 +123,12 @@ class EKTPCreateAccountContractsFragment : Fragment() {
 
                 return root
         }
+    }
+
+    private fun intentOpener(selectedContract: String){
+        val intent = Intent(requireContext(), EKTPPDFViewerActivity::class.java)
+        intent.putExtra("selected_contract", selectedContract)
+        startActivity(intent)
     }
 
 }
