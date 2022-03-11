@@ -44,7 +44,7 @@
                     android:theme="@style/appbar_title"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/backAppbarButton"
-                    app:layout_constraintEnd_toStartOf="@id/logoAppBar"
+                    app:layout_constraintEnd_toEndOf="@id/logoAppBar"
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <ImageView
@@ -52,7 +52,7 @@
                     android:layout_width="@dimen/_70sdp"
                     android:layout_height="@dimen/_27sdp"
                     android:background="@drawable/ic_appbar_logo"
-                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_35sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
