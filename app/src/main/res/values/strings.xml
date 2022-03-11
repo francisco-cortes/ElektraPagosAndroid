@@ -269,6 +269,7 @@
     </string-array>
 
     <string-array name="alcaldias">
+        <item>@string/option_selection_hint</item>
         <item>Álvaro Obregón</item>
         <item>Azcapotzalco</item>
         <item>Benito Juárez</item>
