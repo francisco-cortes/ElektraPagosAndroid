@@ -7,11 +7,11 @@ class EKTPHomeNoticeProvider {
             EKTPHomeNoticeDataClass(
                 "Se ha restablecido tu contraseña ",
                 "Ahora puedes acceder con tu nueva contraseña",
-                "Jueves 11 de noviembre, 2021"),
+                "Lunes 11 de noviembre, 2021"),
             EKTPHomeNoticeDataClass(
                 "Recibiste un envío de dinero",
                 "Deposítalo en tu cuenta o cóbralo en ventanilla de BAZ",
-                "Domingo 24 de octubre, 2021"),
+                "Domingo 24 de octubre, 2021")/*,
             EKTPHomeNoticeDataClass(
                 "Título de notificación",
                 "Cuerpo de notificación",
@@ -51,7 +51,7 @@ class EKTPHomeNoticeProvider {
             EKTPHomeNoticeDataClass(
                 "Título de notificación",
                 "Cuerpo de notificación",
-                "Miércoles, 20 de abril, 2022")
+                "Miércoles, 20 de abril, 2022")*/
         )
     }
 
