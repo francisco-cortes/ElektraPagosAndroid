@@ -19,6 +19,7 @@ class EKTPReceiveMTCNDetailsFragment : Fragment() {
 
     private lateinit var acceptButton: Button
     private lateinit var cantDespositAlertLayout: View
+    private var mtcnString = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +35,8 @@ class EKTPReceiveMTCNDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        val bundle = this.arguments
+        mtcnString = bundle?.getString("mtcnString").toString()
         binding =  DataBindingUtil.inflate<FragmentEktpReceiveMtcnDetailsBinding>(inflater,R.layout.fragment_ektp_receive_mtcn_details, container, false)
         cantDespositAlertLayout = layoutInflater.inflate(R.layout.cant_deposit_alert_layout,null)
         var cantDepositAlertDialog: AlertDialog? = null
@@ -48,6 +51,8 @@ class EKTPReceiveMTCNDetailsFragment : Fragment() {
         }
         //layout widgets
         with(binding){
+
+            partnerMTCNTextView.text = mtcnString
             backAppbarButton.setOnClickListener {
                 view?.findNavController()?.navigate(R.id.action_EKTPReceiveMTCNDetailsFragment_to_EKTPReceiveMoneyMTCNFragment2)
             }

@@ -31,7 +31,7 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
     private lateinit var mtcnNumIncorrectAcceptButton: Button
     private lateinit var mtcnTypeIncorrectAcceptButton: Button
 
-    private lateinit var bundle: Bundle
+    private var bundle = Bundle()
     private var mtcnString = ""
 
 
