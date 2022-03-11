@@ -62,7 +62,7 @@ class EKTPReceiveMTCNDetailsFragment : Fragment() {
                 if (displayCase== 0){
                     cantDepositAlertDialog.show()
                 }else{
-                    view?.findNavController()?.navigate(R.id.action_EKTPReceiveMTCNDetailsFragment_to_receiveMTCNAcountSuccesFragment)//navigate to the next fragment
+                    view?.findNavController()?.navigate(R.id.action_EKTPReceiveMTCNDetailsFragment_to_receiveMTCNAcountSuccesFragment, bundle)//navigate to the next fragment
                 }
             }
 
