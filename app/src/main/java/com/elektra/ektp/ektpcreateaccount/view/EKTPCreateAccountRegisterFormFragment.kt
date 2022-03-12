@@ -1,5 +1,6 @@
 package com.elektra.ektp.ektpcreateaccount.view
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isInvisible
@@ -66,8 +68,25 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        val counstryArrayList = this.resources.getStringArray(R.array.country)
+        val statesArrayList = this.resources.getStringArray(R.array.estados)
+        var cdmxArrayList = ArrayList<String>()
+        cdmxArrayList.add(statesArrayList[0].toString())
+        cdmxArrayList.add(statesArrayList[9].toString())
+        val townsArrayList = this.resources.getStringArray(R.array.alcaldias)
+
+        val statesAdapter = ArrayAdapter(activity as Context, android.R.layout.simple_spinner_item, cdmxArrayList)
+            statesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val townsAdapter = ArrayAdapter(activity as Context, android.R.layout.simple_spinner_item, townsArrayList)
+            townsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val countryAdapter = ArrayAdapter(activity as Context, android.R.layout.simple_spinner_item, counstryArrayList)
+        countryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_ekpt_create_account_register_form, container, false)
+
+        binding.countrySpinner.adapter = countryAdapter
+        binding.stateSpinner.adapter = statesAdapter
+        binding.townHallSpinner.adapter = townsAdapter
 
         progressInForm(progressValue, completed)
 
