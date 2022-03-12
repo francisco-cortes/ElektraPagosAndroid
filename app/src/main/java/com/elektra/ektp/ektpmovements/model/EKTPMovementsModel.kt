@@ -12,6 +12,7 @@ data class EKTPMovementsModel(
     var detailConcept: String = "",     //Concepto
     var detailFolio: String = "",       //Folio
     var detailStatus: String = "",      //Estatus
-    var detailMTCN: String = ""         //MTCN
+    var detailMTCN: String = "",        //MTCN
+    var detailConceptType: Boolean = false  //Tipo de movimiento (retiro - false, depósito - true)
 )
 //---

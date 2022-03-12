@@ -1,7 +1,9 @@
 package com.elektra.ektp.ektpmovements.viewmodel
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,8 +23,17 @@ class EKTPMovementsRecyclerViewAdapter(
     //ViewHolder function to fill recycler view
     inner class ItemMovementsViewHolder(val binding: ItemMovementBinding) : RecyclerView.ViewHolder(binding.root){
         //Function get de data model structure
+        @SuppressLint("ResourceAsColor")
         fun bind(item: EKTPMovementsModel){
             //Set databinding from data model into layout
+            if (item.detailConceptType){
+                binding.ammountMovementTextView.setTextColor(context.getColor(R.color.elektra_green))
+                binding.ammountCentsMovementTextView.setTextColor(context.getColor(R.color.elektra_green))
+            }
+            else{
+                binding.ammountMovementTextView.setTextColor(context.getColor(R.color.elektra_red))
+                binding.ammountCentsMovementTextView.setTextColor(context.getColor(R.color.elektra_red))
+            }
             binding.movementsListItem = item
             val i: Int = (0..99).random()
             if (i < 10){
@@ -41,6 +52,14 @@ class EKTPMovementsRecyclerViewAdapter(
         //Function get de data model structure
         fun bind(item: EKTPMovementsModel){
             //Set databinding from data model into layout
+            if (item.detailConceptType){
+                binding.ammountMovementTextView.setTextColor(context.getColor(R.color.elektra_green))
+                binding.ammountCentsMovementTextView.setTextColor(context.getColor(R.color.elektra_green))
+            }
+            else{
+                binding.ammountMovementTextView.setTextColor(context.getColor(R.color.elektra_red))
+                binding.ammountCentsMovementTextView.setTextColor(context.getColor(R.color.elektra_red))
+            }
             var mes = ""
             for (i in item.detailDate.indices){
                 if(item.detailDate[i].toString().matches("[aA-zZ]".toRegex())){
@@ -155,6 +174,7 @@ class EKTPMovementsRecyclerViewAdapter(
             moveIntent.putExtra("detailAccount", msg.detailAccount)
             moveIntent.putExtra("detailMTCN", msg.detailMTCN)
             moveIntent.putExtra("detailCents", cents)
+            moveIntent.putExtra("detailConceptTYpe", msg.detailConceptType)
             //launch intent
             context.startActivity(moveIntent)
         //---

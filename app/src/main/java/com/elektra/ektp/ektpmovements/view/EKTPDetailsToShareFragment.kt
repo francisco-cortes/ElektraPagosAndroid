@@ -55,6 +55,7 @@ class EKTPDetailsToShareFragment : Fragment() {
         val moveAccount = bundle?.getString("detailAccount").toString()
         val moveMTCN = bundle?.getString("detailMTCN").toString()
         val moveCents = bundle?.getString("detailCents").toString()
+        val moveConceptType = bundle!!.getBoolean("detailConceptType")
         val dataList = EKTPMovementsModel(
             moveAmount,
             moveTitle,
@@ -64,7 +65,8 @@ class EKTPDetailsToShareFragment : Fragment() {
             moveConcept,
             moveFolio,
             moveStatus,
-            moveMTCN
+            moveMTCN,
+            moveConceptType
         )
         //---
 
