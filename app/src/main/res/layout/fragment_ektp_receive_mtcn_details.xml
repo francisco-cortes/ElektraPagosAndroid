@@ -232,6 +232,31 @@
                             android:layout_marginBottom="@dimen/_38sdp"
                             app:layout_constraintTop_toBottomOf="@+id/moneyStatusLabelTextView"
                             app:layout_constraintStart_toStartOf="parent"
+                            />
+
+                        <TextView
+                            android:id="@+id/accountLabelTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/recieve_details_recieve_in_label"
+                            android:theme="@style/appbar_title"
+                            android:textColor="@color/elektra_gray"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:layout_marginStart="@dimen/_30sdp"
+                            app:layout_constraintTop_toBottomOf="@+id/moneyStatusBodyTextView"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <TextView
+                            android:id="@+id/accountBodyTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Guardadito Digital *****1234"
+                            android:theme="@style/subtitle_2"
+                            android:layout_marginTop="@dimen/_3sdp"
+                            android:layout_marginStart="@dimen/_30sdp"
+                            android:layout_marginBottom="@dimen/_38sdp"
+                            app:layout_constraintTop_toBottomOf="@+id/accountLabelTextView"
+                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -241,7 +266,7 @@
                 <TextView
                     android:id="@+id/depositBankHintTextView"
                     android:text="@string/deposit_bank_hint_text_view"
-                    android:theme="@style/body_1"
+                    android:theme="@style/subtitle_3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_20sdp"
@@ -256,6 +281,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/subtitle_2"
+                    android:visibility="gone"
                     android:text="@string/recieve_details_account_label"
                     android:layout_marginTop="@dimen/_20sdp"
                     app:layout_constraintTop_toBottomOf="@id/depositBankHintTextView"
@@ -271,6 +297,7 @@
                     android:layout_marginEnd="@dimen/_41sdp"
                     android:layout_gravity="center"
                     android:orientation="vertical"
+                    android:visibility="gone"
                     card_view:cardCornerRadius="@dimen/_5sdp"
                     card_view:cardBackgroundColor="@color/elektra_white_gray"
                     android:layout_marginBottom="@dimen/_20sdp"

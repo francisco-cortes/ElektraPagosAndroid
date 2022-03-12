@@ -201,6 +201,7 @@
     <string name="recieve_details_mtcn_label">MTCN</string>
     <string name="recieve_details_mtcn_sender">%1$s <br></br> %2$s</string>
     <string name="recieve_details_status_label">Estatus de transferencia</string>
+    <string name="recieve_details_recieve_in_label">Recibes en tu cuenta</string>
     <string name="recieve_details_status">%1$s</string>
     <string name="recieve_details_account_label">Si depositas en tu cuenta recibes en:</string>
     <string name="recieve_details_guardadito">Guardadito Digital</string>
