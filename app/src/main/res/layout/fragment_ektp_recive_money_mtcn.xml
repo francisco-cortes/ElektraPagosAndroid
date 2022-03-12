@@ -47,8 +47,8 @@
 
                 <ImageButton
                     android:id="@+id/backAppbarButton"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
                     android:background="@drawable/ic_appbar_back_button"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -76,6 +76,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/recieve_insert_mtcn"
                     android:theme="@style/title_2"
+                    android:textSize="@dimen/_18sdp"
+                    android:fontFamily="@font/azo_sans_bold"
                     android:layout_marginTop="@dimen/_60sdp"
                     android:layout_marginEnd="@dimen/_50sdp"
                     app:layout_constraintTop_toTopOf="parent"
@@ -128,15 +130,15 @@
 
                 <ImageButton
                     android:id="@+id/mtcnHintPopUpButton"
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:background="@drawable/ic_help_button"
-                    android:layout_marginBottom="@dimen/_6sdp"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
                     android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_6sdp"
+                    android:background="@drawable/ic_help_button"
                     android:padding="@dimen/_10sdp"
-                    app:layout_constraintTop_toTopOf="@+id/receiveInsertMTCNTextView"
+                    app:layout_constraintBottom_toBottomOf="@+id/receiveInsertMTCNTextView"
                     app:layout_constraintStart_toEndOf="@+id/receiveInsertMTCNTextView"
-                    app:layout_constraintBottom_toBottomOf="@+id/receiveInsertMTCNTextView"/>
+                    app:layout_constraintTop_toTopOf="@+id/receiveInsertMTCNTextView" />
 
                 <ImageView
                     android:id="@+id/toolTipImageView"
