@@ -14,7 +14,7 @@ import com.elektra.ektp.ektplogin.view.EKTPLoginActivity
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashBinding
-    val actualVersion = "PreAlpha" // write here the current version for this app
+    val actualVersion = "V 1.0" // write here the current version for this app
     @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
