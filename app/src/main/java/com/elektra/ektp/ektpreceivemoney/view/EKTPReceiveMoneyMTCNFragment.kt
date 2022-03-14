@@ -111,7 +111,8 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
             backAppbarButton.setOnClickListener { view: View ->
                 activity?.finish()
             }
-            mtcnHintPopUpButton.setOnClickListener { view: View ->
+
+            receiveInsertMTCNTextView.setOnClickListener { view: View ->
                 //change the status of hint tooltip
                 if (toolTipShow){
                     toolTipShow=false
