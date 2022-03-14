@@ -76,69 +76,14 @@
                     android:layout_height="wrap_content"
                     android:text="@string/recieve_insert_mtcn"
                     android:theme="@style/title_2"
-                    android:textSize="@dimen/_18sdp"
+                    android:textSize="@dimen/_20sdp"
                     android:fontFamily="@font/azo_sans_bold"
-                    android:layout_marginTop="@dimen/_60sdp"
-                    android:layout_marginEnd="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_70sdp"
+                    android:drawablePadding="@dimen/_15sdp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
-
-                <TextView
-                    android:id="@+id/mtcnEntryTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_43sdp"
-                    android:layout_marginTop="@dimen/_73sdp"
-                    android:text="@string/recieve_insert_key"
-                    android:theme="@style/body_1"
-                    android:layout_marginBottom="@dimen/_6sdp"
-                    android:visibility="gone"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/receiveInsertMTCNTextView"/>
-
-                <EditText
-                    android:id="@+id/mtcnEntryEditText"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_40sdp"
-                    android:hint="@string/recieve_insert_key_hint"
-                    android:layout_marginStart="@dimen/_43sdp"
-                    android:layout_marginEnd="@dimen/_43sdp"
-                    android:background="@drawable/rounded_rectangle_gray"
-                    android:maxLength="16"
-                    android:inputType="textNoSuggestions"
-                    android:textAllCaps="true"
-                    android:padding="@dimen/_13sdp"
-                    android:theme="@style/hint_edit_text"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/receiveInsertMTCNTextView"
-                    app:layout_constraintStart_toStartOf="parent" />
-                <TextView
-                    android:id="@+id/mtcnOk"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/mtcn_invalid"
-                    android:theme="@style/label_edit_text"
-                    android:textColor="@color/elektra_red"
-                    android:textAlignment="viewStart"
-                    app:layout_constraintStart_toStartOf="@+id/mtcnEntryEditText"
-                    app:layout_constraintEnd_toEndOf="@+id/mtcnEntryEditText"
-                    app:layout_constraintTop_toBottomOf="@id/mtcnEntryEditText"
-                    android:visibility="invisible"/>
-
-
-                <ImageButton
-                    android:id="@+id/mtcnHintPopUpButton"
-                    android:layout_width="@dimen/_25sdp"
-                    android:layout_height="@dimen/_25sdp"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_marginBottom="@dimen/_6sdp"
-                    android:background="@drawable/ic_help_button"
-                    android:padding="@dimen/_10sdp"
-                    app:layout_constraintBottom_toBottomOf="@+id/receiveInsertMTCNTextView"
-                    app:layout_constraintStart_toEndOf="@+id/receiveInsertMTCNTextView"
-                    app:layout_constraintTop_toTopOf="@+id/receiveInsertMTCNTextView" />
+                    app:drawableEndCompat="@drawable/ic_help_button" />
 
                 <ImageView
                     android:id="@+id/toolTipImageView"
@@ -148,8 +93,8 @@
                     android:layout_marginEnd="-3dp"
                     android:background="@drawable/ic_tip"
                     android:visibility="invisible"
-                    app:layout_constraintEnd_toEndOf="@id/mtcnHintPopUpButton"
-                    app:layout_constraintBottom_toTopOf="@id/mtcnHintPopUpButton"
+                    app:layout_constraintEnd_toEndOf="@+id/receiveInsertMTCNTextView"
+                    app:layout_constraintBottom_toTopOf="@+id/receiveInsertMTCNTextView"
                     />
 
                 <TextView
@@ -169,12 +114,43 @@
                     app:layout_constraintBottom_toTopOf="@id/toolTipImageView"
                     app:layout_constraintEnd_toEndOf="@id/toolTipImageView" />
 
+                <EditText
+                    android:id="@+id/mtcnEntryEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_40sdp"
+                    android:hint="@string/recieve_insert_key_hint"
+                    android:layout_marginStart="@dimen/_43sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:background="@drawable/rounded_rectangle_gray"
+                    android:maxLength="16"
+                    android:inputType="textNoSuggestions"
+                    android:textAllCaps="true"
+                    android:padding="@dimen/_13sdp"
+                    android:theme="@style/hint_edit_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/receiveInsertMTCNTextView"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/mtcnOk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mtcn_invalid"
+                    android:theme="@style/label_edit_text"
+                    android:textColor="@color/elektra_red"
+                    android:textAlignment="viewStart"
+                    app:layout_constraintStart_toStartOf="@+id/mtcnEntryEditText"
+                    app:layout_constraintEnd_toEndOf="@+id/mtcnEntryEditText"
+                    app:layout_constraintTop_toBottomOf="@id/mtcnEntryEditText"
+                    android:visibility="invisible"/>
+
                 <TextView
                     android:id="@+id/instructionHeadTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:layout_marginTop="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_60sdp"
                     android:text="@string/recieve_check_status"
                     android:theme="@style/subtitle_3"
                     app:layout_constraintTop_toBottomOf="@+id/mtcnEntryEditText"

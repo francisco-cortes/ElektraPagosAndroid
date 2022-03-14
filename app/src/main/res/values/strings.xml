@@ -187,7 +187,7 @@
     <string name="recieve_insert_key_hint">Alfanumérico entre 8 a 16 caracteres</string>
     <string name="mtcn_invalid">Número de clave de envío incorrecto, verifícalo \n nuevamente con tu remitente.</string>
     <string name="recieve_help_pop">Es el número de control de envío de dinero.</string>
-    <string name="recieve_check_status">Revisa el estatus de tu envío de dinero</string>
+    <string name="recieve_check_status">Revisa el estatus</string>
     <string name="recieve_advice">Si la clave está activa, puedes recibirlo ahora \n mismo o cuando desees cobrarlo</string>
     <string name="recieve_check_button">CONSULTAR</string>
     <string name="recieve_delivery_ready">¡Tu envío ya está listo!</string>

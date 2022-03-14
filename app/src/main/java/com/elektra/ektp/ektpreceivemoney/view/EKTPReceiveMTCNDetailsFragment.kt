@@ -58,8 +58,7 @@ class EKTPReceiveMTCNDetailsFragment : Fragment() {
             }
 
             depositToButton.setOnClickListener {
-                val displayCase = (0..1).random()//50% probabilities to make appear the case when there are no service
-                if (displayCase== 0){
+                if ((0..1).random() == 2){//50% probabilities to make appear the case when there are no service
                     cantDepositAlertDialog.show()
                 }else{
                     view?.findNavController()?.navigate(R.id.action_EKTPReceiveMTCNDetailsFragment_to_receiveMTCNAcountSuccesFragment, bundle)//navigate to the next fragment
