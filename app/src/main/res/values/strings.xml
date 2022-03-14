@@ -171,7 +171,9 @@
     <string name="movements_details_reciever_account">MTCN</string>
     <string name="movements_details_concept">Concepto</string>
     <string name="movements_details_folio">Folio</string>
-    <string name="movements_details_status">Cuenta Destino</string>
+    <string name="movements_details_status">Estatus</string>
+    <string name="movements_details_operation_type">Tipo de operación</string>
+    <string name="movements_details_withdrew">Retiraste de</string>
     <string name="super_pesos_sign">$</string>
     <string name="super_index_cents">00</string>
     <string name="no_movements_avaible">Movimientos no\ndisponibles</string>
@@ -212,7 +214,7 @@
     <string name="recieve_details_successful_amount">+ %1$s</string>
     <string name="recieve_details_successful_label">Tu envío de dinero ya se \n encuentra en tu cuenta \n Elektra Wallet</string>
     <string name="recieve_details_screen_title">Recibir envío de dinero</string>
-    <string name="shipment_ok">¡Envío realizado!</string>
+    <string name="shipment_ok">Esta operación es gratis</string>
     <string name="receive_details_successful_button">IR AL INICIO</string>
     <string name="receivi_details_tooltip">Es el número de control \n de envio de dinero.</string>
     <string name="warn_message_banxico">Este vínculo se activará a más tardar dentro\nde los primeros 5 minutos siguientes de la\naceptación de la operación.</string>
