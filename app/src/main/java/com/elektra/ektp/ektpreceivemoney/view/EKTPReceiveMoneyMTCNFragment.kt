@@ -128,11 +128,14 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
             }
             consultButton.setOnClickListener { view:View ->
                 bundle.putString("mtcnString", mtcnString)
-                when((0..3).random()){
-                    0 -> mtcnDataIncorrectAlert.show()
-                    1 -> mtcnNumIncorrectAlert.show()
-                    2 -> mtcnTypeIncorrectAlert.show()
-                    3 -> view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNDetailsFragment, bundle)
+                when(mtcnString){
+                    "mtcn1" -> mtcnDataIncorrectAlert.show()
+                    "mtcn2" -> mtcnNumIncorrectAlert.show()
+                    "mtcn3" -> mtcnTypeIncorrectAlert.show()
+                    "mtcn4" -> view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNDetailsFragment, bundle)
+                    "mtcn5" -> cantDaliverMtcnAlertDialog.show()
+                    "mtcn6" -> cantOfferServiceAlertDialog.show()
+                    else -> view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNDetailsFragment, bundle)
                 }
             }
             backAppbarButton.setOnClickListener {
