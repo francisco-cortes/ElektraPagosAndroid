@@ -141,7 +141,7 @@
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginEnd="@dimen/_25sdp"
                     android:gravity="start"
-                    android:text="@{movementsDetailsItem.detailName}"
+                    android:text="@{movementsDetailsItem.detailReceivedName}"
                     android:theme="@style/subtitle_2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/acLabelDetailCardView" />

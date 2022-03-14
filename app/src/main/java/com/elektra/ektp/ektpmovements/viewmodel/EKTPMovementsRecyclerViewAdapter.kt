@@ -147,36 +147,38 @@ class EKTPMovementsRecyclerViewAdapter(
 
     private fun bindingListener(item: EKTPMovementsModel, cents: String){
         //On Click Listener for each item on recyclerview, clickable items
-            //Create an intent to open details activity
-            val moveIntent = Intent(context, EKTPMovementsDetailsActivity::class.java)
-            //Get the item clicked on recyclerview
-            var msg = item
-            //set the extras on intent from recycler view item
-            /*var day = msg.detailDate.substring(0..2)
-            var month = msg.detailDate.substring(3..4)
-            var monthInt = month.toInt()
-            var yearString = msg.detailDate.substring(5..9)
-            var monthString = ""
-            for(i in months.indices){
-                if (i == monthInt-1){
-                    monthString = months[i].substring(0..2)
-                }
+        //Create an intent to open details activity
+        val moveIntent = Intent(context, EKTPMovementsDetailsActivity::class.java)
+        //Get the item clicked on recyclerview
+        var msg = item
+        //set the extras on intent from recycler view item
+        /*var day = msg.detailDate.substring(0..2)
+        var month = msg.detailDate.substring(3..4)
+        var monthInt = month.toInt()
+        var yearString = msg.detailDate.substring(5..9)
+        var monthString = ""
+        for(i in months.indices){
+            if (i == monthInt-1){
+                monthString = months[i].substring(0..2)
             }
-            msg.detailDate = "$day$monthString$yearString"*/
+        }
+        msg.detailDate = "$day$monthString$yearString"*/
 
-            moveIntent.putExtra("detailDate", msg.detailDate)
-            moveIntent.putExtra("detailTitle", msg.detailTitle)
-            moveIntent.putExtra("detailConcept", msg.detailConcept)
-            moveIntent.putExtra("detailAmount", msg.detailAmount)
-            moveIntent.putExtra("detailStatus", msg.detailStatus)
-            moveIntent.putExtra("detailName", msg.detailName)
-            moveIntent.putExtra("detailFolio", msg.detailFolio)
-            moveIntent.putExtra("detailAccount", msg.detailAccount)
-            moveIntent.putExtra("detailMTCN", msg.detailMTCN)
-            moveIntent.putExtra("detailCents", cents)
-            moveIntent.putExtra("detailConceptTYpe", msg.detailConceptType)
-            //launch intent
-            context.startActivity(moveIntent)
+        moveIntent.putExtra("detailAmount", msg.detailAmount)
+        moveIntent.putExtra("detailTitle", msg.detailTitle)
+        moveIntent.putExtra("detailDate", msg.detailDate)
+        moveIntent.putExtra("detailAccount", msg.detailAccount)
+        moveIntent.putExtra("detailReceivedName", msg.detailReceivedName)
+        moveIntent.putExtra("detailConcept", msg.detailConcept)
+        moveIntent.putExtra("detailFolio", msg.detailFolio)
+        moveIntent.putExtra("detailStatus", msg.detailStatus)
+        moveIntent.putExtra("detailMTCN", msg.detailMTCN)
+        moveIntent.putExtra("detailOperationType", msg.detailOperationType)
+        moveIntent.putExtra("detailWithdrewName", msg.detailWithdrewName)
+        moveIntent.putExtra("detailCents", cents)
+
+        //launch intent
+        context.startActivity(moveIntent)
         //---
     }
 

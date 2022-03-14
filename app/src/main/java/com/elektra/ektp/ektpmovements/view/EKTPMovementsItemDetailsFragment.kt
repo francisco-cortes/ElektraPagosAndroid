@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.FileProvider
+import androidx.core.view.isGone
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -41,44 +42,56 @@ class EKTPMovementsItemDetailsFragment : Fragment() {
         //Recovery intent
         val bundle = this.arguments
         //Data recovery from intent extras
-        val moveName = bundle?.getString("detailName").toString()
-        val moveDate = bundle?.getString("detailDate").toString()
-        val moveTitle = bundle?.getString("detailTitle").toString()
-        val moveConcept = bundle?.getString("detailConcept").toString()
         val moveAmount = bundle?.getString("detailAmount").toString()
-        val moveStatus = bundle?.getString("detailStatus").toString()
-        val moveFolio = bundle?.getString("detailFolio").toString()
+        val moveTitle = bundle?.getString("detailTitle").toString()
+        val moveDate = bundle?.getString("detailDate").toString()
         val moveAccount = bundle?.getString("detailAccount").toString()
+        val moveReceivedName = bundle?.getString("detailReceivedName").toString()
+        val moveConcept = bundle?.getString("detailConcept").toString()
+        val moveFolio = bundle?.getString("detailFolio").toString()
+        val moveStatus = bundle?.getString("detailStatus").toString()
         val moveMTCN = bundle?.getString("detailMTCN").toString()
+        val moveOperationType = bundle?.getString("detailOperationType").toString()
+        val moveWithdrewName = bundle?.getString("detailWithdrewName").toString()
         val moveCents = bundle?.getString("detailCents").toString()
+
         val dataList = EKTPMovementsModel(
             moveAmount,
             moveTitle,
             moveDate,
             moveAccount,
-            moveName,
+            moveReceivedName,
             moveConcept,
             moveFolio,
             moveStatus,
-            moveMTCN
+            moveMTCN,
+            false,
+            moveOperationType,
+            moveWithdrewName
         )
         //---
 
-        //Assignment from intent data into layout
-        binding.movementsDetailsItem = dataList
-        binding.amountDetailCentsCardView.text = moveCents
+        with(binding){
+            cashWithDrawalLinearLayout.isGone = moveTitle != "Retiro de efectivo"
+            payOrderLinearLayout.isGone = moveTitle != "Orden de Pago"
+            receiveDepositLinearLayout.isGone = moveTitle != "Recepción de depósito"
 
-        //OnClickListener for call shareDetails from card view
-        binding.shareButtonDetailsCardView.setOnClickListener {
-            findNavController().navigate(R.id.action_EKTPMovementsItemDetailsFragment_to_EKTPDetailsToShareFragment2, bundle)
-        }
-        //---
+            //Assignment from intent data into layout
+            movementsDetailsItem = dataList
+            amountDetailCentsCardView.text = moveCents
 
-        //OnClickListener for destroy activity and back to earlier activity
-        binding.backAppbarButton.setOnClickListener {
-            activity?.finish()
+            //OnClickListener for call shareDetails from card view
+            shareButtonDetailsCardView.setOnClickListener {
+                findNavController().navigate(R.id.action_EKTPMovementsItemDetailsFragment_to_EKTPDetailsToShareFragment2, bundle)
+            }
+            //---
+
+            //OnClickListener for destroy activity and back to earlier activity
+            backAppbarButton.setOnClickListener {
+                activity?.finish()
+            }
+            //---
         }
-        //---
 
         return binding.root
     }

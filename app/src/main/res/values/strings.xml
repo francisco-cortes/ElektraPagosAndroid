@@ -171,7 +171,9 @@
     <string name="movements_details_reciever_account">MTCN</string>
     <string name="movements_details_concept">Concepto</string>
     <string name="movements_details_folio">Folio</string>
-    <string name="movements_details_status">Cuenta Destino</string>
+    <string name="movements_details_status">Estatus</string>
+    <string name="movements_details_operation_type">Tipo de operación</string>
+    <string name="movements_details_withdrew">Retiraste de</string>
     <string name="super_pesos_sign">$</string>
     <string name="super_index_cents">00</string>
     <string name="no_movements_avaible">Movimientos no\ndisponibles</string>
