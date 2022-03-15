@@ -11,6 +11,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpForgottenPassSuccessfulBinding
+import com.elektra.ektp.ektphome.view.EKTPHomeActivity
 import com.elektra.ektp.ektplogin.view.EKTPLoginActivity
 import com.elektra.ektp.ektplogin.view.EKTPLoginPassLoginFragment
 import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
