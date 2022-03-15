@@ -89,7 +89,7 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
         }
 
         cantOfferServiceAcceptButton.setOnClickListener {
-            cantDaliverMtcnAlertDialog.dismiss()
+            cantOfferServiceAlertDialog.dismiss()
         }
 
         with(binding){
