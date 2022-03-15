@@ -74,7 +74,7 @@ class EKTPMovementsListFragment : Fragment() {
                 "",
                 ""),
             EKTPMovementsModel("-$700",
-                "Retiro de fectivo",
+                "Retiro de efectivo",
                 "01/01/2022",
                 "Cuenta ****1234",
                 "",
