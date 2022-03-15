@@ -4,11 +4,11 @@
     android:layout_gravity="center"
     android:gravity="center"
     android:layout_width="@dimen/_300sdp"
-    android:layout_height="@dimen/_335sdp">
+    android:layout_height="@dimen/_370sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="@dimen/_300sdp"
-        android:layout_height="@dimen/_335sdp">
+        android:layout_height="@dimen/_370sdp">
 
         <ImageView
             android:id="@+id/noUserImageView"
@@ -59,6 +59,18 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/alertBodyTextView" />
+
+        <View
+            android:id="@+id/separator1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/_55sdp"
+            android:layout_marginEnd="@dimen/_55sdp"
+            android:background="@color/elektra_white_gray"
+            android:layout_marginTop="@dimen/_18sdp"
+            app:layout_constraintTop_toBottomOf="@+id/acceptButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

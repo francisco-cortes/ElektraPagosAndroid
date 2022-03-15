@@ -41,7 +41,7 @@
         <ScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/bankNoteTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -201,8 +201,8 @@
 
                         <ImageView
                             android:id="@+id/logOutStartImage"
-                            android:layout_width="@dimen/_19sdp"
-                            android:layout_height="@dimen/_20sdp"
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
                             android:background="@drawable/ic_logout_button"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -213,7 +213,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/settings_logout"
-                            android:theme="@style/label_edit_text"
+                            android:theme="@style/subtitle_3"
                             android:layout_marginStart="@dimen/_8sdp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/logOutStartImage"
@@ -224,8 +224,17 @@
                 </FrameLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </ScrollView>
+        <TextView
+            android:id="@+id/bankNoteTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_bankBottomNote"
+            android:theme="@style/note_1"
+            android:layout_marginBottom="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

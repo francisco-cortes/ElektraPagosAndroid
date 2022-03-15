@@ -84,6 +84,14 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
             mtcnTypeIncorrectAlert.dismiss()
         }
 
+        cantDeliverMtcnAcceptButton.setOnClickListener {
+            cantDaliverMtcnAlertDialog.dismiss()
+        }
+
+        cantOfferServiceAcceptButton.setOnClickListener {
+            cantDaliverMtcnAlertDialog.dismiss()
+        }
+
         with(binding){
             mtcnEntryEditText.addTextChangedListener(object: TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -129,12 +137,11 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
             consultButton.setOnClickListener { view:View ->
                 bundle.putString("mtcnString", mtcnString)
                 when(mtcnString){
-                    "mtcn1" -> mtcnDataIncorrectAlert.show()
-                    "mtcn2" -> mtcnNumIncorrectAlert.show()
-                    "mtcn3" -> mtcnTypeIncorrectAlert.show()
-                    "mtcn4" -> view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNDetailsFragment, bundle)
-                    "mtcn5" -> cantDaliverMtcnAlertDialog.show()
-                    "mtcn6" -> cantOfferServiceAlertDialog.show()
+                    "N291341385" -> mtcnDataIncorrectAlert.show()
+                    "R57457734549" -> mtcnNumIncorrectAlert.show()
+                    "A554011492295" -> mtcnTypeIncorrectAlert.show()
+                    "X4591787456436" -> cantDaliverMtcnAlertDialog.show()
+                    "E52455434563" -> cantOfferServiceAlertDialog.show()
                     else -> view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNDetailsFragment, bundle)
                 }
             }
