@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="appbar_title">
+        <item name="android:textSize">@dimen/_17sdp</item>
+        <item name="fontFamily">@font/azo_sans_medium</item>
+        <item name="android:textColor">@color/elektra_white_gray</item>
+    </style>
+
+    <style name="code_text">
+        <item name="android:textSize">@dimen/_27sdp</item>
+        <item name="fontFamily">@font/azo_sans_medium</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="header_1">
+        <item name="android:textSize">@dimen/_37sdp</item>
+        <item name="fontFamily">@font/azo_sans_bold</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="header_2">
+        <item name="android:textSize">@dimen/_75sdp</item>
+        <item name="fontFamily">@font/azo_sans_bold</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="header_3">
+        <item name="android:textSize">@dimen/_65sdp</item>
+        <item name="fontFamily">@font/azo_sans_bold</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="title_1">
+        <item name="android:textSize">@dimen/_26sdp</item>
+        <item name="fontFamily">@font/azo_sans_bold</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="title_2">
+        <item name="android:textSize">@dimen/_22sdp</item>
+        <item name="fontFamily">@font/azo_sans_bold</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="title_3">
+        <item name="android:textSize">@dimen/_24sdp</item>
+        <item name="fontFamily">@font/azo_sans_bold</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="title_4">
+        <item name="android:textSize">@dimen/_26sdp</item>
+        <item name="fontFamily">@font/azo_sans_medium</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="title_5">
+        <item name="android:textSize">@dimen/_34sdp</item>
+        <item name="fontFamily">@font/azo_sans_bold</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="title_6">
+        <item name="android:textSize">@dimen/_28sdp</item>
+        <item name="fontFamily">@font/azo_sans_medium</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="subtitle_1">
+        <item name="android:textSize">@dimen/_20sdp</item>
+        <item name="fontFamily">@font/azo_sans_regular</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="subtitle_2">
+        <item name="android:textSize">@dimen/_17sdp</item>
+        <item name="fontFamily">@font/azo_sans_regular</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="subtitle_3">
+        <item name="android:textSize">@dimen/_15sdp</item>
+        <item name="fontFamily">@font/azo_sans_bold</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="subtitle_4">
+        <item name="android:textSize">@dimen/_20sdp</item>
+        <item name="fontFamily">@font/azo_sans_bold</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="subtitle_5">
+        <item name="android:textSize">@dimen/_28sdp</item>
+        <item name="fontFamily">@font/azo_sans_bold</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="checkbox_text">
+        <item name="android:textSize">@dimen/_17sdp</item>
+        <item name="fontFamily">@font/azo_sans_bold</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="progress_number">
+        <item name="android:textSize">@dimen/_16sdp</item>
+        <item name="fontFamily">@font/azo_sans_medium</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="label_edit_text">
+        <item name="android:textSize">@dimen/_15sdp</item>
+        <item name="fontFamily">@font/azo_sans_regular</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+
+    <style name="body_1">
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="fontFamily">@font/azo_sans_regular</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="body_2">
+        <item name="android:textSize">@dimen/_30sdp</item>
+        <item name="fontFamily">@font/azo_sans_medium</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="body_3">
+        <item name="android:textSize">@dimen/_20sdp</item>
+        <item name="fontFamily">@font/azo_sans_medium</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="hint_edit_text">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="fontFamily">@font/azo_sans_regular</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="bottom_button">
+        <item name="android:textSize">@dimen/_18sdp</item>
+        <item name="fontFamily">@font/azo_sans_medium</item>
+    </style>
+
+    <style name="text_button_1">
+        <item name="android:textSize">@dimen/_15sdp</item>
+        <item name="fontFamily">@font/azo_sans_medium</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="text_button_2">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="fontFamily">@font/azo_sans_medium</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="note_1">
+        <item name="android:textSize">@dimen/_10sdp</item>
+        <item name="fontFamily">@font/azo_sans_regular</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="note_2">
+        <item name="android:textSize">@dimen/_10sdp</item>
+        <item name="fontFamily">@font/azo_sans_bold</item>
+        <item name="android:textColor">@color/elektra_gray</item>
+    </style>
+
+    <style name="Theme.SpinnerTheme" parent="android:Widget.Holo.DropDownItem.Spinner">
+        <item name="android:dropDownListViewStyle">@style/Theme.SelectedItem</item>
+    </style>
+
+    <style name="Theme.SelectedItem" parent="android:Widget.Holo.DropDownItem.Spinner">
+        <item name="android:listSelector">@drawable/selector_spinner_item_list</item>
+    </style>
+
+    <style name="Theme.HighLight" parent="Theme.ElektraPagos">
+        <item name="android:autofilledHighlight" tools:targetApi="o">@drawable/highlight_background</item>
+    </style>
+</resources>

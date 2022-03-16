@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/create_account_navigator"
+    app:startDestination="@id/EKTPCreateAccountFragment">
+
+    <fragment
+        android:id="@+id/EKTPCreateAccountFragment"
+        android:name="com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountFragment"
+        android:label="EKTPCreateAccountFragment" >
+        <action
+            android:id="@+id/action_EKTPCreateAccountFragment_to_EKTPCreateAccountSMSVerificationFragment"
+            app:destination="@id/EKTPCreateAccountSMSVerificationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/EKTPCreateAccountSMSVerificationFragment"
+        android:name="com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountSMSVerificationFragment"
+        android:label="EKTPCreateAccountSMSVerificationFragment" >
+        <action
+            android:id="@+id/action_EKTPCreateAccountSMSVerificationFragment_to_EKPTCreateAccountRegisterFormFragment"
+            app:destination="@id/EKPTCreateAccountRegisterFormFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/EKPTCreateAccountRegisterFormFragment"
+        android:name="com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountRegisterFormFragment"
+        android:label="EKPTCreateAccountRegisterFormFragment" >
+        <action
+            android:id="@+id/action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountContractsFragment"
+            app:destination="@id/EKTPCreateAccountContractsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/EKTPCreateAccountContractsFragment"
+        android:name="com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountContractsFragment"
+        android:label="EKTPCreateAccountContractsFragment" >
+        <action
+            android:id="@+id/action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountCreatePassFragment"
+            app:destination="@id/EKTPCreateAccountCreatePassFragment" />
+        <action
+            android:id="@+id/action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment"
+            app:destination="@id/EKTPCreateAccountContractsViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/EKTPCreateAccountCreatePassFragment"
+        android:name="com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountCreatePassFragment"
+        android:label="EKTPCreateAccountCreatePassFragment" >
+        <action
+            android:id="@+id/action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountBiometricsActivationFragment"
+            app:destination="@id/EKTPCreateAccountBiometricsActivationFragment" />
+        <action
+            android:id="@+id/action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountSuccessfulFragment"
+            app:destination="@id/EKTPCreateAccountSuccessfulFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/EKTPCreateAccountBiometricsActivationFragment"
+        android:name="com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountBiometricsActivationFragment"
+        android:label="EKTPCreateAccountBiometricsActivationFragment" >
+        <action
+            android:id="@+id/action_EKTPCreateAccountBiometricsActivationFragment_to_EKTPCreateAccountSuccessfulFragment"
+            app:destination="@id/EKTPCreateAccountSuccessfulFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/EKTPCreateAccountSuccessfulFragment"
+        android:name="com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountSuccessfulFragment"
+        android:label="EKTPCreateAccountSuccessfulFragment" />
+    <fragment
+        android:id="@+id/EKTPCreateAccountContractsViewFragment"
+        android:name="com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountContractsViewFragment"
+        android:label="EKTPCreateAccountContractsViewFragment" />
+</navigation>

@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <!-- Default colors -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Primaries -->
+    <color name="elektra_yellow">#FED500</color>
+    <color name="elektra_red">#EE3124</color>
+    <color name="elektra_soft_red">#FCD5D3</color>
+    <color name="elektra_gray">#4A4848</color>
+    <color name="elektra_light_gray">#CBCBCF</color>
+    <color name="elektra_white_gray">#EFF0F5</color>
+
+    <!-- Secondaries -->
+    <color name="elektra_green">#17A54D</color>
+    <color name="elektra_orange">#FE9D2D</color>
+    <color name="elektra_blue">#158CBB</color>
+    <color name="elektra_dark_blue">#6146BD</color>
+    <color name="translucent">#0000ffff</color>
 </resources>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.elektra.ektp.ektpreceivemoney.view.EKTPReceiveMoneyMTCNFragment.kt">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_64sdp"
+            android:background="@color/elektra_red"
+            android:minHeight="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/logoAppBar"
+                    android:layout_width="@dimen/_64sdp"
+                    android:layout_height="@dimen/_26sdp"
+                    android:layout_marginEnd="@dimen/_35sdp"
+                    android:background="@drawable/ic_appbar_logo"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/sectionTitleAppbarTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/recieve_details_screen_title"
+                    android:theme="@style/appbar_title"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/logoAppBar"
+                    app:layout_constraintStart_toEndOf="@+id/backAppbarButton"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/backAppbarButton"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:background="@drawable/ic_appbar_back_button"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/appbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/receiveInsertMTCNTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recieve_insert_mtcn"
+                    android:theme="@style/title_2"
+                    android:textSize="@dimen/_20sdp"
+                    android:fontFamily="@font/azo_sans_bold"
+                    android:layout_marginTop="@dimen/_70sdp"
+                    android:drawablePadding="@dimen/_15sdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:drawableEndCompat="@drawable/ic_help_button" />
+
+                <ImageView
+                    android:id="@+id/toolTipImageView"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginBottom="-10dp"
+                    android:layout_marginEnd="-3dp"
+                    android:background="@drawable/ic_tip"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@+id/receiveInsertMTCNTextView"
+                    app:layout_constraintBottom_toTopOf="@+id/receiveInsertMTCNTextView"
+                    />
+
+                <TextView
+                    android:id="@+id/toolTipTextView"
+                    android:layout_width="@dimen/_180sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginBottom="-18dp"
+                    android:background="@drawable/tooltip_body"
+                    android:fontFamily="@font/azo_sans_regular"
+                    android:padding="@dimen/_6sdp"
+                    android:text="@string/receivi_details_tooltip"
+                    android:textAlignment="center"
+                    android:textColor="@color/elektra_white_gray"
+                    android:textSize="@dimen/_10sdp"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toTopOf="@id/toolTipImageView"
+                    app:layout_constraintEnd_toEndOf="@id/toolTipImageView" />
+
+                <EditText
+                    android:id="@+id/mtcnEntryEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_40sdp"
+                    android:hint="@string/recieve_insert_key_hint"
+                    android:layout_marginStart="@dimen/_43sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:background="@drawable/rounded_rectangle_gray"
+                    android:maxLength="16"
+                    android:inputType="textNoSuggestions"
+                    android:textAllCaps="true"
+                    android:padding="@dimen/_13sdp"
+                    android:theme="@style/hint_edit_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/receiveInsertMTCNTextView"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/mtcnOk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mtcn_invalid"
+                    android:theme="@style/label_edit_text"
+                    android:textColor="@color/elektra_red"
+                    android:textAlignment="viewStart"
+                    app:layout_constraintStart_toStartOf="@+id/mtcnEntryEditText"
+                    app:layout_constraintEnd_toEndOf="@+id/mtcnEntryEditText"
+                    app:layout_constraintTop_toBottomOf="@id/mtcnEntryEditText"
+                    android:visibility="invisible"/>
+
+                <TextView
+                    android:id="@+id/instructionHeadTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/_60sdp"
+                    android:text="@string/recieve_check_status"
+                    android:theme="@style/subtitle_3"
+                    app:layout_constraintTop_toBottomOf="@+id/mtcnEntryEditText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/instructionBodyTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/_35sdp"
+                    android:text="@string/recieve_advice"
+                    android:theme="@style/label_edit_text"
+                    app:layout_constraintTop_toBottomOf="@+id/instructionHeadTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <Button
+                    android:id="@+id/consultButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_43sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_250sdp"
+                    android:layout_marginBottom="@dimen/_45sdp"
+                    android:background="@drawable/enable_disable_red"
+                    android:text="@string/recieve_check_button"
+                    android:theme="@style/bottom_button"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toBottomOf="@id/instructionBodyTextView"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:enabled="false"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

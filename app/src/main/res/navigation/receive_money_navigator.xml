@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/receive_money_navigator"
+    app:startDestination="@id/EKTPReceiveMoneyMTCNFragment">
+
+    <fragment
+        android:id="@+id/EKTPReceiveMoneyMTCNFragment"
+        android:name="com.elektra.ektp.ektpreceivemoney.view.EKTPReceiveMoneyMTCNFragment"
+        android:label="EKTPReceiveMoneyMTCNFragment" >
+        <action
+            android:id="@+id/action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNDetailsFragment"
+            app:destination="@id/EKTPReceiveMTCNDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/EKTPReceiveMTCNDetailsFragment"
+        android:name="com.elektra.ektp.ektpreceivemoney.view.EKTPReceiveMTCNDetailsFragment"
+        android:label="EKTPReceiveMTCNDetailsFragment" >
+        <action
+            android:id="@+id/action_EKTPReceiveMTCNDetailsFragment_to_receiveMTCNAcountSuccesFragment"
+            app:destination="@id/receiveMTCNAcountSuccesFragment" />
+        <action
+            android:id="@+id/action_EKTPReceiveMTCNDetailsFragment_to_EKTPReceiveMoneyMTCNFragment2"
+            app:destination="@id/EKTPReceiveMoneyMTCNFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/receiveMTCNAcountSuccesFragment"
+        android:name="com.elektra.ektp.ektpreceivemoney.view.EKTPReceiveMTCNAcountSuccesFragment"
+        android:label="ReceiveMTCNAcountSuccesFragment" >
+        <action
+            android:id="@+id/action_receiveMTCNAcountSuccesFragment_to_EKTPReceiveMTCNShareImageFragment"
+            app:destination="@id/EKTPReceiveMTCNShareImageFragment" />
+        <action
+            android:id="@+id/action_receiveMTCNAcountSuccesFragment_to_EKTPReceiveMoneyMTCNFragment"
+            app:destination="@id/EKTPReceiveMoneyMTCNFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/EKTPReceiveMTCNShareImageFragment"
+        android:name="com.elektra.ektp.ektpreceivemoney.view.EKTPReceiveMTCNShareImageFragment"
+        android:label="fragment_ektp_receive_mtcn_share_image"
+        tools:layout="@layout/fragment_ektp_receive_mtcn_share_image" >
+        <action
+            android:id="@+id/action_EKTPReceiveMTCNShareImageFragment_to_EKTPReceiveMoneyMTCNFragment"
+            app:destination="@id/EKTPReceiveMoneyMTCNFragment" />
+    </fragment>
+</navigation>

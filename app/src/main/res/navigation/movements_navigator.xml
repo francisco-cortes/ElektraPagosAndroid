@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/movements_navigator"
+    app:startDestination="@id/EKTPMovementsItemDetailsFragment">
+    <fragment
+        android:id="@+id/EKTPMovementsItemDetailsFragment"
+        android:name="com.elektra.ektp.ektpmovements.view.EKTPMovementsItemDetailsFragment"
+        android:label="EKTPMovementsItemDetailsFragment" >
+        <action
+            android:id="@+id/action_EKTPMovementsItemDetailsFragment_to_EKTPDetailsToShareFragment2"
+            app:destination="@id/EKTPDetailsToShareFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/EKTPDetailsToShareFragment2"
+        android:name="com.elektra.ektp.ektpmovements.view.EKTPDetailsToShareFragment"
+        android:label="EKTPDetailsToShareFragment" />
+</navigation>

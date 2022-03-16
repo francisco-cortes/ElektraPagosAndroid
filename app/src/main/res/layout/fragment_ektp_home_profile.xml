@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_116sdp"
+            android:background="@color/elektra_red"
+            android:minHeight="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/appLogoImageView"
+                    android:layout_width="@dimen/_127sdp"
+                    android:layout_height="@dimen/_49sdp"
+                    android:background="@drawable/ic_appbar_logo"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_35sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/appbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bankNoteTextView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/userProfileImageView"
+                    android:layout_width="@dimen/_125sdp"
+                    android:layout_height="@dimen/_125sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:background="@drawable/ic_profile_image"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/nameLabelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_50sdp"
+                    android:text="@string/profile_name"
+                    android:theme="@style/label_edit_text"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="@+id/userProfileImageView"
+                    app:layout_constraintStart_toStartOf="@id/userProfileImageView"
+                    app:layout_constraintTop_toBottomOf="@+id/userProfileImageView" />
+
+                <TextView
+                    android:id="@+id/nameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:textAlignment="center"
+                    android:theme="@style/appbar_title"
+                    android:textColor="@color/elektra_gray"
+                    app:layout_constraintEnd_toEndOf="@id/nameLabelTextView"
+                    app:layout_constraintStart_toStartOf="@id/nameLabelTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/nameLabelTextView" />
+
+                <TextView
+                    android:id="@+id/accountLabelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="@string/profile_account"
+                    android:theme="@style/label_edit_text"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@id/nameTextView"
+                    app:layout_constraintStart_toStartOf="@id/nameTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+
+                <TextView
+                    android:id="@+id/accountTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="9554 1722 6620 87"
+                    android:theme="@style/appbar_title"
+                    android:textAlignment="center"
+                    android:textColor="@color/elektra_gray"
+                    app:layout_constraintEnd_toEndOf="@id/accountLabelTextView"
+                    app:layout_constraintStart_toStartOf="@id/accountLabelTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/accountLabelTextView" />
+
+                <TextView
+                    android:id="@+id/dateLabelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="@string/profile_open_date"
+                    android:textAlignment="center"
+                    android:theme="@style/label_edit_text"
+                    app:layout_constraintEnd_toEndOf="@id/accountTextView"
+                    app:layout_constraintStart_toStartOf="@id/accountTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/accountTextView" />
+
+                <TextView
+                    android:id="@+id/dateTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:textAlignment="center"
+                    android:text="06/12/21"
+                    android:theme="@style/appbar_title"
+                    android:textColor="@color/elektra_gray"
+                    app:layout_constraintEnd_toEndOf="@id/dateLabelTextView"
+                    app:layout_constraintStart_toStartOf="@id/dateLabelTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/dateLabelTextView" />
+
+                <TextView
+                    android:id="@+id/phoneLabelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:textAlignment="center"
+                    android:text="@string/profile_phone"
+                    android:theme="@style/label_edit_text"
+                    app:layout_constraintEnd_toEndOf="@id/dateTextView"
+                    app:layout_constraintStart_toStartOf="@id/dateTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/dateTextView" />
+
+                <TextView
+                    android:id="@+id/phoneTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:textAlignment="center"
+                    android:theme="@style/appbar_title"
+                    android:textColor="@color/elektra_gray"
+                    app:layout_constraintEnd_toEndOf="@id/phoneLabelTextView"
+                    app:layout_constraintStart_toStartOf="@id/phoneLabelTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/phoneLabelTextView" />
+
+                <TextView
+                    android:id="@+id/emailLabelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:textAlignment="center"
+                    android:text="@string/profile_email"
+                    android:theme="@style/label_edit_text"
+                    app:layout_constraintEnd_toEndOf="@id/phoneTextView"
+                    app:layout_constraintStart_toStartOf="@id/phoneTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/phoneTextView" />
+
+                <TextView
+                    android:id="@+id/emailTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:textAlignment="center"
+                    android:theme="@style/appbar_title"
+                    android:textColor="@color/elektra_gray"
+                    app:layout_constraintEnd_toEndOf="@id/emailLabelTextView"
+                    app:layout_constraintStart_toStartOf="@id/emailLabelTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/emailLabelTextView" />
+
+                <TextView
+                    android:id="@+id/contractLegalTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:textAlignment="center"
+                    android:text="@string/profile_contract"
+                    android:theme="@style/text_button_1"
+                    android:padding="@dimen/_20sdp"
+                    app:layout_constraintEnd_toEndOf="@id/emailTextView"
+                    app:layout_constraintStart_toStartOf="@id/emailTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/bankNoteTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_bankBottomNote"
+            android:theme="@style/note_1"
+            android:layout_marginBottom="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

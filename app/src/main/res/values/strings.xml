@@ -1,3 +1,378 @@
 <resources>
+    <!-- Splash Screen strings-->
     <string name="app_name">Elektra Pagos</string>
+    <string name="product_name">Producto de <b>Banco Azteca</b></string>
+    <string name="app_version">V1.0.0</string>
+
+    <!-- General strings -->
+    <string name="required_field_hint">Campo obligatorio*</string>
+    <string name="optional_field_hint">Campo opcional</string>
+    <string name="option_selection_hint">Selecciona una opción*</string>
+    <string name="continue_button">CONTINUAR</string>
+    <string name="invalid_data">*Dato no válido</string>
+    <string name="email_not_matches">*Correos no coinciden</string>
+
+    <!-- Fragment login face strings-->
+    <string name="login_welcome">¡Bienvenido!</string>
+    <string name="login_in_label">Inicia Sesión</string>
+    <string name="login_in_header_label">Iniciar Sesión</string>
+    <string name="login_face_label">Entrar con Reconocimiento Facial</string>
+    <string name="login_pass_in_button">ENTRAR CON CONTRASEÑA</string>
+    <string name="login_create_account"><u>Crear cuenta</u></string>
+    <string name="login_finger_label">Entrar con Huella</string>
+    <string name="login_hello">¡Hola,</string>
+    <string name="login_insert_data">Ingresa tu contraseña</string>
+    <string name="login_user_name">Usuario</string>
+    <string name="login_user_pass">Contraseña</string>
+    <string name="login_frgt_pass"> <u> Olvidé mi contraseña </u> </string>
+    <string name="login_in_button">INGRESAR</string>
+    <string name="login_finger_button">ENTRAR CON HUELLA</string>
+    <string name="login_face_button">ENTRAR CON ROSTRO</string>
+
+    <!-- Fragment crete account strings -->
+    <string name="create_account_header_label">Crear cuenta</string>
+    <string name="fragment_create_account_hi">¡Hola!</string>
+    <string name="fragment_create_account_insert_data">Ingresa tus datos completos</string>
+    <string name="fragment_create_account_phone_number">Número celular</string>
+    <string name="fragment_create_account_phone_hint">10 dígitos</string>
+    <string name="fragment_create_account_invalid_phone">Ingrese un número válido</string>
+    <string name="fragment_create_account_invalid_email">Ingrese un correo válido</string>
+    <string name="fragment_create_account_not_matches_email">Correos no coinciden</string>
+    <string name="fragment_create_account_email">Correo electrónico</string>
+    <string name="fragment_create_account_email_hint">@</string>
+    <string name="fragment_create_account_email_confirmation">Confirmación de correo electrónico</string>
+    <string name="fragment_create_account_warning">Para acceder a los servicios de Elektra pagos, <b>Banco Azteca</b>\nte pide abrir una cuenta bancaria y los datos para ello.</string>
+
+    <!-- Fragment verification sms strings -->
+    <string name="verification_header_label">Código de verificación</string>
+    <string name="fragment_verification_insert_code">Ingresa el código de verificación</string>
+    <string name="fragment_verification_recieved">Recibiste un número de 5 dígitos por SMS</string>
+    <string name="fragment_verification_resend_code"><u>Reenviar Código</u></string>
+    <string name="invalid_sms_verification">Tu código es incorrecto, verifícalo\nnuevamente para continuar</string>
+
+    <!-- Fragment crete account form strings -->
+    <string name="form_header_label">Registro</string>
+    <string name="fragment_form_complete">Completa tus datos</string>
+    <string name="fragment_form_remind">Recuerda que estás abriendo una cuenta con\ndatos bancarios</string>
+    <string name="fragment_form_name">Nombre</string>
+    <string name="fragment_form_name_invalid">Inserte un nombre válido</string>
+    <string name="fragment_form_paternal_last_name">Apellido paterno</string>
+    <string name="fragment_form_lastname_invalid">Inserte un apellido válido</string>
+    <string name="fragment_form_maternal_last_name">Apellido materno (opcional)</string>
+    <string name="fragment_form_birth_date">Fecha de nacimiento</string>
+    <string name="fragment_form_date_invalid">Ingrese una fecha válida</string>
+    <string name="fragment_form_birth_date_hint">DD/MM/AAAA*</string>
+    <string name="fragment_form_birth_site">Lugar de nacimiento</string>
+    <string name="fragment_form_gender">Género</string>
+    <string name="fragment_form_gender_woman">Mujer</string>
+    <string name="fragment_form_gender_man">Hombre</string>
+    <string name="fragment_form_postal_code">Código postal</string>
+    <string name="fragment_form_postal_invalid">Inserte un código válido</string>
+    <string name="fragment_form_colony">Colonia</string>
+    <string name="fragment_form_colony_invalid">Inserte colonia válida</string>
+    <string name="fragment_form_street">Calle</string>
+    <string name="fragment_form_street_invalid">Ingrese calle válida</string>
+    <string name="fragment_form_exterior_number">Número exterior</string>
+    <string name="fragment_form_number_invalid">Ingrese número válido</string>
+    <string name="fragment_form_interior_number">Número interior</string>
+    <string name="fragment_form_town">Alcaldía o Municipio</string>
+    <string name="fragment_form_state">Estado</string>
+    <string name="fragment_form_country">País</string>
+
+    <!-- Fragment terms and conditions strings -->
+    <string name="fragment_terms_privacity"><u>Aviso de Privacidad</u></string>
+    <string name="fragment_terms_banking"><u>Contrato de Banca</u></string>
+    <string name="fragment_terms_terms_and_conditions"><u>Términos y condiciones</u></string>
+    <string name="terms_and_conditions_header_label">Términos y condiciones</string>
+    <string name="fragment_terms_credit_bureau"><u>Consultoría Buró de Crédito</u></string>
+    <string name="fragment_terms_credimax"><u>Contrato CREDIMAX</u></string>
+    <string name="fragment_terms_captation"><u>Contrato de Captación</u></string>
+    <string name="fragment_terms_digital"><u>Contrato Somos Digital</u></string>
+    <string name="fragment_terms_captation_products"><u>Contrato Productos de Captación</u></string>
+    <string name="fragment_terms_have_readed"> He leído y acepto los términos y\ncondiciones y documentos antes\nmencionados.</string>
+
+    <!-- Fragment create password strings -->
+    <string name="create_password_header_label">Contraseña</string>
+    <string name="fragment_create_password_create">Crea tu contraseña</string>
+    <string name="fragment_create_password_password">Contraseña</string>
+    <string name="fragment_create_password_password_confirmation">Confirmar contraseña</string>
+    <string name="fragment_create_password_requeriments">Tu contraseña debe contener:</string>
+    <string name="fragment_create_password_minimum">Mínimo 8 caracteres</string>
+    <string name="fragment_create_password_maximum">Máximo 14 caracteres</string>
+    <string name="fragment_create_password_consecutives">Sin caracteres consecutivos</string>
+    <string name="fragment_create_password_repeated">Sin caracteres repetidos</string>
+    <string name="fragment_create_password_bank_name">Diferente al nombre del banco</string>
+    <string name="fragment_create_password_user_name">Diferente a tu nombre usuario</string>
+    <string name="fragment_Create_password_no_match">Las contraseñas no coinciden</string>
+
+    <!-- Fragment biometrics activation strings -->
+    <string name="finger_header_label">Activar huella</string>
+    <string name="face_header_label">Activar rostro</string>
+    <string name="fragment_biometrics_activation_activate_finger">¿Te gustaría activar tu huella?</string>
+    <string name="fragment_biometrics_activation_activate_face">¿Te gustaría activar tu rostro?</string>
+    <string name="fragment_biometrics_activation_security_finger">Tu huella será tu clave de\nseguridad y contraseña</string>
+    <string name="fragment_biometrics_activation_security_face">Tu rostro será tu clave de\nseguridad y contraseña</string>
+    <string name="fragment_biometrics_activation_finger">Toca el ícono para activar\ntu huella dactilar</string>
+    <string name="fragment_biometrics_activation_face">Toca el ícono para activar\nel reconocimiento facial</string>
+    <string name="fragment_biometrics_activation_later"><u>En otro momento</u></string>
+
+    <!-- Fragment successful create account strings -->
+    <string name="fragment_successful_message">Tu cuenta se ha\ncreado con éxito</string>
+    <string name="fragment_successful_message2">Ya puedes hacer uso de tu Wallet</string>
+    <string name="fragment_successful_back_button">IR AL INICIO</string>
+
+    <!-- Forgotten password strings-->
+    <string name="forgotten_header_label">Olvidé mi contraseña</string>
+    <string name="forgotten_insert_data">Ingresa el número celular que registraste</string>
+    <string name="forgotten_insert_phone">Número celular</string>
+    <string name="forgotten_send_button">ENVIAR</string>
+    <string name="forgotten_insert_key">Ingresa la clave de autorización</string>
+    <string name="forgotten_auth_button">AUTORIZAR OPERACIÓN</string>
+    <string name="forgotten_insert_new_pass_header_label">Nueva contraseña</string>
+    <string name="forggoten_insert_new_label">Ingresa tu nueva contraseña</string>
+    <string name="forggoten_insert_new_pass">Nueva contraseña</string>
+    <string name="forgotten_confirmation_pass">Confirmar contraseña</string>
+    <string name="forgotten_resend_code"><u>Reenviar Código</u></string>
+    <string name="forgotten_change_successful">Tu contraseña se ha\ncambiado con éxito</string>
+    <string name="forgotten_login_label">Podrás iniciar sesión en el momento\nque lo desees.</string>
+    <string name="forgotten_successful_back_button">IR AL INICIO</string>
+
+    <!-- Home strings-->
+    <string name="home_hello">¡Hola</string>
+    <string name="home_balances">Saldos y\nmovimientos</string>
+    <string name="home_recieve">Recibir envío\nde dinero</string>
+    <string name="home_account_label">Cuenta</string>
+    <string name="home_guardadito">Guardadito Digital</string>
+    <string name="home_bankBottomNote">Producto de <b>Banco Azteca</b></string>
+
+    <!-- Profile strings -->
+    <string name="profile_name">Nombre</string>
+    <string name="profile_account">Cuenta</string>
+    <string name="profile_open_date">Fecha de apertura</string>
+    <string name="profile_phone">Celular</string>
+    <string name="profile_email">Correo electrónico</string>
+    <string name="profile_contract"><u>Contrato y legales</u></string>
+    <string name="contracts_lable_title">Contratos y Legales</string>
+
+    <!-- Settings strings-->
+    <string name="settings_change_recovery_pass">Cambio o recuperación de contraseña</string>
+    <string name="settings_help">Ayuda</string>
+    <string name="settings_logout">Cerrar sesión</string>
+
+    <!-- Balances and movements strings -->
+    <string name="movements_header_label">Saldos y movimientos</string>
+    <string name="movements_show_all">Todos los movimientos</string>
+    <string name="movements_details">Detalles de movimiento</string>
+    <string name="movements_details_amount">+ %1$s</string>
+    <string name="movements_details_date">%1$s</string>
+    <string name="movements_details_title">%1$s</string>
+    <string name="movements_details_account">+ %1$s</string>
+    <string name="movements_details_outgoing_account">Recibiste de</string>
+    <string name="movements_details_reciever_account">MTCN</string>
+    <string name="movements_details_concept">Concepto</string>
+    <string name="movements_details_folio">Folio</string>
+    <string name="movements_details_status">Estatus</string>
+    <string name="movements_details_operation_type">Tipo de operación</string>
+    <string name="movements_details_withdrew">Retiraste de</string>
+    <string name="super_pesos_sign">$</string>
+    <string name="super_index_cents">00</string>
+    <string name="no_movements_avaible">Movimientos no\ndisponibles</string>
+    <string name="try_later">Intenta más tarde</string>
+    <string name="accept_movements">ACEPTAR</string>
+    <string name="share_details_button">COMPARTIR</string>
+    <string name="bottom_help_label">Para solicitar una aclaración, comunícate al Centro de\ncontacto para recibir ayuda: 5554478868 opción 1.</string>
+
+
+    <!-- Recieve strings-->
+    <string name="recieve_insert_mtcn">Ingresa la clave de envío (MTCN)</string>
+    <string name="recieve_insert_key">Número de clave de envío (MTCN)</string>
+    <string name="recieve_insert_key_hint">Alfanumérico entre 8 a 16 caracteres</string>
+    <string name="mtcn_invalid">Número de clave de envío incorrecto, verifícalo \n nuevamente con tu remitente.</string>
+    <string name="recieve_help_pop">Es el número de control de envío de dinero.</string>
+    <string name="recieve_check_status">Revisa el estatus</string>
+    <string name="recieve_advice">Si la clave está activa, puedes recibirlo ahora \n mismo o cuando desees cobrarlo</string>
+    <string name="recieve_check_button">CONSULTAR</string>
+    <string name="recieve_delivery_ready">¡Tu envío ya está listo!</string>
+    <string name="recieve_deposit_window">Puedes depositarlo en tu cuenta ahora \n mismo o cuando desees cobrarlo</string>
+    <string name="recieve_amount">%1$s</string>
+    <string name="recieve_mtcn_ready">MTCN %1$s</string>
+    <string name="recieve_details_button">VER DETALLES</string>
+    <string name="recieve_details_label">Detalles de envío de dinero</string>
+    <string name="recieve_details_amount">+ %1$s</string>
+    <string name="recieve_details_sender">Te envía</string>
+    <string name="recieve_details_name_sender">%1$s</string>
+    <string name="recieve_details_mtcn_label">MTCN</string>
+    <string name="recieve_details_mtcn_sender">%1$s <br></br> %2$s</string>
+    <string name="recieve_details_status_label">Estatus de transferencia</string>
+    <string name="recieve_details_recieve_in_label">Recibes en tu cuenta</string>
+    <string name="recieve_details_status">%1$s</string>
+    <string name="recieve_details_account_label">Si depositas en tu cuenta recibes en:</string>
+    <string name="recieve_details_guardadito">Guardadito Digital</string>
+    <string name="recieve_details_account_number">%1$s</string>
+    <string name="recieve_details_deposit_button">DEPOSITAR EN MI CUENTA</string>
+    <string name="recieve_details_later_button">MÁS TARDE</string>
+    <string name="recieve_details_successful_amount">+ %1$s</string>
+    <string name="recieve_details_successful_label">Tu envío de dinero ya se \n encuentra en tu cuenta \n Elektra Wallet</string>
+    <string name="recieve_details_screen_title">Recibir envío de dinero</string>
+    <string name="shipment_ok">Esta operación es gratis</string>
+    <string name="receive_details_share_image_title_shipment_label">¡Envío recibido!</string>
+    <string name="receive_details_successful_button">IR AL INICIO</string>
+    <string name="receivi_details_tooltip">Es el número de control \n de envio de dinero.</string>
+    <string name="warn_message_banxico">Este vínculo se activará a más tardar dentro\nde los primeros 5 minutos siguientes de la\naceptación de la operación.</string>
+    <string name="mtcn_ready_label">¡Tu envío ya está listo!</string>
+    <string name="deposit_bank_hint_text_view">Puedes depositarlo en tu cuenta ahora mismo o cobrarlo en ventanilla cuando lo desees.</string>
+    <!--help fragment-->
+    <string name="help_appbar_title">Ayuda</string>
+    <string name="help_headline_one_label">¿Necesitas ayuda?</string>
+    <string name="help_body_two_label">Comunícate con nosotros al teléfono</string>
+    <string name="help_phone_number_label">55 7577 5547</string>
+    <string name="help_phone_schedule">Lun-Dom de 9 a 21 hrs</string>
+    <string name="help_button">LLAMAR</string>
+
+    <!--Biometrics System-->
+    <string name="biometrics_title">Autenticación Biométrica</string>
+    <string name="biometrics_subtitle">Usa el biométrico de tu teléfono</string>
+    <string name="biometrics_cancel">Cancelar</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="estados">
+        <item>@string/option_selection_hint</item>
+        <item>Aguascalientes</item>
+        <item>Baja California</item>
+        <item>Baja California Sur</item>
+        <item>Campeche</item>
+        <item>Coahuila de Zaragoza</item>
+        <item>Colima</item>
+        <item>Chiapas</item>
+        <item>Chihuahua</item>
+        <item>Ciudad de México</item>
+        <item>Durango</item>
+        <item>Guanajuato</item>
+        <item>Guerrero</item>
+        <item>Hidalgo</item>
+        <item>Jalisco</item>
+        <item>Estado de México</item>
+        <item>Michoacán</item>
+        <item>Morelos</item>
+        <item>Nayarit</item>
+        <item>Nevo León</item>
+        <item>Oaxaca</item>
+        <item>Puebla</item>
+        <item>Querétaro</item>
+        <item>Quintana Roo</item>
+        <item>San Luis Potosí</item>
+        <item>Sinaloa</item>
+        <item>Sonora</item>
+        <item>Tabasco</item>
+        <item>Tamaulipas</item>
+        <item>Tlaxcala</item>
+        <item>Veracruz</item>
+        <item>Yucatán</item>
+        <item>Zacatecas</item>
+    </string-array>
+
+    <string-array name="alcaldias">
+        <item>@string/option_selection_hint</item>
+        <item>Álvaro Obregón</item>
+        <item>Azcapotzalco</item>
+        <item>Benito Juárez</item>
+        <item>Coyoacán</item>
+        <item>Cuajimalpa</item>
+        <item>Cuauhtémoc</item>
+        <item>Gustavo A. Madero</item>
+        <item>Iztacalco</item>
+        <item>Iztapalapa</item>
+        <item>Magdalena Contreras</item>
+        <item>Miguel Hidalgo</item>
+        <item>Milpa Alta</item>
+        <item>Tláhuac</item>
+        <item>Tlalpan</item>
+        <item>Venustiano Carranza</item>
+        <item>Xochimilco</item>
+    </string-array>
+
+    <string-array name="months">
+        <item>Enero</item>
+        <item>Febrero</item>
+        <item>Marzo</item>
+        <item>Abril</item>
+        <item>Mayo</item>
+        <item>Junio</item>
+        <item>Julio</item>
+        <item>Agosto</item>
+        <item>Septiembre</item>
+        <item>Octubre</item>
+        <item>Noviembre</item>
+        <item>Diciembre</item>
+    </string-array>
+
+    <string-array name="country">
+        <item>@string/option_selection_hint</item>
+        <item>México</item>
+    </string-array>
+
+    <!--prueba para el biometric-->
+
+    <string name="prompt_info_title">Sample App Authentication</string>
+    <string name="prompt_info_subtitle">Please login to get access</string>
+    <string name="prompt_info_description">Sample App is using Android biometric authentication</string>
+    <string name="prompt_info_use_app_password">Use app password</string>
+
+    <!--alert dialogs labels-->
+    <!--no user case -->
+    <string name="no_user_alert_title_label">No existe usuario</string>
+    <string name="no_user_alert_body_label">Crea una cuenta para acceder a todos los servicios</string>
+    <string name="no_user_alert_accept_button_label">ACEPTAR</string>
+    <!--no service case-->
+    <string name="no_service_title_label">Sin servicio</string>
+    <string name="no_service_body_label">Intenta más tarde</string>
+    <string name="no_service_accept_button_label">ACEPTAR</string>
+    <!--incorrect password-->
+    <string name="incorrect_password_title_label">Contraseña incorrecta</string>
+    <string name="incorrect_password_body_label">Verificala nuevamente. Después de \n 3 intentos erróneos se bloqueará </string>
+    <string name="incorrect_password_attempt_label">INTENTO: </string>
+    <string name="incorrect_password_accept_button_label">ACEPTAR</string>
+    <!--blocked password-->
+    <string name="locked_password_title_label">Contraseña bloqueada</string>
+    <string name="locked_password_body_label">Por tu seguridad la App \n fue bloqueada</string>
+    <string name="locked_password_cancel_button_label">CANCELAR</string>
+    <string name="locked_passwprd_unlock_button_label">DESBLOQUEAR</string>
+    <!--unrecognized face-->
+    <string name="unrecognized_face_title_label">Rostro no reconocido</string>
+    <string name="unrecognized_face_body_label">Intenta nuevamente</string>
+    <string name="unrecognized_face_retry_button_label">REINTENTAR</string>
+    <string name="unrecognized_face_cancel_button_label">CANCELAR</string>
+    <!--unrecognized finger-->
+    <string name="unrecognized_finger_title_label">Huella no reconocida</string>
+    <string name="unrecognized_finger_body_label">Intenta nuevamente</string>
+    <string name="unrecognized_finger_retry_button_label">REINTENTAR</string>
+    <string name="unrecognized_finger_cancel_button_label">CANCELAR</string>
+    <!--cant deposit-->
+    <string name="cant_deposit_title_label">No se puede \n depositar el dinero</string>
+    <string name="cant_deposit_body_label">Intenta más tarde o <u>comunicate</u> \n al Center de Ayuda</string>
+    <string name="cant_deposit_accept_button_label">ACEPTAR</string>
+    <string name="account_balance_unavaliable">Información No disponible</string>
+    <!--mtcn number incorrect alert dialog-->
+    <string name="mtcn_num_incorrect_title_label">Clave de envío incorrecto.</string>
+    <string name="mtcn_num_incorrect_body_label">Verifícalo nuevamente con tu remitente.</string>
+    <string name="mtc_num_incorrect_button_label">ACEPTAR</string>
+    <!--incorrect data in mtc alert dialog-->
+    <string name="mtcn_data_incorrect_title_label">Datos Faltantes.</string>
+    <string name="mtcn_data_incorrect_body_label">Es necesario que acudas a ventanilla, en una sucursal Elektra, para recibir este envío de dinero.</string>
+    <string name="mtcN_data_incorrect_button_label">ACEPTAR</string>
+    <!--incorrect mtcn type alert dialog-->
+    <string name="mtcn_type_incorrect_title_label">Operación no realizada.</string>
+    <string name="mtcn_type_incorrect_body_label">Comunícate al Centro de Contacto para recibir ayuda: 5554478868 opción 1.</string>
+    <string name="mtcn_type_incorrect_button_label">ACEPTAR</string>
+    <!--cant deliver mtcn alert -dialog-->
+    <string name="cant_deliver_mtcn_title_label">No se pudo entregar el dinero.</string>
+    <string name="cant_deliver_mtcn_body_label">Comunícate al Centro de Contacto para recibir ayuda: 5554478868 opción 1.</string>
+    <string name="cant_deliver_mtcn_button_label">ACEPTAR</string>
+    <!--cant offer service alert dialog-->
+    <string name="cant_offer_service_title_label">No es posible brindarte el servicio.</string>
+    <string name="cant_offer_service_body_label">Por disposición gubernamental, te sugerimos acudir ante el Titular de la Unidad de Inteligencia Financiera de la Secretaria de Hacienda y Crédito Público para hacer valer tus derechos.</string>
+    <string name="cant_offer_service_button_label">ACEPTAR</string>
+
 </resources>

@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.idiandroid.elektrapagos.EKPCreateAccount.View.CreateAccountFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent" >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/elektra_red"
+            android:minHeight="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?attr/actionBarSize">
+
+                <ImageView
+                    android:id="@+id/logoAppBar"
+                    android:layout_width="@dimen/_71sdp"
+                    android:layout_height="@dimen/_26sdp"
+                    android:layout_marginEnd="@dimen/_35sdp"
+                    android:background="@drawable/ic_appbar_logo"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/sectionTitleAppbarTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_82sdp"
+                    android:layout_marginEnd="@dimen/_23sdp"
+                    android:gravity="center"
+                    android:theme="@style/appbar_title"
+                    android:text="@string/create_account_header_label"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/logoAppBar"
+                    app:layout_constraintStart_toEndOf="@+id/backAppbarButton"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/backAppbarButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:background="@drawable/ic_appbar_back_button"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <ScrollView
+            android:id="@+id/scrollId"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/_60sdp"
+            android:layout_marginStart="@dimen/_43sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:layout_constraintTop_toBottomOf="@id/appbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:clipToPadding="false">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/helloTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:text="@string/fragment_create_account_hi"
+                    android:theme="@style/title_1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/insertDataLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="@string/fragment_create_account_insert_data"
+                    android:theme="@style/subtitle_1"
+                    android:textSize="@dimen/_14sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/helloTextView" />
+
+                <TextView
+                    android:id="@+id/nameLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_41sdp"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:theme="@style/label_edit_text"
+                    android:text="@string/fragment_form_name"
+                    app:layout_constraintTop_toBottomOf="@id/insertDataLabel"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <EditText
+                    android:id="@+id/insertName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:maxLength="50"
+                    android:hint="@string/required_field_hint"
+                    android:inputType="textCapSentences"
+                    android:theme="@style/hint_edit_text"
+                    android:background="@drawable/rounded_rectangle_gray"
+                    android:padding="@dimen/_10sdp"
+                    android:imeOptions="actionNext"
+                    app:layout_constraintTop_toBottomOf="@id/nameLabel"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/invalidNameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:theme="@style/hint_edit_text"
+                    android:visibility="invisible"
+                    android:text="@string/invalid_data"
+                    android:textColor="@color/elektra_red"
+                    app:layout_constraintTop_toBottomOf="@id/insertName"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/paternalLastNameLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_22sdp"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:theme="@style/label_edit_text"
+                    android:text="@string/fragment_form_paternal_last_name"
+                    app:layout_constraintTop_toBottomOf="@id/insertName"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <EditText
+                    android:id="@+id/paternalLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:background="@drawable/rounded_rectangle_gray"
+                    android:maxLength="50"
+                    android:hint="@string/required_field_hint"
+                    android:inputType="textCapSentences"
+                    android:padding="@dimen/_10sdp"
+                    android:theme="@style/hint_edit_text"
+                    android:imeOptions="actionNext"
+                    app:layout_constraintTop_toBottomOf="@id/paternalLastNameLabel"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/invalidPaternalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:theme="@style/hint_edit_text"
+                    android:visibility="invisible"
+                    android:text="@string/invalid_data"
+                    android:textColor="@color/elektra_red"
+                    app:layout_constraintTop_toBottomOf="@id/paternalLastName"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/maternalLastNameLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_22sdp"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:theme="@style/label_edit_text"
+                    android:text="@string/fragment_form_maternal_last_name"
+                    app:layout_constraintTop_toBottomOf="@id/paternalLastName"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <EditText
+                    android:id="@+id/maternalLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:background="@drawable/rounded_rectangle_gray"
+                    android:maxLength="50"
+                    android:theme="@style/hint_edit_text"
+                    android:hint="@string/optional_field_hint"
+                    android:inputType="textCapSentences"
+                    android:padding="@dimen/_10sdp"
+                    android:imeOptions="actionNext"
+                    app:layout_constraintTop_toBottomOf="@id/maternalLastNameLabel"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/invalidMaternalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:theme="@style/hint_edit_text"
+                    android:visibility="invisible"
+                    android:text="@string/invalid_data"
+                    android:textColor="@color/elektra_red"
+                    app:layout_constraintTop_toBottomOf="@id/maternalLastName"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/dateBirthLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_22sdp"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:theme="@style/label_edit_text"
+                    android:text="@string/fragment_form_birth_date"
+                    app:layout_constraintTop_toBottomOf="@id/maternalLastName"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <EditText
+                    android:id="@+id/dateBirth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@drawable/rounded_rectangle_gray"
+                    android:theme="@style/hint_edit_text"
+                    android:hint="@string/fragment_form_birth_date_hint"
+                    android:imeOptions="actionNext"
+                    android:nextFocusDown="@id/birthSiteSpinner"
+                    android:inputType="date"
+                    android:padding="@dimen/_10sdp"
+                    android:maxLength="10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/dateBirthLabel" />
+
+                <ImageButton
+                    android:id="@+id/setDateButton"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:background="@drawable/ic_calendar_button"
+                    app:layout_constraintTop_toTopOf="@+id/dateBirth"
+                    app:layout_constraintBottom_toBottomOf="@+id/dateBirth"
+                    app:layout_constraintEnd_toEndOf="@+id/dateBirth"/>
+
+                <TextView
+                    android:id="@+id/invalidDateText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:theme="@style/hint_edit_text"
+                    android:visibility="invisible"
+                    android:text="@string/invalid_data"
+                    android:textColor="@color/elektra_red"
+                    app:layout_constraintTop_toBottomOf="@id/dateBirth"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/birthSiteLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_22sdp"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:theme="@style/label_edit_text"
+                    android:text="@string/fragment_form_birth_site"
+                    app:layout_constraintTop_toBottomOf="@id/dateBirth"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <Spinner
+                    android:id="@+id/birthSiteSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:padding="@dimen/_10sdp"
+                    android:entries="@array/estados"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:background="@drawable/rounded_rectangle_gray"
+                    android:theme="@style/hint_edit_text"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintTop_toBottomOf="@id/birthSiteLabel"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/arrowSpinner"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/ic_arrow_spinner"
+                    app:layout_constraintEnd_toEndOf="@id/birthSiteSpinner"
+                    app:layout_constraintTop_toTopOf="@id/birthSiteSpinner"
+                    app:layout_constraintBottom_toBottomOf="@id/birthSiteSpinner"/>
+
+                <TextView
+                    android:id="@+id/genderLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_22sdp"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:theme="@style/label_edit_text"
+                    android:text="@string/fragment_form_gender"
+                    app:layout_constraintTop_toBottomOf="@id/birthSiteSpinner"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <LinearLayout
+                    android:id="@+id/formGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    app:layout_constraintTop_toBottomOf="@id/genderLabel"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+                    <RadioButton
+                        android:id="@+id/womanGenderRadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fragment_form_gender_woman"
+                        android:theme="@style/hint_edit_text"
+                        android:buttonTint="@color/elektra_red"/>
+                    <Space
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="wrap_content"/>
+
+                    <RadioButton
+                        android:id="@+id/manGenderRadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fragment_form_gender_man"
+                        android:theme="@style/hint_edit_text"
+                        android:buttonTint="@color/elektra_red"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/phoneNumberLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:layout_marginTop="@dimen/_22sdp"
+                    android:text="@string/fragment_create_account_phone_number"
+                    android:theme="@style/label_edit_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/formGender" />
+
+                <EditText
+                    android:id="@+id/phoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:padding="@dimen/_10sdp"
+                    android:background="@drawable/rounded_rectangle_gray"
+                    android:hint="@string/fragment_create_account_phone_hint"
+                    android:inputType="phone"
+                    android:theme="@style/hint_edit_text"
+                    android:imeOptions="actionNext"
+                    android:maxLength="10"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/phoneNumberLabel" />
+
+                <TextView
+                    android:id="@+id/invalidPhoneText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:theme="@style/hint_edit_text"
+                    android:visibility="invisible"
+                    android:text="@string/invalid_data"
+                    android:textColor="@color/elektra_red"
+                    app:layout_constraintTop_toBottomOf="@id/phoneNumber"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/eMailLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="@string/fragment_create_account_email"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:layout_marginTop="@dimen/_22sdp"
+                    android:theme="@style/label_edit_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/phoneNumber"/>
+
+                <EditText
+                    android:id="@+id/eMail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@drawable/rounded_rectangle_gray"
+                    android:hint="@string/fragment_create_account_email_hint"
+                    android:inputType="textEmailAddress"
+                    android:imeOptions="actionNext"
+                    android:padding="@dimen/_10sdp"
+                    android:theme="@style/hint_edit_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/eMailLabel" />
+
+                <TextView
+                    android:id="@+id/invalidEmailText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:theme="@style/hint_edit_text"
+                    android:visibility="invisible"
+                    android:text="@string/invalid_data"
+                    android:textColor="@color/elektra_red"
+                    app:layout_constraintTop_toBottomOf="@id/eMail"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/emailConfirmationLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fragment_create_account_email_confirmation"
+                    android:theme="@style/label_edit_text"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:layout_marginTop="@dimen/_23sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/eMail"/>
+
+                <EditText
+                    android:id="@+id/emailConfirmation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@drawable/rounded_rectangle_gray"
+                    android:hint="@string/fragment_create_account_email_hint"
+                    android:imeOptions="actionDone"
+                    android:inputType="textEmailAddress"
+                    android:padding="@dimen/_10sdp"
+                    android:theme="@style/hint_edit_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/emailConfirmationLabel" />
+
+                <TextView
+                    android:id="@+id/invalidEmailConfirmationText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:theme="@style/hint_edit_text"
+                    android:visibility="invisible"
+                    android:text="@string/email_not_matches"
+                    android:textColor="@color/elektra_red"
+                    app:layout_constraintTop_toBottomOf="@id/emailConfirmation"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:layout_marginTop="@dimen/_54sdp"
+                    android:background="@drawable/enable_disable_red"
+                    android:text="@string/continue_button"
+                    android:theme="@style/bottom_button"
+                    android:layout_alignParentBottom="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/emailConfirmation"/>
+
+                <TextView
+                    android:id="@+id/avisoBanco"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_31sdp"
+                    android:layout_marginTop="@dimen/_57sdp"
+                    android:layout_marginBottom="@dimen/_57sdp"
+                    android:gravity="center"
+                    android:text="@string/fragment_create_account_warning"
+                    android:theme="@style/note_1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/button"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

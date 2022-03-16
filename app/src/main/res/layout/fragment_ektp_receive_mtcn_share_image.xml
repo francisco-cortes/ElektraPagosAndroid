@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ektpreceivemoney.view.EKTPReceiveMTCNShareImageFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:id="@+id/detailsCardViewToShare"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:scrollbarThumbVertical="@null"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/detailsHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"
+                    android:background="@color/elektra_red"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_61sdp"
+                    android:layout_marginTop="@dimen/_36sdp"
+                    android:background="@drawable/ektp_logo_details"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/detailsHeader" />
+
+                <ImageView
+                    android:id="@+id/succesChebron"
+                    android:layout_width="@dimen/_89sdp"
+                    android:layout_height="@dimen/_89sdp"
+                    android:layout_marginBottom="-44dp"
+                    android:background="@drawable/ic_sheared_details_ok_image"
+                    app:layout_constraintBottom_toBottomOf="@id/detailsHeader"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/labelShipmentOk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_40sdp"
+                    android:gravity="center"
+                    android:text="@string/receive_details_share_image_title_shipment_label"
+                    android:theme="@style/subtitle_5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/succesChebron" />
+
+                <TextView
+                    android:id="@+id/amDetailPesosSignCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/super_pesos_sign"
+                    android:theme="@style/title_5"
+                    app:layout_constraintEnd_toStartOf="@id/amDetailCardView"
+                    app:layout_constraintTop_toTopOf="@id/amDetailCardView" />
+
+                <TextView
+                    android:id="@+id/amDetailCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:gravity="center"
+                    android:text="500."
+                    android:theme="@style/header_3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/labelShipmentOk" />
+
+                <TextView
+                    android:id="@+id/amDetailCentsCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/super_index_cents"
+                    android:gravity="top"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:theme="@style/title_5"
+                    app:layout_constraintStart_toEndOf="@id/amDetailCardView"
+                    app:layout_constraintTop_toTopOf="@id/amDetailCardView" />
+
+                <TextView
+                    android:id="@+id/tiDetailCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:gravity="center"
+                    android:text="Esta operación es gratis"
+                    android:theme="@style/subtitle_1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/amDetailCardView" />
+
+                <TextView
+                    android:id="@+id/daDetailCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:gravity="center"
+                    android:text="15/feb/2022"
+                    android:theme="@style/subtitle_1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tiDetailCardView" />
+
+                <TextView
+                    android:id="@+id/acLabelDetailCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:gravity="start"
+                    android:text="@string/movements_details_outgoing_account"
+                    android:textColor="@color/elektra_gray"
+                    android:theme="@style/appbar_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/daDetailCardView" />
+
+                <TextView
+                    android:id="@+id/ouDetailCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_50sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:gravity="start"
+                    android:text="Diego Vázquez Pérez"
+                    android:theme="@style/subtitle_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/acLabelDetailCardView" />
+
+                <TextView
+                    android:id="@+id/reLabelDetailCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:gravity="start"
+                    android:text="@string/movements_details_reciever_account"
+                    android:textColor="@color/elektra_gray"
+                    android:theme="@style/appbar_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ouDetailCardView" />
+
+                <TextView
+                    android:id="@+id/naDetailCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_50sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:gravity="start"
+                    android:text="Western Union - N12345678RS"
+                    android:theme="@style/subtitle_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/reLabelDetailCardView" />
+
+                <TextView
+                    android:id="@+id/coLabelDetailCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:gravity="start"
+                    android:text="@string/movements_details_concept"
+                    android:textColor="@color/elektra_gray"
+                    android:theme="@style/appbar_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/naDetailCardView" />
+
+                <TextView
+                    android:id="@+id/coDetailCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_50sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:gravity="start"
+                    android:text="Envío de dinero"
+                    android:theme="@style/subtitle_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/coLabelDetailCardView" />
+
+                <TextView
+                    android:id="@+id/foLabelDetailCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:gravity="start"
+                    android:text="@string/movements_details_folio"
+                    android:textColor="@color/elektra_gray"
+                    android:theme="@style/appbar_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/coDetailCardView" />
+
+                <TextView
+                    android:id="@+id/foDetailCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_50sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:gravity="start"
+                    android:text="19283764"
+                    android:theme="@style/subtitle_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/foLabelDetailCardView" />
+
+                <TextView
+                    android:id="@+id/stLabelDetailCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:gravity="start"
+                    android:text="Cuenta Destino"
+                    android:textColor="@color/elektra_gray"
+                    android:theme="@style/appbar_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/foDetailCardView" />
+
+                <TextView
+                    android:id="@+id/stDetailCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_50sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:gravity="start"
+                    android:text="****2456"
+                    android:theme="@style/subtitle_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/stLabelDetailCardView" />
+
+                <Button
+                    android:id="@+id/shareThisButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_45sdp"
+                    android:layout_marginStart="@dimen/_43sdp"
+                    android:layout_marginEnd="@dimen/_43sdp"
+                    android:text="@string/share_details_button"
+                    android:theme="@style/bottom_button"
+                    android:background="@drawable/enable_disable_red"
+                    app:layout_constraintTop_toBottomOf="@+id/stDetailCardView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
