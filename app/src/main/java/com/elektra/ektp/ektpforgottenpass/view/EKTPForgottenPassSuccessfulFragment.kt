@@ -11,8 +11,10 @@ import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpForgottenPassSuccessfulBinding
+import com.elektra.ektp.ektphome.view.EKTPHomeActivity
 import com.elektra.ektp.ektplogin.view.EKTPLoginActivity
 import com.elektra.ektp.ektplogin.view.EKTPLoginPassLoginFragment
+import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
 
 class EKTPForgottenPassSuccessfulFragment : Fragment() {
 
@@ -40,7 +42,10 @@ class EKTPForgottenPassSuccessfulFragment : Fragment() {
 
         //The account has been created successfully, user can return to home
         binding.buttonSuccessful.setOnClickListener { view: View ->
-            activity?.finish()
+            preferences.saveBioLogin(false)
+            activity?.finishAffinity()
+            val intent = Intent(activity as Context, EKTPLoginActivity::class.java)
+            startActivity(intent)
         }
         //---
 

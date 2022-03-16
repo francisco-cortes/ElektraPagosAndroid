@@ -19,6 +19,7 @@ class EKTPReceiveMTCNDetailsFragment : Fragment() {
 
     private lateinit var acceptButton: Button
     private lateinit var cantDespositAlertLayout: View
+    private var mtcnString = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +35,8 @@ class EKTPReceiveMTCNDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        val bundle = this.arguments
+        mtcnString = bundle?.getString("mtcnString").toString()
         binding =  DataBindingUtil.inflate<FragmentEktpReceiveMtcnDetailsBinding>(inflater,R.layout.fragment_ektp_receive_mtcn_details, container, false)
         cantDespositAlertLayout = layoutInflater.inflate(R.layout.cant_deposit_alert_layout,null)
         var cantDepositAlertDialog: AlertDialog? = null
@@ -48,16 +51,17 @@ class EKTPReceiveMTCNDetailsFragment : Fragment() {
         }
         //layout widgets
         with(binding){
+
+            partnerMTCNTextView.text = mtcnString
             backAppbarButton.setOnClickListener {
                 view?.findNavController()?.navigate(R.id.action_EKTPReceiveMTCNDetailsFragment_to_EKTPReceiveMoneyMTCNFragment2)
             }
 
             depositToButton.setOnClickListener {
-                val displayCase = (0..1).random()//50% probabilities to make appear the case when there are no service
-                if (displayCase== 0){
+                if ((0..1).random() == 2){//50% probabilities to make appear the case when there are no service
                     cantDepositAlertDialog.show()
                 }else{
-                    view?.findNavController()?.navigate(R.id.action_EKTPReceiveMTCNDetailsFragment_to_receiveMTCNAcountSuccesFragment)//navigate to the next fragment
+                    view?.findNavController()?.navigate(R.id.action_EKTPReceiveMTCNDetailsFragment_to_receiveMTCNAcountSuccesFragment, bundle)//navigate to the next fragment
                 }
             }
 

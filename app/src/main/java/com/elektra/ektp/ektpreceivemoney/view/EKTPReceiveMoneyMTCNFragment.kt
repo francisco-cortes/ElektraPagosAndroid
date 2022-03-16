@@ -26,10 +26,17 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
     private lateinit var mtcnDataIncorrectLayout: View
     private lateinit var mtcnNumIncorrectLayout: View
     private lateinit var mtcnTypeIncorrectLayout: View
+    private lateinit var cantDeliverMtcnLayout: View
+    private lateinit var cantOfferServiceLayout: View
 
+    private lateinit var cantDeliverMtcnAcceptButton: Button
+    private lateinit var cantOfferServiceAcceptButton: Button
     private lateinit var mtcnDataIncorrectAcceptButton: Button
     private lateinit var mtcnNumIncorrectAcceptButton: Button
     private lateinit var mtcnTypeIncorrectAcceptButton: Button
+
+    private var bundle = Bundle()
+    private var mtcnString = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,14 +59,20 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
         mtcnDataIncorrectLayout = layoutInflater.inflate(R.layout.mtcn_data_incorrect_alert_layout,null)
         mtcnNumIncorrectLayout = layoutInflater.inflate(R.layout.mtcn_num_incorrect_alert_layout,null)
         mtcnTypeIncorrectLayout = layoutInflater.inflate(R.layout.mtcn_type_incorrect_alert_layout,null)
+        cantDeliverMtcnLayout = layoutInflater.inflate(R.layout.cant_deliver_mtcn_alert_layout,null)
+        cantOfferServiceLayout = layoutInflater.inflate(R.layout.cant_offer_service_alert_layout,null)
 
         mtcnDataIncorrectAcceptButton = mtcnDataIncorrectLayout.findViewById(R.id.acceptButton)
         mtcnNumIncorrectAcceptButton = mtcnNumIncorrectLayout.findViewById(R.id.acceptButton)
         mtcnTypeIncorrectAcceptButton = mtcnTypeIncorrectLayout.findViewById(R.id.acceptButton)
+        cantDeliverMtcnAcceptButton = cantDeliverMtcnLayout.findViewById(R.id.acceptButton)
+        cantOfferServiceAcceptButton = cantOfferServiceLayout.findViewById(R.id.acceptButton)
 
         val mtcnDataIncorrectAlert = alertDialogOpener(mtcnDataIncorrectLayout,requireContext())
         val mtcnTypeIncorrectAlert = alertDialogOpener(mtcnTypeIncorrectLayout,requireContext())
         val mtcnNumIncorrectAlert = alertDialogOpener(mtcnNumIncorrectLayout,requireContext())
+        val cantDaliverMtcnAlertDialog = alertDialogOpener(cantDeliverMtcnLayout,requireContext())
+        val cantOfferServiceAlertDialog = alertDialogOpener(cantOfferServiceLayout,requireContext())
 
         mtcnDataIncorrectAcceptButton.setOnClickListener {
             mtcnDataIncorrectAlert.dismiss()
@@ -71,15 +84,23 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
             mtcnTypeIncorrectAlert.dismiss()
         }
 
+        cantDeliverMtcnAcceptButton.setOnClickListener {
+            cantDaliverMtcnAlertDialog.dismiss()
+        }
+
+        cantOfferServiceAcceptButton.setOnClickListener {
+            cantOfferServiceAlertDialog.dismiss()
+        }
+
         with(binding){
             mtcnEntryEditText.addTextChangedListener(object: TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    val enableCheck = checkMTCNKey(s.toString()) //check if input text
+                    mtcnString = s.toString()
 
-                    when(enableCheck){
+                    when(checkMTCNKey(mtcnString)){
                         true -> {
                             binding.mtcnOk.isVisible = true
                             binding.consultButton.isEnabled = false
@@ -98,7 +119,8 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
             backAppbarButton.setOnClickListener { view: View ->
                 activity?.finish()
             }
-            mtcnHintPopUpButton.setOnClickListener { view: View ->
+
+            receiveInsertMTCNTextView.setOnClickListener { view: View ->
                 //change the status of hint tooltip
                 if (toolTipShow){
                     toolTipShow=false
@@ -113,11 +135,14 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
                 //----
             }
             consultButton.setOnClickListener { view:View ->
-                when((0..3).random()){
-                    0 -> mtcnDataIncorrectAlert.show()
-                    1 -> mtcnNumIncorrectAlert.show()
-                    2 -> mtcnTypeIncorrectAlert.show()
-                    3 -> view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNDetailsFragment)
+                bundle.putString("mtcnString", mtcnString)
+                when(mtcnString){
+                    "N291341385" -> mtcnDataIncorrectAlert.show()
+                    "R57457734549" -> mtcnNumIncorrectAlert.show()
+                    "A554011492295" -> mtcnTypeIncorrectAlert.show()
+                    "X4591787456436" -> cantDaliverMtcnAlertDialog.show()
+                    "E52455434563" -> cantOfferServiceAlertDialog.show()
+                    else -> view.findNavController().navigate(R.id.action_EKTPReceiveMoneyMTCNFragment_to_EKTPReceiveMTCNDetailsFragment, bundle)
                 }
             }
             backAppbarButton.setOnClickListener {

@@ -45,44 +45,80 @@ class EKTPDetailsToShareFragment : Fragment() {
 
         val bundle = this.arguments
         //Data recovery from intent extras
-        val moveName = bundle?.getString("detailName").toString()
-        val moveDate = bundle?.getString("detailDate").toString()
-        val moveTitle = bundle?.getString("detailTitle").toString()
-        val moveConcept = bundle?.getString("detailConcept").toString()
         val moveAmount = bundle?.getString("detailAmount").toString()
-        val moveStatus = bundle?.getString("detailStatus").toString()
-        val moveFolio = bundle?.getString("detailFolio").toString()
+        val moveTitle = bundle?.getString("detailTitle").toString()
+        val moveDate = bundle?.getString("detailDate").toString()
         val moveAccount = bundle?.getString("detailAccount").toString()
+        val moveReceivedName = bundle?.getString("detailReceivedName").toString()
+        val moveConcept = bundle?.getString("detailConcept").toString()
+        val moveFolio = bundle?.getString("detailFolio").toString()
+        val moveStatus = bundle?.getString("detailStatus").toString()
         val moveMTCN = bundle?.getString("detailMTCN").toString()
+        val moveOperationType = bundle?.getString("detailOperationType").toString()
+        val moveWithdrewName = bundle?.getString("detailWithdrewName").toString()
         val moveCents = bundle?.getString("detailCents").toString()
+
         val dataList = EKTPMovementsModel(
             moveAmount,
             moveTitle,
             moveDate,
             moveAccount,
-            moveName,
+            moveReceivedName,
             moveConcept,
             moveFolio,
             moveStatus,
-            moveMTCN
+            moveMTCN,
+            false,
+            moveOperationType,
+            moveWithdrewName
         )
         //---
 
-        binding.movementsDetailsItem = dataList
-        binding.amDetailCentsCardView.text = moveCents
+        with(binding){
+            cashWithDrawalLinearLayout.isGone = moveTitle != "Retiro de efectivo"
+            payOrderLinearLayout.isGone = moveTitle != "Orden de Pago"
+            receiveDepositLinearLayout.isGone = moveTitle != "Recepción de depósito"
 
-        binding.shareThisButton.setOnClickListener{
-            view: View ->
-            //Toast message indicates to user that details will be shared
-            Toast.makeText(this.context, "Compartiendo detalles de movimiento", Toast.LENGTH_SHORT)
-                .show()
-            binding.shareThisButton.isGone = true
-            //Get value screenshot from details to share
-            val bitMap = getScreenShot(binding.detailsCardViewToShare)
-            //Invocation intent to share screenshot
-            shareImage(bitMap)
-            binding.shareThisButton.isGone = false
+            movementsDetailsItem = dataList
+            amDetailCentsCardView.text = moveCents
+
+            shareThisButton.setOnClickListener{
+                //Toast message indicates to user that details will be shared
+                Toast.makeText(activity as Context, "Compartiendo detalles de movimiento", Toast.LENGTH_SHORT)
+                    .show()
+                shareThisButton.isGone = true
+                //Get value screenshot from details to share
+                val bitMap = getScreenShot(detailsCardViewToShare)
+                //Invocation intent to share screenshot
+                shareImage(bitMap)
+                shareThisButton.isGone = false
+            }
+
+            shareThisButton2.setOnClickListener{
+                //Toast message indicates to user that details will be shared
+                Toast.makeText(activity as Context, "Compartiendo detalles de movimiento", Toast.LENGTH_SHORT)
+                    .show()
+                shareThisButton2.isGone = true
+                //Get value screenshot from details to share
+                val bitMap = getScreenShot(detailsCardViewToShare)
+                //Invocation intent to share screenshot
+                shareImage(bitMap)
+                shareThisButton2.isGone = false
+            }
+
+            shareThisButton3.setOnClickListener{
+                //Toast message indicates to user that details will be shared
+                Toast.makeText(activity as Context, "Compartiendo detalles de movimiento", Toast.LENGTH_SHORT)
+                    .show()
+                shareThisButton3.isGone = true
+                //Get value screenshot from details to share
+                val bitMap = getScreenShot(detailsCardViewToShare)
+                //Invocation intent to share screenshot
+                shareImage(bitMap)
+                shareThisButton3.isGone = false
+            }
         }
+
 
         return binding.root
     }

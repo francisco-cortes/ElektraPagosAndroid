@@ -101,7 +101,7 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
 
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                 super.onAuthenticationSucceeded(result)//execute if pass the auth
-                        if ((0..1).random() == 0){//50% probabilities to make appear the case when there are no service
+                        if ((0..1).random() == 2){//50% probabilities to make appear the case when there are no service //changed 0 for 2
                             noServiceAlertDialog.show()
                         }else{
                             openActivity(EKTPHomeActivity())

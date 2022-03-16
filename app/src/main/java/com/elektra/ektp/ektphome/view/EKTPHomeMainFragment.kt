@@ -32,7 +32,7 @@ class EKTPHomeMainFragment : Fragment() {
 
         //layout controls
         with(binding){
-            if (displayCase == 0){// set for the home case
+            if (displayCase == 2){// set for the home case //CHANGED 0 FOR 2
                 bankAccountBalanceTextView.text = getString(R.string.account_balance_unavaliable)
                 bankAccountBalanceTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 10F)
             }

@@ -106,8 +106,7 @@
                     app:cardBackgroundColor="@color/elektra_white_gray"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/movementsDetailsTextView"
-                    >
+                    app:layout_constraintTop_toBottomOf="@id/movementsDetailsTextView">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -135,19 +134,6 @@
                             android:theme="@style/title_2"
                             app:layout_constraintStart_toEndOf="@id/amountDetailCardView"
                             app:layout_constraintTop_toTopOf="@id/amountDetailCardView" />
-
-                        <ImageButton
-                            android:id="@+id/shareButtonDetailsCardView"
-                            android:layout_width="@dimen/_14sdp"
-                            android:layout_height="@dimen/_19sdp"
-                            android:layout_marginTop="@dimen/_20sdp"
-                            android:layout_marginEnd="@dimen/_21sdp"
-                            android:background="@drawable/ic_share_icon"
-                            android:maxWidth="@dimen/_50sdp"
-                            android:maxHeight="@dimen/_50sdp"
-                            android:padding="@dimen/_30sdp"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent" />
 
                         <TextView
                             android:id="@+id/titleDetailCardView"
@@ -181,145 +167,405 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/dateDetailCardView"/>
 
-                        <TextView
-                            android:id="@+id/accountLabelDetailCardView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_25sdp"
-                            android:layout_marginTop="@dimen/_24sdp"
-                            android:gravity="start"
-                            android:text="@string/movements_details_outgoing_account"
-                            android:theme="@style/appbar_title"
-                            android:textColor="@color/elektra_gray"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/divisorLine" />
+                        <LinearLayout
+                            android:id="@+id/payOrderLinearLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@id/divisorLine">
 
-                        <TextView
-                            android:id="@+id/outgoingAccountDetailCardView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_25sdp"
-                            android:layout_marginEnd="@dimen/_25sdp"
-                            android:layout_marginTop="@dimen/_8sdp"
-                            android:gravity="start"
-                            android:text="@{movementsDetailsItem.detailName}"
-                            android:theme="@style/subtitle_2"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/accountLabelDetailCardView" />
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
 
-                        <TextView
-                            android:id="@+id/recieverLabelDetailCardView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_25sdp"
-                            android:layout_marginEnd="@dimen/_25sdp"
-                            android:layout_marginTop="@dimen/_16sdp"
-                            android:gravity="start"
-                            android:text="@string/movements_details_reciever_account"
-                            android:theme="@style/appbar_title"
-                            android:textColor="@color/elektra_gray"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/outgoingAccountDetailCardView" />
+                                <TextView
+                                    android:id="@+id/receivedNameLabelDetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_24sdp"
+                                    android:gravity="start"
+                                    android:text="@string/movements_details_outgoing_account"
+                                    android:theme="@style/appbar_title"
+                                    android:textColor="@color/elektra_gray"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/nameAccountDetailCardView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_25sdp"
-                            android:layout_marginEnd="@dimen/_25sdp"
-                            android:layout_marginTop="@dimen/_8sdp"
-                            android:gravity="start"
-                            android:text="@{movementsDetailsItem.detailMTCN}"
-                            android:theme="@style/subtitle_2"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/recieverLabelDetailCardView"/>
+                                <TextView
+                                    android:id="@+id/receivedNameDetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_8sdp"
+                                    android:gravity="start"
+                                    android:text="@{movementsDetailsItem.detailReceivedName}"
+                                    android:theme="@style/subtitle_2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/receivedNameLabelDetailCardView" />
 
-                        <TextView
-                            android:id="@+id/conceptLabelDetailCardView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_25sdp"
-                            android:layout_marginEnd="@dimen/_25sdp"
-                            android:layout_marginTop="@dimen/_16sdp"
-                            android:gravity="start"
-                            android:text="@string/movements_details_concept"
-                            android:theme="@style/appbar_title"
-                            android:textColor="@color/elektra_gray"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/nameAccountDetailCardView"/>
+                                <TextView
+                                    android:id="@+id/mtcnLabelDetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_16sdp"
+                                    android:gravity="start"
+                                    android:text="@string/movements_details_reciever_account"
+                                    android:theme="@style/appbar_title"
+                                    android:textColor="@color/elektra_gray"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/receivedNameDetailCardView" />
 
-                        <TextView
-                            android:id="@+id/conceptDetailCardView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_25sdp"
-                            android:layout_marginEnd="@dimen/_25sdp"
-                            android:layout_marginTop="@dimen/_8sdp"
-                            android:gravity="start"
-                            android:text="@{movementsDetailsItem.detailConcept}"
-                            android:theme="@style/subtitle_2"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/conceptLabelDetailCardView"/>
+                                <TextView
+                                    android:id="@+id/mtcnDetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_8sdp"
+                                    android:gravity="start"
+                                    android:text="@{movementsDetailsItem.detailMTCN}"
+                                    android:theme="@style/subtitle_2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/mtcnLabelDetailCardView"/>
 
-                        <TextView
-                            android:id="@+id/folioLabelDetailCardView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_25sdp"
-                            android:layout_marginEnd="@dimen/_25sdp"
-                            android:layout_marginTop="@dimen/_16sdp"
-                            android:gravity="start"
-                            android:text="@string/movements_details_folio"
-                            android:theme="@style/appbar_title"
-                            android:textColor="@color/elektra_gray"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/conceptDetailCardView"/>
+                                <TextView
+                                    android:id="@+id/conceptLabelDetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_16sdp"
+                                    android:gravity="start"
+                                    android:text="@string/movements_details_concept"
+                                    android:theme="@style/appbar_title"
+                                    android:textColor="@color/elektra_gray"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/mtcnDetailCardView"/>
 
-                        <TextView
-                            android:id="@+id/folioDetailCardView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_25sdp"
-                            android:layout_marginEnd="@dimen/_25sdp"
-                            android:layout_marginTop="@dimen/_8sdp"
-                            android:gravity="start"
-                            android:text="@{movementsDetailsItem.detailFolio}"
-                            android:theme="@style/subtitle_2"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/folioLabelDetailCardView"/>
+                                <TextView
+                                    android:id="@+id/conceptDetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_8sdp"
+                                    android:gravity="start"
+                                    android:text="@{movementsDetailsItem.detailConcept}"
+                                    android:theme="@style/subtitle_2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/conceptLabelDetailCardView"/>
 
-                        <TextView
-                            android:id="@+id/statusLabelDetailCardView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_25sdp"
-                            android:layout_marginEnd="@dimen/_25sdp"
-                            android:layout_marginTop="@dimen/_16sdp"
-                            android:gravity="start"
-                            android:text="@string/movements_details_status"
-                            android:theme="@style/appbar_title"
-                            android:textColor="@color/elektra_gray"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/folioDetailCardView"/>
+                                <TextView
+                                    android:id="@+id/folioLabelDetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_16sdp"
+                                    android:gravity="start"
+                                    android:text="@string/movements_details_folio"
+                                    android:theme="@style/appbar_title"
+                                    android:textColor="@color/elektra_gray"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/conceptDetailCardView"/>
 
-                        <TextView
-                            android:id="@+id/statusDetailCardView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_25sdp"
-                            android:layout_marginEnd="@dimen/_25sdp"
-                            android:layout_marginTop="@dimen/_8sdp"
-                            android:layout_marginBottom="@dimen/_24sdp"
-                            android:gravity="start"
-                            android:text="@{movementsDetailsItem.detailAccount}"
-                            android:theme="@style/subtitle_2"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/statusLabelDetailCardView"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                                <TextView
+                                    android:id="@+id/folioDetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_8sdp"
+                                    android:gravity="start"
+                                    android:text="@{movementsDetailsItem.detailFolio}"
+                                    android:theme="@style/subtitle_2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/folioLabelDetailCardView"/>
 
+                                <TextView
+                                    android:id="@+id/statusLabelDetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_16sdp"
+                                    android:gravity="start"
+                                    android:text="@string/movements_details_status"
+                                    android:theme="@style/appbar_title"
+                                    android:textColor="@color/elektra_gray"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/folioDetailCardView"/>
+
+                                <TextView
+                                    android:id="@+id/statusDetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_8sdp"
+                                    android:layout_marginBottom="@dimen/_24sdp"
+                                    android:gravity="start"
+                                    android:text="@{movementsDetailsItem.detailStatus}"
+                                    android:theme="@style/subtitle_2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/statusLabelDetailCardView"
+                                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/receiveDepositLinearLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@id/divisorLine">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/withdrewNameLabelDetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_24sdp"
+                                    android:gravity="start"
+                                    android:text="@string/movements_details_outgoing_account"
+                                    android:theme="@style/appbar_title"
+                                    android:textColor="@color/elektra_gray"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/withdrewNameDetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_8sdp"
+                                    android:gravity="start"
+                                    android:text="@{movementsDetailsItem.detailWithdrewName}"
+                                    android:theme="@style/subtitle_2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/withdrewNameLabelDetailCardView" />
+
+                                <TextView
+                                    android:id="@+id/operationTypeLabelDetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_16sdp"
+                                    android:gravity="start"
+                                    android:text="@string/movements_details_operation_type"
+                                    android:theme="@style/appbar_title"
+                                    android:textColor="@color/elektra_gray"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/withdrewNameDetailCardView"/>
+
+                                <TextView
+                                    android:id="@+id/operationTypeDetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_8sdp"
+                                    android:gravity="start"
+                                    android:text="@{movementsDetailsItem.detailOperationType}"
+                                    android:theme="@style/subtitle_2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/operationTypeLabelDetailCardView"/>
+
+                                <TextView
+                                    android:id="@+id/folioLabel2DetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_16sdp"
+                                    android:gravity="start"
+                                    android:text="@string/movements_details_folio"
+                                    android:theme="@style/appbar_title"
+                                    android:textColor="@color/elektra_gray"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/operationTypeDetailCardView"/>
+
+                                <TextView
+                                    android:id="@+id/folioDetail2CardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_8sdp"
+                                    android:gravity="start"
+                                    android:text="@{movementsDetailsItem.detailFolio}"
+                                    android:theme="@style/subtitle_2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/folioLabel2DetailCardView"/>
+
+                                <TextView
+                                    android:id="@+id/statusLabel2DetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_16sdp"
+                                    android:gravity="start"
+                                    android:text="@string/movements_details_status"
+                                    android:theme="@style/appbar_title"
+                                    android:textColor="@color/elektra_gray"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/folioDetail2CardView"/>
+
+                                <TextView
+                                    android:id="@+id/statusDetail2CardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_8sdp"
+                                    android:layout_marginBottom="@dimen/_24sdp"
+                                    android:gravity="start"
+                                    android:text="@{movementsDetailsItem.detailStatus}"
+                                    android:theme="@style/subtitle_2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/statusLabel2DetailCardView"
+                                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/cashWithDrawalLinearLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@id/divisorLine">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/operationType3LabelDetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_16sdp"
+                                    android:gravity="start"
+                                    android:text="@string/movements_details_operation_type"
+                                    android:theme="@style/appbar_title"
+                                    android:textColor="@color/elektra_gray"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"/>
+
+                                <TextView
+                                    android:id="@+id/operationType3DetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_8sdp"
+                                    android:gravity="start"
+                                    android:text="@{movementsDetailsItem.detailOperationType}"
+                                    android:theme="@style/subtitle_2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/operationType3LabelDetailCardView"/>
+
+                                <TextView
+                                    android:id="@+id/folioLabel3DetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_16sdp"
+                                    android:gravity="start"
+                                    android:text="@string/movements_details_folio"
+                                    android:theme="@style/appbar_title"
+                                    android:textColor="@color/elektra_gray"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/operationType3DetailCardView"/>
+
+                                <TextView
+                                    android:id="@+id/folio3DetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_8sdp"
+                                    android:gravity="start"
+                                    android:text="@{movementsDetailsItem.detailFolio}"
+                                    android:theme="@style/subtitle_2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/folioLabel3DetailCardView"/>
+
+                                <TextView
+                                    android:id="@+id/statusLabel3DetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_16sdp"
+                                    android:gravity="start"
+                                    android:text="@string/movements_details_status"
+                                    android:theme="@style/appbar_title"
+                                    android:textColor="@color/elektra_gray"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/folio3DetailCardView"/>
+
+                                <TextView
+                                    android:id="@+id/status3DetailCardView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_25sdp"
+                                    android:layout_marginEnd="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_8sdp"
+                                    android:layout_marginBottom="@dimen/_24sdp"
+                                    android:gravity="start"
+                                    android:text="@{movementsDetailsItem.detailStatus}"
+                                    android:theme="@style/subtitle_2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/statusLabel3DetailCardView"
+                                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </LinearLayout>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
+
+                <ImageButton
+                    android:id="@+id/shareButtonDetailsCardView"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_34sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:background="@drawable/ic_share_icon"
+                    android:padding="@dimen/_30sdp"
+                    app:layout_constraintTop_toBottomOf="@id/headerDetailsCardView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_80sdp"
+                    android:layout_marginBottom="@dimen/_40sdp"
+                    android:text="@string/bottom_help_label"
+                    android:theme="@style/text_button_2"
+                    android:gravity="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/shareButtonDetailsCardView"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

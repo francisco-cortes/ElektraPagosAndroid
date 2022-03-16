@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_width="@dimen/_300sdp"
+    android:layout_height="@dimen/_370sdp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="@dimen/_370sdp">
+
+        <ImageView
+            android:id="@+id/noUserImageView"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_110sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:background="@drawable/ic_cant_deliver_mtcn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/alertTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="@string/cant_deliver_mtcn_title_label"
+            android:theme="@style/title_2"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/noUserImageView" />
+
+        <TextView
+            android:id="@+id/alertBodyTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_31sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_31sdp"
+            android:text="@string/cant_deliver_mtcn_body_label"
+            android:textAlignment="center"
+            android:theme="@style/body_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/alertTitleTextView" />
+
+        <Button
+            android:id="@+id/acceptButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_31sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_31sdp"
+            android:text="@string/cant_deliver_mtcn_button_label"
+            android:theme="@style/text_button_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/alertBodyTextView" />
+
+        <View
+            android:id="@+id/separator1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/_55sdp"
+            android:layout_marginEnd="@dimen/_55sdp"
+            android:background="@color/elektra_white_gray"
+            android:layout_marginTop="@dimen/_18sdp"
+            app:layout_constraintTop_toBottomOf="@+id/acceptButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

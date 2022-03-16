@@ -27,13 +27,20 @@ class EKTPReceiveMTCNShareImageFragment : Fragment() {
     private lateinit var binding: FragmentEktpReceiveMtcnShareImageBinding
 
     private val toaster = EKTPToaster()
+    private var mtcnString = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
+        val bundle = this.arguments
+
+        mtcnString = bundle?.getString("mtcnString").toString()
+
         binding =  DataBindingUtil.inflate<FragmentEktpReceiveMtcnShareImageBinding>(inflater,R.layout.fragment_ektp_receive_mtcn_share_image, container, false)
+
+        binding.naDetailCardView.text = mtcnString
 
         binding.shareThisButton.setOnClickListener {
             activity?.let { it1 -> toaster.makeAToast(it1,"Compartiendo Detalles de movimiento") }
