@@ -142,6 +142,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
         //--
 
         if(viewModel.getSavedDataLogin()[3]==""){
+            binding.loginPassButton.isEnabled = false
             noUserAlertDialog.show()
         }
 
