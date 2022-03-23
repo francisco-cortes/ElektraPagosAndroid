@@ -27,6 +27,9 @@ import com.elektra.ektp.ektpforgottenpass.view.EKTPForgottenPassActivity
 import com.elektra.ektp.ektphome.view.EKTPHomeActivity
 import com.elektra.ektp.ektplogin.viewmodel.EKTPLoginActivityViewModel
 import com.elektra.ektp.ektplogin.viewmodel.EKTPLoginPassLoginViewModel
+import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
+import com.elektra.ektp.uservalidations.KeyGenUtil
+import java.nio.charset.Charset
 
 class EKTPLoginPassLoginFragment : Fragment() {
 
@@ -180,9 +183,11 @@ class EKTPLoginPassLoginFragment : Fragment() {
             loginPassButton.setOnClickListener { view : View ->
                 //check the pasword
                 val passwordInput = passwordInputEditText.text.toString()
+                val savedpass = KeyGenUtil().decryptData(preferences.getIVBytes().toByteArray(Charsets.UTF_8),
+                    preferences.getEncryptedPassword().toByteArray(Charsets.UTF_8))
 
                 if (!viewModel.getSavedDataLogin()[5].toBoolean()){
-                    if (viewModel.getSavedDataLogin()[4] == passwordInput){
+                    if (savedpass == passwordInput){
                         //50% probabilities to make appear the case when there are no service
                         if ((0..1).random() == 2){ //Changed 0 for 2
                             noServiceAlertDialog.show()
