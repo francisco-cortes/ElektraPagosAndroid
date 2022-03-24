@@ -17,7 +17,6 @@ import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountCreatePassBinding
 import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
-import com.elektra.ektp.uservalidations.KeyGenUtil
 import com.elektra.ektp.uservalidations.UserValidations
 
 class EKTPCreateAccountCreatePassFragment : Fragment() {
@@ -244,7 +243,7 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
 
             //onClickListener on continueButton to navigate to biometricsActivation or Successful createAccount according to sharedPreferences
             button7.setOnClickListener { view: View ->
-                saveEnPass(passTextVar)
+                preferences.saveTemporalPassword(passTextVar)
                 if (checkBiometricStatus ==1 ){
                     view.findNavController().navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountBiometricsActivationFragment)
                 }
@@ -257,12 +256,6 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
 
             return root
         }
-    }
-
-    private fun saveEnPass(pass: String){
-        val pair = KeyGenUtil().encryptData(pass)
-        preferences.saveEncryptedPassword(pair.second.toString())
-        preferences.saveIvBytes(pair.first.toString())
     }
 
 }
