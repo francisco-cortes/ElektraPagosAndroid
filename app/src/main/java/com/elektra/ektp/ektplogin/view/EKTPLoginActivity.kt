@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.ActivityLoginBinding
-import com.elektra.ektp.ektpbiometricutil.EKTPBiometricUtil
+import com.elektra.ektp.ektputilies.ektpbiometricutil.EKTPBiometricUtil
 import com.elektra.ektp.ektplogin.viewmodel.EKTPLoginActivityViewModel
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager

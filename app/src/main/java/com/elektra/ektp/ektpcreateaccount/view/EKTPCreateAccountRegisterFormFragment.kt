@@ -22,7 +22,7 @@ import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEkptCreateAccountRegisterFormBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountRegisterFormViewModel
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountSMSVerificationViewModel
-import com.elektra.ektp.uservalidations.UserValidations
+import com.elektra.ektp.ektputilies.uservalidations.UserValidations
 
 class EKTPCreateAccountRegisterFormFragment : Fragment() {
 

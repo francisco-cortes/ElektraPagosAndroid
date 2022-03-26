@@ -16,7 +16,7 @@ import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpForgottenPassPhoneNumberBinding
 import com.elektra.ektp.ektpforgottenpass.view.viewmodel.EKTPForgottenPassPhoneNumberViewModel
 import com.elektra.ektp.ektputilies.ektptoaster.EKTPToaster
-import com.elektra.ektp.uservalidations.UserValidations
+import com.elektra.ektp.ektputilies.uservalidations.UserValidations
 
 class EKTPForgottenPassPhoneNumberFragment : Fragment(){
 

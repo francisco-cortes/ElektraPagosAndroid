@@ -1,4 +1,4 @@
-package com.elektra.ektp.uservalidations
+package com.elektra.ektp.ektputilies.uservalidations
 
 import java.util.*
 
