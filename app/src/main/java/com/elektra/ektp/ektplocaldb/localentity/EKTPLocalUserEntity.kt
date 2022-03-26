@@ -6,7 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "LocalUser")
-data class EKTPLocalUser(
+data class EKTPLocalUserEntity(
     @PrimaryKey(autoGenerate = true)
     @NonNull @ColumnInfo(name = "id") val id: Int = 0,
     @NonNull @ColumnInfo(name = "userName") val userName: String,

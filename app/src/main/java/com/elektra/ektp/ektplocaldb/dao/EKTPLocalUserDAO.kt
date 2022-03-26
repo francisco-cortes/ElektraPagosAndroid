@@ -4,15 +4,15 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.elektra.ektp.ektplocaldb.localentity.EKTPLocalUser
+import com.elektra.ektp.ektplocaldb.localentity.EKTPLocalUserEntity
 
 @Dao
 interface EKTPLocalUserDAO{
 
     @Query("SELECT * FROM LocalUser WHERE id = 0")
-    suspend fun getAllLocalUserData():List<EKTPLocalUser>
+    suspend fun getAllLocalUserData():List<EKTPLocalUserEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAllLocalUserData(localUser:List<EKTPLocalUser>)
+    suspend fun insertAllLocalUserData(localUserEntity:List<EKTPLocalUserEntity>)
 
 }
