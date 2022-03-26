@@ -19,7 +19,7 @@ object EKTPRoomModule {
     @Singleton
     @Provides
     fun provideRoom(@ApplicationContext context: Context) =
-    Room.databaseBuilder(context, EKTPLocalDataBase::class.java, DATA_BASE_NAME)
+    Room.databaseBuilder(context, EKTPLocalDataBase::class.java, DATA_BASE_NAME).build()
 
     @Singleton
     @Provides

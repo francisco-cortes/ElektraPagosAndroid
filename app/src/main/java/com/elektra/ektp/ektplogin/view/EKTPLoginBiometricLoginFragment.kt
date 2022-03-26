@@ -22,7 +22,7 @@ import com.elektra.ektp.ektpbiometricutil.EKTPBiometricUtil
 import com.elektra.ektp.ektphome.view.EKTPHomeActivity
 import com.elektra.ektp.ektplogin.viewmodel.EKTPLoginActivityViewModel
 import com.elektra.ektp.ektplogin.viewmodel.EKTPLoginBiometricLoginViewModel
-import com.elektra.ektp.ektptoaster.EKTPToaster
+import com.elektra.ektp.ektputilies.ektptoaster.EKTPToaster
 import java.util.concurrent.Executor
 
 class EKTPLoginBiometricLoginFragment : Fragment() {

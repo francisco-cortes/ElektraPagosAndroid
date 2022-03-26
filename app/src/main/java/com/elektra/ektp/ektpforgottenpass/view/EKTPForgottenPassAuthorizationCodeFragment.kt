@@ -16,7 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpForgottenPassAuthorizationCodeBinding
 import com.elektra.ektp.ektpforgottenpass.view.viewmodel.EKTPForgottenPassAuthorizationCodeViewModel
-import com.elektra.ektp.ektptoaster.EKTPToaster
+import com.elektra.ektp.ektputilies.ektptoaster.EKTPToaster
 import com.elektra.ektp.uservalidations.UserValidations
 
 class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
