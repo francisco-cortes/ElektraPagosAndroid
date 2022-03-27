@@ -8,9 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountSuccessfulBinding
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel
+import com.elektra.ektp.ektplocaldb.LocalDB
 import com.elektra.ektp.ektplogin.view.EKTPLoginActivity
+import kotlinx.coroutines.launch
 
 class EKTPCreateAccountSuccessfulFragment : Fragment() {
 
@@ -32,12 +36,16 @@ class EKTPCreateAccountSuccessfulFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val db = LocalDB(requireContext())
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_ektp_create_account_successful, container, false)
 
         //The account has been created successfully, user can return to home
         binding.buttonSuccessful.setOnClickListener {view: View ->
+            lifecycleScope.launch{
+                db.room.localUserDAO().insertAllLocalUserData(EKTPCreateAccountActivityViewModel().saveRegisterOnDB())
+            }
             activity?.finish()
             val intent = Intent(activity, EKTPLoginActivity::class.java)
             val context = view?.context

@@ -17,7 +17,7 @@ import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountSmsVerificationBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountSMSVerificationViewModel
-import com.elektra.ektp.uservalidations.UserValidations
+import com.elektra.ektp.ektputilies.uservalidations.UserValidations
 
 class EKTPCreateAccountSMSVerificationFragment : Fragment() {
     //Global variable for databinding

@@ -1,4 +1,4 @@
-package com.elektra.ektp.ektptoaster
+package com.elektra.ektp.ektputilies.ektptoaster
 
 import android.content.Context
 import android.widget.Toast
