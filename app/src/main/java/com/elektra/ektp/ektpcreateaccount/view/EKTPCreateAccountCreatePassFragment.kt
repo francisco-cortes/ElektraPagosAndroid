@@ -17,7 +17,7 @@ import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountCreatePassBinding
 import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
-import com.elektra.ektp.uservalidations.UserValidations
+import com.elektra.ektp.ektputilies.uservalidations.UserValidations
 
 class EKTPCreateAccountCreatePassFragment : Fragment() {
 

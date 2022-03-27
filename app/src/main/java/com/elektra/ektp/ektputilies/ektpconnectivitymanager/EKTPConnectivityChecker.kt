@@ -1,4 +1,4 @@
-package com.elektra.ektp.ektpconnectivitymanager
+package com.elektra.ektp.ektputilies.ektpconnectivitymanager
 
 import android.content.Context
 import android.net.ConnectivityManager

@@ -18,7 +18,7 @@ import androidx.core.view.isGone
 import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpReceiveMtcnShareImageBinding
-import com.elektra.ektp.ektptoaster.EKTPToaster
+import com.elektra.ektp.ektputilies.ektptoaster.EKTPToaster
 import java.io.File
 import java.io.FileOutputStream
 
