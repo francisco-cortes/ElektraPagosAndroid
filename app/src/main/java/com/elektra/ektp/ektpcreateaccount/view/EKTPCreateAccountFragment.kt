@@ -17,6 +17,13 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentCreateAccountBinding
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.bDate
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.mName
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.pName
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uGenre
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uMail
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uName
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uTel
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountViewModel
 import com.elektra.ektp.ektplogin.view.EKTPLoginActivity
 import com.elektra.ektp.ektputilies.uservalidations.UserValidations
@@ -457,6 +464,13 @@ class EKTPCreateAccountFragment : Fragment() {
                 createAccountViewModel.saveRegisterData(
                     name, paternalLast, maternalLast, birthDate, birthState, phone, eMailText, gender
                 )
+                uName = name
+                pName = paternalLast
+                mName = maternalLast
+                bDate = birthDate
+                uTel = phone
+                uMail = emailConfirmationText
+                uGenre = gender
                 view.findNavController().navigate(R.id.action_EKTPCreateAccountFragment_to_EKTPCreateAccountSMSVerificationFragment)
             }
             //---

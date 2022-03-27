@@ -7,12 +7,11 @@ import androidx.room.Query
 import com.elektra.ektp.ektplocaldb.localentity.EKTPLocalUserEntity
 
 @Dao
-interface EKTPLocalUserDAO{
+public interface EKTPLocalUserDAO{
 
     @Query("SELECT * FROM LocalUser WHERE id = 0")
-    suspend fun getAllLocalUserData():List<EKTPLocalUserEntity>
+    suspend fun getAllLocalUserData():EKTPLocalUserEntity
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAllLocalUserData(localUserEntity:List<EKTPLocalUserEntity>)
-
+    suspend fun insertAllLocalUserData(localUserEntity: EKTPLocalUserEntity)
 }

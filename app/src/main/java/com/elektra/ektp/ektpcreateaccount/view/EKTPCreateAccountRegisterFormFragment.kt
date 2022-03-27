@@ -20,6 +20,14 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEkptCreateAccountRegisterFormBinding
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uCoun
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uNext
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uNint
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uPC
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uSett
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uStat
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uStr
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uTown
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountRegisterFormViewModel
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountSMSVerificationViewModel
 import com.elektra.ektp.ektputilies.uservalidations.UserValidations
@@ -696,6 +704,14 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
 
             //onClickListener on continueButton to listen for saveUserData in SharedPreferences
             button5.setOnClickListener { view: View ->
+                uPC = zipCode
+                uSett = colonyUser
+                uStr = streetUser
+                uNext = exteriorNumberString
+                uNint = interiorNumberString
+                uCoun = country
+                uStat = state
+                uTown = town
                 view.findNavController()
                     .navigate(R.id.action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountContractsFragment)
             }
