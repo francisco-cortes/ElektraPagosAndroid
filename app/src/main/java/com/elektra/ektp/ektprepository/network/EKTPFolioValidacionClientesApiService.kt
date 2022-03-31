@@ -1,9 +1,6 @@
 package com.elektra.ektp.ektprepository.network
 
-import com.elektra.ektp.ektprepository.model.EKTPCodigoSMSTwiloRequest
-import com.elektra.ektp.ektprepository.model.EKTPFolioValidacionClientesResponse
-import com.elektra.ektp.ektprepository.model.EKTPVerificarCodigoSMSTwiloRequest
-import com.elektra.ektp.ektprepository.model.EKTPVerificarCodigoSMSTwiloResponse
+import com.elektra.ektp.ektprepository.model.*
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.ResponseBody
@@ -12,7 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
 
-private const val BASE_URL = "http://bf1a-189-203-174-194.ngrok.io"
+private const val BASE_URL = "https://7f00-189-203-174-194.ngrok.io"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -38,6 +35,14 @@ interface EKTPFolioValidacionClientesApiService {
     @Headers("accept: application/json")
     @POST("/clientes/verificarTwilioCodigo")
     suspend fun verifySMS(@Body body: EKTPVerificarCodigoSMSTwiloRequest) : Response<EKTPVerificarCodigoSMSTwiloResponse>
+
+    @Headers("accept: application/json")
+    @POST("/clientes/alta-upgrade/{folio_validacion}")
+    suspend fun postUpgradeFolio(@Path("folio_validacion") folio: String, @Body body: EKTPAltaUpgradeRequest): Response<ResponseBody>
+
+    @Headers("accept: application/json")
+    @PUT("/clientes/datosExtra")
+    suspend fun putDatosExtra(@Body body: EKTPDatosExtraRequest ): Response<ResponseBody>
 }
 
 object EKTPFolioValidacionClientesApi {

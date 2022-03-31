@@ -1,6 +1,8 @@
 package com.elektra.ektp.ektpcreateaccount.view
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -36,6 +38,7 @@ class EKTPCreateAccountFragment : Fragment() {
 
     //Global variable for databinding
     private lateinit var binding: FragmentCreateAccountBinding
+    private lateinit var loadingLayout: View
     //---
     //ViewModel variable access
     private val createAccountViewModel: EKTPCreateAccountViewModel by viewModels()
@@ -492,16 +495,22 @@ class EKTPCreateAccountFragment : Fragment() {
     }
 
     private fun verifyFoliValClientResponse(value: Job) {
+        loadingLayout = layoutInflater.inflate(R.layout.loading_alert_layout,null)
+        val loadingAlert = alertDialogOpener(loadingLayout, requireContext())
+        loadingAlert.show()
+        loadingAlert.getWindow()?.setLayout(250, 250)
         var canContinue = false
         var attempts = 0
         val timer = object : CountDownTimer(2000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 if(value.isCompleted){
                     if (createAccountViewModel.canContinue){
+                        loadingAlert.dismiss()
                         view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountFragment_to_EKTPCreateAccountSMSVerificationFragment)
                         canContinue = true
                         cancel()
                     }else{
+                        loadingAlert.dismiss()
                         canContinue = false
                         cancel()
                     }
@@ -510,10 +519,12 @@ class EKTPCreateAccountFragment : Fragment() {
             override fun onFinish() {
                 if(value.isCompleted){
                     if (createAccountViewModel.canContinue){
+                        loadingAlert.dismiss()
                         view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountFragment_to_EKTPCreateAccountSMSVerificationFragment)
                         canContinue = true
                         cancel()
                     }else{
+                        loadingAlert.dismiss()
                         canContinue = false
                         cancel()
                     }
@@ -522,12 +533,23 @@ class EKTPCreateAccountFragment : Fragment() {
                     if (attempts>2){
                         start()
                     }else{
+                        loadingAlert.dismiss()
                         canContinue = false
                     }
                 }
             }
         }
         timer.start()
+    }
+
+    private fun alertDialogOpener(dialogLayout: View, context: Context): AlertDialog {
+        var alertDialog: AlertDialog? = null
+        val alertDialogBuilder = AlertDialog.Builder(context)
+
+        alertDialogBuilder.setView(dialogLayout)
+        alertDialog = alertDialogBuilder.create()
+
+        return alertDialog
     }
 
 }
