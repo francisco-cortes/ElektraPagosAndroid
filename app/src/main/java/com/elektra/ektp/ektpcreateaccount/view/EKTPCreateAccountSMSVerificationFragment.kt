@@ -19,6 +19,8 @@ import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountSmsVerificationBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountSMSVerificationViewModel
 import com.elektra.ektp.ektputilies.uservalidations.UserValidations
+import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
+import kotlinx.coroutines.Job
 
 class EKTPCreateAccountSMSVerificationFragment : Fragment() {
     //Global variable for databinding
@@ -40,6 +42,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
     //---
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        smsVerificationViewModel.resquestSMSTwiloCode(preferences.getPhoneUser())
         //Overriding OnBackPressed function to destroy fragment and activity
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -309,7 +312,10 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             //TextWatcher function to listen for changes on editText
             smsContinueButton.setOnClickListener { view: View ->
-                if (!smsVerificationViewModel.checkSMSVerification(codeSMS)){
+                val value = smsVerificationViewModel.verifySMSTwiloCode(codeSMS, preferences.getPhoneUser())
+                verifySMSresponse(value)
+                /*val canContinue = smsVerificationViewModel.verifySMSTwiloCode(codeSMS, preferences.getPhoneUser(), )
+                if (canContinue){
                     view.findNavController().navigate(R.id.action_EKTPCreateAccountSMSVerificationFragment_to_EKPTCreateAccountRegisterFormFragment)
                 }
                 else{
@@ -319,7 +325,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                     verificationNumber4.setBackgroundResource(R.drawable.validation_edit_text)
                     verificationNumber5.setBackgroundResource(R.drawable.validation_edit_text)
                     invalidSMSTextView.isVisible = true
-                }
+                }*/
 
             }
             //---
@@ -418,9 +424,61 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
             }
 
             override fun onFinish() {
+                smsVerificationViewModel.resquestSMSTwiloCode(preferences.getPhoneUser())
                 binding.resendCodeTextView.isEnabled = true
                 binding.resendCodeTextView.text = getString(R.string.fragment_verification_resend_code)
             }
         }.start()
+    }
+
+    private fun verifySMSresponse(value: Job) {
+        var canContinue = false
+        var attempts = 0
+        val timer = object : CountDownTimer(2000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                if(value.isCompleted){
+                    if (smsVerificationViewModel.canContinueñero){
+                        view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountSMSVerificationFragment_to_EKPTCreateAccountRegisterFormFragment)
+                        canContinue = true
+                        cancel()
+                    }else{
+                        binding.verificationNumber1.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.verificationNumber2.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.verificationNumber3.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.verificationNumber4.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.verificationNumber5.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.invalidSMSTextView.isVisible = true
+                        canContinue = false
+                        cancel()
+                    }
+                }
+            }
+            override fun onFinish() {
+                if(value.isCompleted){
+                    if (smsVerificationViewModel.canContinueñero){
+                        view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountSMSVerificationFragment_to_EKPTCreateAccountRegisterFormFragment)
+                        canContinue = true
+                        cancel()
+                    }else{
+                        binding.verificationNumber1.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.verificationNumber2.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.verificationNumber3.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.verificationNumber4.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.verificationNumber5.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.invalidSMSTextView.isVisible = true
+                        canContinue = false
+                        cancel()
+                    }
+                }else{
+                    attempts = +1
+                    if (attempts>2){
+                        start()
+                    }else{
+                        canContinue = false
+                    }
+                }
+            }
+        }
+        timer.start()
     }
 }

@@ -18,6 +18,7 @@ import androidx.navigation.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentCreateAccountBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.bDate
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.bPlace
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.mName
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.pName
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uGenre
@@ -441,7 +442,7 @@ class EKTPCreateAccountFragment : Fragment() {
             //---
             //onClickListener on WomanGender to listen for radioButton selection
             womanGenderRadioButton.setOnClickListener {
-                gender = "Mujer"
+                gender = "M"
                 button.isEnabled = validations.checkFilledFields(
                     name, paternalLast, birthDate, birthState,
                     phone, eMailText, emailConfirmationText, gender
@@ -451,7 +452,7 @@ class EKTPCreateAccountFragment : Fragment() {
             //---
             //onClickListener on ManGender to listen for radioButton selection
             manGenderRadioButton.setOnClickListener {
-                gender = "Hombre"
+                gender = "H"
                 button.isEnabled = validations.checkFilledFields(
                     name, paternalLast, birthDate, birthState,
                     phone, eMailText, emailConfirmationText, gender
@@ -471,6 +472,8 @@ class EKTPCreateAccountFragment : Fragment() {
                 uTel = phone
                 uMail = emailConfirmationText
                 uGenre = gender
+                bPlace = birthState
+                createAccountViewModel.apiFolioValClientes(phone,name,paternalLast,maternalLast,birthDate,gender,eMailText,birthState,"")
                 view.findNavController().navigate(R.id.action_EKTPCreateAccountFragment_to_EKTPCreateAccountSMSVerificationFragment)
             }
             //---
