@@ -7,12 +7,15 @@ import com.elektra.ektp.ektprepository.model.EKTPFolioValidacionClientesResponse
 import com.elektra.ektp.ektprepository.network.EKTPFolioValidacionClientesApi
 import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication
 import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.io.IOException
 import java.lang.Exception
 import java.net.HttpRetryException
 
 class EKTPCreateAccountViewModel(): ViewModel() {
+
+    var canContinue = false
 
     fun saveRegisterData(
         nameUser: String, paternalLast: String, maternalLast: String, birthDate: String, birthState: String,
@@ -28,8 +31,8 @@ class EKTPCreateAccountViewModel(): ViewModel() {
         preferences.savePhoneUser(phone)
     }
 
-    fun apiFolioValClientes(phone: String, name: String, pName: String, mName: String, bDay: String, genre: String, mail: String, stateBirth: String, folio: String) {
-        viewModelScope.launch {
+    fun apiFolioValClientes(phone: String, name: String, pName: String, mName: String, bDay: String, genre: String, mail: String, stateBirth: String, folio: String) : Job {
+        val jobValue =  viewModelScope.launch {
             val response = try {
                 EKTPFolioValidacionClientesApi.folioValidacionClientesTRetrofitService.postValidation(
                     EKTPFolioValidacionClientesResponse(phone, name, pName,mName,bDay,genre,mail,stateBirth,folio))
@@ -47,7 +50,11 @@ class EKTPCreateAccountViewModel(): ViewModel() {
                 return@launch
             }
             val body3 = response.code()!!
+            if (body3==201){
+                canContinue = true
+            }
             Log.v("APITEST","${body3}")
         }
+        return jobValue
     }
 }

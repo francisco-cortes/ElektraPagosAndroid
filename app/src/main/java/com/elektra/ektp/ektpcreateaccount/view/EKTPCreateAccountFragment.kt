@@ -3,6 +3,7 @@ package com.elektra.ektp.ektpcreateaccount.view
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.fragment.app.Fragment
@@ -28,6 +29,7 @@ import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityVie
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountViewModel
 import com.elektra.ektp.ektplogin.view.EKTPLoginActivity
 import com.elektra.ektp.ektputilies.uservalidations.UserValidations
+import kotlinx.coroutines.Job
 import java.util.*
 
 class EKTPCreateAccountFragment : Fragment() {
@@ -473,8 +475,7 @@ class EKTPCreateAccountFragment : Fragment() {
                 uMail = emailConfirmationText
                 uGenre = gender
                 bPlace = birthState
-                createAccountViewModel.apiFolioValClientes(phone,name,paternalLast,maternalLast,birthDate,gender,eMailText,birthState,"")
-                view.findNavController().navigate(R.id.action_EKTPCreateAccountFragment_to_EKTPCreateAccountSMSVerificationFragment)
+                verifyFoliValClientResponse(createAccountViewModel.apiFolioValClientes(phone,name,paternalLast,maternalLast,birthDate,gender,eMailText,birthState,""))
             }
             //---
             //onClickListener on appBar BackButton to destroy fragment and activity
@@ -489,4 +490,44 @@ class EKTPCreateAccountFragment : Fragment() {
         }
         //---
     }
+
+    private fun verifyFoliValClientResponse(value: Job) {
+        var canContinue = false
+        var attempts = 0
+        val timer = object : CountDownTimer(2000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                if(value.isCompleted){
+                    if (createAccountViewModel.canContinue){
+                        view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountFragment_to_EKTPCreateAccountSMSVerificationFragment)
+                        canContinue = true
+                        cancel()
+                    }else{
+                        canContinue = false
+                        cancel()
+                    }
+                }
+            }
+            override fun onFinish() {
+                if(value.isCompleted){
+                    if (createAccountViewModel.canContinue){
+                        view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountFragment_to_EKTPCreateAccountSMSVerificationFragment)
+                        canContinue = true
+                        cancel()
+                    }else{
+                        canContinue = false
+                        cancel()
+                    }
+                }else{
+                    attempts = +1
+                    if (attempts>2){
+                        start()
+                    }else{
+                        canContinue = false
+                    }
+                }
+            }
+        }
+        timer.start()
+    }
+
 }
