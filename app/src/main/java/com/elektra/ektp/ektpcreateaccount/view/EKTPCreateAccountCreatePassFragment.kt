@@ -1,6 +1,9 @@
 package com.elektra.ektp.ektpcreateaccount.view
 
+import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import android.text.method.HideReturnsTransformationMethod
@@ -12,17 +15,29 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountCreatePassBinding
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.bPlace
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.folio
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uNext
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uNint
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uPC
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uSett
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uStr
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountCreatePassViewModel
 import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
 import com.elektra.ektp.ektputilies.uservalidations.UserValidations
+import kotlinx.coroutines.Job
 
 class EKTPCreateAccountCreatePassFragment : Fragment() {
 
     //Global databinding access variable
     private lateinit var binding: FragmentEktpCreateAccountCreatePassBinding
+    private lateinit var loadingLayout: View
 
     //ViewModel access variable
     private val validations = UserValidations()
@@ -35,6 +50,8 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
 
     //SharedPreferences variable
     private val checkBiometricStatus = preferences.getBioStatus()
+    private val viewModel : EKTPCreateAccountCreatePassViewModel by viewModels()
+    private val activityViewModel = EKTPCreateAccountActivityViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -244,18 +261,80 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
             //onClickListener on continueButton to navigate to biometricsActivation or Successful createAccount according to sharedPreferences
             button7.setOnClickListener { view: View ->
                 preferences.saveTemporalPassword(passTextVar)
-                if (checkBiometricStatus ==1 ){
-                    view.findNavController().navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountBiometricsActivationFragment)
-                }
-                else{
-                    view.findNavController().navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountSuccessfulFragment)
-                }
-
+                extraData(viewModel.apiDatosExtra(uPC, uSett, bPlace,preferences.getTemporalPassword(), folio, uStr, uNext, uNint, uSett))
             }
             //---
 
             return root
         }
+    }
+
+    private fun extraData(value: Job) {
+        loadingLayout = layoutInflater.inflate(R.layout.loading_alert_layout,null)
+        val loadingAlert = alertDialogOpener(loadingLayout, requireContext())
+        loadingAlert.show()
+        loadingAlert.getWindow()?.setLayout(250, 250)
+        var canContinue = false
+        var attempts = 0
+        val timer = object : CountDownTimer(2000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                if(value.isCompleted){
+                    if (viewModel.canContinue){
+                        loadingAlert.dismiss()
+                        if (checkBiometricStatus ==1 ){
+                            view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountBiometricsActivationFragment)
+                        }
+                        else{
+                            view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountSuccessfulFragment)
+                        }
+                        canContinue = true
+                        cancel()
+                    }else{
+                        loadingAlert.dismiss()
+                        canContinue = false
+                        cancel()
+                    }
+                }
+            }
+            override fun onFinish() {
+                if(value.isCompleted){
+                    if (viewModel.canContinue){
+                        loadingAlert.dismiss()
+                        if (checkBiometricStatus ==1 ){
+                            view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountBiometricsActivationFragment)
+                        }
+                        else{
+                            view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountSuccessfulFragment)
+                        }
+                        canContinue = true
+                        cancel()
+                    }else{
+                        loadingAlert.dismiss()
+                        canContinue = false
+                        cancel()
+                    }
+                }else{
+                    attempts = +1
+                    if (attempts>2){
+                        start()
+                    }else{
+                        loadingAlert.dismiss()
+                        canContinue = false
+                    }
+                }
+            }
+        }
+        timer.start()
+    }
+
+    private fun alertDialogOpener(dialogLayout: View, context: Context): AlertDialog {
+        var alertDialog: AlertDialog? = null
+        val alertDialogBuilder = AlertDialog.Builder(context)
+
+        alertDialogBuilder.setView(dialogLayout)
+        alertDialog = alertDialogBuilder.create()
+
+        return alertDialog
     }
 
 }

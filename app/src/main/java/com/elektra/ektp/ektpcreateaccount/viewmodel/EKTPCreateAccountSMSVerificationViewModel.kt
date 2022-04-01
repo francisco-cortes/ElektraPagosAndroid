@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.elektra.ektp.R
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.folio
 import com.elektra.ektp.ektprepository.model.EKTPCodigoSMSTwiloRequest
 import com.elektra.ektp.ektprepository.model.EKTPFolioValidacionClientesResponse
 import com.elektra.ektp.ektprepository.model.EKTPVerificarCodigoSMSTwiloRequest
@@ -91,8 +92,10 @@ class EKTPCreateAccountSMSVerificationViewModel: ViewModel() {
                 return@launch
             }
             val body3 : EKTPVerificarCodigoSMSTwiloResponse = response.body()!!
-            if (body3.mensaje== "Approved")
-            { canContinueñero = true }
+            if (body3.mensaje== "Approved") {
+                canContinueñero = true
+                folio =  body3.folio
+                }
             Log.v("APITEST","${body3}")
         }
         return value

@@ -116,11 +116,11 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
             townHallSpinner.isFocusable = true*/
 
             when (userData[5]) {
-                "Hombre" -> {
+                "H" -> {
                     manGenderRadioButton.isChecked = true
                     womanGenderRadioButton.isChecked = false
                 }
-                "Mujer" -> {
+                "M" -> {
                     manGenderRadioButton.isChecked = false
                     womanGenderRadioButton.isChecked = true
                 }

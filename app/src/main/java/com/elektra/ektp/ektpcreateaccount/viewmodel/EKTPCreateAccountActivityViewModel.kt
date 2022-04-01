@@ -24,6 +24,7 @@ class EKTPCreateAccountActivityViewModel(): ViewModel()  {
         var uCoun = ""
         var uStat = ""
         var uTown = ""
+        var folio = ""
     }
 
     fun saveRegisterOnDB():EKTPLocalUserEntity{
