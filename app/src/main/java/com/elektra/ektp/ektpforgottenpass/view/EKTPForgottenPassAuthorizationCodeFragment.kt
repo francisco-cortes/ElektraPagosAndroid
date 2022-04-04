@@ -3,20 +3,21 @@ package com.elektra.ektp.ektpforgottenpass.view
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
+import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpForgottenPassAuthorizationCodeBinding
 import com.elektra.ektp.ektpforgottenpass.view.viewmodel.EKTPForgottenPassAuthorizationCodeViewModel
-import com.elektra.ektp.ektputilies.ektptoaster.EKTPToaster
 import com.elektra.ektp.ektputilies.uservalidations.UserValidations
 
 class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
@@ -48,7 +49,7 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,
@@ -75,7 +76,7 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                     codeAuth = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
-                    if (!codechar1.isNullOrBlank() && codechar1.length == 1) {
+                    if (!codechar1.isNullOrBlank()) {
                         buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
                         verificationNumber2.requestFocus()
                     }
@@ -95,7 +96,7 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                     codeAuth = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
-                    if (!codechar1.isNullOrBlank() && codechar1.length == 1) {
+                    if (!codechar1.isNullOrBlank()) {
                         buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
                         verificationNumber2.requestFocus()
                     }
@@ -111,6 +112,7 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
             verificationNumber2.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
+
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -124,12 +126,13 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                     codeAuth = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
-                    if (!codechar2.isNullOrBlank() && codechar2.length == 1) {
+                    if (!codechar2.isNullOrBlank()) {
                         buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
                         verificationNumber3.requestFocus()
                     }
                     else{
                         buttonAuth.isEnabled = false
+                        verificationNumber1.requestFocus()
                     }
                 }
 
@@ -144,12 +147,13 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                     codeAuth = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
-                    if (!codechar2.isNullOrBlank() && codechar2.length == 1) {
+                    if (!codechar2.isNullOrBlank()) {
                         buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
                         verificationNumber3.requestFocus()
                     }
                     else{
                         buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
+                        verificationNumber1.requestFocus()
                     }
                 }
 
@@ -173,12 +177,13 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                     codeAuth = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
-                    if (!codechar3.isNullOrBlank() && codechar3.length == 1) {
+                    if (!codechar3.isNullOrBlank()) {
                         buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
                         verificationNumber4.requestFocus()
                     }
                     else{
                         buttonAuth.isEnabled = false
+                        verificationNumber2.requestFocus()
                     }
                 }
 
@@ -193,12 +198,13 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                     codeAuth = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
-                    if (!codechar3.isNullOrBlank() && codechar3.length == 1) {
+                    if (!codechar3.isNullOrBlank()) {
                         buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
                         verificationNumber4.requestFocus()
                     }
                     else{
                         buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
+                        verificationNumber2.requestFocus()
                     }
                 }
 
@@ -222,12 +228,13 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                     codeAuth = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
-                    if (!codechar4.isNullOrBlank() && codechar4.length == 1) {
+                    if (!codechar4.isNullOrBlank()) {
                         buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
                         verificationNumber5.requestFocus()
                     }
                     else{
                         buttonAuth.isEnabled = false
+                        verificationNumber3.requestFocus()
                     }
                 }
 
@@ -242,12 +249,13 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                     codeAuth = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
-                    if (!codechar4.isNullOrBlank() && codechar4.length == 1) {
+                    if (!codechar4.isNullOrBlank()) {
                         buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
                         verificationNumber5.requestFocus()
                     }
                     else{
                         buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
+                        verificationNumber3.requestFocus()
                     }
                 }
 
@@ -271,11 +279,12 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                     codeAuth = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
-                    if (!codechar5.isNullOrBlank() && codechar5.length == 1) {
+                    if (!codechar5.isNullOrBlank()) {
                         buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
                     }
                     else{
                         buttonAuth.isEnabled = false
+                        verificationNumber4.requestFocus()
                     }
                 }
 
@@ -290,11 +299,12 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                     codeAuth = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
-                    if (!codechar5.isNullOrBlank() && codechar5.length == 1) {
+                    if (!codechar5.isNullOrBlank()) {
                         buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
                     }
                     else{
                         buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
+                        verificationNumber4.requestFocus()
                     }
                 }
 
@@ -323,7 +333,77 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
             }
             //---
 
+            verificationNumber1.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+                val pressedKey = event.keyCode
+                Log.i("key pressed",pressedKey.toString())
+                if (!codechar1.isNullOrBlank()&&verificationNumber1.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                    //Perform Code
+                        verificationNumber2.requestFocus()
+                        verificationNumber2.setText(getKeyVal(pressedKey))
+                        verificationNumber2.setSelection(verificationNumber2.length())
+                    return@OnKeyListener true
+                }else{
+                    false
+                }
+            })
+
+            verificationNumber2.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+                val pressedKey = event.keyCode
+                Log.i("key pressed",pressedKey.toString())
+                if (!codechar2.isNullOrBlank()&&verificationNumber2.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                    //Perform Code
+                    verificationNumber3.requestFocus()
+                    verificationNumber3.setText(getKeyVal(pressedKey))
+                    verificationNumber3.setSelection(verificationNumber3.length())
+                    return@OnKeyListener true
+                }else{
+                    false
+                }
+            })
+
+            verificationNumber3.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+                val pressedKey = event.keyCode
+                Log.i("key pressed",pressedKey.toString())
+                if (!codechar3.isNullOrBlank()&&verificationNumber3.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                    //Perform Code
+                    verificationNumber4.requestFocus()
+                    verificationNumber4.setText(getKeyVal(pressedKey))
+                    verificationNumber4.setSelection(verificationNumber4.length())
+                    return@OnKeyListener true
+                }else{
+                    false
+                }
+            })
+
+            verificationNumber4.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+                val pressedKey = event.keyCode
+                Log.i("key pressed",pressedKey.toString())
+                if (!codechar4.isNullOrBlank()&&verificationNumber4.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                    //Perform Code
+                    verificationNumber5.requestFocus()
+                    verificationNumber5.setText(getKeyVal(pressedKey))
+                    verificationNumber5.setSelection(verificationNumber5.length())
+                    return@OnKeyListener true
+                }else{
+                    false
+                }
+            })
+
             return root
+        }
+    }
+    fun getKeyVal(pressedKeyCode: Int):String{
+        return when (pressedKeyCode){
+            8 -> "1"
+            9 -> "2"
+            10 -> "3"
+            11 -> "4"
+            12 -> "5"
+            13 -> "6"
+            14 -> "7"
+            15 -> "8"
+            16 -> "9"
+            else -> "0"
         }
     }
 }

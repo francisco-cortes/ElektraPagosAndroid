@@ -138,6 +138,7 @@
                         android:imeOptions="actionNext"
                         android:inputType="number"
                         android:maxLength="1"
+                        android:maxLines="1"
                         android:theme="@style/code_text" />
 
                     <EditText

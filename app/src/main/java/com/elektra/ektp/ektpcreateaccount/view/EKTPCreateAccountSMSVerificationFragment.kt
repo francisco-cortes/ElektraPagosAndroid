@@ -1,9 +1,12 @@
 package com.elektra.ektp.ektpcreateaccount.view
 
+import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,10 +21,13 @@ import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountSmsVerificationBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountSMSVerificationViewModel
 import com.elektra.ektp.ektputilies.uservalidations.UserValidations
+import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
+import kotlinx.coroutines.Job
 
 class EKTPCreateAccountSMSVerificationFragment : Fragment() {
     //Global variable for databinding
     private lateinit var binding: FragmentEktpCreateAccountSmsVerificationBinding
+    private lateinit var loadingLayout: View
     //---
     //SharedPreferences variable access
     val validations = UserValidations()
@@ -39,6 +45,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
     //---
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        smsVerificationViewModel.resquestSMSTwiloCode(preferences.getPhoneUser())
         //Overriding OnBackPressed function to destroy fragment and activity
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -308,7 +315,10 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             //TextWatcher function to listen for changes on editText
             smsContinueButton.setOnClickListener { view: View ->
-                if (!smsVerificationViewModel.checkSMSVerification(codeSMS)){
+                val value = smsVerificationViewModel.verifySMSTwiloCode(codeSMS, preferences.getPhoneUser())
+                verifySMSresponse(value)
+                /*val canContinue = smsVerificationViewModel.verifySMSTwiloCode(codeSMS, preferences.getPhoneUser(), )
+                if (canContinue){
                     view.findNavController().navigate(R.id.action_EKTPCreateAccountSMSVerificationFragment_to_EKPTCreateAccountRegisterFormFragment)
                 }
                 else{
@@ -318,7 +328,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                     verificationNumber4.setBackgroundResource(R.drawable.validation_edit_text)
                     verificationNumber5.setBackgroundResource(R.drawable.validation_edit_text)
                     invalidSMSTextView.isVisible = true
-                }
+                }*/
 
             }
             //---
@@ -333,9 +343,81 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                 startCoolDown()
             }
 
+            verificationNumber1.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+                val pressedKey = event.keyCode
+                Log.i("key pressed",pressedKey.toString())
+                if (!codechar1.isNullOrBlank()&&verificationNumber1.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                    //Perform Code
+                    verificationNumber2.requestFocus()
+                    verificationNumber2.setText(getKeyVal(pressedKey))
+                    verificationNumber2.setSelection(verificationNumber2.length())
+                    return@OnKeyListener true
+                }else{
+                    false
+                }
+            })
+
+            verificationNumber2.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+                val pressedKey = event.keyCode
+                Log.i("key pressed",pressedKey.toString())
+                if (!codechar2.isNullOrBlank()&&verificationNumber2.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                    //Perform Code
+                    verificationNumber3.requestFocus()
+                    verificationNumber3.setText(getKeyVal(pressedKey))
+                    verificationNumber3.setSelection(verificationNumber3.length())
+                    return@OnKeyListener true
+                }else{
+                    false
+                }
+            })
+
+            verificationNumber3.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+                val pressedKey = event.keyCode
+                Log.i("key pressed",pressedKey.toString())
+                if (!codechar3.isNullOrBlank()&&verificationNumber3.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                    //Perform Code
+                    verificationNumber4.requestFocus()
+                    verificationNumber4.setText(getKeyVal(pressedKey))
+                    verificationNumber4.setSelection(verificationNumber4.length())
+                    return@OnKeyListener true
+                }else{
+                    false
+                }
+            })
+
+            verificationNumber4.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+                val pressedKey = event.keyCode
+                Log.i("key pressed",pressedKey.toString())
+                if (!codechar4.isNullOrBlank()&&verificationNumber4.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                    //Perform Code
+                    verificationNumber5.requestFocus()
+                    verificationNumber5.setText(getKeyVal(pressedKey))
+                    verificationNumber5.setSelection(verificationNumber5.length())
+                    return@OnKeyListener true
+                }else{
+                    false
+                }
+            })
+
             return  root
         }
     }
+
+    fun getKeyVal(pressedKeyCode: Int):String{
+        return when (pressedKeyCode){
+            8 -> "1"
+            9 -> "2"
+            10 -> "3"
+            11 -> "4"
+            12 -> "5"
+            13 -> "6"
+            14 -> "7"
+            15 -> "8"
+            16 -> "9"
+            else -> "0"
+        }
+    }
+
     private fun startCoolDown(){
         object : CountDownTimer(15000, 1000) {
 
@@ -345,9 +427,80 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
             }
 
             override fun onFinish() {
+                smsVerificationViewModel.resquestSMSTwiloCode(preferences.getPhoneUser())
                 binding.resendCodeTextView.isEnabled = true
                 binding.resendCodeTextView.text = getString(R.string.fragment_verification_resend_code)
             }
         }.start()
+    }
+
+    private fun verifySMSresponse(value: Job) {
+        loadingLayout = layoutInflater.inflate(R.layout.loading_alert_layout,null)
+        val loadingAlert = alertDialogOpener(loadingLayout, requireContext())
+        loadingAlert.show()
+        loadingAlert.getWindow()?.setLayout(250, 250)
+        var canContinue = false
+        var attempts = 0
+        val timer = object : CountDownTimer(2000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                if(value.isCompleted){
+                    if (smsVerificationViewModel.canContinueñero){
+                        loadingAlert.dismiss()
+                        view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountSMSVerificationFragment_to_EKPTCreateAccountRegisterFormFragment)
+                        canContinue = true
+                        cancel()
+                    }else{
+                        loadingAlert.dismiss()
+                        binding.verificationNumber1.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.verificationNumber2.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.verificationNumber3.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.verificationNumber4.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.verificationNumber5.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.invalidSMSTextView.isVisible = true
+                        canContinue = false
+                        cancel()
+                    }
+                }
+            }
+            override fun onFinish() {
+                if(value.isCompleted){
+                    if (smsVerificationViewModel.canContinueñero){
+                        loadingAlert.dismiss()
+                        view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountSMSVerificationFragment_to_EKPTCreateAccountRegisterFormFragment)
+                        canContinue = true
+                        cancel()
+                    }else{
+                        loadingAlert.dismiss()
+                        binding.verificationNumber1.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.verificationNumber2.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.verificationNumber3.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.verificationNumber4.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.verificationNumber5.setBackgroundResource(R.drawable.validation_edit_text)
+                        binding.invalidSMSTextView.isVisible = true
+                        canContinue = false
+                        cancel()
+                    }
+                }else{
+                    attempts = +1
+                    if (attempts>2){
+                        start()
+                    }else{
+                        loadingAlert.dismiss()
+                        canContinue = false
+                    }
+                }
+            }
+        }
+        timer.start()
+    }
+
+    private fun alertDialogOpener(dialogLayout: View, context: Context): AlertDialog {
+        var alertDialog: AlertDialog? = null
+        val alertDialogBuilder = AlertDialog.Builder(context)
+
+        alertDialogBuilder.setView(dialogLayout)
+        alertDialog = alertDialogBuilder.create()
+
+        return alertDialog
     }
 }
