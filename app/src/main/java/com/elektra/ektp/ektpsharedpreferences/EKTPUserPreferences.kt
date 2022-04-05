@@ -25,6 +25,10 @@ class EKTPUserPreferences(val context: Context) {
     val SHARED_TEMPORAL_LOCKED = "passwordIsLocked?"
     val SHARED_BIO_LOGIN_ACTIVATED = "bioLoginActivated?"
 
+    val SHARED_ENCRYPTED_PASSWORD = "enPassword"
+    val SHARED_IVBYTES_ = "ivBytes"
+
+
     private val enSharedPreferences: SharedPreferences = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         EncryptedSharedPreferences.create(
             context,
@@ -154,6 +158,22 @@ class EKTPUserPreferences(val context: Context) {
 
     fun getBioLogin():Boolean{
         return enSharedPreferences.getBoolean(SHARED_BIO_LOGIN_ACTIVATED,false)!!
+    }
+
+    fun saveEncryptedPassword(encryptedPass: String){
+        enSharedPreferences.edit().putString(SHARED_ENCRYPTED_PASSWORD,encryptedPass).apply()
+    }
+
+    fun getEncryptedPassword():String{
+        return enSharedPreferences.getString(SHARED_ENCRYPTED_PASSWORD,"pass?")!!
+    }
+
+    fun saveIvBytes(ivBytes: String){
+        enSharedPreferences.edit().putString(SHARED_IVBYTES_,ivBytes).apply()
+    }
+
+    fun getIVBytes(): String{
+        return enSharedPreferences.getString(SHARED_IVBYTES_,"bytes?")!!
     }
 
 }

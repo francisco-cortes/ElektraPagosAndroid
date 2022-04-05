@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -333,9 +334,81 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                 startCoolDown()
             }
 
+            verificationNumber1.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+                val pressedKey = event.keyCode
+                Log.i("key pressed",pressedKey.toString())
+                if (!codechar1.isNullOrBlank()&&verificationNumber1.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                    //Perform Code
+                    verificationNumber2.requestFocus()
+                    verificationNumber2.setText(getKeyVal(pressedKey))
+                    verificationNumber2.setSelection(verificationNumber2.length())
+                    return@OnKeyListener true
+                }else{
+                    false
+                }
+            })
+
+            verificationNumber2.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+                val pressedKey = event.keyCode
+                Log.i("key pressed",pressedKey.toString())
+                if (!codechar2.isNullOrBlank()&&verificationNumber2.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                    //Perform Code
+                    verificationNumber3.requestFocus()
+                    verificationNumber3.setText(getKeyVal(pressedKey))
+                    verificationNumber3.setSelection(verificationNumber3.length())
+                    return@OnKeyListener true
+                }else{
+                    false
+                }
+            })
+
+            verificationNumber3.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+                val pressedKey = event.keyCode
+                Log.i("key pressed",pressedKey.toString())
+                if (!codechar3.isNullOrBlank()&&verificationNumber3.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                    //Perform Code
+                    verificationNumber4.requestFocus()
+                    verificationNumber4.setText(getKeyVal(pressedKey))
+                    verificationNumber4.setSelection(verificationNumber4.length())
+                    return@OnKeyListener true
+                }else{
+                    false
+                }
+            })
+
+            verificationNumber4.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+                val pressedKey = event.keyCode
+                Log.i("key pressed",pressedKey.toString())
+                if (!codechar4.isNullOrBlank()&&verificationNumber4.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                    //Perform Code
+                    verificationNumber5.requestFocus()
+                    verificationNumber5.setText(getKeyVal(pressedKey))
+                    verificationNumber5.setSelection(verificationNumber5.length())
+                    return@OnKeyListener true
+                }else{
+                    false
+                }
+            })
+
             return  root
         }
     }
+
+    fun getKeyVal(pressedKeyCode: Int):String{
+        return when (pressedKeyCode){
+            8 -> "1"
+            9 -> "2"
+            10 -> "3"
+            11 -> "4"
+            12 -> "5"
+            13 -> "6"
+            14 -> "7"
+            15 -> "8"
+            16 -> "9"
+            else -> "0"
+        }
+    }
+
     private fun startCoolDown(){
         object : CountDownTimer(15000, 1000) {
 

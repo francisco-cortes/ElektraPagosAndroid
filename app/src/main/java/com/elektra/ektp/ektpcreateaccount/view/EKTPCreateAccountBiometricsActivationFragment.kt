@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
@@ -20,7 +19,6 @@ import com.elektra.ektp.databinding.FragmentEktpCreateAccountBiometricsActivatio
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCReateAccountBiometricsActivationViewModel
 import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
 import com.elektra.ektp.ektptoaster.EKTPToaster
-import com.elektra.ektp.uservalidations.KeyGenUtil
 import java.util.concurrent.Executor
 
 class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
@@ -71,15 +69,13 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                 super.onAuthenticationSucceeded(result)
 
-                val pair = KeyGenUtil().encryptData("Test")
+                //val pair = KeyGenUtil().encryptData("Test")
 
                 //val decryptedData = KeyGenUtil().decryptData(pair.first, pair.second)
 
-                val encrypted = pair.second.toString(Charsets.UTF_8)
+                //val encrypted = pair.second.toString(Charsets.UTF_8)
                 //println("Encrypted data: $encrypted")
                 //println("Decrypted data: $decryptedData")
-
-                preferences.saveEncryptToken(encrypted)
                 viewModel.saveBioInLogin(true)
                 toast.makeAToast(activity as Context, "Guardado con éxito")
                 view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountBiometricsActivationFragment_to_EKTPCreateAccountSuccessfulFragment)
