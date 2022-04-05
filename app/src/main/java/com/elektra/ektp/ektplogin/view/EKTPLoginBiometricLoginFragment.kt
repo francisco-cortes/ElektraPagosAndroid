@@ -14,15 +14,13 @@ import androidx.activity.OnBackPressedCallback
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEKTPLoginBiometricLoginBinding
 import com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountActivity
-import com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountFragment
-import com.elektra.ektp.ektpbiometricutil.EKTPBiometricUtil
 import com.elektra.ektp.ektphome.view.EKTPHomeActivity
 import com.elektra.ektp.ektplogin.viewmodel.EKTPLoginActivityViewModel
 import com.elektra.ektp.ektplogin.viewmodel.EKTPLoginBiometricLoginViewModel
-import com.elektra.ektp.ektptoaster.EKTPToaster
 import java.util.concurrent.Executor
 
 class EKTPLoginBiometricLoginFragment : Fragment() {
@@ -41,10 +39,13 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
     private lateinit var noServiceAlertLayout: View
     //---
     private val activityViewModel = EKTPLoginActivityViewModel()//instance of activity viewModel used as shared Viewmodel
-    private val viewModel = EKTPLoginBiometricLoginViewModel()//instance of fragment viewModel
+    private val viewModel : EKTPLoginBiometricLoginViewModel by viewModels()//instance of fragment viewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //viewModel.apiTest()
+        //iewModel.apiTest2()
+        //viewModel.apiTest3()
         //Overriding obBackPressed to popBackStack fragment
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {

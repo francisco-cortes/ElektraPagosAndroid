@@ -18,7 +18,7 @@ import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountBiometricsActivationBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCReateAccountBiometricsActivationViewModel
 import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
-import com.elektra.ektp.ektptoaster.EKTPToaster
+import com.elektra.ektp.ektputilies.ektptoaster.EKTPToaster
 import java.util.concurrent.Executor
 
 class EKTPCreateAccountBiometricsActivationFragment : Fragment() {

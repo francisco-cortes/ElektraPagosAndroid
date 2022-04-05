@@ -1,4 +1,4 @@
-package com.elektra.ektp.ektpbiometricutil
+package com.elektra.ektp.ektputilies.ektpbiometricutil
 
 import android.content.Context
 import android.content.pm.PackageManager
