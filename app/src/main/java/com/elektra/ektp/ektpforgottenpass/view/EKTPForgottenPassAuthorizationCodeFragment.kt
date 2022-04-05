@@ -1,5 +1,6 @@
 package com.elektra.ektp.ektpforgottenpass.view
 
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -9,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -52,27 +54,19 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater,
-        R.layout.fragment_ektp_forgotten_pass_authorization_code, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_ektp_forgotten_pass_authorization_code, container, false)
 
         //Wrap this block code for all the lines with binding variable
         with(binding){
+
             buttonAuth.isEnabled = false
 
             //TextWatcher function to listen for changes on editText
             verificationNumber1.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
                 }
-
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     codechar1 = s.toString()
-                    verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    invalidCodeTextView.isVisible = false
                     codeAuth = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
@@ -81,48 +75,22 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                         verificationNumber2.requestFocus()
                     }
                     else{
+                        drawableSetter(true)
                         buttonAuth.isEnabled = false
                     }
                 }
-
                 override fun afterTextChanged(s: Editable?) {
-                    codechar1 = s.toString()
-                    verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    invalidCodeTextView.isVisible = false
-                    codeAuth = validations.concatenaterCode(
-                        codechar1, codechar2, codechar3, codechar4, codechar5
-                    )
-                    if (!codechar1.isNullOrBlank()) {
-                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
-                        verificationNumber2.requestFocus()
-                    }
-                    else{
-                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
-                    }
                 }
-
             })
             //---
 
             //TextWatcher function to listen for changes on editText
             verificationNumber2.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     codechar2 = s.toString()
-                    verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    invalidCodeTextView.isVisible = false
                     codeAuth = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
@@ -131,30 +99,13 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                         verificationNumber3.requestFocus()
                     }
                     else{
+                        drawableSetter(true)
                         buttonAuth.isEnabled = false
                         verificationNumber1.requestFocus()
                     }
                 }
 
                 override fun afterTextChanged(s: Editable?) {
-                    codechar2 = s.toString()
-                    verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    invalidCodeTextView.isVisible = false
-                    codeAuth = validations.concatenaterCode(
-                        codechar1, codechar2, codechar3, codechar4, codechar5
-                    )
-                    if (!codechar2.isNullOrBlank()) {
-                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
-                        verificationNumber3.requestFocus()
-                    }
-                    else{
-                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
-                        verificationNumber1.requestFocus()
-                    }
                 }
 
             })
@@ -168,12 +119,6 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     codechar3 = s.toString()
-                    verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    invalidCodeTextView.isVisible = false
                     codeAuth = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
@@ -182,30 +127,13 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                         verificationNumber4.requestFocus()
                     }
                     else{
+                        drawableSetter(true)
                         buttonAuth.isEnabled = false
                         verificationNumber2.requestFocus()
                     }
                 }
 
                 override fun afterTextChanged(s: Editable?) {
-                    codechar3 = s.toString()
-                    verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    invalidCodeTextView.isVisible = false
-                    codeAuth = validations.concatenaterCode(
-                        codechar1, codechar2, codechar3, codechar4, codechar5
-                    )
-                    if (!codechar3.isNullOrBlank()) {
-                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
-                        verificationNumber4.requestFocus()
-                    }
-                    else{
-                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
-                        verificationNumber2.requestFocus()
-                    }
                 }
 
             })
@@ -219,12 +147,6 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     codechar4 = s.toString()
-                    verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    invalidCodeTextView.isVisible = false
                     codeAuth = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
@@ -233,32 +155,13 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                         verificationNumber5.requestFocus()
                     }
                     else{
+                        drawableSetter(true)
                         buttonAuth.isEnabled = false
                         verificationNumber3.requestFocus()
                     }
                 }
 
-                override fun afterTextChanged(s: Editable?) {
-                    codechar4 = s.toString()
-                    verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    invalidCodeTextView.isVisible = false
-                    codeAuth = validations.concatenaterCode(
-                        codechar1, codechar2, codechar3, codechar4, codechar5
-                    )
-                    if (!codechar4.isNullOrBlank()) {
-                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
-                        verificationNumber5.requestFocus()
-                    }
-                    else{
-                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
-                        verificationNumber3.requestFocus()
-                    }
-                }
-
+                override fun afterTextChanged(s: Editable?) {}
             })
             //---
 
@@ -267,15 +170,8 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
                 }
-
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     codechar5 = s.toString()
-                    verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    invalidCodeTextView.isVisible = false
                     codeAuth = validations.concatenaterCode(
                         codechar1, codechar2, codechar3, codechar4, codechar5
                     )
@@ -283,29 +179,13 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                         buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
                     }
                     else{
+                        drawableSetter(true)
                         buttonAuth.isEnabled = false
                         verificationNumber4.requestFocus()
                     }
                 }
 
                 override fun afterTextChanged(s: Editable?) {
-                    codechar5 = s.toString()
-                    verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
-                    invalidCodeTextView.isVisible = false
-                    codeAuth = validations.concatenaterCode(
-                        codechar1, codechar2, codechar3, codechar4, codechar5
-                    )
-                    if (!codechar5.isNullOrBlank()) {
-                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
-                    }
-                    else{
-                        buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
-                        verificationNumber4.requestFocus()
-                    }
                 }
 
             })
@@ -317,11 +197,7 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                     view.findNavController().navigate(R.id.action_EKTPForgottenPassAuthorizationCodeFragment_to_EKTPForgottenPassNewPassFragment)
                 }
                 else{
-                    verificationNumber1.setBackgroundResource(R.drawable.validation_edit_text)
-                    verificationNumber2.setBackgroundResource(R.drawable.validation_edit_text)
-                    verificationNumber3.setBackgroundResource(R.drawable.validation_edit_text)
-                    verificationNumber4.setBackgroundResource(R.drawable.validation_edit_text)
-                    verificationNumber5.setBackgroundResource(R.drawable.validation_edit_text)
+                    drawableSetter(false)
                     invalidCodeTextView.isVisible = true
                 }
             }
@@ -333,7 +209,7 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
             }
             //---
 
-            verificationNumber1.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+            /*verificationNumber1.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
                 val pressedKey = event.keyCode
                 Log.i("key pressed",pressedKey.toString())
                 if (!codechar1.isNullOrBlank()&&verificationNumber1.isFocused&&pressedKey>=8&&pressedKey<=16) {
@@ -387,12 +263,12 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                 }else{
                     false
                 }
-            })
+            })*/
 
             return root
         }
     }
-    fun getKeyVal(pressedKeyCode: Int):String{
+    private fun getKeyVal(pressedKeyCode: Int):String{
         return when (pressedKeyCode){
             8 -> "1"
             9 -> "2"
@@ -404,6 +280,21 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
             15 -> "8"
             16 -> "9"
             else -> "0"
+        }
+    }
+    private fun drawableSetter(isEnabled : Boolean){
+        if (isEnabled){
+            binding.verificationNumber1.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+            binding.verificationNumber2.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+            binding.verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+            binding.verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+            binding.verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+        }else{
+            binding.verificationNumber1.setBackgroundResource(R.drawable.validation_edit_text)
+            binding.verificationNumber2.setBackgroundResource(R.drawable.validation_edit_text)
+            binding.verificationNumber3.setBackgroundResource(R.drawable.validation_edit_text)
+            binding.verificationNumber4.setBackgroundResource(R.drawable.validation_edit_text)
+            binding.verificationNumber5.setBackgroundResource(R.drawable.validation_edit_text)
         }
     }
 }

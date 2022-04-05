@@ -111,7 +111,8 @@
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/verificationRecivedHintTextView">
+                    app:layout_constraintTop_toBottomOf="@id/verificationRecivedHintTextView"
+                    android:importantForAutofill="yes">
 
                     <EditText
                         android:id="@+id/verificationNumber1"
@@ -125,7 +126,8 @@
                         android:imeOptions="actionNext"
                         android:inputType="number"
                         android:maxLength="1"
-                        android:theme="@style/code_text" />
+                        android:theme="@style/code_text"
+                        android:importantForAutofill="yes"/>
 
                     <EditText
                         android:id="@+id/verificationNumber2"
@@ -139,7 +141,8 @@
                         android:imeOptions="actionNext"
                         android:inputType="number"
                         android:maxLength="1"
-                        android:theme="@style/code_text" />
+                        android:theme="@style/code_text"
+                        android:importantForAutofill="yes"/>
 
                     <EditText
                         android:id="@+id/verificationNumber3"
@@ -153,7 +156,8 @@
                         android:imeOptions="actionNext"
                         android:inputType="number"
                         android:maxLength="1"
-                        android:theme="@style/code_text" />
+                        android:theme="@style/code_text"
+                        android:importantForAutofill="yes"/>
 
                     <EditText
                         android:id="@+id/verificationNumber4"
@@ -167,7 +171,8 @@
                         android:imeOptions="actionNext"
                         android:inputType="number"
                         android:maxLength="1"
-                        android:theme="@style/code_text" />
+                        android:theme="@style/code_text"
+                        android:importantForAutofill="yes"/>
 
                     <EditText
                         android:id="@+id/verificationNumber5"
@@ -180,7 +185,8 @@
                         android:imeOptions="actionDone"
                         android:inputType="number"
                         android:maxLength="1"
-                        android:theme="@style/code_text" />
+                        android:theme="@style/code_text"
+                        android:importantForAutofill="yes"/>
 
                 </LinearLayout>
 
