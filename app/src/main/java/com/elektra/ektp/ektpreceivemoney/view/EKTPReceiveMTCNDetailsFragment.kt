@@ -66,7 +66,8 @@ class EKTPReceiveMTCNDetailsFragment : Fragment() {
             }
 
             laterButton.setOnClickListener {
-                view?.findNavController()?.navigate(R.id.action_EKTPReceiveMTCNDetailsFragment_to_EKTPReceiveMoneyMTCNFragment2)
+                activity?.finish()
+                //view?.findNavController()?.navigate(R.id.action_EKTPReceiveMTCNDetailsFragment_to_EKTPReceiveMoneyMTCNFragment2)
             }
         }
 

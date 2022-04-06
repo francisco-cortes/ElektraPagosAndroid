@@ -45,7 +45,8 @@ class EKTPReceiveMTCNAcountSuccesFragment : Fragment() {
         val bundle = this.arguments
         binding =  DataBindingUtil.inflate<FragmentReceiveMtcnAcountSuccesBinding>(inflater,R.layout.fragment_receive_mtcn_acount_succes, container, false)
         binding.doneButton.setOnClickListener {
-            view?.findNavController()?.navigate(R.id.action_receiveMTCNAcountSuccesFragment_to_EKTPReceiveMoneyMTCNFragment)
+            activity?.finish()
+            //view?.findNavController()?.navigate(R.id.action_receiveMTCNAcountSuccesFragment_to_EKTPReceiveMoneyMTCNFragment)
         }
 
         binding.shareDetailsButton.setOnClickListener{

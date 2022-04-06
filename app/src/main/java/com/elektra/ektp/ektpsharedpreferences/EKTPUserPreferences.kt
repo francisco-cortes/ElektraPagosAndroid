@@ -18,15 +18,12 @@ class EKTPUserPreferences(val context: Context) {
     val SHARED_EMAIL_USER = "email"
     val SHARED_FILE = "EKTPUserSec"
     val SHARED_BIO_TYPE = "BiometricUSed"
-    val SHARED_ENCRYPT_TOKEN = "Token"
     val SHARED_BIO_STATUS = "BioStatus"
     val SHARED_LOGIN_FRAGMENT = "isLoginWithBiometric"
     val SHARED_TEMPORAL_PASSWORD = "qwertyuio"
     val SHARED_TEMPORAL_LOCKED = "passwordIsLocked?"
     val SHARED_BIO_LOGIN_ACTIVATED = "bioLoginActivated?"
-
-    val SHARED_ENCRYPTED_PASSWORD = "enPassword"
-    val SHARED_IVBYTES_ = "ivBytes"
+    val SHARED_LOCAL_STAUS = "vacio"
 
 
     private val enSharedPreferences: SharedPreferences = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
@@ -104,14 +101,6 @@ class EKTPUserPreferences(val context: Context) {
         return enSharedPreferences.getInt(SHARED_BIO_TYPE,3)!!
     }
 
-    fun saveEncryptToken(token: String){
-        enSharedPreferences.edit().putString(SHARED_ENCRYPT_TOKEN,token).apply()
-    }
-
-    fun getEncryptToken():String{
-        return enSharedPreferences.getString(SHARED_ENCRYPT_TOKEN,"Token")!!
-    }
-
     fun saveBioStatus(bioStatus: Int){
         enSharedPreferences.edit().putInt(SHARED_BIO_STATUS,bioStatus).apply()
     }
@@ -159,21 +148,10 @@ class EKTPUserPreferences(val context: Context) {
     fun getBioLogin():Boolean{
         return enSharedPreferences.getBoolean(SHARED_BIO_LOGIN_ACTIVATED,false)!!
     }
-
-    fun saveEncryptedPassword(encryptedPass: String){
-        enSharedPreferences.edit().putString(SHARED_ENCRYPTED_PASSWORD,encryptedPass).apply()
+    fun saveLocalStatus(localStatus:String){
+        enSharedPreferences.edit().putString(SHARED_LOCAL_STAUS,localStatus).apply()
     }
-
-    fun getEncryptedPassword():String{
-        return enSharedPreferences.getString(SHARED_ENCRYPTED_PASSWORD,"pass?")!!
+    fun getLocalStatus():String{
+        return enSharedPreferences.getString(SHARED_LOCAL_STAUS,"")!!
     }
-
-    fun saveIvBytes(ivBytes: String){
-        enSharedPreferences.edit().putString(SHARED_IVBYTES_,ivBytes).apply()
-    }
-
-    fun getIVBytes(): String{
-        return enSharedPreferences.getString(SHARED_IVBYTES_,"bytes?")!!
-    }
-
 }
