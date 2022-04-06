@@ -90,7 +90,7 @@
                     android:layout_height="@dimen/_28sdp"
                     android:layout_marginTop="@dimen/_30sdp"
                     android:padding="@dimen/_20sdp"
-                    android:background="@drawable/ic_share_icon"
+                    android:background="@drawable/ic_android_share"
                     app:layout_constraintTop_toBottomOf="@id/receivedSuccessAdviceTextView"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
