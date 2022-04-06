@@ -1,5 +1,9 @@
 package com.elektra.ektp.ektpforgottenpass.view
 
+import android.app.Activity
+import android.content.Intent
+import android.content.IntentFilter
+import android.content.IntentSender
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
@@ -20,7 +24,18 @@ import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpForgottenPassAuthorizationCodeBinding
 import com.elektra.ektp.ektpforgottenpass.view.viewmodel.EKTPForgottenPassAuthorizationCodeViewModel
+import com.elektra.ektp.ektputilies.smsreader.EKTPSMSBrodcastReciver
+import com.elektra.ektp.ektputilies.smsreader.RetrievalEvent
 import com.elektra.ektp.ektputilies.uservalidations.UserValidations
+import com.google.android.gms.auth.api.credentials.Credential
+import com.google.android.gms.auth.api.credentials.Credentials
+import com.google.android.gms.auth.api.credentials.HintRequest
+import com.google.android.gms.auth.api.phone.SmsRetriever
+import com.google.android.gms.auth.api.phone.SmsRetrieverClient
+import org.apache.commons.lang3.StringUtils
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+
 
 class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
 
@@ -28,16 +43,24 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
     private lateinit var binding: FragmentEktpForgottenPassAuthorizationCodeBinding
     //ViewModel access variable
     private val authorizationViewModel: EKTPForgottenPassAuthorizationCodeViewModel by viewModels()
+
+    private val smsBroadcastReceiver: EKTPSMSBrodcastReciver by lazy { EKTPSMSBrodcastReciver() }
+    private lateinit var smsClient: SmsRetrieverClient
+
     //UserValidations access variable
     val validations = UserValidations()
 
     //General data variables
     private lateinit var codeAuth: String
+    private lateinit var autoCode :String
     private var codechar1 = ""
     private var codechar2 = ""
     private var codechar3 = ""
     private var codechar4 = ""
     private var codechar5 = ""
+
+    private var intentFilter: IntentFilter? = null
+    private var smsReceiver: EKTPSMSBrodcastReciver? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +70,18 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                     findNavController().popBackStack()
             }
         })
+        initBroadCast()
+        initSmsListener()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        //registerReceiver(smsReceiver, intentFilter)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        //unregisterReceiver(smsReceiver)
     }
 
     override fun onCreateView(
@@ -208,63 +243,6 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                 findNavController().popBackStack()
             }
             //---
-
-            /*verificationNumber1.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
-                val pressedKey = event.keyCode
-                Log.i("key pressed",pressedKey.toString())
-                if (!codechar1.isNullOrBlank()&&verificationNumber1.isFocused&&pressedKey>=8&&pressedKey<=16) {
-                    //Perform Code
-                        verificationNumber2.requestFocus()
-                        verificationNumber2.setText(getKeyVal(pressedKey))
-                        verificationNumber2.setSelection(verificationNumber2.length())
-                    return@OnKeyListener true
-                }else{
-                    false
-                }
-            })
-
-            verificationNumber2.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
-                val pressedKey = event.keyCode
-                Log.i("key pressed",pressedKey.toString())
-                if (!codechar2.isNullOrBlank()&&verificationNumber2.isFocused&&pressedKey>=8&&pressedKey<=16) {
-                    //Perform Code
-                    verificationNumber3.requestFocus()
-                    verificationNumber3.setText(getKeyVal(pressedKey))
-                    verificationNumber3.setSelection(verificationNumber3.length())
-                    return@OnKeyListener true
-                }else{
-                    false
-                }
-            })
-
-            verificationNumber3.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
-                val pressedKey = event.keyCode
-                Log.i("key pressed",pressedKey.toString())
-                if (!codechar3.isNullOrBlank()&&verificationNumber3.isFocused&&pressedKey>=8&&pressedKey<=16) {
-                    //Perform Code
-                    verificationNumber4.requestFocus()
-                    verificationNumber4.setText(getKeyVal(pressedKey))
-                    verificationNumber4.setSelection(verificationNumber4.length())
-                    return@OnKeyListener true
-                }else{
-                    false
-                }
-            })
-
-            verificationNumber4.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
-                val pressedKey = event.keyCode
-                Log.i("key pressed",pressedKey.toString())
-                if (!codechar4.isNullOrBlank()&&verificationNumber4.isFocused&&pressedKey>=8&&pressedKey<=16) {
-                    //Perform Code
-                    verificationNumber5.requestFocus()
-                    verificationNumber5.setText(getKeyVal(pressedKey))
-                    verificationNumber5.setSelection(verificationNumber5.length())
-                    return@OnKeyListener true
-                }else{
-                    false
-                }
-            })*/
-
             return root
         }
     }
@@ -297,4 +275,29 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
             binding.verificationNumber5.setBackgroundResource(R.drawable.validation_edit_text)
         }
     }
+
+    private fun initBroadCast() {
+        val intentFilter = IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION)
+        val smsReceiver = EKTPSMSBrodcastReciver()
+        smsReceiver.initOTPListener((object : EKTPSMSBrodcastReciver.OTPReceiveListener {
+            override fun onOTPReceived(otp: String) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onOTPTimeOut() {
+                TODO("Not yet implemented")
+            }
+        }))
+    }
+
+    private fun initSmsListener() {
+        val client = SmsRetriever.getClient(requireContext())
+        client.startSmsRetriever()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        smsReceiver = null
+    }
+
 }

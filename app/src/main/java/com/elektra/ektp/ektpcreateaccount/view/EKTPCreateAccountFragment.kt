@@ -478,7 +478,8 @@ class EKTPCreateAccountFragment : Fragment() {
                 uMail = emailConfirmationText
                 uGenre = gender
                 bPlace = birthState
-                verifyFoliValClientResponse(createAccountViewModel.apiFolioValClientes(phone,name,paternalLast,maternalLast,birthDate,gender,eMailText,birthState,""))
+                //verifyFoliValClientResponse(createAccountViewModel.apiFolioValClientes(phone,name,paternalLast,maternalLast,birthDate,gender,eMailText,birthState,""))
+                view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountFragment_to_EKTPCreateAccountSMSVerificationFragment)
             }
             //---
             //onClickListener on appBar BackButton to destroy fragment and activity

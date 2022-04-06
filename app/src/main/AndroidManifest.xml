@@ -17,6 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ElektraPagos">
+        <receiver android:name=".ektputilies.smsreader.EKTPSMSBrodcastReciver" android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.auth.api.phone.SMS_RETRIEVED" />
+            </intent-filter>
+        </receiver>
         <activity
             android:name=".ektppdfviewer.EKTPPDFViewerActivity"
             android:exported="false" />
