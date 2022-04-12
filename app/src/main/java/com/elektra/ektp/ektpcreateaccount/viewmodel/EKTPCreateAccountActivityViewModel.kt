@@ -6,7 +6,7 @@ import com.elektra.ektp.ektplocaldb.dao.EKTPLocalUserDAO
 import com.elektra.ektp.ektplocaldb.localentity.EKTPLocalUserEntity
 import dagger.hilt.android.qualifiers.ApplicationContext
 
-class EKTPCreateAccountActivityViewModel(): ViewModel()  {
+class EKTPCreateAccountActivityViewModel: ViewModel()  {
     companion object{
         var uName = ""
         var pName = ""
@@ -24,6 +24,7 @@ class EKTPCreateAccountActivityViewModel(): ViewModel()  {
         var uCoun = ""
         var uStat = ""
         var uTown = ""
+        var folioTwilo = ""
     }
 
     fun saveRegisterOnDB():EKTPLocalUserEntity{

@@ -20,14 +20,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentCreateAccountBinding
-import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.bDate
-import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.bPlace
-import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.mName
-import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.pName
-import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uGenre
-import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uMail
-import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uName
-import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uTel
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountViewModel
 import com.elektra.ektp.ektplogin.view.EKTPLoginActivity
 import com.elektra.ektp.ektputilies.uservalidations.UserValidations
@@ -51,6 +43,7 @@ class EKTPCreateAccountFragment : Fragment() {
     private var paternalLast: String = ""
     private var maternalLast: String = ""
     private var birthDate: String = ""
+    private var apiBday = ""
     private var birthState: String = ""
     private var gender: String = ""
     private var phone: String = "Selecciona una opción*"
@@ -300,6 +293,7 @@ class EKTPCreateAccountFragment : Fragment() {
                             "$mDay"
                         }
                         dateBirth.setText("$sDay/$sMonth/$mYear")
+                        apiBday = "$mYear-$sMonth-$sDay"
                     },
                     year,
                     month,
@@ -468,18 +462,11 @@ class EKTPCreateAccountFragment : Fragment() {
             //onClickListener on continueButton to listen for saveUserData in SharedPreferences
             button.setOnClickListener { view: View ->
                 createAccountViewModel.saveRegisterData(
-                    name, paternalLast, maternalLast, birthDate, birthState, phone, eMailText, gender
+                    name, paternalLast, maternalLast, birthDate, birthState, phone, eMailText, gender,apiBday
                 )
-                uName = name
-                pName = paternalLast
-                mName = maternalLast
-                bDate = birthDate
-                uTel = phone
-                uMail = emailConfirmationText
-                uGenre = gender
-                bPlace = birthState
-                //verifyFoliValClientResponse(createAccountViewModel.apiFolioValClientes(phone,name,paternalLast,maternalLast,birthDate,gender,eMailText,birthState,""))
-                view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountFragment_to_EKTPCreateAccountSMSVerificationFragment)
+                val value = createAccountViewModel.apiFolioValClientes(phone,name,paternalLast,maternalLast,apiBday,gender,eMailText,birthState,"")
+                verifyFoliValClientResponse(value)
+                //view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountFragment_to_EKjTPCreateAccountSMSVerificationFragment)
             }
             //---
             //onClickListener on appBar BackButton to destroy fragment and activity
@@ -502,7 +489,7 @@ class EKTPCreateAccountFragment : Fragment() {
         loadingAlert.getWindow()?.setLayout(250, 250)
         var canContinue = false
         var attempts = 0
-        val timer = object : CountDownTimer(2000, 1000) {
+        val timer = object : CountDownTimer(7000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 if(value.isCompleted){
                     if (createAccountViewModel.canContinue){

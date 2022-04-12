@@ -1,7 +1,9 @@
 package com.elektra.ektp.ektpcreateaccount.view
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.fragment.app.Fragment
@@ -15,22 +17,28 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.createViewModelLazy
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEkptCreateAccountRegisterFormBinding
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.folioTwilo
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uCoun
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uMail
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uNext
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uNint
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uPC
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uSett
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uStat
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uStr
+import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uTel
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel.Companion.uTown
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountRegisterFormViewModel
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountSMSVerificationViewModel
+import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
 import com.elektra.ektp.ektputilies.uservalidations.UserValidations
+import kotlinx.coroutines.Job
 
 class EKTPCreateAccountRegisterFormFragment : Fragment() {
 
@@ -38,6 +46,7 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
     private lateinit var binding: FragmentEkptCreateAccountRegisterFormBinding
     private val registerFormViewModel: EKTPCreateAccountRegisterFormViewModel by viewModels()
     private val validations = UserValidations()
+    private lateinit var loadingLayout: View
     //---
 
     //Data variables
@@ -63,6 +72,8 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val valuer = registerFormViewModel.apiConsultaFolioCliente(preferences.getPhoneUser(), preferences.getEmailUser())
+        verifyFoliValClientResponse(valuer)
         //Overriding obBackPressed to popBackStack fragment
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -116,11 +127,11 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
             townHallSpinner.isFocusable = true*/
 
             when (userData[5]) {
-                "Hombre" -> {
+                "H" -> {
                     manGenderRadioButton.isChecked = true
                     womanGenderRadioButton.isChecked = false
                 }
-                "Mujer" -> {
+                "M" -> {
                     manGenderRadioButton.isChecked = false
                     womanGenderRadioButton.isChecked = true
                 }
@@ -704,16 +715,13 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
 
             //onClickListener on continueButton to listen for saveUserData in SharedPreferences
             button5.setOnClickListener { view: View ->
-                uPC = zipCode
-                uSett = colonyUser
-                uStr = streetUser
-                uNext = exteriorNumberString
-                uNint = interiorNumberString
-                uCoun = country
-                uStat = state
-                uTown = town
-                view.findNavController()
-                    .navigate(R.id.action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountContractsFragment)
+                val tel = preferences.getPhoneUser()
+                val mail = preferences.getEmailUser()
+                val folioClient = preferences.getFolioCliente()
+                //view.findNavController().navigate(R.id.action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountContractsFragment)
+                verifyFoliValClientResponse(registerFormViewModel.apiAltaUpdate(folioClient, streetUser, interiorNumberString,
+                    exteriorNumberString, colonyUser, zipCode, town, state,"445",tel,"1",
+                    "1234567890123", mail ,"1","1",2, "449"))
             }
             //---
 
@@ -742,5 +750,63 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
         }
     }
     //---
+
+    private fun verifyFoliValClientResponse(value: Job) {
+        loadingLayout = layoutInflater.inflate(R.layout.loading_alert_layout,null)
+        val loadingAlert = alertDialogOpener(loadingLayout, requireContext())
+        loadingAlert.show()
+        loadingAlert.getWindow()?.setLayout(250, 250)
+        var canContinue = false
+        var attempts = 0
+        val timer = object : CountDownTimer(7000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                if(value.isCompleted){
+                    if (registerFormViewModel.canContinue){
+                        loadingAlert.dismiss()
+                        view?.findNavController()?.navigate(R.id.action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountContractsFragment)
+                        canContinue = true
+                        cancel()
+                    }else{
+                        loadingAlert.dismiss()
+                        canContinue = false
+                        cancel()
+                    }
+                }
+            }
+            override fun onFinish() {
+                if(value.isCompleted){
+                    if (registerFormViewModel.canContinue){
+                        loadingAlert.dismiss()
+                        view?.findNavController()?.navigate(R.id.action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountContractsFragment)
+                        canContinue = true
+                        cancel()
+                    }else{
+                        loadingAlert.dismiss()
+                        canContinue = false
+                        cancel()
+                    }
+                }else{
+                    attempts = +1
+                    if (attempts>2){
+                        start()
+                    }else{
+                        loadingAlert.dismiss()
+                        canContinue = false
+                    }
+                }
+            }
+        }
+        timer.start()
+    }
+
+    private fun alertDialogOpener(dialogLayout: View, context: Context): AlertDialog {
+        var alertDialog: AlertDialog? = null
+        val alertDialogBuilder = AlertDialog.Builder(context)
+
+        alertDialogBuilder.setView(dialogLayout)
+        alertDialog = alertDialogBuilder.create()
+
+        return alertDialog
+    }
 
 }

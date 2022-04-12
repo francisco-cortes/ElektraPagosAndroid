@@ -24,6 +24,9 @@ class EKTPUserPreferences(val context: Context) {
     val SHARED_TEMPORAL_LOCKED = "passwordIsLocked?"
     val SHARED_BIO_LOGIN_ACTIVATED = "bioLoginActivated?"
     val SHARED_LOCAL_STAUS = "vacio"
+    val SHARED_API_DATE = "yyyy-mm-dd"
+    val SHARED_FOLIO_TWILO = "folio twilo"
+    val SHARED_FOLIO_CLIENTE = "folio cliente"
 
 
     private val enSharedPreferences: SharedPreferences = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
@@ -153,5 +156,23 @@ class EKTPUserPreferences(val context: Context) {
     }
     fun getLocalStatus():String{
         return enSharedPreferences.getString(SHARED_LOCAL_STAUS,"")!!
+    }
+    fun saveApiDate(apiDate:String){
+        enSharedPreferences.edit().putString(SHARED_API_DATE,apiDate).apply()
+    }
+    fun getApiDate():String{
+        return enSharedPreferences.getString(SHARED_API_DATE,"")!!
+    }
+    fun saveFolioTwilo(folio:String){
+        enSharedPreferences.edit().putString(SHARED_FOLIO_TWILO,folio).apply()
+    }
+    fun getFolioTwilo():String{
+        return enSharedPreferences.getString(SHARED_FOLIO_TWILO,"")!!
+    }
+    fun saveFolioCliente(folio:String){
+        enSharedPreferences.edit().putString(SHARED_FOLIO_CLIENTE,folio).apply()
+    }
+    fun getFolioCliente():String{
+        return enSharedPreferences.getString(SHARED_FOLIO_CLIENTE,"")!!
     }
 }

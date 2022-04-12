@@ -138,7 +138,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
         }
         //--
 
-        if(viewModel.getSavedDataLogin()[3]==""){
+        if(viewModel.getSavedDataLogin()[2]==""){
             binding.loginPassButton.isEnabled = false
             noUserAlertDialog.show()
         }
@@ -146,7 +146,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
         //main layout buttons
         with(binding){
 
-            hiUserTextView.text = viewModel.getSavedDataLogin()[3] + "!"
+            hiUserTextView.text = viewModel.getSavedDataLogin()[2] + "!"
 
             hidePassButton.setOnClickListener { view: View ->
                 //show an hide password text
@@ -177,8 +177,8 @@ class EKTPLoginPassLoginFragment : Fragment() {
             loginPassButton.setOnClickListener { view : View ->
                 //check the pasword
                 val passwordInput = passwordInputEditText.text.toString()
-                if (!viewModel.getSavedDataLogin()[5].toBoolean()){
-                    if (viewModel.getSavedDataLogin()[4] == passwordInput){
+                if (!viewModel.getSavedDataLogin()[4].toBoolean()){
+                    if (viewModel.getSavedDataLogin()[3] == passwordInput){
                         //50% probabilities to make appear the case when there are no service
                         if ((0..1).random() == 2){ //Changed 0 for 2
                             noServiceAlertDialog.show()

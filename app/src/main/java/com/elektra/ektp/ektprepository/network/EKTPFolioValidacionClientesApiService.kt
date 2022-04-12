@@ -9,7 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
 
-private const val BASE_URL = "https://7f00-189-203-174-194.ngrok.io"
+private const val BASE_URL = "http://99c4-189-203-89-18.ngrok.io"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -43,6 +43,14 @@ interface EKTPFolioValidacionClientesApiService {
     @Headers("accept: application/json")
     @PUT("/clientes/datosExtra")
     suspend fun putDatosExtra(@Body body: EKTPDatosExtraRequest ): Response<ResponseBody>
+
+    @Headers("accept: application/json")
+    @POST("/clientes/alta-upgrade")
+    suspend fun putAltaUpgrade(@Body body: EKTPAltaUpgradeRequest ): Response<ResponseBody>
+
+    @POST("/clientes/consultaFolioCliente")
+    //suspend fun postConsultaFolioCliente(@Body body: EKTPConsultaFolioClienteRequest): Response<ResponseBody>
+    suspend fun postConsultaFolioCliente(@Query("correo") mail: String, @Query("telefono") tel: String ): Response<EKTPConsultaFolioClienteResponse>
 }
 
 object EKTPFolioValidacionClientesApi {
