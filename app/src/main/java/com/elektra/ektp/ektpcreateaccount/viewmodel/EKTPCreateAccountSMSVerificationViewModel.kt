@@ -13,6 +13,7 @@ import kotlinx.coroutines.*
 import retrofit2.Response
 import java.io.IOException
 import java.lang.Exception
+import java.lang.NullPointerException
 import java.net.HttpRetryException
 
 class EKTPCreateAccountSMSVerificationViewModel: ViewModel() {
@@ -62,12 +63,16 @@ class EKTPCreateAccountSMSVerificationViewModel: ViewModel() {
                 Log.e("APITEST", "Unexpected response + $e")
                 return@launch
             }
-            val body3 : EKTPVerificarCodigoSMSTwiloResponse = response.body()!!
-            if (body3.mensaje== "Approved") {
-                canContinueñero = true
-                preferences.saveFolioTwilo(body3.folio)
+            try {
+                val body3 : EKTPVerificarCodigoSMSTwiloResponse = response.body()!!
+                if (body3.mensaje== "Approved") {
+                    canContinueñero = true
+                    preferences.saveFolioTwilo(body3.folio)
+                }
+                Log.v("APITEST","${body3}")
+            }catch (e: NullPointerException){
+                Log.v("APITEST","null")
             }
-            Log.v("APITEST","${body3}")
         }
         return value
     }

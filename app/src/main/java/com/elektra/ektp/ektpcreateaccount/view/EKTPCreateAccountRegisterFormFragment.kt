@@ -72,7 +72,7 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val valuer = registerFormViewModel.apiConsultaFolioCliente(preferences.getPhoneUser(), preferences.getEmailUser())
+        val valuer = registerFormViewModel.apiConsultaFolioCliente()
         verifyFoliValClientResponse(valuer)
         //Overriding obBackPressed to popBackStack fragment
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {

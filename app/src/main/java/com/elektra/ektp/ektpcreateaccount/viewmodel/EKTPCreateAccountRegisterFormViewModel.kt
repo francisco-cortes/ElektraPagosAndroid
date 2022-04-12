@@ -20,7 +20,6 @@ import java.net.HttpRetryException
 class EKTPCreateAccountRegisterFormViewModel: ViewModel() {
 
     var canContinue = false
-    var folioClient = ""
     fun getSavedRegisterData(): ArrayList<String>
     {
         val userData = arrayListOf<String>()
@@ -37,8 +36,6 @@ class EKTPCreateAccountRegisterFormViewModel: ViewModel() {
             val response = try {
                 EKTPFolioValidacionClientesApi.folioValidacionClientesTRetrofitService.putAltaUpgrade(
                     EKTPAltaUpgradeRequest(folio,str,numExt,numInt,col,cp,pob,state,nac,phone,idComp,folioId,mail,civilStat,act,idType,birthCountry))
-                //EKTPFolioValidacionClientesApi.folioValidacionClientesTRetrofitService.getStatus()
-                //RequestCodeApi.requestSMSRetrofitService.getCode(TestDataClass("eve.holt@reqres.in","pistol"))
             } catch (e: IOException) {
                 Log.e("APITEST", "You might not have internet connection + $e")
                 return@launch
@@ -63,13 +60,11 @@ class EKTPCreateAccountRegisterFormViewModel: ViewModel() {
         return jobValue
     }
 
-    fun apiConsultaFolioCliente(phone: String,mail: String) : Job {
+    fun apiConsultaFolioCliente() : Job {
         val jobValue =  viewModelScope.launch {
             val response: Response<EKTPConsultaFolioClienteResponse> = try {
-                EKTPFolioValidacionClientesApi.folioValidacionClientesTRetrofitService.postConsultaFolioCliente(mail,phone)
-                //EKTPFolioValidacionClientesApi.folioValidacionClientesTRetrofitService.postConsultaFolioCliente(
-                    //EKTPConsultaFolioClienteRequest(mail,phone)
-                //)
+                EKTPFolioValidacionClientesApi.folioValidacionClientesTRetrofitService
+                    .postConsultaFolioCliente(preferences.getEmailUser(), preferences.getPhoneUser())
             } catch (e: IOException) {
                 Log.e("APITEST", "You might not have internet connection + $e")
                 return@launch
@@ -81,7 +76,7 @@ class EKTPCreateAccountRegisterFormViewModel: ViewModel() {
                 Log.e("APITEST", "Unexpected response + $e")
                 return@launch
             }
-            //val body3 = response.raw().request().url()  //.body()
+            //val body3 = response.raw().request().url()
             try {
                 val body3 : EKTPConsultaFolioClienteResponse = response.body()!!
                 if (body3.mensaje=="Cliente encontrado."){
