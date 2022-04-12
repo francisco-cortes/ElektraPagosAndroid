@@ -14,6 +14,7 @@ import com.elektra.ektp.databinding.FragmentEktpCreateAccountSuccessfulBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel
 import com.elektra.ektp.ektplocaldb.LocalDB
 import com.elektra.ektp.ektplogin.view.EKTPLoginActivity
+import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication
 import kotlinx.coroutines.launch
 
 class EKTPCreateAccountSuccessfulFragment : Fragment() {
@@ -46,6 +47,7 @@ class EKTPCreateAccountSuccessfulFragment : Fragment() {
             //lifecycleScope.launch{
               //  db.room.localUserDAO().insertAllLocalUserData(EKTPCreateAccountActivityViewModel().saveRegisterOnDB())
             //}
+            EKTPUserApplication.preferences.saveLocalStatus("ClienteBancarizado")
             activity?.finish()
             val intent = Intent(activity, EKTPLoginActivity::class.java)
             val context = view?.context

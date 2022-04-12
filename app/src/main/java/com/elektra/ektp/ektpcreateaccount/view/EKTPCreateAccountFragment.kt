@@ -22,6 +22,7 @@ import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentCreateAccountBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountViewModel
 import com.elektra.ektp.ektplogin.view.EKTPLoginActivity
+import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
 import com.elektra.ektp.ektputilies.uservalidations.UserValidations
 import kotlinx.coroutines.Job
 import java.util.*
@@ -464,6 +465,7 @@ class EKTPCreateAccountFragment : Fragment() {
                 createAccountViewModel.saveRegisterData(
                     name, paternalLast, maternalLast, birthDate, birthState, phone, eMailText, gender,apiBday
                 )
+                preferences.saveLocalStatus("preRegistrado")
                 val value = createAccountViewModel.apiFolioValClientes(phone,name,paternalLast,maternalLast,apiBday,gender,eMailText,birthState,"")
                 verifyFoliValClientResponse(value)
                 //view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountFragment_to_EKjTPCreateAccountSMSVerificationFragment)

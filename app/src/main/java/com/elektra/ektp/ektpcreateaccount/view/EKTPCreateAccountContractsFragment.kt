@@ -16,6 +16,7 @@ import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountContractsBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountContractsViewModel
 import com.elektra.ektp.ektppdfviewer.EKTPPDFViewerActivity
+import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication
 
 class EKTPCreateAccountContractsFragment : Fragment() {
 
@@ -117,6 +118,7 @@ class EKTPCreateAccountContractsFragment : Fragment() {
 
                     //onClickListener on termsButton to listen for forward advance in create account
                     termsContinueButton.setOnClickListener {view: View ->
+                        EKTPUserApplication.preferences.saveLocalStatus("Registrado")
                 view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountCreatePassFragment)
             }
                 //--
