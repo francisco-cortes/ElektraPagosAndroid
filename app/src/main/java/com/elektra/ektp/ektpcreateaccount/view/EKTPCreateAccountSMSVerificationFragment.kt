@@ -46,7 +46,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
     //---
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        smsVerificationViewModel.resquestSMSTwiloCode(preferences.getPhoneUser())
+        smsVerificationViewModel.resquestSMSTwiloCode()
         //Overriding OnBackPressed function to destroy fragment and activity
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -191,7 +191,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             //TextWatcher function to listen for changes on editText
             smsContinueButton.setOnClickListener { view: View ->
-                val value = smsVerificationViewModel.verifySMSTwiloCode(codeSMS, preferences.getPhoneUser())
+                val value = smsVerificationViewModel.verifySMSTwiloCode(codeSMS)
                 verifySMSresponse(value)
             }
             //---
@@ -201,8 +201,65 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                 findNavController().popBackStack()
             }
             //---
+            verificationNumber1.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+                val pressedKey = event.keyCode
+                Log.i("key pressed",pressedKey.toString())
+                if (!codechar1.isNullOrBlank()&&verificationNumber1.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                    //Perform Code
+                    verificationNumber2.requestFocus()
+                    verificationNumber2.setText(getKeyVal(pressedKey))
+                    verificationNumber2.setSelection(verificationNumber2.length())
+                    return@OnKeyListener true
+                }else{
+                    false
+                }
+            })
+
+            verificationNumber2.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+                val pressedKey = event.keyCode
+                Log.i("key pressed",pressedKey.toString())
+                if (!codechar2.isNullOrBlank()&&verificationNumber2.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                    //Perform Code
+                    verificationNumber3.requestFocus()
+                    verificationNumber3.setText(getKeyVal(pressedKey))
+                    verificationNumber3.setSelection(verificationNumber3.length())
+                    return@OnKeyListener true
+                }else{
+                    false
+                }
+            })
+
+            verificationNumber3.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+                val pressedKey = event.keyCode
+                Log.i("key pressed",pressedKey.toString())
+                if (!codechar3.isNullOrBlank()&&verificationNumber3.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                    //Perform Code
+                    verificationNumber4.requestFocus()
+                    verificationNumber4.setText(getKeyVal(pressedKey))
+                    verificationNumber4.setSelection(verificationNumber4.length())
+                    return@OnKeyListener true
+                }else{
+                    false
+                }
+            })
+
+            verificationNumber4.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+                val pressedKey = event.keyCode
+                Log.i("key pressed",pressedKey.toString())
+                if (!codechar4.isNullOrBlank()&&verificationNumber4.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                    //Perform Code
+                    verificationNumber5.requestFocus()
+                    verificationNumber5.setText(getKeyVal(pressedKey))
+                    verificationNumber5.setSelection(verificationNumber5.length())
+                    return@OnKeyListener true
+                }else{
+                    false
+                }
+            })
+
 
             resendCodeTextView.setOnClickListener {
+                smsVerificationViewModel.resquestSMSTwiloCode()
                 startCoolDown()
             }
 
@@ -231,12 +288,14 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
             binding.verificationNumber3.setBackgroundResource(R.drawable.rounded_rectangle_gray)
             binding.verificationNumber4.setBackgroundResource(R.drawable.rounded_rectangle_gray)
             binding.verificationNumber5.setBackgroundResource(R.drawable.rounded_rectangle_gray)
+            binding.invalidSMSTextView.isVisible = false
         }else{
             binding.verificationNumber1.setBackgroundResource(R.drawable.validation_edit_text)
             binding.verificationNumber2.setBackgroundResource(R.drawable.validation_edit_text)
             binding.verificationNumber3.setBackgroundResource(R.drawable.validation_edit_text)
             binding.verificationNumber4.setBackgroundResource(R.drawable.validation_edit_text)
             binding.verificationNumber5.setBackgroundResource(R.drawable.validation_edit_text)
+            binding.invalidSMSTextView.isVisible = true
         }
     }
 
@@ -249,7 +308,6 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
             }
 
             override fun onFinish() {
-                smsVerificationViewModel.resquestSMSTwiloCode(preferences.getPhoneUser())
                 binding.resendCodeTextView.isEnabled = true
                 binding.resendCodeTextView.text = getString(R.string.fragment_verification_resend_code)
             }

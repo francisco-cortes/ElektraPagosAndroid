@@ -18,39 +18,16 @@ import java.net.HttpRetryException
 class EKTPCreateAccountSMSVerificationViewModel: ViewModel() {
 
     var canContinueñero = false
-    var folioTwilo = ""
 
     fun checkSMSVerification(smsCode: String): Boolean{
         return smsCode == "69420"
     }
 
-    /*fun apiTest2() {
-        viewModelScope.launch {
-            val response : Response<List<swaggerGetTest>> = try {
-                EKTPFolioValidacionClientesApi.folioValidacionClientesTRetrofitService.getStatus()
-                //EKTPFolioValidacionClientesApi.folioValidacionClientesTRetrofitService.getStatus()
-                //RequestCodeApi.requestSMSRetrofitService.getCode(TestDataClass("eve.holt@reqres.in","pistol"))
-            } catch (e: IOException) {
-                Log.e("MainActivity", "You might not have internet connection + $e")
-                return@launch
-            } catch (e: HttpRetryException){
-                Log.e("MainActivity", "Unexpected response + $e")
-                return@launch
-            }
-            catch (e: Exception){
-                Log.e("MainActivity", "Unexpected response + $e")
-                return@launch
-            }
-            val body3 : List<swaggerGetTest> = response.body()!!
-            Log.v("APITEST","${body3}")
-        }
-    }*/
-
-    fun resquestSMSTwiloCode(telNum: String) {
+    fun resquestSMSTwiloCode() {
         viewModelScope.launch {
             val response = try {
                 EKTPFolioValidacionClientesApi.folioValidacionClientesTRetrofitService.getSMS(
-                    EKTPCodigoSMSTwiloRequest("sms","+521${telNum}",""))
+                    EKTPCodigoSMSTwiloRequest("sms","+521${preferences.getPhoneUser()}",""))
                 //EKTPFolioValidacionClientesApi.folioValidacionClientesTRetrofitServ1ice.getStatus()
                 //RequestCodeApi.requestSMSRetrofitService.getCode(TestDataClass("eve.holt@reqres.in","pistol"))
             } catch (e: IOException) {
@@ -69,11 +46,11 @@ class EKTPCreateAccountSMSVerificationViewModel: ViewModel() {
         }
     }
 
-    fun verifySMSTwiloCode(smsCode: String,telNum: String) : Job {
+    fun verifySMSTwiloCode(smsCode: String) : Job {
         val value = viewModelScope.launch {
             val response : Response<EKTPVerificarCodigoSMSTwiloResponse> = try {
                 EKTPFolioValidacionClientesApi.folioValidacionClientesTRetrofitService.verifySMS(
-                    EKTPVerificarCodigoSMSTwiloRequest("${smsCode}","+521${telNum}",""))
+                    EKTPVerificarCodigoSMSTwiloRequest("${smsCode}","+521${preferences.getPhoneUser()}",""))
             } catch (e: IOException) {
                 Log.e("APITEST", "You might not have internet connection + $e")
                 return@launch
