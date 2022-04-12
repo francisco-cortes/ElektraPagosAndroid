@@ -4,9 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.elektra.ektp.ektprepository.model.EKTPAltaUpgradeRequest
-import com.elektra.ektp.ektprepository.model.EKTPConsultaFolioClienteRequest
 import com.elektra.ektp.ektprepository.model.EKTPConsultaFolioClienteResponse
-import com.elektra.ektp.ektprepository.model.EKTPFolioValidacionClientesResponse
 import com.elektra.ektp.ektprepository.network.EKTPFolioValidacionClientesApi
 import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
 import kotlinx.coroutines.Job

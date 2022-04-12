@@ -24,10 +24,6 @@ interface EKTPFolioValidacionClientesApiService {
     @POST("/clientes/folioValidacionCliente")
     suspend fun postValidation(@Body body : EKTPFolioValidacionClientesResponse): Response<ResponseBody>
 
-    /*@Headers("accept: application/json")
-    @GET("/status")
-    suspend fun getStatus(): Response<List<swaggerGetTest>>*/
-
     @Headers("accept: application/json")
     @POST("/clientes/obtenerTwilioCodigo")
     suspend fun getSMS(@Body body: EKTPCodigoSMSTwiloRequest) : Response<ResponseBody>
@@ -37,19 +33,10 @@ interface EKTPFolioValidacionClientesApiService {
     suspend fun verifySMS(@Body body: EKTPVerificarCodigoSMSTwiloRequest) : Response<EKTPVerificarCodigoSMSTwiloResponse>
 
     @Headers("accept: application/json")
-    @POST("/clientes/alta-upgrade/{folio_validacion}")
-    suspend fun postUpgradeFolio(@Path("folio_validacion") folio: String, @Body body: EKTPAltaUpgradeRequest): Response<ResponseBody>
-
-    @Headers("accept: application/json")
-    @PUT("/clientes/datosExtra")
-    suspend fun putDatosExtra(@Body body: EKTPDatosExtraRequest ): Response<ResponseBody>
-
-    @Headers("accept: application/json")
     @POST("/clientes/alta-upgrade")
     suspend fun putAltaUpgrade(@Body body: EKTPAltaUpgradeRequest ): Response<ResponseBody>
 
     @POST("/clientes/consultaFolioCliente")
-    //suspend fun postConsultaFolioCliente(@Body body: EKTPConsultaFolioClienteRequest): Response<ResponseBody>
     suspend fun postConsultaFolioCliente(@Query("correo") mail: String, @Query("telefono") tel: String ): Response<EKTPConsultaFolioClienteResponse>
 }
 
