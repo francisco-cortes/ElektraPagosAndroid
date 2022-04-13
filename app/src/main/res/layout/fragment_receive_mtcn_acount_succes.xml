@@ -86,8 +86,8 @@
 
                 <ImageButton
                     android:id="@+id/shareDetailsButton"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_28sdp"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
                     android:layout_marginTop="@dimen/_30sdp"
                     android:padding="@dimen/_20sdp"
                     android:background="@drawable/ic_android_share"
