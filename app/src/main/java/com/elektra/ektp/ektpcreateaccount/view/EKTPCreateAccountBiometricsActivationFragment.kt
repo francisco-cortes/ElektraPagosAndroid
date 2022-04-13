@@ -2,14 +2,12 @@ package com.elektra.ektp.ektpcreateaccount.view
 
 import android.content.Context
 import androidx.biometric.BiometricPrompt
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
-import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
@@ -48,7 +46,6 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
         })
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,7 +57,7 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
         executor = ContextCompat.getMainExecutor(requireContext())
 
         //System authentication constructor, members methods implemented
-        biometricPrompt = BiometricPrompt(this,executor,object:androidx.biometric.BiometricPrompt.AuthenticationCallback(){
+        biometricPrompt = BiometricPrompt(this,executor,object:BiometricPrompt.AuthenticationCallback(){
             override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                 super.onAuthenticationError(errorCode, errString)
                 toast.makeAToast(activity as Context, "Error $errString")
@@ -100,9 +97,9 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
             /*According to api level, the authentication hardware can change,
         so the information to show changes too*/
             if (preferences.getBioType()== 1){
-                sectionTitleAppbarTextView.text = "Activar Face ID"
-                textViewBio.text = "¿Te gustaría activar tu Face ID"
-                textViewBio2.text = "Tu Rostro será tu clave de seguridad y contraseña"
+                sectionTitleAppbarTextView.text = getString(R.string.face_header_label)
+                textViewBio.text = getString(R.string.fragment_biometrics_activation_activate_face)
+                textViewBio2.text = getString(R.string.fragment_biometrics_activation_face)
                 imageButtonBio.setBackgroundResource(R.drawable.ic_active_face_button)
                 textViewBio3.text = getString(R.string.fragment_biometrics_activation_face)
             }

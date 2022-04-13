@@ -1,10 +1,7 @@
 package com.elektra.ektp.ektpcreateaccount.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.elektra.ektp.ektplocaldb.LocalDB
-import com.elektra.ektp.ektplocaldb.dao.EKTPLocalUserDAO
 import com.elektra.ektp.ektplocaldb.localentity.EKTPLocalUserEntity
-import dagger.hilt.android.qualifiers.ApplicationContext
 
 class EKTPCreateAccountActivityViewModel: ViewModel()  {
     companion object{
@@ -24,7 +21,6 @@ class EKTPCreateAccountActivityViewModel: ViewModel()  {
         var uCoun = ""
         var uStat = ""
         var uTown = ""
-        var folioTwilo = ""
     }
 
     fun saveRegisterOnDB():EKTPLocalUserEntity{
