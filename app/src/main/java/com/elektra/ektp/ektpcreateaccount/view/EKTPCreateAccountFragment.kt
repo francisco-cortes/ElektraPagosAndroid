@@ -54,6 +54,7 @@ class EKTPCreateAccountFragment : Fragment() {
     private val year = c.get(Calendar.YEAR)-18
     private val month = c.get(Calendar.MONTH)
     private val day = c.get(Calendar.DAY_OF_MONTH)
+    private var canContinue = false
     //---
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -466,9 +467,9 @@ class EKTPCreateAccountFragment : Fragment() {
                     name, paternalLast, maternalLast, birthDate, birthState, phone, eMailText, gender,apiBday
                 )
                 preferences.saveLocalStatus("preRegistrado")
-                val value = createAccountViewModel.apiFolioValClientes(phone,name,paternalLast,maternalLast,apiBday,gender,eMailText,birthState,"")
-                verifyFoliValClientResponse(value)
-                //view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountFragment_to_EKjTPCreateAccountSMSVerificationFragment)
+                //val value = createAccountViewModel.apiFolioValClientes(phone,name,paternalLast,maternalLast,apiBday,gender,eMailText,birthState,"")
+                //verifyFoliValClientResponse(value)
+                fragmentReplacer(EKTPCreateAccountSMSVerificationFragment())
             }
             //---
             //onClickListener on appBar BackButton to destroy fragment and activity
@@ -489,14 +490,14 @@ class EKTPCreateAccountFragment : Fragment() {
         val loadingAlert = alertDialogOpener(loadingLayout, requireContext())
         loadingAlert.show()
         loadingAlert.getWindow()?.setLayout(250, 250)
-        var canContinue = false
         var attempts = 0
         val timer = object : CountDownTimer(7000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 if(value.isCompleted){
                     if (createAccountViewModel.canContinue){
                         loadingAlert.dismiss()
-                        view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountFragment_to_EKTPCreateAccountSMSVerificationFragment)
+                        fragmentReplacer(EKTPCreateAccountSMSVerificationFragment())
+                        //view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountFragment_to_EKTPCreateAccountSMSVerificationFragment)
                         canContinue = true
                         cancel()
                     }else{
@@ -510,7 +511,8 @@ class EKTPCreateAccountFragment : Fragment() {
                 if(value.isCompleted){
                     if (createAccountViewModel.canContinue){
                         loadingAlert.dismiss()
-                        view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountFragment_to_EKTPCreateAccountSMSVerificationFragment)
+                        fragmentReplacer(EKTPCreateAccountSMSVerificationFragment())
+                        //view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountFragment_to_EKTPCreateAccountSMSVerificationFragment)
                         canContinue = true
                         cancel()
                     }else{
@@ -540,6 +542,14 @@ class EKTPCreateAccountFragment : Fragment() {
         alertDialog = alertDialogBuilder.create()
 
         return alertDialog
+    }
+
+    private fun fragmentReplacer(fragment: Fragment){
+        requireActivity()
+            .supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.CreateAccountNavigatorHost,fragment)
+            .commitNow()//open the biometric login fragment
     }
 
 }

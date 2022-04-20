@@ -75,7 +75,8 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
                 //println("Decrypted data: $decryptedData")
                 viewModel.saveBioInLogin(true)
                 toast.makeAToast(activity as Context, "Guardado con éxito")
-                view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountBiometricsActivationFragment_to_EKTPCreateAccountSuccessfulFragment)
+                fragmentReplacer(EKTPCreateAccountSuccessfulFragment())
+                //view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountBiometricsActivationFragment_to_EKTPCreateAccountSuccessfulFragment)
             }
 
             override fun onAuthenticationFailed() {
@@ -115,7 +116,8 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
             to activate biometric authentication now*/
             textViewBio4.setOnClickListener{view: View ->
                 viewModel.saveBioInLogin(false)
-                view.findNavController().navigate(R.id.action_EKTPCreateAccountBiometricsActivationFragment_to_EKTPCreateAccountSuccessfulFragment)
+                fragmentReplacer(EKTPCreateAccountSuccessfulFragment())
+                //view.findNavController().navigate(R.id.action_EKTPCreateAccountBiometricsActivationFragment_to_EKTPCreateAccountSuccessfulFragment)
             }
             //---
 
@@ -128,5 +130,11 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
             return root
         }
     }
-
+    private fun fragmentReplacer(fragment: Fragment){
+        requireActivity()
+            .supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.CreateAccountNavigatorHost,fragment)
+            .commitNow()//open the biometric login fragment
+    }
 }

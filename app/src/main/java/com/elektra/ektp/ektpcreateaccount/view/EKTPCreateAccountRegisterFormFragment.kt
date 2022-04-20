@@ -59,8 +59,8 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val valuer = registerFormViewModel.apiConsultaFolioCliente()
-        verifyFoliValClientResponse(valuer)
+        //val valuer = registerFormViewModel.apiConsultaFolioCliente()
+        //verifyFoliValClientResponse(valuer)
         //Overriding obBackPressed to popBackStack fragment
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -706,9 +706,12 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
                 val mail = preferences.getEmailUser()
                 val folioClient = preferences.getFolioCliente()
                 //view.findNavController().navigate(R.id.action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountContractsFragment)
-                verifyFoliValClientResponse(registerFormViewModel.apiAltaUpdate(folioClient, streetUser, interiorNumberString,
+                /*verifyFoliValClientResponse(registerFormViewModel.apiAltaUpdate(folioClient, streetUser, interiorNumberString,
                     exteriorNumberString, colonyUser, zipCode, town, state,"445",tel,"1",
                     "1234567890123", mail ,"1","1",2, "449"))
+
+                 */
+                fragmentReplacer(EKTPCreateAccountContractsFragment())
             }
             //---
 
@@ -750,7 +753,8 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
                 if(value.isCompleted){
                     if (registerFormViewModel.canContinue){
                         loadingAlert.dismiss()
-                        view?.findNavController()?.navigate(R.id.action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountContractsFragment)
+                        fragmentReplacer(EKTPCreateAccountContractsFragment())
+                        //view?.findNavController()?.navigate(R.id.action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountContractsFragment)
                         canContinue = true
                         cancel()
                     }else{
@@ -764,7 +768,8 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
                 if(value.isCompleted){
                     if (registerFormViewModel.canContinue){
                         loadingAlert.dismiss()
-                        view?.findNavController()?.navigate(R.id.action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountContractsFragment)
+                        fragmentReplacer(EKTPCreateAccountContractsFragment())
+                        //view?.findNavController()?.navigate(R.id.action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountContractsFragment)
                         canContinue = true
                         cancel()
                     }else{
@@ -795,5 +800,11 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
 
         return alertDialog
     }
-
+    private fun fragmentReplacer(fragment: Fragment){
+        requireActivity()
+            .supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.CreateAccountNavigatorHost,fragment)
+            .commitNow()//open the biometric login fragment
+    }
 }

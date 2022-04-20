@@ -119,7 +119,8 @@ class EKTPCreateAccountContractsFragment : Fragment() {
                     //onClickListener on termsButton to listen for forward advance in create account
                     termsContinueButton.setOnClickListener {view: View ->
                         EKTPUserApplication.preferences.saveLocalStatus("Registrado")
-                view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountCreatePassFragment)
+                //view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountCreatePassFragment)
+                        fragmentReplacer(EKTPCreateAccountCreatePassFragment())
             }
                 //--
 
@@ -131,6 +132,13 @@ class EKTPCreateAccountContractsFragment : Fragment() {
         val intent = Intent(requireContext(), EKTPPDFViewerActivity::class.java)
         intent.putExtra("selected_contract", selectedContract)
         startActivity(intent)
+    }
+    private fun fragmentReplacer(fragment: Fragment){
+        requireActivity()
+            .supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.CreateAccountNavigatorHost,fragment)
+            .commitNow()//open the biometric login fragment
     }
 
 }

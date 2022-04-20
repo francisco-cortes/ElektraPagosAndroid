@@ -246,10 +246,12 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
                 preferences.saveLocalStatus("ClienteActivado")
                 preferences.saveTemporalPassword(passTextVar)
                 if (checkBiometricStatus ==1 ){
-                    view.findNavController().navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountBiometricsActivationFragment)
+                    fragmentReplacer(EKTPCreateAccountBiometricsActivationFragment())
+                    //view.findNavController().navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountBiometricsActivationFragment)
                 }
                 else{
-                    view.findNavController().navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountSuccessfulFragment)
+                    fragmentReplacer(EKTPCreateAccountSuccessfulFragment())
+                    //view.findNavController().navigate(R.id.action_EKTPCreateAccountCreatePassFragment_to_EKTPCreateAccountSuccessfulFragment)
                 }
 
             }
@@ -257,6 +259,14 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
 
             return root
         }
+    }
+
+    private fun fragmentReplacer(fragment: Fragment){
+        requireActivity()
+            .supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.CreateAccountNavigatorHost,fragment)
+            .commitNow()//open the biometric login fragment
     }
 
 }

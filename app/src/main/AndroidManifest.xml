@@ -7,6 +7,10 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
 
     <application
         android:name=".ektpsharedpreferences.EKTPUserApplication"
@@ -17,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ElektraPagos">
-        <receiver android:name=".ektputilies.smsreader.EKTPSMSBrodcastReciver" android:exported="true">
+        <receiver android:name=".ektputilies.smsreader.EKTPSMSBrodcastReciver" android:exported="true"
+            android:permission="com.google.android.gms.auth.api.phone.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.gms.auth.api.phone.SMS_RETRIEVED" />
             </intent-filter>
