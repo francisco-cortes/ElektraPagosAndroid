@@ -14,11 +14,8 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpReciveMoneyMtcnBinding
-import com.elektra.ektp.ektphome.view.EKTPHomeActivity
-import com.elektra.ektp.ektpreceivemoney.viewmodel.EKTPReceiveMoneyMTCNViewModel
 
 class EKTPReceiveMoneyMTCNFragment : Fragment() {
     private lateinit var binding: FragmentEktpReciveMoneyMtcnBinding
@@ -52,15 +49,15 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding =  DataBindingUtil.inflate<FragmentEktpReciveMoneyMtcnBinding>(inflater,R.layout.fragment_ektp_recive_money_mtcn, container, false)
+    ): View {
+        // Inflate the layout for this fragment container, false
+        binding =  DataBindingUtil.inflate(inflater,R.layout.fragment_ektp_recive_money_mtcn, container, false)
 
-        mtcnDataIncorrectLayout = layoutInflater.inflate(R.layout.mtcn_data_incorrect_alert_layout,null)
-        mtcnNumIncorrectLayout = layoutInflater.inflate(R.layout.mtcn_num_incorrect_alert_layout,null)
-        mtcnTypeIncorrectLayout = layoutInflater.inflate(R.layout.mtcn_type_incorrect_alert_layout,null)
-        cantDeliverMtcnLayout = layoutInflater.inflate(R.layout.cant_deliver_mtcn_alert_layout,null)
-        cantOfferServiceLayout = layoutInflater.inflate(R.layout.cant_offer_service_alert_layout,null)
+        mtcnDataIncorrectLayout = layoutInflater.inflate(R.layout.mtcn_data_incorrect_alert_layout,container, false)
+        mtcnNumIncorrectLayout = layoutInflater.inflate(R.layout.mtcn_num_incorrect_alert_layout,container, false)
+        mtcnTypeIncorrectLayout = layoutInflater.inflate(R.layout.mtcn_type_incorrect_alert_layout,container, false)
+        cantDeliverMtcnLayout = layoutInflater.inflate(R.layout.cant_deliver_mtcn_alert_layout,container, false)
+        cantOfferServiceLayout = layoutInflater.inflate(R.layout.cant_offer_service_alert_layout,container, false)
 
         mtcnDataIncorrectAcceptButton = mtcnDataIncorrectLayout.findViewById(R.id.acceptButton)
         mtcnNumIncorrectAcceptButton = mtcnNumIncorrectLayout.findViewById(R.id.acceptButton)
@@ -116,11 +113,11 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
                 override fun afterTextChanged(s: Editable?) {
                 }
             })
-            backAppbarButton.setOnClickListener { view: View ->
+            backAppbarButton.setOnClickListener {
                 activity?.finish()
             }
 
-            receiveInsertMTCNTextView.setOnClickListener { view: View ->
+            receiveInsertMTCNTextView.setOnClickListener {
                 //change the status of hint tooltip
                 if (toolTipShow){
                     toolTipShow=false
@@ -177,8 +174,8 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
     }
 //----
     private fun alertDialogOpener(dialogLayout: View, context: Context): AlertDialog {
-        var alertDialog: AlertDialog? = null
-        val alertDialogBuilder = AlertDialog.Builder(context)
+    var alertDialog: AlertDialog?
+    val alertDialogBuilder = AlertDialog.Builder(context)
 
         alertDialogBuilder.setView(dialogLayout)
         alertDialog = alertDialogBuilder.create()

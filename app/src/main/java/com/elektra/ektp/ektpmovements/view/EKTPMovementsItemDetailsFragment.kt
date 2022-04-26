@@ -1,40 +1,25 @@
 package com.elektra.ektp.ektpmovements.view
 
-import android.annotation.SuppressLint
-import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.FileProvider
 import androidx.core.view.isGone
-import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpMovementsItemDetailsBinding
 import com.elektra.ektp.ektpmovements.model.EKTPMovementsModel
-import java.io.File
-import java.io.FileOutputStream
 
 class EKTPMovementsItemDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentEktpMovementsItemDetailsBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentEktpMovementsItemDetailsBinding.inflate(inflater,
         container, false)

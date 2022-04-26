@@ -18,7 +18,6 @@ import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEkptCreateAccountRegisterFormBinding
@@ -72,11 +71,11 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val counstryArrayList = this.resources.getStringArray(R.array.country)
         val statesArrayList = this.resources.getStringArray(R.array.estados)
-        var cdmxArrayList = ArrayList<String>()
+        val cdmxArrayList = ArrayList<String>()
         cdmxArrayList.add(statesArrayList[0].toString())
         cdmxArrayList.add(statesArrayList[9].toString())
         val townsArrayList = this.resources.getStringArray(R.array.alcaldias)
@@ -542,7 +541,7 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
             //---
 
             //OnItemSelectedListener function on Spinner to listen for selection changes
-            countrySpinner?.onItemSelectedListener =
+            countrySpinner.onItemSelectedListener =
                 object : AdapterView.OnItemSelectedListener {
                     override fun onNothingSelected(parent: AdapterView<*>?) {
                     }
@@ -595,7 +594,7 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
             //---
 
             //OnItemSelectedListener function on Spinner to listen for selection changes
-            stateSpinner?.onItemSelectedListener =
+            stateSpinner.onItemSelectedListener =
                 object : AdapterView.OnItemSelectedListener {
                     override fun onNothingSelected(parent: AdapterView<*>?) {
                     }
@@ -648,7 +647,7 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
             //---
 
             //OnItemSelectedListener function on Spinner to listen for selection changes
-            townHallSpinner?.onItemSelectedListener =
+            townHallSpinner.onItemSelectedListener =
                 object : AdapterView.OnItemSelectedListener {
                     override fun onNothingSelected(parent: AdapterView<*>?) {
                     }
@@ -701,7 +700,7 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
             //---
 
             //onClickListener on continueButton to listen for saveUserData in SharedPreferences
-            button5.setOnClickListener { view: View ->
+            button5.setOnClickListener {
                 val tel = preferences.getPhoneUser()
                 val mail = preferences.getEmailUser()
                 val folioClient = preferences.getFolioCliente()
@@ -716,7 +715,7 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
             //---
 
             //onClickListener on appBar BackButton to popBackStack fragment
-            backAppbarButton.setOnClickListener { view: View ->
+            backAppbarButton.setOnClickListener {
                 findNavController().popBackStack()
             }
             //---
@@ -745,9 +744,8 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
         loadingLayout = layoutInflater.inflate(R.layout.loading_alert_layout,null)
         val loadingAlert = alertDialogOpener(loadingLayout, requireContext())
         loadingAlert.show()
-        loadingAlert.getWindow()?.setLayout(250, 250)
-        var canContinue = false
-        var attempts = 0
+        loadingAlert.window?.setLayout(250, 250)
+        var attempts: Int
         val timer = object : CountDownTimer(7000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 if(value.isCompleted){
@@ -755,11 +753,9 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
                         loadingAlert.dismiss()
                         fragmentReplacer(EKTPCreateAccountContractsFragment())
                         //view?.findNavController()?.navigate(R.id.action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountContractsFragment)
-                        canContinue = true
                         cancel()
                     }else{
                         loadingAlert.dismiss()
-                        canContinue = false
                         cancel()
                     }
                 }
@@ -770,11 +766,9 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
                         loadingAlert.dismiss()
                         fragmentReplacer(EKTPCreateAccountContractsFragment())
                         //view?.findNavController()?.navigate(R.id.action_EKPTCreateAccountRegisterFormFragment_to_EKTPCreateAccountContractsFragment)
-                        canContinue = true
                         cancel()
                     }else{
                         loadingAlert.dismiss()
-                        canContinue = false
                         cancel()
                     }
                 }else{
@@ -783,7 +777,6 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
                         start()
                     }else{
                         loadingAlert.dismiss()
-                        canContinue = false
                     }
                 }
             }
@@ -792,7 +785,7 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
     }
 
     private fun alertDialogOpener(dialogLayout: View, context: Context): AlertDialog {
-        var alertDialog: AlertDialog? = null
+        val alertDialog: AlertDialog?
         val alertDialogBuilder = AlertDialog.Builder(context)
 
         alertDialogBuilder.setView(dialogLayout)

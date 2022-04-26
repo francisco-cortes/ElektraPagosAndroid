@@ -3,7 +3,7 @@ package com.elektra.ektp.ektphome.model
 class EKTPHomeNoticeProvider {
 
     companion object{
-        val noticesList = listOf<EKTPHomeNoticeDataClass>(
+        val noticesList = listOf(
             EKTPHomeNoticeDataClass(
                 "Se ha restablecido tu contraseña ",
                 "Ahora puedes acceder con tu nueva contraseña",

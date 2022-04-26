@@ -17,7 +17,6 @@ import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpForgottenPassNewPassBinding
 import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication
-import com.elektra.ektp.ektputilies.ektptoaster.EKTPToaster
 import com.elektra.ektp.ektputilies.uservalidations.UserValidations
 
 class EKTPForgottenPassNewPassFragment : Fragment(){
@@ -45,7 +44,7 @@ class EKTPForgottenPassNewPassFragment : Fragment(){
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_ektp_forgotten_pass_new_pass, container, false)

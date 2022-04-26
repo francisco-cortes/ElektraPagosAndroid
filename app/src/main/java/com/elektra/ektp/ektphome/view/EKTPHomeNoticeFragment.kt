@@ -10,20 +10,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpHomeNoticeBinding
 import com.elektra.ektp.ektphome.model.EKTPHomeNoticeProvider
-import com.elektra.ektp.ektphome.viewmodel.EKTPHomeNoticeViewModel
+//import com.elektra.ektp.ektphome.viewmodel.EKTPHomeNoticeViewModel
 import com.elektra.ektp.ektphome.viewmodel.noticeadapter.EKTPHomeNoticeAdapter
 
 class EKTPHomeNoticeFragment : Fragment() {
 
     private lateinit var binding : FragmentEktpHomeNoticeBinding
 
-    private var viewModel = EKTPHomeNoticeViewModel() //instance view model for home notice fragment
+    //private var viewModel = EKTPHomeNoticeViewModel() //instance view model for home notice fragment
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate<FragmentEktpHomeNoticeBinding>(inflater,R.layout.fragment_ektp_home_notice, container, false)
+    ): View {
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_ektp_home_notice, container, false)
         initNoticeRecyclerView()
         return binding.root
     }

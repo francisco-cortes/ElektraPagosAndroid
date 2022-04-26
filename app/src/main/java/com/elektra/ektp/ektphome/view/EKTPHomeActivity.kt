@@ -8,7 +8,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.ActivityEktphomeBinding
-import com.elektra.ektp.databinding.ActivityLoginBinding
 import com.elektra.ektp.ektplogin.view.EKTPLoginActivity
 
 class EKTPHomeActivity : AppCompatActivity() {
@@ -19,7 +18,7 @@ class EKTPHomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //inflate for this activity
-        binding = DataBindingUtil.setContentView<ActivityEktphomeBinding>(this,R.layout.activity_ektphome)
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_ektphome)
 
         openFragment(EKTPHomeMainFragment())//open the home main fragment
 
@@ -60,7 +59,7 @@ class EKTPHomeActivity : AppCompatActivity() {
             finish()// close the home activity
         } else {
             openFragment(EKTPHomeMainFragment())// return to first fragment
-            binding.navbar.menu.findItem(R.id.startButton).setChecked(true)
+            binding.navbar.menu.findItem(R.id.startButton).isChecked = true
             isHome = true
         }
     }

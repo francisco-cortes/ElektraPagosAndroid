@@ -23,7 +23,6 @@ import com.elektra.ektp.ektpforgottenpass.view.EKTPForgottenPassActivity
 import com.elektra.ektp.ektphome.view.EKTPHomeActivity
 import com.elektra.ektp.ektplogin.viewmodel.EKTPLoginActivityViewModel
 import com.elektra.ektp.ektplogin.viewmodel.EKTPLoginPassLoginViewModel
-import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
 
 class EKTPLoginPassLoginFragment : Fragment() {
 
@@ -65,16 +64,17 @@ class EKTPLoginPassLoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         //activityViewModel.setBiometricLogin(false)//is biometric login?
-        binding =  DataBindingUtil.inflate<FragmentEKTPLoginPassLoginBinding>(inflater,R.layout.fragment_e_k_t_p_login_pass_login, container, false)
-        noUserAlertLayout = layoutInflater.inflate(R.layout.no_user_alert_layout,null)//no user dialog layout
-        incorrectPasswordLayout = layoutInflater.inflate(R.layout.incorrect_password_alert_layout,null)//no user dialog layout
-        lockedPasswordLayout = layoutInflater.inflate(R.layout.locked_password_alert_layout,null)//locked pasword layout
-        noServiceAlertLayout = layoutInflater.inflate(R.layout.no_service_alert_layout,null)// inflater for the no service case
+        binding =  DataBindingUtil.inflate(inflater,R.layout.fragment_e_k_t_p_login_pass_login, container, false)
+        noUserAlertLayout = layoutInflater.inflate(R.layout.no_user_alert_layout,container, false)//no user dialog layout
+        incorrectPasswordLayout = layoutInflater.inflate(R.layout.incorrect_password_alert_layout,container, false)//no user dialog layout
+        lockedPasswordLayout = layoutInflater.inflate(R.layout.locked_password_alert_layout,container,false)//locked pasword layout
+        noServiceAlertLayout = layoutInflater.inflate(R.layout.no_service_alert_layout,container,false)// inflater for the no service case
 
         var passwordAttempt = 0 // used to know how many times the password has failed
+        val userWellcome = viewModel.getSavedDataLogin()[2] + "!"
 
         val noUserAlertDialog = alertDialogOpener(noUserAlertLayout,requireContext())
         val incorrectPasswordAlertDialog = alertDialogOpener(incorrectPasswordLayout,requireContext())
@@ -106,7 +106,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
 
         //set the string and drawable for the button for login trough biometric
         if (viewModel.getSavedDataLogin()[1].toInt()==1){
-            binding.biometricSignInButton.text = "Entrar con FaceID"
+            binding.biometricSignInButton.text = getString(R.string.login_face_label)
             binding.biometricSignInButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_on_button_face_icon, 0, 0, 0)
         }
 
@@ -146,9 +146,9 @@ class EKTPLoginPassLoginFragment : Fragment() {
         //main layout buttons
         with(binding){
 
-            hiUserTextView.text = viewModel.getSavedDataLogin()[2] + "!"
+            hiUserTextView.text = userWellcome
 
-            hidePassButton.setOnClickListener { view: View ->
+            hidePassButton.setOnClickListener {
                 //show an hide password text
                 if (!showPassVar) {
                     passwordInputEditText.transformationMethod = HideReturnsTransformationMethod.getInstance()
@@ -162,7 +162,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
                 }
             }
 
-            backAppbarButton.setOnClickListener { view: View ->
+            backAppbarButton.setOnClickListener {
             requireActivity()
                 .supportFragmentManager
                 .beginTransaction()
@@ -170,11 +170,11 @@ class EKTPLoginPassLoginFragment : Fragment() {
                 .commitNow()//change the fragment
             }
 
-            frgPassClickTextView.setOnClickListener{ view: View ->
+            frgPassClickTextView.setOnClickListener{
                 openActivity(EKTPForgottenPassActivity())//open the forgotten pass activity
             }
 
-            loginPassButton.setOnClickListener { view : View ->
+            loginPassButton.setOnClickListener {
                 //check the pasword
                 val passwordInput = passwordInputEditText.text.toString()
                 if (!viewModel.getSavedDataLogin()[4].toBoolean()){
@@ -192,7 +192,8 @@ class EKTPLoginPassLoginFragment : Fragment() {
                             viewModel.saveLockedStatus(true)
                         }else {
                             passwordAttempt ++
-                            passAttemptTextView.text = resources.getText(R.string.incorrect_password_attempt_label).toString() + passwordAttempt.toString()
+                            val attemptString = getString(R.string.incorrect_password_accept_button_label) + passwordAttempt
+                            passAttemptTextView.text = attemptString
                             incorrectPasswordAlertDialog.show()
                         }
                     }
@@ -228,7 +229,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
                 }*/
             }
 
-            biometricSignInButton.setOnClickListener { view: View ->
+            biometricSignInButton.setOnClickListener {
                 requireActivity()
                     .supportFragmentManager
                     .beginTransaction()
@@ -236,7 +237,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
                     .commitNow()//open the biometric login fragment
             }
 
-            createAccountTextView.setOnClickListener{view: View ->
+            createAccountTextView.setOnClickListener{
                 openActivity(EKTPCreateAccountActivity())// open the create account activity
                 activity?.finish()
             }
@@ -255,7 +256,7 @@ class EKTPLoginPassLoginFragment : Fragment() {
     //---
 
     private fun alertDialogOpener(dialogLayout: View, context: Context): AlertDialog {
-        var alertDialog: AlertDialog? = null
+        val alertDialog: AlertDialog?
         val alertDialogBuilder = AlertDialog.Builder(context)
 
         alertDialogBuilder.setView(dialogLayout)

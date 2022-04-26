@@ -12,7 +12,6 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountCreatePassBinding
@@ -49,7 +48,7 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_ektp_create_account_create_pass, container, false)
@@ -236,13 +235,13 @@ class EKTPCreateAccountCreatePassFragment : Fragment() {
             //---
 
             //onClickListener on appBar BackButton to popBackStack fragment
-            backAppbarButton.setOnClickListener { view: View ->
+            backAppbarButton.setOnClickListener {
                 findNavController().popBackStack()
             }
             //---
 
             //onClickListener on continueButton to navigate to biometricsActivation or Successful createAccount according to sharedPreferences
-            button7.setOnClickListener { view: View ->
+            button7.setOnClickListener {
                 preferences.saveLocalStatus("ClienteActivado")
                 preferences.saveTemporalPassword(passTextVar)
                 if (checkBiometricStatus ==1 ){

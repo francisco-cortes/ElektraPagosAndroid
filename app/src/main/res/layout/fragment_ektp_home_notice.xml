@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,7 +29,8 @@
                     android:layout_marginTop="@dimen/_35sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_appbar_logo" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -44,7 +44,8 @@
             android:background="@drawable/ic_notifications_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appbar" />
+            app:layout_constraintTop_toBottomOf="@id/appbar"
+            android:contentDescription="@string/content_description_main_icon_on_view" />
         <!--aqui se debe agregar un recyclerview o scroll para las notificaciones     que se iran desplegando-->
 
        <androidx.recyclerview.widget.RecyclerView

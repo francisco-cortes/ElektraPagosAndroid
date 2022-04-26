@@ -32,13 +32,14 @@
                     android:background="@drawable/ic_appbar_back_button"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_back_button" />
 
                 <TextView
                     android:id="@+id/sectionTitleAppbarTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Contrato"
+                    android:text="@string/pdf_contract_viewer"
                     android:textColor="@color/white"
                     android:gravity="center"
                     android:theme="@style/appbar_title"
@@ -55,7 +56,8 @@
                     android:layout_marginEnd="@dimen/_35sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_appbar_logo" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

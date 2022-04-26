@@ -24,9 +24,9 @@ class EKTPHomeMainFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View{
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate<FragmentEktpHomeMainBinding>(inflater,R.layout.fragment_ektp_home_main,container,false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_ektp_home_main,container,false)
 
         val displayCase = (0..1).random()//50% probabilities to make appear the case when there are no information
 
@@ -36,7 +36,8 @@ class EKTPHomeMainFragment : Fragment() {
                 bankAccountBalanceTextView.text = getString(R.string.account_balance_unavaliable)
                 bankAccountBalanceTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 10F)
             }
-            userNameTextView.text = "${viewModel.getUserHomeMain()} !" // set the user name next to "hi" text
+            val welcome = viewModel.getUserHomeMain() + " !"
+            userNameTextView.text = welcome // set the user name next to "hi" text
 
             receiveMoneyImageButton.setOnClickListener {
                 openActivity(EKTPReceiveMoneyActivity())// open Receive Money Activity

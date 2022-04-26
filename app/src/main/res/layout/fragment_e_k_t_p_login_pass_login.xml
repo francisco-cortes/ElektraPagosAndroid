@@ -34,7 +34,8 @@
                     android:background="@drawable/ic_appbar_logo"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_appbar_logo" />
 
                 <TextView
                     android:id="@+id/sectionTitleAppbarTextView"
@@ -58,7 +59,8 @@
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_back_button" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -94,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:maxWidth="@dimen/_290sdp"
                     android:layout_marginStart="@dimen/_6sdp"
-                    android:text="!"
+                    android:text="@string/exclamation_end"
                     android:theme="@style/title_1"
                     app:layout_constraintStart_toEndOf="@id/hiTextView"
                     app:layout_constraintTop_toTopOf="@id/hiTextView" />
@@ -135,7 +137,8 @@
                     android:theme="@style/hint_edit_text"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/passTextView" />
+                    app:layout_constraintTop_toBottomOf="@+id/passTextView"
+                    android:importantForAutofill="no" />
 
 
                 <ImageButton
@@ -146,7 +149,8 @@
                     android:background="@drawable/ic_show_pass"
                     app:layout_constraintBottom_toBottomOf="@+id/passwordInputEditText"
                     app:layout_constraintEnd_toEndOf="@+id/passwordInputEditText"
-                    app:layout_constraintTop_toTopOf="@+id/passwordInputEditText" />
+                    app:layout_constraintTop_toTopOf="@+id/passwordInputEditText"
+                    android:contentDescription="@string/content_description_image_button" />
 
                 <TextView
                     android:id="@+id/frgPassClickTextView"
@@ -156,7 +160,6 @@
                     android:layout_marginEnd="@dimen/_43sdp"
                     android:text="@string/login_frgt_pass"
                     android:padding="@dimen/_10sdp"
-                    android:clickable="true"
                     android:theme="@style/text_button_2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/passwordInputEditText" />
@@ -195,7 +198,7 @@
                         android:id="@+id/oText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="o"
+                        android:text="@string/or_separator"
                         android:theme="@style/hint_edit_text"
                         android:gravity="center_vertical"
                         android:layout_marginStart="@dimen/_10sdp"
@@ -217,7 +220,7 @@
                     android:layout_marginEnd="@dimen/_43sdp"
                     android:layout_marginTop="@dimen/_30sdp"
                     android:layout_marginBottom="@dimen/_20sdp"
-                    android:drawableLeft="@drawable/ic_on_button_finger"
+                    app:icon="@drawable/ic_on_button_finger"
                     android:text="@string/login_finger_button"
                     android:theme="@style/bottom_button"
                     android:background="@drawable/enable_disable_red"

@@ -10,12 +10,11 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.viewModels
+//import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpForgottenPassPhoneNumberBinding
-import com.elektra.ektp.ektpforgottenpass.view.viewmodel.EKTPForgottenPassPhoneNumberViewModel
-import com.elektra.ektp.ektputilies.ektptoaster.EKTPToaster
+//import com.elektra.ektp.ektpforgottenpass.view.viewmodel.EKTPForgottenPassPhoneNumberViewModel
 import com.elektra.ektp.ektputilies.uservalidations.UserValidations
 
 class EKTPForgottenPassPhoneNumberFragment : Fragment(){
@@ -23,7 +22,7 @@ class EKTPForgottenPassPhoneNumberFragment : Fragment(){
     //Global databinding access variable
     private lateinit var binding: FragmentEktpForgottenPassPhoneNumberBinding
     //ViewModel access variable
-    private val phoneNumberViewModel: EKTPForgottenPassPhoneNumberViewModel by viewModels()
+    //private val phoneNumberViewModel: EKTPForgottenPassPhoneNumberViewModel by viewModels()
     //General data variable
     private lateinit var phoneNumberString: String
     //UserValidations access variable
@@ -43,7 +42,7 @@ class EKTPForgottenPassPhoneNumberFragment : Fragment(){
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,
         R.layout.fragment_ektp_forgotten_pass_phone_number, container, false)
@@ -85,7 +84,7 @@ class EKTPForgottenPassPhoneNumberFragment : Fragment(){
             //--
 
             //onClickListener on appBar BackButton to destroy fragment and activity
-            backAppbarButton.setOnClickListener { view: View ->
+            backAppbarButton.setOnClickListener {
                 activity?.finish()
             }
             //--

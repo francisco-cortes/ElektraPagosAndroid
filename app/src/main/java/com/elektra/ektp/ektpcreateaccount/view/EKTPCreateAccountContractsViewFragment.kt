@@ -8,16 +8,9 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.get
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountContractsViewBinding
-import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountContractsViewModel
 
 class EKTPCreateAccountContractsViewFragment : Fragment() {
 
@@ -35,14 +28,14 @@ class EKTPCreateAccountContractsViewFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate<FragmentEktpCreateAccountContractsViewBinding>(inflater,
+        binding = DataBindingUtil.inflate(inflater,
         R.layout.fragment_ektp_create_account_contracts_view, container, false)
 
         binding.contractBodyTexView.text = LoremIpsum(100).toString()
 
-        binding.backAppbarButton.setOnClickListener{view: View ->
+        binding.backAppbarButton.setOnClickListener{
             findNavController().popBackStack()
         }
 

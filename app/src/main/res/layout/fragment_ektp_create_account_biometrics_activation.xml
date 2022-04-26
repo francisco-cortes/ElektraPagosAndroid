@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,7 +31,8 @@
                     android:background="@drawable/ic_appbar_logo"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_appbar_logo" />
 
                 <TextView
                     android:id="@+id/sectionTitleAppbarTextView"
@@ -55,7 +56,8 @@
                     android:background="@drawable/ic_appbar_back_button"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_back_button" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -106,7 +108,8 @@
                     android:background="@drawable/ic_active_finger_button"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewBio2" />
+                    app:layout_constraintTop_toBottomOf="@+id/textViewBio2"
+                    android:contentDescription="@string/content_description_main_icon_on_view" />
 
                 <TextView
                     android:id="@+id/textViewBio3"
@@ -129,7 +132,6 @@
                     android:padding="@dimen/_16sdp"
                     android:backgroundTint="@color/white"
                     android:gravity="center"
-                    android:clickable="true"
                     android:text="@string/fragment_biometrics_activation_later"
                     android:theme="@style/text_button_1"
                     app:layout_constraintEnd_toEndOf="parent"

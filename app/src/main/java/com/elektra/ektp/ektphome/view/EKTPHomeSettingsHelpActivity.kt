@@ -1,23 +1,18 @@
 package com.elektra.ektp.ektphome.view
 
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.ActivityEktphomeSettingsHelpBinding
-import java.util.jar.Manifest
 
 class EKTPHomeSettingsHelpActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEktphomeSettingsHelpBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView<ActivityEktphomeSettingsHelpBinding>(this,R.layout.activity_ektphome_settings_help)
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_ektphome_settings_help)
 
         //layout
         with(binding){

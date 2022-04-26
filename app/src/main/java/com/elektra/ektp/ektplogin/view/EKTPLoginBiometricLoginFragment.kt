@@ -19,7 +19,6 @@ import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEKTPLoginBiometricLoginBinding
 import com.elektra.ektp.ektpcreateaccount.view.EKTPCreateAccountActivity
 import com.elektra.ektp.ektphome.view.EKTPHomeActivity
-import com.elektra.ektp.ektplogin.viewmodel.EKTPLoginActivityViewModel
 import com.elektra.ektp.ektplogin.viewmodel.EKTPLoginBiometricLoginViewModel
 import java.util.concurrent.Executor
 
@@ -38,7 +37,6 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
     private lateinit var noUserAlertLayout: View
     private lateinit var noServiceAlertLayout: View
     //---
-    private val activityViewModel = EKTPLoginActivityViewModel()//instance of activity viewModel used as shared Viewmodel
     private val viewModel : EKTPLoginBiometricLoginViewModel by viewModels()//instance of fragment viewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,25 +55,25 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflater layout for this fragment
         //activityViewModel.setBiometricLogin(true)//is this biometricLogin?
 
-        binding = DataBindingUtil.inflate<FragmentEKTPLoginBiometricLoginBinding>(inflater,R.layout.fragment_e_k_t_p_login_biometric_login, container, false)
-        noUserAlertLayout = layoutInflater.inflate(R.layout.no_user_alert_layout,null)//inlfater for the no user registred case
-        noServiceAlertLayout = layoutInflater.inflate(R.layout.no_service_alert_layout,null)// inflater for the no service case
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_e_k_t_p_login_biometric_login, container, false)
+        noUserAlertLayout = layoutInflater.inflate(R.layout.no_user_alert_layout, container, false)//inlfater for the no user registred case
+        noServiceAlertLayout = layoutInflater.inflate(R.layout.no_service_alert_layout,container, false)// inflater for the no service case
 
         val noServiceAlertDialog = alertDialogOpener(noServiceAlertLayout, requireContext())
         val noUserAlertDialog = alertDialogOpener(noUserAlertLayout,requireContext())
 
         //inflate diferent layout for the dialog depeding biotype
         if (viewModel.getSavedDataLogin()[1].toInt() == 1) {//get the biotype 1 = face, 2 = iris, 3 = fingerprint
-            bioAlertLayout = layoutInflater.inflate(R.layout.unrecognized_face_alert_layout, null)
-            binding.biometricLoginImageButton.setBackgroundDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_face_button))
+            bioAlertLayout = layoutInflater.inflate(R.layout.unrecognized_face_alert_layout, container, false)
+            binding.biometricLoginImageButton.background = ContextCompat.getDrawable(requireContext(),R.drawable.ic_face_button)
             binding.biometricInfoTextView.text = resources.getString(R.string.login_face_label)
         }
         else {
-            bioAlertLayout = layoutInflater.inflate(R.layout.unrecognized_finger_alert_layout,null)
+            bioAlertLayout = layoutInflater.inflate(R.layout.unrecognized_finger_alert_layout,container,false)
         }
         val bioAlertDialog = alertDialogOpener(bioAlertLayout,requireContext())
         //---
@@ -93,12 +91,7 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
 
         executor = ContextCompat.getMainExecutor(requireContext())
         //biometric prompt actioner
-        biometricPrompt = androidx.biometric.BiometricPrompt(this,executor,object:androidx.biometric.BiometricPrompt.AuthenticationCallback(){
-            override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
-                super.onAuthenticationError(errorCode, errString)//execute if there are an error
-                //messageOnToast("$errString")
-
-            }
+        biometricPrompt = BiometricPrompt(this,executor,object: BiometricPrompt.AuthenticationCallback(){
 
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                 super.onAuthenticationSucceeded(result)//execute if pass the auth
@@ -118,7 +111,7 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
         })
         //---
         //info show in biometric popup
-        promptInfo = androidx.biometric.BiometricPrompt.PromptInfo.Builder()
+        promptInfo = BiometricPrompt.PromptInfo.Builder()
             .setTitle(getString(R.string.biometrics_title))
             .setSubtitle(getString(R.string.biometrics_subtitle))
             .setNegativeButtonText(getString(R.string.biometrics_cancel))
@@ -171,7 +164,7 @@ class EKTPLoginBiometricLoginFragment : Fragment() {
     }
 
     private fun alertDialogOpener(dialogLayout: View, context: Context): AlertDialog{
-        var alertDialog: AlertDialog? = null
+        val alertDialog: AlertDialog?
         val alertDialogBuilder = AlertDialog.Builder(context)
 
         alertDialogBuilder.setView(dialogLayout)

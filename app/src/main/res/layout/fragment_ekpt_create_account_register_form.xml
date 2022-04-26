@@ -32,7 +32,8 @@
                     android:background="@drawable/ic_appbar_logo"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_appbar_logo" />
 
                 <TextView
                     android:id="@+id/sectionTitleAppbarTextView"
@@ -56,7 +57,8 @@
                     android:background="@drawable/ic_appbar_back_button"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_back_button" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -150,7 +152,10 @@
                     android:padding="@dimen/_10sdp"
                     app:layout_constraintTop_toBottomOf="@id/nameLabel"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    tools:ignore="LabelFor" />
 
                 <TextView
                     android:id="@+id/paternalLastNameLabel"
@@ -177,7 +182,10 @@
                     android:imeOptions="actionNext"
                     app:layout_constraintTop_toBottomOf="@id/paternalLastNameLabel"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    tools:ignore="LabelFor" />
 
                 <TextView
                     android:id="@+id/maternalLastNameLabel"
@@ -204,7 +212,10 @@
                     android:imeOptions="actionNext"
                     app:layout_constraintTop_toBottomOf="@id/maternalLastNameLabel"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:autofillHints="no"
+                    android:inputType="textPersonName"
+                    tools:ignore="LabelFor" />
 
                 <TextView
                     android:id="@+id/dateBirthLabel"
@@ -230,7 +241,9 @@
                     android:enabled="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/dateBirthLabel" />
+                    app:layout_constraintTop_toBottomOf="@id/dateBirthLabel"
+                    android:importantForAutofill="no"
+                    tools:ignore="LabelFor,TextFields" />
 
                 <TextView
                     android:id="@+id/birthSiteLabel"
@@ -255,7 +268,9 @@
                     android:theme="@style/hint_edit_text"
                     app:layout_constraintTop_toBottomOf="@id/birthSiteLabel"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:importantForAutofill="no"
+                    tools:ignore="LabelFor,TextFields" />
 
                 <ImageView
                     android:id="@+id/arrowSpinner"
@@ -266,7 +281,8 @@
                     android:backgroundTint="@color/elektra_light_gray"
                     app:layout_constraintEnd_toEndOf="@id/birthSiteSpinner"
                     app:layout_constraintTop_toTopOf="@id/birthSiteSpinner"
-                    app:layout_constraintBottom_toBottomOf="@id/birthSiteSpinner"/>
+                    app:layout_constraintBottom_toBottomOf="@id/birthSiteSpinner"
+                    android:contentDescription="@string/content_description_small_image" />
 
                 <TextView
                     android:id="@+id/genderLabel"
@@ -335,7 +351,8 @@
                     android:maxLength="5"
                     app:layout_constraintTop_toBottomOf="@id/postalCodeLabel"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:importantForAutofill="no" />
 
                 <TextView
                     android:id="@+id/invalidZipCodeText"
@@ -375,7 +392,8 @@
                     android:imeOptions="actionNext"
                     app:layout_constraintTop_toBottomOf="@id/colonyLabel"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:importantForAutofill="no" />
 
                 <TextView
                     android:id="@+id/invalidColonyText"
@@ -415,7 +433,8 @@
                     android:imeOptions="actionNext"
                     app:layout_constraintTop_toBottomOf="@id/streetLabel"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:importantForAutofill="no" />
 
                 <TextView
                     android:id="@+id/invalidStreetText"
@@ -477,9 +496,10 @@
                         android:hint="@string/required_field_hint"
                         android:imeOptions="actionDone"
                         android:maxLength="50"
-                        android:inputType="textNoSuggestions"
                         android:padding="@dimen/_10sdp"
-                        android:theme="@style/hint_edit_text" />
+                        android:theme="@style/hint_edit_text"
+                        android:importantForAutofill="no"
+                        tools:ignore="TextFields" />
                     <Space
                         android:layout_width="@dimen/_18sdp"
                         android:layout_height="wrap_content"/>
@@ -493,9 +513,10 @@
                         android:background="@drawable/rounded_rectangle_gray"
                         android:hint="@string/optional_field_hint"
                         android:imeOptions="actionDone"
-                        android:inputType="textNoSuggestions"
                         android:padding="@dimen/_10sdp"
-                        android:theme="@style/hint_edit_text" />
+                        android:theme="@style/hint_edit_text"
+                        android:importantForAutofill="no"
+                        tools:ignore="TextFields" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -569,7 +590,8 @@
                     android:background="@drawable/ic_arrow_spinner"
                     app:layout_constraintEnd_toEndOf="@id/countrySpinner"
                     app:layout_constraintTop_toTopOf="@id/countrySpinner"
-                    app:layout_constraintBottom_toBottomOf="@id/countrySpinner"/>
+                    app:layout_constraintBottom_toBottomOf="@id/countrySpinner"
+                    android:contentDescription="@string/content_description_small_image" />
 
                 <TextView
                     android:id="@+id/stateLabel"
@@ -603,7 +625,8 @@
                     android:background="@drawable/ic_arrow_spinner"
                     app:layout_constraintEnd_toEndOf="@id/stateSpinner"
                     app:layout_constraintTop_toTopOf="@id/stateSpinner"
-                    app:layout_constraintBottom_toBottomOf="@id/stateSpinner"/>
+                    app:layout_constraintBottom_toBottomOf="@id/stateSpinner"
+                    android:contentDescription="@string/content_description_small_image" />
 
                 <TextView
                     android:id="@+id/townHallLabel"
@@ -636,7 +659,8 @@
                     android:background="@drawable/ic_arrow_spinner"
                     app:layout_constraintEnd_toEndOf="@id/townHallSpinner"
                     app:layout_constraintTop_toTopOf="@id/townHallSpinner"
-                    app:layout_constraintBottom_toBottomOf="@id/townHallSpinner"/>
+                    app:layout_constraintBottom_toBottomOf="@id/townHallSpinner"
+                    android:contentDescription="@string/content_description_small_image" />
 
                 <Button
                     android:id="@+id/button5"

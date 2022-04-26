@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Splash Screen strings-->
     <string name="app_name">Elektra Pagos</string>
     <string name="product_name">Producto de <b>Banco Azteca</b></string>
@@ -39,7 +39,7 @@
     <string name="fragment_create_account_invalid_email">Ingrese un correo válido</string>
     <string name="fragment_create_account_not_matches_email">Correos no coinciden</string>
     <string name="fragment_create_account_email">Correo electrónico</string>
-    <string name="fragment_create_account_email_hint">@</string>
+    <string name="fragment_create_account_email_hint">\\@</string>
     <string name="fragment_create_account_email_confirmation">Confirmación de correo electrónico</string>
     <string name="fragment_create_account_warning">Para acceder a los servicios de Elektra pagos, <b>Banco Azteca</b>\nte pide abrir una cuenta bancaria y los datos para ello.</string>
 
@@ -48,6 +48,7 @@
     <string name="fragment_verification_insert_code">Ingresa el código de verificación</string>
     <string name="fragment_verification_recieved">Recibiste un número de 5 dígitos por SMS</string>
     <string name="fragment_verification_resend_code"><u>Reenviar Código</u></string>
+    <string name="fragment_verification_resend_code_count"><u>Reenviar Código en</u></string>
     <string name="invalid_sms_verification">Tu código es incorrecto, verifícalo\nnuevamente para continuar</string>
 
     <!-- Fragment crete account form strings -->
@@ -114,7 +115,7 @@
     <string name="fragment_biometrics_activation_security_face">Tu rostro será tu clave de\nseguridad y contraseña</string>
     <string name="fragment_biometrics_activation_finger">Toca el ícono para activar\ntu huella dactilar</string>
     <string name="fragment_biometrics_activation_face">Toca el ícono para activar\nel reconocimiento facial</string>
-    <string name="fragment_biometrics_activation_later"><u>En otro momento</u></string>
+    <string name="fragment_biometrics_activation_later"><u tools:ignore="Typos">En otro momento</u></string>
 
     <!-- Fragment successful create account strings -->
     <string name="fragment_successful_message">Tu cuenta se ha\ncreado con éxito</string>
@@ -202,7 +203,7 @@
     <string name="recieve_details_sender">Te envía</string>
     <string name="recieve_details_name_sender">%1$s</string>
     <string name="recieve_details_mtcn_label">MTCN</string>
-    <string name="recieve_details_mtcn_sender">%1$s <br></br> %2$s</string>
+    <string name="recieve_details_mtcn_sender">%1$s <br>fill</br> %2$s</string>
     <string name="recieve_details_status_label">Estatus de transferencia</string>
     <string name="recieve_details_recieve_in_label">Recibes en tu cuenta</string>
     <string name="recieve_details_status">%1$s</string>
@@ -374,5 +375,25 @@
     <string name="cant_offer_service_title_label">No es posible brindarte el servicio.</string>
     <string name="cant_offer_service_body_label">Por disposición gubernamental, te sugerimos acudir ante el Titular de la Unidad de Inteligencia Financiera de la Secretaria de Hacienda y Crédito Público para hacer valer tus derechos.</string>
     <string name="cant_offer_service_button_label">ACEPTAR</string>
+
+    <string name="pdf_contract_viewer">Contrato</string>
+    <string name="or_separator">O</string>
+    <string name="exclamation_end">!</string>
+
+    <!--menu strings and content descriptions-->
+    <string name="menu_bottom_nav_tittle_1">Inicio</string>
+    <string name="menu_bottom_nav_tittle_2">Perfil</string>
+    <string name="menu_bottom_nav_tittle_3">Avisos</string>
+    <string name="menu_bottom_nav_tittle_4">Ajustes</string>
+
+    <!--layout contents description-->
+    <string name="content_description_appbar_logo">Imagen de logo Elektra pagos para appbar</string>
+    <string name="content_description_logo">Imagen de logo Elektra pagos</string>
+    <string name="content_description_back_button">Boton de imagen para volver atras en appbar</string>
+    <string name="content_description_main_icon_on_view">Imagen principal en la vista con referencia a la funcionalidad principal</string>
+    <string name="content_description_image_button">Botton de imagen con icono referente a la accion que realiza</string>
+    <string name="content_description_small_image">Imagen pequeña</string>
+
+
 
 </resources>

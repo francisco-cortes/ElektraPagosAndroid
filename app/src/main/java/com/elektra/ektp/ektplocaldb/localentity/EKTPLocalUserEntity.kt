@@ -25,5 +25,4 @@ data class EKTPLocalUserEntity(
     @NonNull @ColumnInfo(name = "userCountry") val userCountry: String,
     @NonNull @ColumnInfo(name = "userState") val userState: String,
     @NonNull @ColumnInfo(name = "userTown") val userTown: String
-) {
-}
+)

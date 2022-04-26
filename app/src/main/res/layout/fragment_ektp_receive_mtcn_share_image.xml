@@ -36,7 +36,8 @@
                     android:background="@drawable/ektp_logo_details"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/detailsHeader" />
+                    app:layout_constraintTop_toTopOf="@id/detailsHeader"
+                    android:contentDescription="@string/content_description_appbar_logo" />
 
                 <ImageView
                     android:id="@+id/succesChebron"
@@ -46,7 +47,8 @@
                     android:background="@drawable/ic_sheared_details_ok_image"
                     app:layout_constraintBottom_toBottomOf="@id/detailsHeader"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:contentDescription="@string/content_description_image_button" />
 
                 <TextView
                     android:id="@+id/labelShipmentOk"

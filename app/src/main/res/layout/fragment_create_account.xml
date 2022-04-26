@@ -32,7 +32,8 @@
                     android:background="@drawable/ic_appbar_logo"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_appbar_logo" />
 
                 <TextView
                     android:id="@+id/sectionTitleAppbarTextView"
@@ -56,7 +57,8 @@
                     android:background="@drawable/ic_appbar_back_button"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_back_button" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -101,7 +103,8 @@
                     android:theme="@style/subtitle_1"
                     android:textSize="@dimen/_14sdp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/helloTextView" />
+                    app:layout_constraintTop_toBottomOf="@id/helloTextView"
+                    tools:ignore="SpUsage" />
 
                 <TextView
                     android:id="@+id/nameLabel"
@@ -130,7 +133,8 @@
                     android:imeOptions="actionNext"
                     app:layout_constraintTop_toBottomOf="@id/nameLabel"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:importantForAutofill="no" />
 
                 <TextView
                     android:id="@+id/invalidNameText"
@@ -172,7 +176,8 @@
                     android:imeOptions="actionNext"
                     app:layout_constraintTop_toBottomOf="@id/paternalLastNameLabel"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:importantForAutofill="no" />
 
                 <TextView
                     android:id="@+id/invalidPaternalText"
@@ -214,7 +219,8 @@
                     android:imeOptions="actionNext"
                     app:layout_constraintTop_toBottomOf="@id/maternalLastNameLabel"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:importantForAutofill="no" />
 
                 <TextView
                     android:id="@+id/invalidMaternalText"
@@ -257,7 +263,8 @@
                     android:maxLength="10"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/dateBirthLabel" />
+                    app:layout_constraintTop_toBottomOf="@id/dateBirthLabel"
+                    android:importantForAutofill="no" />
 
                 <ImageButton
                     android:id="@+id/setDateButton"
@@ -267,7 +274,8 @@
                     android:background="@drawable/ic_calendar_button"
                     app:layout_constraintTop_toTopOf="@+id/dateBirth"
                     app:layout_constraintBottom_toBottomOf="@+id/dateBirth"
-                    app:layout_constraintEnd_toEndOf="@+id/dateBirth"/>
+                    app:layout_constraintEnd_toEndOf="@+id/dateBirth"
+                    android:contentDescription="@string/content_description_image_button" />
 
                 <TextView
                     android:id="@+id/invalidDateText"
@@ -319,7 +327,8 @@
                     android:background="@drawable/ic_arrow_spinner"
                     app:layout_constraintEnd_toEndOf="@id/birthSiteSpinner"
                     app:layout_constraintTop_toTopOf="@id/birthSiteSpinner"
-                    app:layout_constraintBottom_toBottomOf="@id/birthSiteSpinner"/>
+                    app:layout_constraintBottom_toBottomOf="@id/birthSiteSpinner"
+                    android:contentDescription="@string/content_description_small_image" />
 
                 <TextView
                     android:id="@+id/genderLabel"
@@ -391,7 +400,8 @@
                     app:counterMaxLength="10"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/phoneNumberLabel" />
+                    app:layout_constraintTop_toBottomOf="@id/phoneNumberLabel"
+                    android:autofillHints="phone" />
 
                 <TextView
                     android:id="@+id/invalidPhoneText"
@@ -432,7 +442,8 @@
                     android:theme="@style/hint_edit_text"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/eMailLabel" />
+                    app:layout_constraintTop_toBottomOf="@id/eMailLabel"
+                    android:autofillHints="emailAddress" />
 
                 <TextView
                     android:id="@+id/invalidEmailText"
@@ -472,7 +483,8 @@
                     android:theme="@style/hint_edit_text"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/emailConfirmationLabel" />
+                    app:layout_constraintTop_toBottomOf="@id/emailConfirmationLabel"
+                    android:autofillHints="emailAddress" />
 
                 <TextView
                     android:id="@+id/invalidEmailConfirmationText"

@@ -4,20 +4,20 @@
         android:id="@+id/startButton"
         android:enabled="true"
         android:icon="@drawable/ic_home_bottom_button"
-        android:title="Inicio"/>
+        android:title="@string/menu_bottom_nav_tittle_1"/>
     <item
         android:id="@+id/profileButton"
         android:enabled="true"
         android:icon="@drawable/ic_profile_bottom_button"
-        android:title="Perfil"/>
+        android:title="@string/menu_bottom_nav_tittle_2"/>
     <item
         android:id="@+id/noticeButton"
         android:enabled="true"
         android:icon="@drawable/ic_notifications_bottom_button"
-        android:title="Notificacion"/>
+        android:title="@string/menu_bottom_nav_tittle_3"/>
     <item
         android:id="@+id/settingsButton"
         android:enabled="true"
         android:icon="@drawable/ic_settings_bottom_button"
-        android:title="ajustes"/>
+        android:title="@string/menu_bottom_nav_tittle_4"/>
 </menu>

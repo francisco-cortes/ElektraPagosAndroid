@@ -1,7 +1,6 @@
 package com.elektra.ektp.ektplogin.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication
 import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
 
 class EKTPLoginPassLoginViewModel : ViewModel() {

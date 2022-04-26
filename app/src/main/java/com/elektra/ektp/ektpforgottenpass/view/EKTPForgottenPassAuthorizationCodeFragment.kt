@@ -27,8 +27,9 @@ import com.google.android.gms.common.api.Status
 import java.util.regex.Pattern
 
 
+@Suppress("DEPRECATION")
 class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
-    private val SMS_CONSENT_REQUEST = 2  // Set to an unused request code
+    private val smsConsentRequest = 2  // Set to an unused request code
     private val smsVerificationReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             if (SmsRetriever.SMS_RETRIEVED_ACTION == intent.action) {
@@ -42,7 +43,7 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                         try {
                             // Start activity to show consent dialog to user, activity must be started in
                             // 5 minutes, otherwise you'll receive another TIMEOUT intent
-                            startActivityForResult(consentIntent, SMS_CONSENT_REQUEST)
+                            startActivityForResult(consentIntent, smsConsentRequest)
                         } catch (e: ActivityNotFoundException) {
                             // Handle the exception ...
                         }
@@ -60,22 +61,16 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
     //ViewModel access variable
     private val authorizationViewModel: EKTPForgottenPassAuthorizationCodeViewModel by viewModels()
 
-    private val smsBroadcastReceiver: EKTPSMSBrodcastReciver by lazy { EKTPSMSBrodcastReciver() }
-    private lateinit var smsClient: SmsRetrieverClient
-
     //UserValidations access variable
     val validations = UserValidations()
 
     //General data variables
     private lateinit var codeAuth: String
-    private lateinit var autoCode :String
-    private var codechar1 = ""
-    private var codechar2 = ""
-    private var codechar3 = ""
-    private var codechar4 = ""
-    private var codechar5 = ""
-
-    private var intentFilter: IntentFilter? = null
+    private var codeChar1 = ""
+    private var codeChar2 = ""
+    private var codeChar3 = ""
+    private var codeChar4 = ""
+    private var codeChar5 = ""
     private var smsReceiver: EKTPSMSBrodcastReciver? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -92,7 +87,7 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_ektp_forgotten_pass_authorization_code, container, false)
         val intentFilter = IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION)
@@ -107,11 +102,11 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 }
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    codechar1 = s.toString()
+                    codeChar1 = s.toString()
                     codeAuth = validations.concatenaterCode(
-                        codechar1, codechar2, codechar3, codechar4, codechar5
+                        codeChar1, codeChar2, codeChar3, codeChar4, codeChar5
                     )
-                    if (!codechar1.isNullOrBlank()) {
+                    if (codeChar1.isNotBlank()) {
                         buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
                         verificationNumber2.requestFocus()
                     }
@@ -131,11 +126,11 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    codechar2 = s.toString()
+                    codeChar2 = s.toString()
                     codeAuth = validations.concatenaterCode(
-                        codechar1, codechar2, codechar3, codechar4, codechar5
+                        codeChar1, codeChar2, codeChar3, codeChar4, codeChar5
                     )
-                    if (!codechar2.isNullOrBlank()) {
+                    if (codeChar2.isNotBlank()) {
                         buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
                         verificationNumber3.requestFocus()
                     }
@@ -159,11 +154,11 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    codechar3 = s.toString()
+                    codeChar3 = s.toString()
                     codeAuth = validations.concatenaterCode(
-                        codechar1, codechar2, codechar3, codechar4, codechar5
+                        codeChar1, codeChar2, codeChar3, codeChar4, codeChar5
                     )
-                    if (!codechar3.isNullOrBlank()) {
+                    if (codeChar3.isNotBlank()) {
                         buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
                         verificationNumber4.requestFocus()
                     }
@@ -187,11 +182,11 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    codechar4 = s.toString()
+                    codeChar4 = s.toString()
                     codeAuth = validations.concatenaterCode(
-                        codechar1, codechar2, codechar3, codechar4, codechar5
+                        codeChar1, codeChar2, codeChar3, codeChar4, codeChar5
                     )
-                    if (!codechar4.isNullOrBlank()) {
+                    if (codeChar4.isNotBlank()) {
                         buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
                         verificationNumber5.requestFocus()
                     }
@@ -212,11 +207,11 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
 
                 }
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    codechar5 = s.toString()
+                    codeChar5 = s.toString()
                     codeAuth = validations.concatenaterCode(
-                        codechar1, codechar2, codechar3, codechar4, codechar5
+                        codeChar1, codeChar2, codeChar3, codeChar4, codeChar5
                     )
-                    if (!codechar5.isNullOrBlank()) {
+                    if (codeChar5.isNotBlank()) {
                         buttonAuth.isEnabled = validations.codeLenghtChecker(codeAuth)
                     }
                     else{
@@ -245,7 +240,7 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
             //---
 
             //onClickListener on appBar BackButton to popBackStack fragment to earlier
-            backAppbarButton.setOnClickListener { view : View ->
+            backAppbarButton.setOnClickListener {
                 findNavController().popBackStack()
             }
             //---
@@ -285,14 +280,15 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
 
 
     private fun startSmartUserConsent(){
-        val task = SmsRetriever.getClient(requireActivity()).startSmsUserConsent(null)
+        SmsRetriever.getClient(requireActivity()).startSmsUserConsent(null)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
             // ...
-            SMS_CONSENT_REQUEST ->
+            smsConsentRequest ->
                 // Obtain the phone number from the result
                 if (resultCode == Activity.RESULT_OK && data != null) {
                     // Get SMS message content
@@ -310,15 +306,14 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
     }
     private fun getOtP(message: String?){
         val otpPattern = Pattern.compile("(|^)\\d{5}")
-        val matcher = otpPattern.matcher(message)
+        val matcher = otpPattern.matcher(message.toString())
         if (matcher.find()){
             val code = matcher.group(0)
-            binding.verificationNumber1.setText(code[0].toString())
-            binding.verificationNumber2.setText(code[1].toString())
-            binding.verificationNumber3.setText(code[2].toString())
-            binding.verificationNumber4.setText(code[3].toString())
-            binding.verificationNumber5.setText(code[4].toString())
-        }else{
+            binding.verificationNumber1.setText(code?.get(0).toString())
+            binding.verificationNumber2.setText(code?.get(1).toString())
+            binding.verificationNumber3.setText(code?.get(2).toString())
+            binding.verificationNumber4.setText(code?.get(3).toString())
+            binding.verificationNumber5.setText(code?.get(4).toString())
         }
     }
 

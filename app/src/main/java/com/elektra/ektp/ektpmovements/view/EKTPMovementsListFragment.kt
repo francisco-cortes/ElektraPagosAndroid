@@ -14,13 +14,6 @@ import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpMovementsListBinding
 import com.elektra.ektp.ektpmovements.model.EKTPMovementsModel
 import com.elektra.ektp.ektpmovements.viewmodel.EKTPMovementsRecyclerViewAdapter
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.*
-import kotlin.collections.ArrayList
-
 class EKTPMovementsListFragment : Fragment() {
 
     //Global databinding access variable
@@ -42,7 +35,7 @@ class EKTPMovementsListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_ektp_movements_list, container, false)
@@ -238,7 +231,7 @@ class EKTPMovementsListFragment : Fragment() {
         }
 
 
-        var months: Array<String> = context?.resources!!.getStringArray(R.array.months)
+        val months: Array<String> = context?.resources!!.getStringArray(R.array.months)
 
         if(data.isNullOrEmpty()){
             binding.emptyDataFrame.isVisible = true
@@ -256,12 +249,11 @@ class EKTPMovementsListFragment : Fragment() {
         }
 
         binding.movementsButton.setOnClickListener{
-                view: View ->
             activity?.finish()
         }
 
         //OnClickListener for appbar back button
-        binding.backAppbarButton.setOnClickListener { view: View ->
+        binding.backAppbarButton.setOnClickListener {
             activity?.finish()
         }
         //---
@@ -272,7 +264,7 @@ class EKTPMovementsListFragment : Fragment() {
     private fun parseDatesData(data: List<EKTPMovementsModel>, months: Array<String>) {
         for(i in data.indices){
             var mesString = data[i].detailDate.substring(3..4)
-            var mesInt = mesString.toInt()-1
+            val mesInt = mesString.toInt()-1
             for(j in months.indices ){
                 if (mesInt == j){
                     mesString = months[j]
@@ -283,11 +275,11 @@ class EKTPMovementsListFragment : Fragment() {
     }
 
     //Companion object for create instance from MovementsList
-    companion object {
+    /*companion object {
         fun newInstance(): EKTPMovementsListFragment {
             return EKTPMovementsListFragment()
         }
-    }
+    }*/
     //---
 
 }

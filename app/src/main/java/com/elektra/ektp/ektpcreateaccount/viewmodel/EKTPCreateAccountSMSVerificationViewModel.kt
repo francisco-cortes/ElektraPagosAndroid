@@ -18,11 +18,7 @@ import java.net.HttpRetryException
 
 class EKTPCreateAccountSMSVerificationViewModel: ViewModel() {
 
-    var canContinueñero = false
-
-    fun checkSMSVerification(smsCode: String): Boolean{
-        return smsCode == "69420"
-    }
+    var canContinue = false
 
     fun resquestSMSTwiloCode() {
         viewModelScope.launch {
@@ -42,8 +38,8 @@ class EKTPCreateAccountSMSVerificationViewModel: ViewModel() {
                 Log.e("APITEST", "Unexpected response + $e")
                 return@launch
             }
-            val body3 = response.code()!!
-            Log.v("APITEST","${body3}")
+            val body3 = response.code()
+            Log.v("APITEST","$body3")
         }
     }
 
@@ -51,7 +47,7 @@ class EKTPCreateAccountSMSVerificationViewModel: ViewModel() {
         val value = viewModelScope.launch {
             val response : Response<EKTPVerificarCodigoSMSTwiloResponse> = try {
                 EKTPFolioValidacionClientesApi.folioValidacionClientesTRetrofitService.verifySMS(
-                    EKTPVerificarCodigoSMSTwiloRequest("${smsCode}","+521${preferences.getPhoneUser()}",""))
+                    EKTPVerificarCodigoSMSTwiloRequest(smsCode,"+521${preferences.getPhoneUser()}",""))
             } catch (e: IOException) {
                 Log.e("APITEST", "You might not have internet connection + $e")
                 return@launch
@@ -66,10 +62,10 @@ class EKTPCreateAccountSMSVerificationViewModel: ViewModel() {
             try {
                 val body3 : EKTPVerificarCodigoSMSTwiloResponse = response.body()!!
                 if (body3.mensaje== "Approved") {
-                    canContinueñero = true
+                    canContinue = true
                     preferences.saveFolioTwilo(body3.folio)
                 }
-                Log.v("APITEST","${body3}")
+                Log.v("APITEST","$body3")
             }catch (e: NullPointerException){
                 Log.v("APITEST","null")
             }

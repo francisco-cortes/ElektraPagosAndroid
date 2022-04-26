@@ -11,12 +11,12 @@ class EKTPLoginActivityViewModel : ViewModel() {
     }
     //---
     //used like a flag to know if the user is in biometric login view
-    fun setBiometricLogin (bio: Boolean){
+    /*fun setBiometricLogin (bio: Boolean){
         preferences.saveLoginWithBio(bio)
     }
     fun getBiometricLogin(): Boolean{
         return preferences.getLoginWithBio()
-    }
+    }*/
     //---
     //use to know if the user activated the biometric login in create account
     fun getBioLoginActivated(): Boolean{

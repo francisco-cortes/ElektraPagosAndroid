@@ -74,9 +74,9 @@ class EKTPCreateAccountFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate<FragmentCreateAccountBinding>(inflater,
+        binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_create_account, container, false)
 
         //Wrap this block code for all the lines with binding variable
@@ -282,14 +282,12 @@ class EKTPCreateAccountFragment : Fragment() {
             setDateButton.setOnClickListener {
                 val dpp = DatePickerDialog(
                     requireContext(), { _, mYear, mMonth, mDay ->
-                        var sMonth = ""
-                        var sDay = ""
-                        sMonth = if(mMonth < 10){
+                        val sMonth = if(mMonth < 10){
                             "0${mMonth+1}"
                         } else{
                             "${mMonth+1}"
                         }
-                        sDay = if(mDay < 10){
+                        val sDay = if(mDay < 10){
                             "0$mDay"
                         } else{
                             "$mDay"
@@ -462,7 +460,7 @@ class EKTPCreateAccountFragment : Fragment() {
             }
             //---
             //onClickListener on continueButton to listen for saveUserData in SharedPreferences
-            button.setOnClickListener { view: View ->
+            button.setOnClickListener {
                 createAccountViewModel.saveRegisterData(
                     name, paternalLast, maternalLast, birthDate, birthState, phone, eMailText, gender,apiBday
                 )
@@ -475,7 +473,7 @@ class EKTPCreateAccountFragment : Fragment() {
             //onClickListener on appBar BackButton to destroy fragment and activity
             backAppbarButton.setOnClickListener { view: View ->
                 val intent = Intent(activity, EKTPLoginActivity::class.java)
-                val context = view?.context
+                val context = view.context
                 context?.startActivity(intent)
                 activity?.finish()
             }
@@ -489,8 +487,8 @@ class EKTPCreateAccountFragment : Fragment() {
         loadingLayout = layoutInflater.inflate(R.layout.loading_alert_layout,null)
         val loadingAlert = alertDialogOpener(loadingLayout, requireContext())
         loadingAlert.show()
-        loadingAlert.getWindow()?.setLayout(250, 250)
-        var attempts = 0
+        loadingAlert.window?.setLayout(250, 250)
+        var attempts: Int
         val timer = object : CountDownTimer(7000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 if(value.isCompleted){
@@ -535,7 +533,7 @@ class EKTPCreateAccountFragment : Fragment() {
     }
 
     private fun alertDialogOpener(dialogLayout: View, context: Context): AlertDialog {
-        var alertDialog: AlertDialog? = null
+        val alertDialog: AlertDialog?
         val alertDialogBuilder = AlertDialog.Builder(context)
 
         alertDialogBuilder.setView(dialogLayout)

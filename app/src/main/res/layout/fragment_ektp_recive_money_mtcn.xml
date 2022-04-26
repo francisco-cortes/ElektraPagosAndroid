@@ -31,7 +31,8 @@
                     android:background="@drawable/ic_appbar_logo"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_appbar_logo" />
 
                 <TextView
                     android:id="@+id/sectionTitleAppbarTextView"
@@ -52,7 +53,8 @@
                     android:background="@drawable/ic_appbar_back_button"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_back_button" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -68,7 +70,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/receiveInsertMTCNTextView"
@@ -83,7 +85,8 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:drawableEndCompat="@drawable/ic_help_button" />
+                    app:drawableEndCompat="@drawable/ic_help_button"
+                    tools:ignore="SpUsage" />
 
                 <ImageView
                     android:id="@+id/toolTipImageView"
@@ -95,7 +98,7 @@
                     android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="@+id/receiveInsertMTCNTextView"
                     app:layout_constraintBottom_toTopOf="@+id/receiveInsertMTCNTextView"
-                    />
+                    android:contentDescription="@string/content_description_image_button" />
 
                 <TextView
                     android:id="@+id/toolTipTextView"
@@ -112,7 +115,8 @@
                     android:textSize="@dimen/_10sdp"
                     android:visibility="invisible"
                     app:layout_constraintBottom_toTopOf="@id/toolTipImageView"
-                    app:layout_constraintEnd_toEndOf="@id/toolTipImageView" />
+                    app:layout_constraintEnd_toEndOf="@id/toolTipImageView"
+                    tools:ignore="SpUsage" />
 
                 <EditText
                     android:id="@+id/mtcnEntryEditText"
@@ -130,7 +134,8 @@
                     android:theme="@style/hint_edit_text"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/receiveInsertMTCNTextView"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:importantForAutofill="no" />
 
                 <TextView
                     android:id="@+id/mtcnOk"

@@ -33,13 +33,13 @@ class EKTPReceiveMTCNDetailsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val bundle = this.arguments
         mtcnString = bundle?.getString("mtcnString").toString()
-        binding =  DataBindingUtil.inflate<FragmentEktpReceiveMtcnDetailsBinding>(inflater,R.layout.fragment_ektp_receive_mtcn_details, container, false)
-        cantDespositAlertLayout = layoutInflater.inflate(R.layout.cant_deposit_alert_layout,null)
-        var cantDepositAlertDialog: AlertDialog? = null
+        binding =  DataBindingUtil.inflate(inflater,R.layout.fragment_ektp_receive_mtcn_details, container, false)
+        cantDespositAlertLayout = layoutInflater.inflate(R.layout.cant_deposit_alert_layout,container, false)
+        var cantDepositAlertDialog: AlertDialog?
         val cantDepositDialogBuilder = AlertDialog.Builder(requireContext())
 
         cantDepositDialogBuilder.setView(cantDespositAlertLayout)

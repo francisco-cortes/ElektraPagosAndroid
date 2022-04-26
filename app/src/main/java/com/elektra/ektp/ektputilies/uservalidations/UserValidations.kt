@@ -1,7 +1,5 @@
 package com.elektra.ektp.ektputilies.uservalidations
 
-import java.util.*
-
 class UserValidations {
     fun checkValidInput(wordToCheck: String): Boolean{
         return wordToCheck.matches("^[a-zA-ZÀ-ÿ\\u00f1\\u00d1.]+(\\s*[a-zA-ZÀ-ÿ\\u00f1\\u00d1.])*[a-zA-ZÀ-ÿ\\u00f1\\u00d1.]+(\\s|$)".toRegex())
@@ -32,9 +30,7 @@ class UserValidations {
     }
 
     fun concatenaterCode(codeChar1: String, codeChar2: String, codeChar3: String, codeChar4: String, codeChar5: String): String {
-        var codeString = ""
-        codeString = codeChar1 + codeChar2 + codeChar3 + codeChar4 + codeChar5
-        return codeString
+        return codeChar1 + codeChar2 + codeChar3 + codeChar4 + codeChar5
     }
 
     fun codeLenghtChecker(codeString: String): Boolean {

@@ -30,7 +30,8 @@
                     android:background="@drawable/ic_appbar_back_button"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_back_button" />
 
                 <TextView
                     android:id="@+id/sectionTitleAppbarTextView"
@@ -54,7 +55,8 @@
                     android:layout_marginEnd="@dimen/_10sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_appbar_logo" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -70,7 +72,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center">
 
                 <ImageView
@@ -81,7 +83,8 @@
                     android:layout_marginTop="@dimen/_40sdp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:contentDescription="@string/content_description_main_icon_on_view" />
 
                 <TextView
                     android:id="@+id/helpHeadlineOneTextView"

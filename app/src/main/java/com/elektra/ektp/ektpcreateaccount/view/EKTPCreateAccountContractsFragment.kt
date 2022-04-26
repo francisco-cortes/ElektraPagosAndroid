@@ -9,12 +9,9 @@ import android.widget.CheckBox
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountContractsBinding
-import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountContractsViewModel
 import com.elektra.ektp.ektppdfviewer.EKTPPDFViewerActivity
 import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication
 
@@ -22,8 +19,6 @@ class EKTPCreateAccountContractsFragment : Fragment() {
 
     //Global databinding access variable
     private lateinit var binding: FragmentEktpCreateAccountContractsBinding
-    //ViewModel access var
-    private val contractsViewModel: EKTPCreateAccountContractsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +33,9 @@ class EKTPCreateAccountContractsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate<FragmentEktpCreateAccountContractsBinding>(inflater,
+        binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_ektp_create_account_contracts, container, false)
 
         with(binding){
@@ -48,56 +43,56 @@ class EKTPCreateAccountContractsFragment : Fragment() {
                     acceptanceCheckbox.isChecked = false
 
                 //onClickListener on TextView to open contract title
-                term1TextView.setOnClickListener { view: View ->
+                term1TextView.setOnClickListener {
                     //view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountContractsViewFragment)
                     intentOpener("ejemplo_contrato_banca_digital.pdf")
                 }
             //----
 
             //onClickListener on TextView to open contract title
-            term2TextView.setOnClickListener { view: View ->
+            term2TextView.setOnClickListener {
                 intentOpener("ejemplo_contrato_banca_digital.pdf")
             }
                     //---
 
                     //onClickListener on TextView to open contract title
-                    term3TextView.setOnClickListener { view: View ->
+                    term3TextView.setOnClickListener {
                         intentOpener("ejemplo_contrato_banca_digital.pdf")
             }
                     //---
 
                     //onClickListener on TextView to open contract title
-                    term4TextView.setOnClickListener { view: View ->
+                    term4TextView.setOnClickListener {
                         intentOpener("ejemplo_contrato_banca_digital.pdf")
             }
                     //---
 
                     //onClickListener on TextView to open contract title
-                    term5TextView.setOnClickListener { view: View ->
+                    term5TextView.setOnClickListener {
                         intentOpener("ejemplo_contrato_banca_digital.pdf")
             }
                     //---
 
                     //onClickListener on TextView to open contract title
-                    term6TextView.setOnClickListener { view: View ->
+                    term6TextView.setOnClickListener {
                         intentOpener("ejemplo_contrato_banca_digital.pdf")
             }
                     //---
 
                     //onClickListener on TextView to open contract title
-                    term7TextView.setOnClickListener { view: View ->
+                    term7TextView.setOnClickListener {
                         intentOpener("ejemplo_contrato_banca_digital.pdf")
             }
                     //---
 
                     //onClickListener on TextView to open contract title
-                    term8TextView.setOnClickListener { view: View ->
-                        intentOpener("ejemplo_contrato_banca_digital.pdf")
+                    term8TextView.setOnClickListener {
+                        intentOpener("contratoenPDF.pdf")
             }
                     //---
 
                     //onClickListener on appBar BackButton to popBackStack fragment
-                    backAppbarButton.setOnClickListener { view: View ->
+                    backAppbarButton.setOnClickListener {
                 findNavController().popBackStack()
             }
                     //---
@@ -117,7 +112,7 @@ class EKTPCreateAccountContractsFragment : Fragment() {
                     //--
 
                     //onClickListener on termsButton to listen for forward advance in create account
-                    termsContinueButton.setOnClickListener {view: View ->
+                    termsContinueButton.setOnClickListener {
                         EKTPUserApplication.preferences.saveLocalStatus("Registrado")
                 //view.findNavController().navigate(R.id.action_EKTPCreateAccountContractsFragment_to_EKTPCreateAccountCreatePassFragment)
                         fragmentReplacer(EKTPCreateAccountCreatePassFragment())

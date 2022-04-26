@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.ActivityEktpHomeContractsBinding
-import com.elektra.ektp.databinding.ActivityEktphomeBinding
 import com.elektra.ektp.ektppdfviewer.EKTPPDFViewerActivity
 
 class EKTPHomeContractsActivity : AppCompatActivity() {
@@ -14,7 +13,7 @@ class EKTPHomeContractsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEktpHomeContractsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView<ActivityEktpHomeContractsBinding>(this, R.layout.activity_ektp_home_contracts)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_ektp_home_contracts)
 
         with(binding){
             termsCaptationTextView.setOnClickListener {
@@ -50,7 +49,7 @@ class EKTPHomeContractsActivity : AppCompatActivity() {
             }
 
             termsDigitalTextView.setOnClickListener {
-                intentOpener("ejemplo_contrato_banca_digital.pdf")
+                intentOpener("contratoenPDF.pdf")
             }
 
             backAppbarButton.setOnClickListener {

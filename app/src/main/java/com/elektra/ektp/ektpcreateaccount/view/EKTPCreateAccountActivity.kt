@@ -2,14 +2,10 @@ package com.elektra.ektp.ektpcreateaccount.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.compose.runtime.internal.liveLiteral
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.whenResumed
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.ActivityCreateAccountBinding
-import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountActivityViewModel
 import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
 
 class EKTPCreateAccountActivity : AppCompatActivity() {
@@ -19,7 +15,6 @@ class EKTPCreateAccountActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //Inflate layout activity container for fragments
-        val activityViewModel : EKTPCreateAccountActivityViewModel by viewModels()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_create_account)
         when(preferences.getLocalStatus()){
             "preRegistrado" -> openFragment(EKTPCreateAccountSMSVerificationFragment())

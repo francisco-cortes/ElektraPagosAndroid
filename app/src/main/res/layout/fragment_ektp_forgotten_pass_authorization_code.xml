@@ -32,7 +32,8 @@
                     android:background="@drawable/ic_appbar_logo"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_appbar_logo" />
 
                 <TextView
                     android:id="@+id/sectionTitleAppbarTextView"
@@ -56,7 +57,8 @@
                     android:background="@drawable/ic_appbar_back_button"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_back_button" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -110,7 +112,9 @@
                         android:imeOptions="actionNext"
                         android:inputType="number"
                         android:maxLength="1"
-                        android:theme="@style/code_text" />
+                        android:theme="@style/code_text"
+                        android:importantForAutofill="no"
+                        tools:ignore="LabelFor" />
 
                     <EditText
                         android:id="@+id/verificationNumber2"
@@ -124,7 +128,9 @@
                         android:imeOptions="actionNext"
                         android:inputType="number"
                         android:maxLength="1"
-                        android:theme="@style/code_text" />
+                        android:theme="@style/code_text"
+                        android:importantForAutofill="no"
+                        tools:ignore="LabelFor" />
 
                     <EditText
                         android:id="@+id/verificationNumber3"
@@ -139,7 +145,9 @@
                         android:inputType="number"
                         android:maxLength="1"
                         android:maxLines="1"
-                        android:theme="@style/code_text" />
+                        android:theme="@style/code_text"
+                        android:importantForAutofill="no"
+                        tools:ignore="LabelFor" />
 
                     <EditText
                         android:id="@+id/verificationNumber4"
@@ -153,7 +161,9 @@
                         android:imeOptions="actionNext"
                         android:inputType="number"
                         android:maxLength="1"
-                        android:theme="@style/code_text" />
+                        android:theme="@style/code_text"
+                        android:importantForAutofill="no"
+                        tools:ignore="LabelFor" />
 
                     <EditText
                         android:id="@+id/verificationNumber5"
@@ -166,7 +176,9 @@
                         android:imeOptions="actionDone"
                         android:inputType="number"
                         android:maxLength="1"
-                        android:theme="@style/code_text" />
+                        android:theme="@style/code_text"
+                        android:importantForAutofill="no"
+                        tools:ignore="LabelFor" />
 
                 </LinearLayout>
 

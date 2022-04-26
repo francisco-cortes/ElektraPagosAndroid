@@ -34,7 +34,8 @@
                     android:background="@drawable/ic_appbar_logo"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_appbar_logo" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -51,7 +52,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/loginWelcomeTextView"
@@ -85,7 +86,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/loginSignInTextView"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:contentDescription="@string/content_description_main_icon_on_view" />
 
                 <TextView
                     android:id="@+id/biometricInfoTextView"
@@ -119,7 +121,7 @@
                         android:id="@+id/oText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="o"
+                        android:text="@string/or_separator"
                         android:theme="@style/hint_edit_text"
                         android:gravity="center_vertical"
                         android:layout_marginStart="10dp"
@@ -140,10 +142,10 @@
                     android:layout_marginStart="@dimen/_43sdp"
                     android:layout_marginEnd="@dimen/_43sdp"
                     android:gravity="center"
-                    android:drawableLeft="@drawable/ic_on_button_password_icon"
                     android:text="@string/login_pass_in_button"
                     android:theme="@style/text_button_1"
                     android:background="@drawable/enable_disable_red"
+                    app:icon="@drawable/ic_on_button_password_icon"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/separatorTextView" />

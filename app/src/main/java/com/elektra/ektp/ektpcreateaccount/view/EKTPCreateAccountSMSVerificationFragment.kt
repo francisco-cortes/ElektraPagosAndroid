@@ -24,16 +24,16 @@ import com.elektra.ektp.databinding.FragmentEktpCreateAccountSmsVerificationBind
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountSMSVerificationViewModel
 import com.elektra.ektp.ektputilies.uservalidations.UserValidations
 import com.elektra.ektp.ektpsharedpreferences.EKTPUserApplication.Companion.preferences
-import com.elektra.ektp.ektputilies.smsreader.EKTPSMSBrodcastReciver
 import com.google.android.gms.auth.api.phone.SmsRetriever
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.common.api.Status
 import kotlinx.coroutines.Job
 import java.util.regex.Pattern
 
+@Suppress("DEPRECATION")
 class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
-    private val SMS_CONSENT_REQUEST = 2  // Set to an unused request code
+    private val smsConsentRequest = 2  // Set to an unused request code
     private val smsVerificationReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             if (SmsRetriever.SMS_RETRIEVED_ACTION == intent.action) {
@@ -47,7 +47,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                         try {
                             // Start activity to show consent dialog to user, activity must be started in
                             // 5 minutes, otherwise you'll receive another TIMEOUT intent
-                            startActivityForResult(consentIntent, SMS_CONSENT_REQUEST)
+                            startActivityForResult(consentIntent, smsConsentRequest)
                         } catch (e: ActivityNotFoundException) {
                             // Handle the exception ...
                         }
@@ -72,14 +72,11 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
     //---
     //Global variables for user entries
     private lateinit var codeSMS: String
-    private var codechar1 = ""
-    private var codechar2 = ""
-    private var codechar3 = ""
-    private var codechar4 = ""
-    private var codechar5 = ""
-    private val REQ_USE_CONSENT = 200
-    private var code = ""
-    private var smsBroadcastReceiver : EKTPSMSBrodcastReciver? = null
+    private var codeChar1 = ""
+    private var codeChar2 = ""
+    private var codeChar3 = ""
+    private var codeChar4 = ""
+    private var codeChar5 = ""
     //---
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,7 +93,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_ektp_create_account_sms_verification, container, false)
@@ -114,11 +111,11 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    codechar1 = s.toString()
+                    codeChar1 = s.toString()
                     codeSMS = validations.concatenaterCode(
-                        codechar1, codechar2, codechar3, codechar4, codechar5
+                        codeChar1, codeChar2, codeChar3, codeChar4, codeChar5
                     )
-                    if (!codechar1.isNullOrBlank()) {
+                    if (codeChar1.isNotBlank()) {
                         smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                         verificationNumber2.requestFocus()
                     }
@@ -138,11 +135,11 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    codechar2 = s.toString()
+                    codeChar2 = s.toString()
                     codeSMS = validations.concatenaterCode(
-                        codechar1, codechar2, codechar3, codechar4, codechar5
+                        codeChar1, codeChar2, codeChar3, codeChar4, codeChar5
                     )
-                    if (!codechar2.isNullOrBlank()) {
+                    if (codeChar2.isNotBlank()) {
                         smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                         verificationNumber3.requestFocus()
                     }
@@ -163,11 +160,11 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    codechar3 = s.toString()
+                    codeChar3 = s.toString()
                     codeSMS = validations.concatenaterCode(
-                        codechar1, codechar2, codechar3, codechar4, codechar5
+                        codeChar1, codeChar2, codeChar3, codeChar4, codeChar5
                     )
-                    if (!codechar3.isNullOrBlank()) {
+                    if (codeChar3.isNotBlank()) {
                         smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                         verificationNumber4.requestFocus()
                     }
@@ -187,11 +184,11 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    codechar4 = s.toString()
+                    codeChar4 = s.toString()
                     codeSMS = validations.concatenaterCode(
-                        codechar1, codechar2, codechar3, codechar4, codechar5
+                        codeChar1, codeChar2, codeChar3, codeChar4, codeChar5
                     )
-                    if (!codechar4.isNullOrBlank() && codechar4.length == 1) {
+                    if (codeChar4.isNotBlank()) {
                         smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                         verificationNumber5.requestFocus()
                     }
@@ -212,11 +209,11 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    codechar5 = s.toString()
+                    codeChar5 = s.toString()
                     codeSMS = validations.concatenaterCode(
-                        codechar1, codechar2, codechar3, codechar4, codechar5
+                        codeChar1, codeChar2, codeChar3, codeChar4, codeChar5
                     )
-                    if (!codechar5.isNullOrBlank()) {
+                    if (codeChar5.isNotBlank()) {
                         smsContinueButton.isEnabled = validations.codeLenghtChecker(codeSMS)
                     }
                     else{
@@ -232,9 +229,10 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
             //---
 
             //TextWatcher function to listen for changes on editText
-            smsContinueButton.setOnClickListener { view: View ->
-                //val value = smsVerificationViewModel.verifySMSTwiloCode(codeSMS)
-                //verifySMSresponse(value)
+            smsContinueButton.setOnClickListener {
+                //val value = smsVerificationViewModel.verifySMSTwilioCode(codeSMS)
+                //verifySMResponse(value)
+                requireActivity().unregisterReceiver(smsVerificationReceiver)
                 when(preferences.getLocalStatus()){
                     "preResgistrado" ->fragmentReplacer(EKTPCreateAccountRegisterFormFragment())
                     "Registrado" -> fragmentReplacer(EKTPCreateAccountCreatePassFragment())
@@ -246,14 +244,14 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
             //---
 
             //onClickListener on appBar BackButton to destroy fragment and activity
-            backAppbarButton.setOnClickListener { view : View ->
+            backAppbarButton.setOnClickListener {
                 findNavController().popBackStack()
             }
             //---
-            verificationNumber1.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+            verificationNumber1.setOnKeyListener( View.OnKeyListener { _, _, event ->
                 val pressedKey = event.keyCode
                 Log.i("key pressed",pressedKey.toString())
-                if (!codechar1.isNullOrBlank()&&verificationNumber1.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                if (codeChar1.isNotBlank() &&verificationNumber1.isFocused&&pressedKey>=8&&pressedKey<=16) {
                     //Perform Code
                     verificationNumber2.requestFocus()
                     verificationNumber2.setText(getKeyVal(pressedKey))
@@ -264,10 +262,10 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                 }
             })
 
-            verificationNumber2.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+            verificationNumber2.setOnKeyListener( View.OnKeyListener { _, _, event ->
                 val pressedKey = event.keyCode
                 Log.i("key pressed",pressedKey.toString())
-                if (!codechar2.isNullOrBlank()&&verificationNumber2.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                if (codeChar2.isNotBlank() &&verificationNumber2.isFocused&&pressedKey>=8&&pressedKey<=16) {
                     //Perform Code
                     verificationNumber3.requestFocus()
                     verificationNumber3.setText(getKeyVal(pressedKey))
@@ -278,10 +276,10 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                 }
             })
 
-            verificationNumber3.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+            verificationNumber3.setOnKeyListener( View.OnKeyListener { _, _, event ->
                 val pressedKey = event.keyCode
                 Log.i("key pressed",pressedKey.toString())
-                if (!codechar3.isNullOrBlank()&&verificationNumber3.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                if (codeChar3.isNotBlank() &&verificationNumber3.isFocused&&pressedKey>=8&&pressedKey<=16) {
                     //Perform Code
                     verificationNumber4.requestFocus()
                     verificationNumber4.setText(getKeyVal(pressedKey))
@@ -292,10 +290,10 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                 }
             })
 
-            verificationNumber4.setOnKeyListener( View.OnKeyListener { v, keyCode, event ->
+            verificationNumber4.setOnKeyListener( View.OnKeyListener { _, _, event ->
                 val pressedKey = event.keyCode
                 Log.i("key pressed",pressedKey.toString())
-                if (!codechar4.isNullOrBlank()&&verificationNumber4.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                if (codeChar4.isNotBlank() &&verificationNumber4.isFocused&&pressedKey>=8&&pressedKey<=16) {
                     //Perform Code
                     verificationNumber5.requestFocus()
                     verificationNumber5.setText(getKeyVal(pressedKey))
@@ -315,7 +313,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
         }
     }
 
-    fun getKeyVal(pressedKeyCode: Int):String{
+    private fun getKeyVal(pressedKeyCode: Int):String{
         return when (pressedKeyCode){
             8 -> "1"
             9 -> "2"
@@ -352,12 +350,13 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
 
             override fun onTick(millisUntilFinished: Long) {
                 binding.resendCodeTextView.isEnabled = false
-                binding.resendCodeTextView.text = getString(R.string.fragment_verification_resend_code) + " en " + (millisUntilFinished/1000).toString()
+                binding.resendCodeSecondsTextView.isVisible = true
+                binding.resendCodeSecondsTextView.text = (millisUntilFinished/1000).toString()
             }
 
             override fun onFinish() {
                 binding.resendCodeTextView.isEnabled = true
-                binding.resendCodeTextView.text = getString(R.string.fragment_verification_resend_code)
+                binding.resendCodeSecondsTextView.isVisible = false
             }
         }.start()
     }
@@ -366,13 +365,12 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
         loadingLayout = layoutInflater.inflate(R.layout.loading_alert_layout,null)
         val loadingAlert = alertDialogOpener(loadingLayout, requireContext())
         loadingAlert.show()
-        loadingAlert.getWindow()?.setLayout(250, 250)
-        var canContinue = false
-        var attempts = 0
+        loadingAlert.window?.setLayout(250, 250)
+        var attempts: Int
         val timer = object : CountDownTimer(7000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 if(value.isCompleted){
-                    if (smsVerificationViewModel.canContinueñero){
+                    if (smsVerificationViewModel.canContinue){
                         loadingAlert.dismiss()
                         when(preferences.getLocalStatus()){
                             "preResgistrado" ->fragmentReplacer(EKTPCreateAccountRegisterFormFragment())
@@ -382,19 +380,17 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                             else -> fragmentReplacer(EKTPCreateAccountRegisterFormFragment())
                         }
                         //view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountSMSVerificationFragment_to_EKPTCreateAccountRegisterFormFragment)
-                        canContinue = true
                         cancel()
                     }else{
                         loadingAlert.dismiss()
                         drawableSetter(false)
-                        canContinue = false
                         cancel()
                     }
                 }
             }
             override fun onFinish() {
                 if(value.isCompleted){
-                    if (smsVerificationViewModel.canContinueñero){
+                    if (smsVerificationViewModel.canContinue){
                         loadingAlert.dismiss()
                         when(preferences.getLocalStatus()){
                             "preResgistrado" ->fragmentReplacer(EKTPCreateAccountRegisterFormFragment())
@@ -404,12 +400,10 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                             else -> fragmentReplacer(EKTPCreateAccountRegisterFormFragment())
                         }
                         //view?.findNavController()?.navigate(R.id.action_EKTPCreateAccountSMSVerificationFragment_to_EKPTCreateAccountRegisterFormFragment)
-                        canContinue = true
                         cancel()
                     }else{
                         loadingAlert.dismiss()
                         drawableSetter(false)
-                        canContinue = false
                         cancel()
                     }
                 }else{
@@ -418,7 +412,6 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                         start()
                     }else{
                         loadingAlert.dismiss()
-                        canContinue = false
                     }
                 }
             }
@@ -427,7 +420,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
     }
 
     private fun alertDialogOpener(dialogLayout: View, context: Context): AlertDialog {
-        var alertDialog: AlertDialog? = null
+        val alertDialog: AlertDialog?
         val alertDialogBuilder = AlertDialog.Builder(context)
 
         alertDialogBuilder.setView(dialogLayout)
@@ -444,29 +437,15 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
     }
 
     private fun startSmartUserConsent(){
-        val task = SmsRetriever.getClient(requireActivity()).startSmsUserConsent(null)
+        SmsRetriever.getClient(requireActivity()).startSmsUserConsent(null)
     }
 
-    private fun registerBroadcastReceiver(){
-        smsBroadcastReceiver = EKTPSMSBrodcastReciver()
-        smsBroadcastReceiver!!.smsBroadcastReceiverListener = object : EKTPSMSBrodcastReciver.SmsReceiveListener{
-            override fun onSuccess(intent: Intent?) {
-                requireActivity().startActivityForResult(intent,REQ_USE_CONSENT)
-            }
-            override fun onFailure() {
-            }
-        }
-        val intentFilter = IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION)
-        requireActivity().registerReceiver(smsBroadcastReceiver,intentFilter)
-    }
-
-
-
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
             // ...
-            SMS_CONSENT_REQUEST ->
+            smsConsentRequest ->
                 // Obtain the phone number from the result
                 if (resultCode == Activity.RESULT_OK && data != null) {
                     // Get SMS message content
@@ -477,22 +456,19 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
                     getOtP(message) // define this function
 
                     // send one time code to the server
-                } else {
-                    // Consent denied. User can type OTC manually.
                 }
         }
     }
     private fun getOtP(message: String?){
         val otpPattern = Pattern.compile("(|^)\\d{5}")
-        val matcher = otpPattern.matcher(message)
+        val matcher = otpPattern.matcher(message!!)
         if (matcher.find()){
             val code = matcher.group(0)
-            binding.verificationNumber1.setText(code[0].toString())
-            binding.verificationNumber2.setText(code[1].toString())
-            binding.verificationNumber3.setText(code[2].toString())
-            binding.verificationNumber4.setText(code[3].toString())
-            binding.verificationNumber5.setText(code[4].toString())
-        }else{
+            binding.verificationNumber1.setText(code?.get(0).toString())
+            binding.verificationNumber2.setText(code?.get(1).toString())
+            binding.verificationNumber3.setText(code?.get(2).toString())
+            binding.verificationNumber4.setText(code?.get(3).toString())
+            binding.verificationNumber5.setText(code?.get(4).toString())
         }
     }
 }

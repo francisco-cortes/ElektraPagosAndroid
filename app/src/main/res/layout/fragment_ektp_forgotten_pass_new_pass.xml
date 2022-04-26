@@ -31,7 +31,8 @@
                     android:background="@drawable/ic_appbar_logo"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_appbar_logo" />
 
                 <TextView
                     android:id="@+id/sectionTitleAppbarTextView"
@@ -55,7 +56,8 @@
                     android:background="@drawable/ic_appbar_back_button"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_back_button" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -113,7 +115,8 @@
                     android:imeOptions="actionNext"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/insertNewLabel" />
+                    app:layout_constraintTop_toBottomOf="@+id/insertNewLabel"
+                    android:importantForAutofill="no" />
 
                 <ImageButton
                     android:id="@+id/showPassButton1"
@@ -124,7 +127,8 @@
                     android:layout_marginEnd="@dimen/_8sdp"
                     app:layout_constraintBottom_toBottomOf="@+id/insertNewPass"
                     app:layout_constraintTop_toTopOf="@+id/insertNewPass"
-                    app:layout_constraintEnd_toEndOf="@+id/insertNewPass"/>
+                    app:layout_constraintEnd_toEndOf="@+id/insertNewPass"
+                    android:contentDescription="@string/content_description_image_button" />
 
                 <TextView
                     android:id="@+id/confirmPassLabel"
@@ -153,7 +157,8 @@
                     android:imeOptions="actionDone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/confirmPassLabel" />
+                    app:layout_constraintTop_toBottomOf="@+id/confirmPassLabel"
+                    android:importantForAutofill="no" />
 
                 <ImageButton
                     android:id="@+id/showPassButton2"
@@ -164,7 +169,8 @@
                     android:layout_marginEnd="@dimen/_8sdp"
                     app:layout_constraintTop_toTopOf="@+id/insertConfirmPass"
                     app:layout_constraintBottom_toBottomOf="@+id/insertConfirmPass"
-                    app:layout_constraintEnd_toEndOf="@+id/insertConfirmPass"/>
+                    app:layout_constraintEnd_toEndOf="@+id/insertConfirmPass"
+                    android:contentDescription="@string/content_description_image_button" />
 
                 <TextView
                     android:id="@+id/validationPoints"
@@ -201,7 +207,7 @@
                     app:layout_constraintTop_toTopOf="@id/minLenghtPas"
                     app:layout_constraintBottom_toBottomOf="@id/minLenghtPas"
                     android:visibility="invisible"
-                    />
+                    android:contentDescription="@string/content_description_small_image" />
 
                 <ImageView
                     android:id="@+id/notMinIcon"
@@ -213,6 +219,7 @@
                     app:layout_constraintTop_toTopOf="@id/minLenghtPas"
                     app:layout_constraintBottom_toBottomOf="@id/minLenghtPas"
                     android:visibility="invisible"
+                    android:contentDescription="@string/content_description_small_image"
                     />
 
                 <TextView
@@ -238,6 +245,7 @@
                     app:layout_constraintTop_toTopOf="@id/maxLenghtPas"
                     app:layout_constraintBottom_toBottomOf="@id/maxLenghtPas"
                     android:visibility="invisible"
+                    android:contentDescription="@string/content_description_small_image"
                     />
 
                 <ImageView
@@ -250,6 +258,7 @@
                     app:layout_constraintTop_toTopOf="@id/maxLenghtPas"
                     app:layout_constraintBottom_toBottomOf="@id/maxLenghtPas"
                     android:visibility="invisible"
+                    android:contentDescription="@string/content_description_small_image"
                     />
 
                 <TextView
@@ -274,6 +283,7 @@
                     app:layout_constraintTop_toTopOf="@id/consecutiveChars"
                     app:layout_constraintBottom_toBottomOf="@id/consecutiveChars"
                     android:visibility="invisible"
+                    android:contentDescription="@string/content_description_small_image"
                     />
 
                 <ImageView
@@ -286,6 +296,7 @@
                     app:layout_constraintTop_toTopOf="@id/consecutiveChars"
                     app:layout_constraintBottom_toBottomOf="@id/consecutiveChars"
                     android:visibility="invisible"
+                    android:contentDescription="@string/content_description_small_image"
                     />
 
                 <TextView
@@ -310,6 +321,7 @@
                     app:layout_constraintTop_toTopOf="@id/repeatedChars"
                     app:layout_constraintBottom_toBottomOf="@id/repeatedChars"
                     android:visibility="invisible"
+                    android:contentDescription="@string/content_description_small_image"
                     />
 
                 <ImageView
@@ -322,6 +334,7 @@
                     app:layout_constraintTop_toTopOf="@id/repeatedChars"
                     app:layout_constraintBottom_toBottomOf="@id/repeatedChars"
                     android:visibility="invisible"
+                    android:contentDescription="@string/content_description_small_image"
                     />
 
                 <TextView
@@ -346,6 +359,7 @@
                     app:layout_constraintTop_toTopOf="@id/noBankName"
                     app:layout_constraintBottom_toBottomOf="@id/noBankName"
                     android:visibility="invisible"
+                    android:contentDescription="@string/content_description_small_image"
                     />
 
                 <ImageView
@@ -358,6 +372,7 @@
                     app:layout_constraintTop_toTopOf="@id/noBankName"
                     app:layout_constraintBottom_toBottomOf="@id/noBankName"
                     android:visibility="invisible"
+                    android:contentDescription="@string/content_description_small_image"
                     />
 
                 <TextView
@@ -382,6 +397,7 @@
                     app:layout_constraintTop_toTopOf="@id/matchPass"
                     app:layout_constraintBottom_toBottomOf="@id/matchPass"
                     android:visibility="invisible"
+                    android:contentDescription="@string/content_description_small_image"
                     />
 
                 <Button

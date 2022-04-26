@@ -7,7 +7,7 @@ import androidx.room.Query
 import com.elektra.ektp.ektplocaldb.localentity.EKTPLocalUserEntity
 
 @Dao
-public interface EKTPLocalUserDAO{
+ interface EKTPLocalUserDAO{
 
     @Query("SELECT * FROM LocalUser WHERE id = 0")
     suspend fun getAllLocalUserData():EKTPLocalUserEntity

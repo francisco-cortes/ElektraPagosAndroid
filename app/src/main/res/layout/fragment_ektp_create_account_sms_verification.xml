@@ -31,7 +31,8 @@
                     android:background="@drawable/ic_appbar_logo"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_appbar_logo" />
 
                 <TextView
                     android:id="@+id/sectionTitleAppbarTextView"
@@ -55,7 +56,8 @@
                     android:background="@drawable/ic_appbar_back_button"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_back_button" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -127,7 +129,8 @@
                         android:inputType="number"
                         android:maxLength="1"
                         android:theme="@style/code_text"
-                        android:importantForAutofill="yes"/>
+                        tools:ignore="LabelFor"
+                        android:importantForAutofill="no" />
 
                     <EditText
                         android:id="@+id/verificationNumber2"
@@ -142,7 +145,8 @@
                         android:inputType="number"
                         android:maxLength="1"
                         android:theme="@style/code_text"
-                        android:importantForAutofill="yes"/>
+                        android:importantForAutofill="no"
+                        tools:ignore="LabelFor" />
 
                     <EditText
                         android:id="@+id/verificationNumber3"
@@ -157,7 +161,8 @@
                         android:inputType="number"
                         android:maxLength="1"
                         android:theme="@style/code_text"
-                        android:importantForAutofill="yes"/>
+                        android:importantForAutofill="no"
+                        tools:ignore="LabelFor" />
 
                     <EditText
                         android:id="@+id/verificationNumber4"
@@ -172,7 +177,8 @@
                         android:inputType="number"
                         android:maxLength="1"
                         android:theme="@style/code_text"
-                        android:importantForAutofill="yes"/>
+                        android:importantForAutofill="no"
+                        tools:ignore="LabelFor" />
 
                     <EditText
                         android:id="@+id/verificationNumber5"
@@ -186,7 +192,8 @@
                         android:inputType="number"
                         android:maxLength="1"
                         android:theme="@style/code_text"
-                        android:importantForAutofill="yes"/>
+                        android:importantForAutofill="no"
+                        tools:ignore="LabelFor" />
 
                 </LinearLayout>
 
@@ -220,7 +227,7 @@
 
                 <TextView
                     android:id="@+id/resendCodeTextView"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_54sdp"
                     android:layout_marginBottom="@dimen/_69sdp"
@@ -230,6 +237,19 @@
                     android:theme="@style/text_button_1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/smsContinueButton"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+                <TextView
+                    android:id="@+id/resendCodeSecondsTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_54sdp"
+                    android:layout_marginBottom="@dimen/_69sdp"
+                    android:gravity="center"
+                    android:padding="@dimen/_8sdp"
+                    android:theme="@style/text_button_1"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toEndOf="@id/resendCodeTextView"
                     app:layout_constraintTop_toBottomOf="@id/smsContinueButton"
                     app:layout_constraintBottom_toBottomOf="parent"/>
 

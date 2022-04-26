@@ -45,11 +45,11 @@ class EKTPCreateAccountViewModel: ViewModel() {
                 Log.e("APITEST", "Unexpected response + $e")
                 return@launch
             }
-            val body3 = response.code()!!
+            val body3 = response.code()
             if (body3 in 200..299){
                 canContinue = true
             }
-            Log.v("APITEST","${body3}")
+            Log.v("APITEST","$body3")
         }
         return jobValue
     }

@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.FileProvider
 import androidx.core.view.isGone
 import androidx.databinding.DataBindingUtil
@@ -32,13 +31,13 @@ class EKTPReceiveMTCNShareImageFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val bundle = this.arguments
 
         mtcnString = bundle?.getString("mtcnString").toString()
 
-        binding =  DataBindingUtil.inflate<FragmentEktpReceiveMtcnShareImageBinding>(inflater,R.layout.fragment_ektp_receive_mtcn_share_image, container, false)
+        binding =  DataBindingUtil.inflate(inflater,R.layout.fragment_ektp_receive_mtcn_share_image, container, false)
 
         binding.naDetailCardView.text = mtcnString
 

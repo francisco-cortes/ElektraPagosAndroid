@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpCreateAccountBiometricsActivationBinding
@@ -49,9 +48,9 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate<FragmentEktpCreateAccountBiometricsActivationBinding>(inflater,
+        binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_ektp_create_account_biometrics_activation, container, false)
 
         executor = ContextCompat.getMainExecutor(requireContext())
@@ -107,14 +106,14 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
             //---
 
             //onClickListener on appBar BackButton to popBackStack fragment
-            backAppbarButton.setOnClickListener { view: View ->
+            backAppbarButton.setOnClickListener {
                 findNavController().popBackStack()
             }
             //---
 
             /*OnClickLIstener to TextView when user does not want
             to activate biometric authentication now*/
-            textViewBio4.setOnClickListener{view: View ->
+            textViewBio4.setOnClickListener{
                 viewModel.saveBioInLogin(false)
                 fragmentReplacer(EKTPCreateAccountSuccessfulFragment())
                 //view.findNavController().navigate(R.id.action_EKTPCreateAccountBiometricsActivationFragment_to_EKTPCreateAccountSuccessfulFragment)
@@ -122,7 +121,7 @@ class EKTPCreateAccountBiometricsActivationFragment : Fragment() {
             //---
 
             //OnClickListener to call system authentication with biometric hardware activated
-            imageButtonBio.setOnClickListener { view: View ->
+            imageButtonBio.setOnClickListener {
                 biometricPrompt.authenticate(promptInfo)
             }
             //---

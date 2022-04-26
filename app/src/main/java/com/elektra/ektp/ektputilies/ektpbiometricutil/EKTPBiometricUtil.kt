@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.biometric.BiometricManager
 //can instance this class with the current context
+@Suppress("DEPRECATION")
 class EKTPBiometricUtil(private val context: Context) {
 
     //check de biometric hardware status trough biometric manager, only works in api 26 and further
@@ -27,8 +28,8 @@ class EKTPBiometricUtil(private val context: Context) {
     //determine the biometric type depending api level,
     fun determineBio() : Int {
 
-        var packageManager: PackageManager = context.getPackageManager()
-        var bioUsed = 0
+        val packageManager: PackageManager = context.packageManager
+        val bioUsed: Int
 
         //determine android api on device
         val androidVersion = when(Build.VERSION.SDK_INT){

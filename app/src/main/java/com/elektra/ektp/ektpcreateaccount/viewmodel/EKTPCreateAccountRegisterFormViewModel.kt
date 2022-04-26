@@ -46,14 +46,14 @@ class EKTPCreateAccountRegisterFormViewModel: ViewModel() {
                 return@launch
             }
 
-            val body3 = response.code()!!
-            val body4 = response.headers()!!
+            val body3 = response.code()
+            val body4 = response.headers()
             if (body3 in 200..299){
                 canContinue = true
             }
-            Log.v("APITEST","${body3}")
+            Log.v("APITEST","$body3")
             Log.v("APITEST","${response.body()}")
-            Log.v("APITEST","${body4}")
+            Log.v("APITEST","$body4")
         }
         return jobValue
     }
@@ -80,7 +80,7 @@ class EKTPCreateAccountRegisterFormViewModel: ViewModel() {
                 if (body3.mensaje=="Cliente encontrado."){
                     preferences.saveFolioCliente(body3.folio)
                 }
-                Log.v("APITEST","${body3}")
+                Log.v("APITEST","$body3")
             }catch (e: NullPointerException){
                 Log.v("APITEST","null")
             }

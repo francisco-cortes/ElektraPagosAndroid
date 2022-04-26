@@ -18,7 +18,8 @@
             android:background="@drawable/ic_cant_offer_service"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:contentDescription="@string/content_description_main_icon_on_view" />
 
         <TextView
             android:id="@+id/alertTitleTextView"
