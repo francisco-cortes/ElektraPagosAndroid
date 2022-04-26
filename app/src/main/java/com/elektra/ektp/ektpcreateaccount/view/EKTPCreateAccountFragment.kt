@@ -77,6 +77,7 @@ class EKTPCreateAccountFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_create_account, container, false)
+        loadingLayout = layoutInflater.inflate(R.layout.loading_alert_layout,container,false)
 
         //Wrap this block code for all the lines with binding variable
         with(binding){
@@ -484,7 +485,6 @@ class EKTPCreateAccountFragment : Fragment() {
     }
 
     private fun verifyFoliValClientResponse(value: Job) {
-        loadingLayout = layoutInflater.inflate(R.layout.loading_alert_layout,null)
         val loadingAlert = alertDialogOpener(loadingLayout, requireContext())
         loadingAlert.show()
         loadingAlert.window?.setLayout(250, 250)

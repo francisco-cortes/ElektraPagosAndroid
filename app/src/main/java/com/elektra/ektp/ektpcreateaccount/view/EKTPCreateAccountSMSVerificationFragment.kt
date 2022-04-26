@@ -97,6 +97,7 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_ektp_create_account_sms_verification, container, false)
+        loadingLayout = layoutInflater.inflate(R.layout.loading_alert_layout,container,false)
 
         val intentFilter = IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION)
         requireActivity().registerReceiver(smsVerificationReceiver,intentFilter)
@@ -362,7 +363,6 @@ class EKTPCreateAccountSMSVerificationFragment : Fragment() {
     }
 
     private fun verifySMSresponse(value: Job) {
-        loadingLayout = layoutInflater.inflate(R.layout.loading_alert_layout,null)
         val loadingAlert = alertDialogOpener(loadingLayout, requireContext())
         loadingAlert.show()
         loadingAlert.window?.setLayout(250, 250)

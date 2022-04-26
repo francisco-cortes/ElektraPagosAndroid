@@ -88,6 +88,7 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
         countryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_ekpt_create_account_register_form, container, false)
+        loadingLayout = layoutInflater.inflate(R.layout.loading_alert_layout,container,false)
 
         binding.countrySpinner.adapter = countryAdapter
         binding.stateSpinner.adapter = statesAdapter
@@ -742,7 +743,6 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
     //---
 
     private fun verifyFoliValClientResponse(value: Job) {
-        loadingLayout = layoutInflater.inflate(R.layout.loading_alert_layout,null)
         val loadingAlert = alertDialogOpener(loadingLayout, requireContext())
         loadingAlert.show()
         loadingAlert.window?.setLayout(250, 250)
