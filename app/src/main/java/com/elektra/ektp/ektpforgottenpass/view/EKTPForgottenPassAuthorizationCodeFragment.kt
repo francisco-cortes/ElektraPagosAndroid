@@ -5,6 +5,7 @@ import android.content.*
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,6 @@ import com.elektra.ektp.ektpforgottenpass.view.viewmodel.EKTPForgottenPassAuthor
 import com.elektra.ektp.ektputilies.smsreader.EKTPSMSBrodcastReciver
 import com.elektra.ektp.ektputilies.uservalidations.UserValidations
 import com.google.android.gms.auth.api.phone.SmsRetriever
-import com.google.android.gms.auth.api.phone.SmsRetrieverClient
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.common.api.Status
 import java.util.regex.Pattern
@@ -238,6 +238,62 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
                 }
             }
             //---
+
+            verificationNumber1.setOnKeyListener( View.OnKeyListener { _, _, event ->
+                val pressedKey = event.keyCode
+                Log.i("key pressed",pressedKey.toString())
+                if (codeChar1.isNotBlank() &&verificationNumber1.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                    //Perform Code
+                    verificationNumber2.requestFocus()
+                    verificationNumber2.setText(getKeyVal(pressedKey))
+                    verificationNumber2.setSelection(verificationNumber2.length())
+                    return@OnKeyListener true
+                }else{
+                    false
+                }
+            })
+
+            verificationNumber2.setOnKeyListener( View.OnKeyListener { _, _, event ->
+                val pressedKey = event.keyCode
+                Log.i("key pressed",pressedKey.toString())
+                if (codeChar2.isNotBlank() &&verificationNumber2.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                    //Perform Code
+                    verificationNumber3.requestFocus()
+                    verificationNumber3.setText(getKeyVal(pressedKey))
+                    verificationNumber3.setSelection(verificationNumber3.length())
+                    return@OnKeyListener true
+                }else{
+                    false
+                }
+            })
+
+            verificationNumber3.setOnKeyListener( View.OnKeyListener { _, _, event ->
+                val pressedKey = event.keyCode
+                Log.i("key pressed",pressedKey.toString())
+                if (codeChar3.isNotBlank() &&verificationNumber3.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                    //Perform Code
+                    verificationNumber4.requestFocus()
+                    verificationNumber4.setText(getKeyVal(pressedKey))
+                    verificationNumber4.setSelection(verificationNumber4.length())
+                    return@OnKeyListener true
+                }else{
+                    false
+                }
+            })
+
+            verificationNumber4.setOnKeyListener( View.OnKeyListener { _, _, event ->
+                val pressedKey = event.keyCode
+                Log.i("key pressed",pressedKey.toString())
+                if (codeChar4.isNotBlank() &&verificationNumber4.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                    //Perform Code
+                    verificationNumber5.requestFocus()
+                    verificationNumber5.setText(getKeyVal(pressedKey))
+                    verificationNumber5.setSelection(verificationNumber5.length())
+                    return@OnKeyListener true
+                }else{
+                    false
+                }
+            })
 
             //onClickListener on appBar BackButton to popBackStack fragment to earlier
             backAppbarButton.setOnClickListener {

@@ -17,7 +17,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentCreateAccountBinding
 import com.elektra.ektp.ektpcreateaccount.viewmodel.EKTPCreateAccountViewModel
@@ -292,8 +291,9 @@ class EKTPCreateAccountFragment : Fragment() {
                         } else{
                             "$mDay"
                         }
-                        dateBirth.setText("$sDay/$sMonth/$mYear")
+                        val birthday = "$sDay/$sMonth/$mYear"
                         apiBday = "$mYear-$sMonth-$sDay"
+                        dateBirth.setText(birthday)
                     },
                     year,
                     month,

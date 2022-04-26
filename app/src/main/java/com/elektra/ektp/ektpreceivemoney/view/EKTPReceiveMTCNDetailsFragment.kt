@@ -10,7 +10,6 @@ import android.widget.Button
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.elektra.ektp.R
 import com.elektra.ektp.databinding.FragmentEktpReceiveMtcnDetailsBinding
 
@@ -39,7 +38,7 @@ class EKTPReceiveMTCNDetailsFragment : Fragment() {
         mtcnString = bundle?.getString("mtcnString").toString()
         binding =  DataBindingUtil.inflate(inflater,R.layout.fragment_ektp_receive_mtcn_details, container, false)
         cantDespositAlertLayout = layoutInflater.inflate(R.layout.cant_deposit_alert_layout,container, false)
-        var cantDepositAlertDialog: AlertDialog?
+        val cantDepositAlertDialog: AlertDialog?
         val cantDepositDialogBuilder = AlertDialog.Builder(requireContext())
 
         cantDepositDialogBuilder.setView(cantDespositAlertLayout)

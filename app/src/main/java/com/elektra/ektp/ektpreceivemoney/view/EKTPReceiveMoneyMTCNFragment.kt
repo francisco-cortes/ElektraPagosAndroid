@@ -151,22 +151,22 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
     // MTCN Regex Checker
     private fun checkMTCNKey(keyToCheck: String): Boolean{
         if (keyToCheck.length in 8..16){
-            if (keyToCheck.matches("^(N|n)\\d{9}".toRegex())){  //Intermex
+            if (keyToCheck.matches("^([Nn])\\d{9}".toRegex())){  //Intermex
                 return false
             }
             if (keyToCheck.matches("^\\d{8,11}".toRegex())){    //WU, MG, Vigo, Barri,  BTS, OV
                 return false
             }
-            if (keyToCheck.matches("^(R|r)\\d{10,11}".toRegex())){ //Ria, Remitly
+            if (keyToCheck.matches("^([Rr])\\d{10,11}".toRegex())){ //Ria, Remitly
                 return false
             }
-            if (keyToCheck.matches("^(A|a)\\d{12}".toRegex())){ // Viamericas
+            if (keyToCheck.matches("^([Aa])\\d{12}".toRegex())){ // Viamericas
                 return false
             }
-            if (keyToCheck.matches("^(X|x)\\d{13}".toRegex()) || keyToCheck.matches("^(X|x)\\d{15}".toRegex())){ //Dolex, Xoom
+            if (keyToCheck.matches("^([Xx])\\d{13}".toRegex()) || keyToCheck.matches("^([Xx])\\d{15}".toRegex())){ //Dolex, Xoom
                 return false
             }
-            if (keyToCheck.matches("^(E|e)\\d{11}".toRegex())){ //Transnetwork
+            if (keyToCheck.matches("^([Ee])\\d{11}".toRegex())){ //Transnetwork
                 return false
             }
         }
@@ -174,7 +174,7 @@ class EKTPReceiveMoneyMTCNFragment : Fragment() {
     }
 //----
     private fun alertDialogOpener(dialogLayout: View, context: Context): AlertDialog {
-    var alertDialog: AlertDialog?
+    val alertDialog: AlertDialog?
     val alertDialogBuilder = AlertDialog.Builder(context)
 
         alertDialogBuilder.setView(dialogLayout)

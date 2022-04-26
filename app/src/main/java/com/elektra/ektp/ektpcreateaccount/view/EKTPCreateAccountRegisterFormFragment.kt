@@ -735,7 +735,8 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
     private fun progressInForm(proValBar: Int, proTexVal: Int) {
         binding.progressBar.progress = proValBar
         if (proTexVal <= 7) {
-            binding.barCounter.text = "$proTexVal/7"
+            val currentPosBar = "$proTexVal/7"
+            binding.barCounter.text = currentPosBar
         }
     }
     //---

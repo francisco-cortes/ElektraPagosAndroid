@@ -9,7 +9,7 @@ import com.google.android.gms.common.api.Status
 
 
 class EKTPSMSBrodcastReciver : BroadcastReceiver() {
-    var smsBroadcastReceiverListener : SmsReceiveListener? = null
+    private var smsBroadcastReceiverListener : SmsReceiveListener? = null
     override fun onReceive(context: Context, intent: Intent?) {
         if (SmsRetriever.SMS_RETRIEVED_ACTION == intent?.action) {
             val extras = intent.extras
