@@ -242,7 +242,7 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
             verificationNumber1.setOnKeyListener( View.OnKeyListener { _, _, event ->
                 val pressedKey = event.keyCode
                 Log.i("key pressed",pressedKey.toString())
-                if (codeChar1.isNotBlank() &&verificationNumber1.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                if (codeChar1.isNotBlank() &&verificationNumber1.isFocused&&pressedKey>=7&&pressedKey<=16) {
                     //Perform Code
                     verificationNumber2.requestFocus()
                     verificationNumber2.setText(getKeyVal(pressedKey))
@@ -256,7 +256,7 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
             verificationNumber2.setOnKeyListener( View.OnKeyListener { _, _, event ->
                 val pressedKey = event.keyCode
                 Log.i("key pressed",pressedKey.toString())
-                if (codeChar2.isNotBlank() &&verificationNumber2.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                if (codeChar2.isNotBlank() &&verificationNumber2.isFocused&&pressedKey>=7&&pressedKey<=16) {
                     //Perform Code
                     verificationNumber3.requestFocus()
                     verificationNumber3.setText(getKeyVal(pressedKey))
@@ -270,7 +270,7 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
             verificationNumber3.setOnKeyListener( View.OnKeyListener { _, _, event ->
                 val pressedKey = event.keyCode
                 Log.i("key pressed",pressedKey.toString())
-                if (codeChar3.isNotBlank() &&verificationNumber3.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                if (codeChar3.isNotBlank() &&verificationNumber3.isFocused&&pressedKey>=7&&pressedKey<=16) {
                     //Perform Code
                     verificationNumber4.requestFocus()
                     verificationNumber4.setText(getKeyVal(pressedKey))
@@ -284,7 +284,7 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
             verificationNumber4.setOnKeyListener( View.OnKeyListener { _, _, event ->
                 val pressedKey = event.keyCode
                 Log.i("key pressed",pressedKey.toString())
-                if (codeChar4.isNotBlank() &&verificationNumber4.isFocused&&pressedKey>=8&&pressedKey<=16) {
+                if (codeChar4.isNotBlank() &&verificationNumber4.isFocused&&pressedKey>=7&&pressedKey<=16) {
                     //Perform Code
                     verificationNumber5.requestFocus()
                     verificationNumber5.setText(getKeyVal(pressedKey))
@@ -305,6 +305,7 @@ class EKTPForgottenPassAuthorizationCodeFragment : Fragment(){
     }
     private fun getKeyVal(pressedKeyCode: Int):String{
         return when (pressedKeyCode){
+            7 -> "0"
             8 -> "1"
             9 -> "2"
             10 -> "3"

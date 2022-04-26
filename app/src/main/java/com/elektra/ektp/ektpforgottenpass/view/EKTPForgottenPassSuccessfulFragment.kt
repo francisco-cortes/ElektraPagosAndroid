@@ -40,7 +40,6 @@ class EKTPForgottenPassSuccessfulFragment : Fragment() {
 
         //The account has been created successfully, user can return to home
         binding.buttonSuccessful.setOnClickListener {
-            preferences.saveBioLogin(false)
             activity?.finishAffinity()
             val intent = Intent(activity as Context, EKTPLoginActivity::class.java)
             startActivity(intent)
