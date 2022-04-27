@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
+<layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
@@ -25,7 +25,8 @@
             android:layout_marginTop="@dimen/_10sdp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/viewXD"
-            app:layout_constraintStart_toStartOf="@+id/viewXD"/>
+            app:layout_constraintStart_toStartOf="@+id/viewXD"
+            tools:ignore="HardcodedText,SpUsage" />
 
         <TextView
             android:id="@+id/noticeBodyTextView"
@@ -40,7 +41,8 @@
             android:layout_marginTop="@dimen/_6sdp"
             app:layout_constraintTop_toBottomOf="@+id/noticeHeaderTextView"
             app:layout_constraintStart_toStartOf="@+id/viewXD"
-            app:layout_constraintEnd_toEndOf="@+id/viewXD"/>
+            app:layout_constraintEnd_toEndOf="@+id/viewXD"
+            tools:ignore="HardcodedText,SpUsage" />
 
         <TextView
             android:id="@+id/noticeDateTextView"
@@ -53,7 +55,8 @@
             android:textColor="@color/elektra_gray"
             android:layout_marginTop="@dimen/_30sdp"
             app:layout_constraintTop_toBottomOf="@+id/noticeBodyTextView"
-            app:layout_constraintStart_toStartOf="@+id/viewXD"/>
+            app:layout_constraintStart_toStartOf="@+id/viewXD"
+            tools:ignore="HardcodedText,SpUsage" />
 
         <View
             android:id="@+id/viewXD"

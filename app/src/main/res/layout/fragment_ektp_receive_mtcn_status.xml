@@ -109,7 +109,8 @@
                     android:layout_marginTop="@dimen/_40sdp"
                     app:layout_constraintTop_toBottomOf="@+id/moneyStatusBodyTextView"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/MTCNNumberTextView"
@@ -121,7 +122,8 @@
                     android:layout_marginTop="@dimen/_6sdp"
                     app:layout_constraintTop_toBottomOf="@+id/totalMoneyRecievedTextView"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:ignore="HardcodedText" />
 
                 <Button
                     android:id="@+id/seeDetailsButton"

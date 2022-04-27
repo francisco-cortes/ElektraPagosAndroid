@@ -83,7 +83,8 @@
                     android:theme="@style/header_3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/labelShipmentOk" />
+                    app:layout_constraintTop_toBottomOf="@id/labelShipmentOk"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/amDetailCentsCardView"
@@ -108,7 +109,8 @@
                     android:theme="@style/subtitle_1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/amDetailCardView" />
+                    app:layout_constraintTop_toBottomOf="@id/amDetailCardView"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/daDetailCardView"
@@ -122,7 +124,8 @@
                     android:theme="@style/subtitle_1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tiDetailCardView" />
+                    app:layout_constraintTop_toBottomOf="@id/tiDetailCardView"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/acLabelDetailCardView"
@@ -149,7 +152,8 @@
                     android:text="Diego Vázquez Pérez"
                     android:theme="@style/subtitle_2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/acLabelDetailCardView" />
+                    app:layout_constraintTop_toBottomOf="@id/acLabelDetailCardView"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/reLabelDetailCardView"
@@ -176,7 +180,8 @@
                     android:text="Western Union - N12345678RS"
                     android:theme="@style/subtitle_2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/reLabelDetailCardView" />
+                    app:layout_constraintTop_toBottomOf="@id/reLabelDetailCardView"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/coLabelDetailCardView"
@@ -203,7 +208,8 @@
                     android:text="Envío de dinero"
                     android:theme="@style/subtitle_2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/coLabelDetailCardView" />
+                    app:layout_constraintTop_toBottomOf="@id/coLabelDetailCardView"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/foLabelDetailCardView"
@@ -230,7 +236,8 @@
                     android:text="19283764"
                     android:theme="@style/subtitle_2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/foLabelDetailCardView" />
+                    app:layout_constraintTop_toBottomOf="@id/foLabelDetailCardView"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/stLabelDetailCardView"
@@ -244,7 +251,8 @@
                     android:textColor="@color/elektra_gray"
                     android:theme="@style/appbar_title"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/foDetailCardView" />
+                    app:layout_constraintTop_toBottomOf="@id/foDetailCardView"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/stDetailCardView"
@@ -257,7 +265,8 @@
                     android:text="****2456"
                     android:theme="@style/subtitle_2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/stLabelDetailCardView" />
+                    app:layout_constraintTop_toBottomOf="@id/stLabelDetailCardView"
+                    tools:ignore="HardcodedText" />
 
                 <Button
                     android:id="@+id/shareThisButton"

@@ -72,7 +72,8 @@
                     android:layout_marginTop="@dimen/_25sdp"
                     app:layout_constraintTop_toBottomOf="@+id/moneyReceivedSuccessfullyImageView"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/receivedSuccessAdviceTextView"

@@ -122,7 +122,8 @@
                             android:theme="@style/header_1"
                             android:layout_marginTop="@dimen/_24sdp"
                             app:layout_constraintTop_toBottomOf="@+id/mtcnReadyLabelTextView"
-                            app:layout_constraintEnd_toStartOf="@id/totalMoneySignDetailsTextView"/>
+                            app:layout_constraintEnd_toStartOf="@id/totalMoneySignDetailsTextView"
+                            tools:ignore="HardcodedText" />
 
                         <TextView
                             android:id="@+id/totalMoneySignDetailsTextView"
@@ -132,7 +133,8 @@
                             android:theme="@style/title_1"
                             android:layout_marginTop="@dimen/_24sdp"
                             app:layout_constraintTop_toBottomOf="@+id/mtcnReadyLabelTextView"
-                            app:layout_constraintEnd_toStartOf="@id/totalDetailsTextView"/>
+                            app:layout_constraintEnd_toStartOf="@id/totalDetailsTextView"
+                            tools:ignore="HardcodedText" />
 
                         <TextView
                             android:id="@+id/totalDetailsTextView"
@@ -143,7 +145,8 @@
                             android:layout_marginTop="@dimen/_24sdp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/mtcnReadyLabelTextView"
-                            app:layout_constraintStart_toStartOf="parent"/>
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:ignore="HardcodedText" />
 
                         <TextView
                             android:id="@+id/totalCentsDetailsTextView"
@@ -153,7 +156,8 @@
                             android:theme="@style/title_1"
                             android:layout_marginTop="@dimen/_24sdp"
                             app:layout_constraintTop_toBottomOf="@+id/mtcnReadyLabelTextView"
-                            app:layout_constraintStart_toEndOf="@id/totalDetailsTextView"/>
+                            app:layout_constraintStart_toEndOf="@id/totalDetailsTextView"
+                            tools:ignore="HardcodedText" />
 
                         <View
                             android:id="@+id/separator1"
@@ -186,7 +190,8 @@
                             android:layout_marginTop="@dimen/_3sdp"
                             android:layout_marginStart="@dimen/_30sdp"
                             app:layout_constraintTop_toBottomOf="@+id/senderLabelTextView"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:ignore="HardcodedText" />
 
                         <TextView
                             android:id="@+id/partnerLabelTextView"
@@ -209,7 +214,8 @@
                             android:layout_marginTop="@dimen/_3sdp"
                             android:layout_marginStart="@dimen/_30sdp"
                             app:layout_constraintTop_toBottomOf="@+id/partnerLabelTextView"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:ignore="HardcodedText" />
 
                         <TextView
                             android:id="@+id/moneyStatusLabelTextView"
@@ -234,7 +240,7 @@
                             android:layout_marginBottom="@dimen/_38sdp"
                             app:layout_constraintTop_toBottomOf="@+id/moneyStatusLabelTextView"
                             app:layout_constraintStart_toStartOf="parent"
-                            />
+                            tools:ignore="HardcodedText" />
 
                         <TextView
                             android:id="@+id/accountLabelTextView"
@@ -259,7 +265,8 @@
                             android:layout_marginBottom="@dimen/_38sdp"
                             app:layout_constraintTop_toBottomOf="@+id/accountLabelTextView"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            tools:ignore="HardcodedText" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -332,7 +339,8 @@
                             android:layout_marginTop="@dimen/_19sdp"
                             android:layout_marginEnd="@dimen/_19sdp"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"/>
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:ignore="HardcodedText" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

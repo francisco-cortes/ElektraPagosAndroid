@@ -50,10 +50,10 @@ class EKTPCreateAccountRegisterFormFragment : Fragment() {
     //---
 
     //Flags variables
-    var zipCodeFlag = 0
-    var colonyFlag = 0
-    var streetFlag = 0
-    var exteriorFlag = 0
+    private var zipCodeFlag = 0
+    private var colonyFlag = 0
+    private var streetFlag = 0
+    private var exteriorFlag = 0
     //---
 
     override fun onCreate(savedInstanceState: Bundle?) {

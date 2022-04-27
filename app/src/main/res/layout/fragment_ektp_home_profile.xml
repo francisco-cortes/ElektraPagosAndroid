@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -107,7 +108,8 @@
                     android:textColor="@color/elektra_gray"
                     app:layout_constraintEnd_toEndOf="@id/accountLabelTextView"
                     app:layout_constraintStart_toStartOf="@id/accountLabelTextView"
-                    app:layout_constraintTop_toBottomOf="@+id/accountLabelTextView" />
+                    app:layout_constraintTop_toBottomOf="@+id/accountLabelTextView"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/dateLabelTextView"
@@ -132,7 +134,8 @@
                     android:textColor="@color/elektra_gray"
                     app:layout_constraintEnd_toEndOf="@id/dateLabelTextView"
                     app:layout_constraintStart_toStartOf="@id/dateLabelTextView"
-                    app:layout_constraintTop_toBottomOf="@+id/dateLabelTextView" />
+                    app:layout_constraintTop_toBottomOf="@+id/dateLabelTextView"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/phoneLabelTextView"

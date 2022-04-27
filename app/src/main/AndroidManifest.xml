@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.elektra.ektp">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -47,45 +47,56 @@
         <activity
             android:name=".ektpmovements.view.EKTPMovementsDetailsActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HighLight"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ektpmovements.view.EKTPMovementsActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HighLight"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".ektpreceivemoney.view.EKTPReceiveMoneyActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.HighLight" />
+            android:theme="@style/Theme.HighLight"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".ektpforgottenpass.view.EKTPForgottenPassActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.HighLight" />
+            android:theme="@style/Theme.HighLight"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".ektpcreateaccount.view.EKTPCreateAccountActivity"
             android:exported="false"
             android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:theme="@style/Theme.HighLight" />
         <activity
             android:name=".ektphome.view.EKTPHomeSettingsHelpActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.HighLight" />
+            android:theme="@style/Theme.HighLight"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".ektphome.view.EKTPHomeActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HighLight"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ektplogin.view.EKTPLoginActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.HighLight" />
+            android:theme="@style/Theme.HighLight"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".ektpsplashactivity.view.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.HighLight">
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

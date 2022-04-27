@@ -32,7 +32,8 @@
                     android:layout_marginTop="@dimen/_35sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_appbar_logo" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -50,7 +51,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/settingsImage"
@@ -60,7 +61,8 @@
                     android:background="@drawable/ic_settings_image"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/content_description_main_icon_on_view" />
 
                 <FrameLayout
                     android:id="@+id/changePassFrame"
@@ -85,7 +87,8 @@
                             android:backgroundTint="@color/elektra_gray"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:contentDescription="@string/content_description_small_image" />
 
                         <TextView
                             android:id="@+id/changePassTextView"
@@ -105,7 +108,8 @@
                             android:background="@drawable/ic_forward_arrow"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:contentDescription="@string/content_description_small_image" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -146,7 +150,8 @@
                             android:backgroundTint="@color/elektra_gray"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:contentDescription="@string/content_description_small_image" />
 
                         <TextView
                             android:id="@+id/helpTextView"
@@ -166,7 +171,8 @@
                             android:background="@drawable/ic_forward_arrow"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:contentDescription="@string/content_description_small_image" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -206,7 +212,8 @@
                             android:background="@drawable/ic_logout_button"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:contentDescription="@string/content_description_small_image" />
 
                         <TextView
                             android:id="@+id/logOutTextView"
