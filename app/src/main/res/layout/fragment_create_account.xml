@@ -358,9 +358,6 @@
                         android:text="@string/fragment_form_gender_woman"
                         android:theme="@style/hint_edit_text"
                         android:buttonTint="@color/elektra_red"/>
-                    <Space
-                        android:layout_width="@dimen/_18sdp"
-                        android:layout_height="wrap_content"/>
 
                     <RadioButton
                         android:id="@+id/manGenderRadioButton"
@@ -368,7 +365,8 @@
                         android:layout_height="wrap_content"
                         android:text="@string/fragment_form_gender_man"
                         android:theme="@style/hint_edit_text"
-                        android:buttonTint="@color/elektra_red"/>
+                        android:buttonTint="@color/elektra_red"
+                        android:layout_marginStart="@dimen/_15sdp"/>
                 </LinearLayout>
 
                 <TextView
